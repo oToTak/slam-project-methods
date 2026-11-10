@@ -1,0 +1,4 @@
+# Shell/Python scripts run in WSL: always LF (CONVENTIONS.md section 1)
+*.sh text eol=lf
+*.py text eol=lf
+*.txt text eol=lf
