@@ -1,0 +1,5 @@
+evo==1.37.1
+rosbags==0.11.9
+tqdm==4.70.1
+pillow==13.0.0
+numpy==2.5.4
