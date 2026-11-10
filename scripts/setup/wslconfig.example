@@ -1,8 +1,10 @@
-# Copy to %UserProfile%\.wslconfig (Windows), then run `wsl --shutdown` in PowerShell and reopen WSL.
-# Adjust to the machine: memory = ~70% of the RAM, processors = logical cores - 2.
-# swap file must be on a disk with free space (here T:); use double backslashes.
+# Copy to  C:\Users\<your Windows name>\.wslconfig  then in PowerShell: wsl --shutdown   and reopen Ubuntu.
+# SET THE VALUES FOR THIS MACHINE:
+#   memory     ~ 70% of installed RAM (CUDA build needs >= 8GB; 11GB is for a 16 GB PC)
+#   processors ~ logical cores minus 2
+#   swapFile   a path on a disk with >= 16 GB free, backslashes DOUBLED; main PC uses T:\\wsl\\swap.vhdx
 [wsl2]
 memory=11GB
 processors=10
 swap=16GB
-swapFile=T:\wsl\swap.vhdx
+swapFile=C:\\wsl-swap.vhdx

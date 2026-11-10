@@ -26,8 +26,11 @@ uvp setuptools wheel ninja
 t1=$(date +%s)
 
 cd "$DPVO_DIR"
-"$py" -m pip --version >/dev/null 2>&1 || true
-uv pip install --python "$py" --no-build-isolation .
+if "$py" -c "import cuda_corr, cuda_ba, lietorch_backends" >/dev/null 2>&1; then
+  echo "DPVO CUDA extensions already built, skipping build"
+else
+  uv pip install --python "$py" --no-build-isolation .
+fi
 t2=$(date +%s)
 
 if [ ! -f dpvo.pth ]; then

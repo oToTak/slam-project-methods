@@ -25,41 +25,59 @@ bash scripts/accept_seq01.sh           # у кінці: ACCEPTED / NOT ACCEPTED 
 ```
 
 ## B. ПК брата — по кроках
-**0. Windows (один раз, адмін, потрібне перезавантаження).** У PowerShell «від імені адміністратора»:
+Усі команди з кроку 1 і далі — **в терміналі Ubuntu** (не в PowerShell), крім тих, де вказано PowerShell.
+
+**0. Windows (один раз, адмін, потрібне перезавантаження).**
+- У BIOS має бути ввімкнена віртуалізація (SVM / Intel VT-x) — на ігрових ПК зазвичай уже.
+- PowerShell «від імені адміністратора»:
 ```powershell
 wsl --install -d Ubuntu-22.04
+wsl --update
+wsl --set-default-version 2
 ```
-Перезавантажити ПК, відкрити «Ubuntu 22.04», створити Linux-користувача й пароль. Оновити драйвер NVIDIA **у Windows**
-(WSL драйвер не ставить). Перевірити в Ubuntu: `nvidia-smi` показує RTX 3060. Вільного місця на диску з WSL — ≥ 50 GB.
-Бажано створити `%UserProfile%\.wslconfig` за шаблоном `wslconfig.example` (підігнати `memory`, `processors`, шлях swap-файлу).
+- Перезавантажити ПК, відкрити «Ubuntu 22.04», створити Linux-користувача й пароль.
+- Оновити драйвер NVIDIA **у Windows** (у WSL драйвер не ставиться). У Ubuntu `nvidia-smi` має показати RTX 3060.
+- Вільного місця на диску з WSL — ≥ 50 GB.
 
 **1. Отримати скрипти.** На головному ПК (у WSL, після коміту змін): `bash scripts/setup/make_bundle.sh` → файл
-`slam-local-<hash>.tar.gz` (кілька десятків KB) у `T:\slam-data\bundle\` → завантажити на Google Диск → скачати на ПК брата.
-У Ubuntu брата (файл лежить, наприклад, у `C:\Users\<ім'я>\Downloads`):
+`slam-local-<hash>.tar.gz` (≈ 30 KB) у `T:\slam-data\bundle\` → завантажити на Google Диск → скачати на ПК брата
+(Диск може перейменувати файл або запакувати в zip — тоді спершу розпакувати в Windows). У Ubuntu брата:
 ```bash
-tar -xzf /mnt/c/Users/<ім'я>/Downloads/slam-local-<hash>.tar.gz -C ~
+ls /mnt/c/Users/*/Downloads/slam-local-*.tar.gz            # знайти файл (шлях з пробілами брати в лапки)
+tar -xzf "/mnt/c/Users/<ім'я>/Downloads/slam-local-<hash>.tar.gz" -C ~
 cd ~/slam-local
+cp scripts/setup/wslconfig.example "/mnt/c/Users/<ім'я>/.wslconfig"
 ```
-(Репо тримати у Linux-домашній папці, не на `/mnt/c` — швидше. Дані підуть у `~/slam-data`, якщо немає диска `T:`;
-інший шлях: `export DATA_ROOT=/mnt/d/slam-data`.)
+Відкрити `C:\Users\<ім'я>\.wslconfig` у Блокноті, виставити `memory` (~70 % ОЗП), `processors`, шлях swap-файлу;
+у PowerShell `wsl --shutdown`, знову відкрити Ubuntu, `cd ~/slam-local`. **Зробити це до кроку 2** — від ОЗП залежить збірка CUDA.
 
-**2. Одна команда встановлення** (≈ 30–60 хв, спитає пароль sudo один раз; повторний запуск безпечний):
+Репо тримати у Linux-домашній папці, не на `/mnt/c` (там повільно). Дані підуть у `~/slam-data` (на `/mnt/d/...` теж повільно:
+9p-диск, а `.mcap` 6–20 GB). Інший шлях — лише якщо потрібно, і тоді постійно: `echo 'export DATA_ROOT=/шлях' >> ~/.bashrc`.
+
+**2. Одна команда встановлення** (≈ 30–60 хв; sudo-пароль один раз; повторний запуск безпечний):
 ```bash
 bash scripts/setup/setup_all.sh
 ```
-Лог: `$DATA_ROOT/logs/setup_all_*.log`. У кінці — `ALL OK` (перевірка GPU, nvcc 12.1, evo 1.37.1, імпорт DPVO, ваги, тести `eval.py`).
+Лог: `~/slam-data/logs/setup_all_*.log`. У кінці — `ALL OK` (GPU, nvcc 12.1, evo 1.37.1, імпорт DPVO і OpenCV, ваги, тести `eval.py`).
+Якщо якась перевірка `[FAIL]` — запустіть `bash scripts/setup/10_verify.sh` і дивіться, яка саме.
 
-**3. HF-логін** (один раз; токен вводить людина, краще fine-grained read-only; умови датасету мають бути прийняті для цього акаунта):
+**3. HF-логін** (один раз; токен вводить людина, краще fine-grained read-only; умови датасету мають бути прийняті для цього акаунта;
+на питання «add token as git credential?» відповісти `n`). У тому ж терміналі `hf` ще може бути не в PATH — тому повним шляхом:
 ```bash
-hf auth login
+~/.local/bin/hf auth login
 ```
-**4. Приймальний тест:**
+**4. Приймальний тест** (качає seq01 6.5 GB; DPVO на RTX 3060 буде швидший за GTX 1660 SUPER):
 ```bash
 bash scripts/accept_seq01.sh
 ```
-Очікування: `ACCEPTED`. Час на RTX 3060 буде інший (не помилка) — запишіть `wall` і `VRAM` з `meta.yaml` у нотатки.
-Результат — `results/summary.csv` (+ `summary_extra.csv`) і `results/dpvo/mono/ucu/seq01/` — повернути на Диск.
-Після завершення на чужому ПК: `hf auth logout`.
+Очікування в кінці: `ACCEPTED` (ATE ≈ 2.34 м ± 0.30, coverage ≥ 0.99). Час інший — не помилка; `wall` і VRAM — у `results/dpvo/mono/ucu/seq01/meta.yaml` (`notes`).
+
+**5. Повернути результати** (мало місця: кілька MB). Файли лежать у `~/slam-local/results/` (`summary.csv`, `summary_extra.csv`, `dpvo/...`):
+```bash
+cp -r ~/slam-local/results "/mnt/c/Users/<ім'я>/Desktop/results_brother"
+```
+(або в Провіднику Windows: `\wsl$\Ubuntu-22.04\home\<linux-ім'я>\slam-local\results`) → на Google Диск.
+Після завершення на чужому ПК: `~/.local/bin/hf auth logout`.
 
 ## C. Що де лежить
 | Скрипт | Призначення |

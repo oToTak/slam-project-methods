@@ -13,6 +13,7 @@ export SLAM_VENV="${SLAM_VENV:-$HOME/venvs/slam}"        # evo + exporter (Pytho
 export DPVO_VENV="${DPVO_VENV:-$HOME/venvs/dpvo}"        # torch 2.3.1/cu121 + DPVO (numpy 1.26.4)
 export DPVO_DIR="${DPVO_DIR:-$HOME/src/DPVO}"
 export DATASET_REPO_DIR="${DATASET_REPO_DIR:-$HOME/src/ucu-slam-dataset}"
+export DATASET_REPO_COMMIT="${DATASET_REPO_COMMIT:-f46dfd6135a75af9da64a759c44928856a3d5b7d}"  # official exporter, pinned so exports stay identical
 export CUDA_HOME="${CUDA_HOME:-/usr/local/cuda-12.1}"
 export PATH="$HOME/.local/bin:$CUDA_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$CUDA_HOME/lib64:${LD_LIBRARY_PATH:-}"

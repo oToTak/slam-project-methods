@@ -15,6 +15,7 @@ mkdir -p "$DATA_ROOT/ucu" "$DATA_ROOT/ucu_tum" "$DATA_ROOT/logs"
 if [ ! -d "$DATASET_REPO_DIR/.git" ]; then
   mkdir -p "$(dirname "$DATASET_REPO_DIR")"
   git clone https://github.com/ucu-autonomous-ugv/ucu-slam-dataset.git "$DATASET_REPO_DIR"
+  git -C "$DATASET_REPO_DIR" checkout -q "$DATASET_REPO_COMMIT"
 fi
 
 if [ -f "$out/rgb.txt" ]; then echo "$seq already exported, skipping"; exit 0; fi

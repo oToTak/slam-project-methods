@@ -8,7 +8,9 @@ export DEBIAN_FRONTEND=noninteractive
 
 apt-get update
 apt-get install -y --no-install-recommends \
-  build-essential cmake ninja-build unzip git curl wget ca-certificates pkg-config
+  build-essential cmake ninja-build unzip git curl wget ca-certificates pkg-config \
+  libgl1 libglib2.0-0
+# (libgl1, libglib2.0-0: runtime libraries of opencv-python, needed by `import cv2`)
 
 # NVIDIA's WSL-Ubuntu repo: ships the toolkit WITHOUT a Linux driver (WSL uses the Windows driver).
 if ! dpkg -s cuda-keyring >/dev/null 2>&1; then
