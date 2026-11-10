@@ -1,0 +1,8 @@
+# Copy to %UserProfile%\.wslconfig (Windows), then run `wsl --shutdown` in PowerShell and reopen WSL.
+# Adjust to the machine: memory = ~70% of the RAM, processors = logical cores - 2.
+# swap file must be on a disk with free space (here T:); use double backslashes.
+[wsl2]
+memory=11GB
+processors=10
+swap=16GB
+swapFile=T:\wsl\swap.vhdx
