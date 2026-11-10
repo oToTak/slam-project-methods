@@ -134,7 +134,9 @@ def git_commit(repo=REPO_ROOT):
                                         text=True).strip()
         return sha, bool(dirty)
     except Exception:
-        return "unknown", False
+        # unpacked bundle (make_bundle.sh) has no .git: it carries the source commit in BUNDLE_COMMIT
+        f = Path(repo) / "BUNDLE_COMMIT"
+        return (f.read_text().strip() if f.exists() else "unknown"), False
 
 
 # ---------------------------------------------------------------- GPU part

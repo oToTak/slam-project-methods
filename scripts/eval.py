@@ -238,7 +238,8 @@ def git_short(repo):
         return subprocess.check_output(["git", "-C", str(repo), "rev-parse", "--short=7", "HEAD"],
                                        text=True, stderr=subprocess.DEVNULL).strip()
     except Exception:
-        return ""
+        f = Path(repo) / "BUNDLE_COMMIT"  # unpacked bundle without .git (see make_bundle.sh)
+        return f.read_text().strip()[:7] if f.exists() else ""
 
 
 # ----------------------------------------------------------------------------- main
