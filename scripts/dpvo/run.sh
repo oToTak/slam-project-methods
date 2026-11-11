@@ -2,7 +2,7 @@
 # Usage: scripts/dpvo/run.sh <tum|ucu> <seq> [extra run_dpvo.py args]    e.g. tum fr1_xyz | ucu seq01
 # Runs mono DPVO (stride 1) -> results/dpvo/mono/<dataset>/<seq>/traj_run<N>.txt + meta.yaml,
 # then scripts/eval.py appends the summary.csv row (unless NO_EVAL=1). Needs the CUDA GPU + ~/venvs/dpvo.
-# Log: $DATA_ROOT/logs/dpvo_<seq>_run<N>.log  (N = run number written by the wrapper).
+# Log: $DATA_ROOT/logs/dpvo_<seq>_<timestamp>.log  (run number N is chosen by run_dpvo.py and printed in the log).
 set -euo pipefail
 here=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 source "$here/../setup/env.sh"
