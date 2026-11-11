@@ -1,0 +1,5 @@
+method,mode,dataset,seq,run,n_matched,n_possible,drift50_m,drift100_m,n_seg50,n_seg100,max_gap_s,n_poses,note
+dpvo,mono,tum,fr1_xyz,1,796,798,,,0,0,0.041,798,
+dpvo,mono,ucu,seq01,1,217,218,2.351,1.734,165,113,0.067,6532,
+dpvo,mono,ucu,seq01,2,217,218,3.227,2.820,165,113,0.067,6532,
+dpvo,mono,ucu,seq01,3,217,218,2.645,2.109,165,113,0.067,6532,

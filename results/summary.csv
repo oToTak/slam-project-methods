@@ -1,0 +1,5 @@
+method,mode,dataset,seq,run,ate_rmse_m,rpe_trans_m,coverage,tracking_lost,commit
+dpvo,mono,tum,fr1_xyz,1,0.011,0.006,1.00,false,caa1428
+dpvo,mono,ucu,seq01,1,1.372,,1.00,false,2afa341
+dpvo,mono,ucu,seq01,2,2.272,,1.00,false,d250f3e
+dpvo,mono,ucu,seq01,3,1.738,,1.00,false,d250f3e

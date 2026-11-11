@@ -1,0 +1,10 @@
+method: dpvo
+mode: mono
+dataset: tum
+seq: fr1_xyz
+run: 1
+commit: caa1428baf4e21b90103363bc646e25c62f82cc0
+config: configs/dpvo/calib_tum_fr1.txt
+coverage: 1.00
+tracking_lost: false
+notes: "DPVO 0ac95b6, config/default.yaml, stride=1, 798 frames. Repo had uncommitted changes. NVIDIA GeForce GTX 1660 SUPER; wall 583s (1.4 fps); VRAM peak 3320 MiB total used (base 1014), torch alloc 685 / reserved 2248 MiB; RAM peak 1381 MiB."
