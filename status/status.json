@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-13T12:41:20.520067+00:00",
- "content_hash": "cb91bd1be13639726311b393fb3997b879d0656b805fe514b09fca00783e8e47",
+ "generated_at": "2026-11-13T20:02:25.366655+00:00",
+ "content_hash": "32cc372ae7ff29540b72733bccc8aa3e9f40c390d971c0379b660d6c6dc047ab",
  "dataset": "ucu",
- "total_done": 0,
+ "total_done": 8,
  "total_needed": 39,
  "methods": [
   {
@@ -13,21 +13,34 @@
   }
  ],
  "method_done": {
-  "dpvo:mono": 0
+  "dpvo:mono": 8
  },
  "hosts": {
   "StarDestroyer": {
    "ref": "refs/remotes/origin/runner-StarDestroyer",
-   "last_report": "2026-11-13T13:35:39+02:00",
+   "last_report": "2026-11-13T21:40:09+02:00",
    "stale": false,
-   "worker": "idle",
+   "worker": "running",
+   "busy": true,
+   "seq": "seq12",
+   "method": null,
+   "run": null,
+   "since": "2026-11-13T21:40:04",
+   "dir": "down",
+   "runs_done": 3
+  },
+  "Teodor": {
+   "ref": "refs/remotes/origin/runner-Teodor",
+   "last_report": "2026-11-13T18:49:11+02:00",
+   "stale": true,
+   "worker": "running",
    "busy": false,
    "seq": null,
    "method": null,
    "run": null,
    "since": null,
-   "dir": null,
-   "runs_done": 0
+   "dir": "up",
+   "runs_done": 5
   }
  },
  "sequences": [
@@ -36,9 +49,19 @@
    "seq": "seq01",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "Teodor"
+      ],
+      "2": [
+       "Teodor"
+      ],
+      "3": [
+       "Teodor"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -49,9 +72,16 @@
    "seq": "seq02",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 2,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "Teodor"
+      ],
+      "2": [
+       "Teodor"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -192,14 +222,26 @@
    "seq": "seq13",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
    }
   }
  ],
- "other_results": []
+ "other_results": [
+  "dpvo:mono tum fr1_xyz"
+ ]
 }
