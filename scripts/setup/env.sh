@@ -9,6 +9,15 @@ if [ -z "${DATA_ROOT:-}" ]; then
   if [ -d /mnt/t ]; then DATA_ROOT=/mnt/t/slam-data; else DATA_ROOT="$HOME/slam-data"; fi
 fi
 export DATA_ROOT
+# Worker clone (scripts/start.sh, START.bat): a plain clone of GitHub main where nobody commits, so `git pull --ff-only` always works.
+# It is marked by the file .git/slam-runner (scripts/sync/migrate_to_git.sh creates it). Its results live OUTSIDE the git tree,
+# so pulls never touch them; a development copy keeps writing to its own results/ as before.
+export SLAM_RUNNER_DIR="${SLAM_RUNNER_DIR:-$HOME/slam-runner}"
+export SLAM_CONF_DIR="${SLAM_CONF_DIR:-$HOME/.config/slam}"     # github_token, runner.conf (settings of this PC); never in git
+if [ -z "${RESULTS_ROOT:-}" ]; then
+  if [ -f "$SLAM_REPO/.git/slam-runner" ]; then RESULTS_ROOT="$DATA_ROOT/results"; else RESULTS_ROOT="$SLAM_REPO/results"; fi
+fi
+export RESULTS_ROOT
 export SLAM_VENV="${SLAM_VENV:-$HOME/venvs/slam}"        # evo + exporter (Python 3.12, numpy 2.x)
 export DPVO_VENV="${DPVO_VENV:-$HOME/venvs/dpvo}"        # torch 2.3.1/cu121 + DPVO (numpy 1.26.4)
 export DPVO_DIR="${DPVO_DIR:-$HOME/src/DPVO}"

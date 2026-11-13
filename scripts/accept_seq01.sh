@@ -3,7 +3,7 @@
 #   bash scripts/accept_seq01.sh            # downloads seq01 if absent (needs `hf auth login`), runs DPVO, evaluates
 # Pass criterion: coverage >= 0.99 and |ATE - 2.34| <= 0.30 m (GPU/driver differences allowed; see PLAN_local.md).
 # NOTE: DPVO is non-deterministic. On the main PC three identical runs gave 1.372 / 2.272 / 1.738 m (sigma ~0.45),
-# so one run outside the band is not proof of a broken setup: repeat 2-3 times and compare with results/summary.csv.
+# so one run outside the band is not proof of a broken setup: repeat 2-3 times and compare with $RESULTS_ROOT/summary.csv.
 set -euo pipefail
 here=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 source "$here/setup/env.sh"
@@ -12,7 +12,7 @@ verify_out=$(bash "$here/setup/10_verify.sh" 2>&1) || {
   echo "environment check failed (see the failing line above)" >&2; exit 1; }
 bash "$here/data/fetch_ucu.sh" 1 --keep-mcap
 bash "$here/dpvo/run.sh" ucu seq01
-row=$(tail -n 1 "$SLAM_REPO/results/summary.csv")
+row=$(tail -n 1 "$RESULTS_ROOT/summary.csv")
 echo "summary row: $row"
 "$SLAM_VENV/bin/python" - "$row" <<'PY'
 import sys

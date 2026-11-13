@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Usage: scripts/dpvo/run.sh <tum|ucu> <seq> [extra run_dpvo.py args]    e.g. tum fr1_xyz | ucu seq01
-# Runs mono DPVO (stride 1) -> results/dpvo/mono/<dataset>/<seq>/traj_run<N>.txt + meta.yaml,
+# Runs mono DPVO (stride 1) -> $RESULTS_ROOT/dpvo/mono/<dataset>/<seq>/traj_run<N>.txt + meta.yaml (RESULTS_ROOT: env.sh),
 # then scripts/eval.py appends the summary.csv row (unless NO_EVAL=1). Needs the CUDA GPU + ~/venvs/dpvo.
 # Log: $DATA_ROOT/logs/dpvo_<seq>_<timestamp>.log  (run number N is chosen by run_dpvo.py and printed in the log).
 set -euo pipefail
@@ -19,8 +19,9 @@ mkdir -p "$DATA_ROOT/logs"
 log="$DATA_ROOT/logs/dpvo_${seq}_$(date +%Y%m%d_%H%M%S).log"
 cd "$SLAM_REPO"
 "$DPVO_VENV/bin/python" scripts/dpvo/run_dpvo.py --dataset "$dataset" --seq "$seq" \
-  --data-dir "$data_dir" --calib "$calib" --dpvo-dir "$DPVO_DIR" "$@" 2>&1 | tee "$log"
+  --data-dir "$data_dir" --calib "$calib" --dpvo-dir "$DPVO_DIR" --results-root "$RESULTS_ROOT" "$@" 2>&1 | tee "$log"
 
 if [ "${NO_EVAL:-0}" != 1 ] && ! printf '%s ' "$@" | grep -q -- '--max-frames'; then
-  "$SLAM_VENV/bin/python" scripts/eval.py --method dpvo --mode mono --dataset "$dataset" --seq "$seq" --log "$log"
+  "$SLAM_VENV/bin/python" scripts/eval.py --method dpvo --mode mono --dataset "$dataset" --seq "$seq" --log "$log" \
+    --results-root "$RESULTS_ROOT"
 fi

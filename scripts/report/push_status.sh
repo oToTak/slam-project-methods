@@ -4,15 +4,21 @@
 #   bash scripts/report/push_status.sh --loop 600   push every 600 s until Ctrl-C (run it in its own window)
 #   bash scripts/report/push_status.sh --token      store the token (you type it; it is never echoed)
 # Pushes ONLY to branch  runner-<host>  (never main). Single writer per branch => no conflicts, no force-push.
-# Contents: status.txt (queue --status + GPU), results/ (summary csv, trajectories), fetch_timings.csv, queue state, tail of the newest queue log.
+# Contents: status.txt (queue --status + GPU), results/ (= $RESULTS_ROOT: summary csv, trajectories), fetch_timings.csv, queue state,
+# tail of the newest queue log. RESULTS_ROOT comes from scripts/setup/env.sh ($DATA_ROOT/results in the worker clone ~/slam-runner).
 # NOT pushed: hugging-face token, ~/.cache, data (.mcap), full logs.
 # Config (env): REPORT_REPO (default below), REPORT_DIR (clone dir), QUEUE_METHODS/QUEUE_FROM/QUEUE_DIR/QUEUE_RUNS (for the status table).
 set -uo pipefail
 here=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 source "$here/../setup/env.sh"
-REPORT_REPO=${REPORT_REPO:-https://github.com/oToTak/slam-project-methods.git}
+source "$here/../sync/common.sh"
+REPORT_REPO=${REPORT_REPO:-$SLAM_GIT_URL}
 REPORT_DIR=${REPORT_DIR:-$HOME/slam-report}
-cfg=$HOME/.config/slam; tokfile=$cfg/github_token; askpass=$cfg/git-askpass.sh
+cfg=$SLAM_CONF_DIR; tokfile=$cfg/github_token
+# run by hand (not by the worker, which passes QUEUE_*): take the direction of this PC from runner.conf
+if [ -z "${QUEUE_FROM:-}" ] && conf_load; then
+  QUEUE_FROM=$START_AT; QUEUE_DIR=$DIRECTION; QUEUE_RUNS=$RUNS; QUEUE_METHODS=${QUEUE_METHODS:-$METHODS}
+fi
 host=$(echo "${QUEUE_HOST:-$(hostname)}" | tr -c 'A-Za-z0-9_.\n-' '_')
 branch="runner-$host"
 
@@ -28,8 +34,7 @@ use_token=0
 case "$REPORT_REPO" in https://*) use_token=1 ;; esac
 if [ "$use_token" = 1 ]; then
   [ -s "$tokfile" ] || { echo "No token. Run:  bash $0 --token" >&2; exit 1; }
-  printf '#!/bin/sh\ncase "$1" in *sername*) echo x-access-token ;; *) cat "%s" ;; esac\n' "$tokfile" > "$askpass"; chmod 700 "$askpass"
-  export GIT_ASKPASS="$askpass"
+  slam_git_auth || { echo "cannot write $cfg/git-askpass.sh" >&2; exit 1; }
 fi
 export GIT_TERMINAL_PROMPT=0
 g() { git -C "$REPORT_DIR" "$@"; }
@@ -52,13 +57,13 @@ snapshot() {
   local d=$REPORT_DIR
   find "$d" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
   mkdir -p "$d/results"
-  [ -d "$SLAM_REPO/results" ] && cp -r "$SLAM_REPO/results/." "$d/results/"
+  [ -d "$RESULTS_ROOT" ] && cp -r "$RESULTS_ROOT/." "$d/results/"
   [ -f "$DATA_ROOT/logs/fetch_timings.csv" ] && cp "$DATA_ROOT/logs/fetch_timings.csv" "$d/"
   [ -f "$DATA_ROOT/logs/queue_$host.state.json" ] && cp "$DATA_ROOT/logs/queue_$host.state.json" "$d/queue_state.json"
   local newest; newest=$(ls -t "$DATA_ROOT"/logs/queue_"$host"_seq*_*.log 2>/dev/null | head -1)
   [ -n "$newest" ] && tail -n 60 "$newest" > "$d/queue_log_tail.txt"
   {
-    echo "host: $host   updated: $(date -Is)   bundle: $(cut -c1-7 "$SLAM_REPO/BUNDLE_COMMIT" 2>/dev/null)"
+    echo "host: $host   updated: $(date -Is)   code: $(git -C "$SLAM_REPO" rev-parse --short HEAD 2>/dev/null || cut -c1-7 "$SLAM_REPO/BUNDLE_COMMIT" 2>/dev/null)"
     echo; bash "$SLAM_REPO/scripts/run_queue.sh" --status \
       --from "${QUEUE_FROM:-13}" --dir "${QUEUE_DIR:-down}" --methods "${QUEUE_METHODS:-dpvo}" --runs "${QUEUE_RUNS:-3}" 2>&1
     echo; nvidia-smi --query-gpu=name,utilization.gpu,memory.used,memory.total,temperature.gpu --format=csv 2>&1
