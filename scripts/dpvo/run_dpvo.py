@@ -10,6 +10,7 @@ import json
 import math
 import os
 import re
+import socket
 import subprocess
 import sys
 from pathlib import Path
@@ -106,11 +107,18 @@ def format_meta(*, dataset, seq, run, commit, config, coverage, tracking_lost, n
 
 
 def write_outputs(out_dir, *, dataset, seq, config, commit, rgb_tstamps, tstamps, poses,
-                  tracking_lost=False, notes=""):
-    """Write traj_run<N>.txt (unless tracking lost) and meta.yaml. Returns (run, traj_path or None)."""
+                  tracking_lost=False, notes="", run=None):
+    """Write traj_run<N>.txt (unless tracking lost) and meta.yaml. Returns (run, traj_path or None).
+
+    ``run`` is chosen by the caller (the queue worker passes it explicitly); default = next free number.
+    An existing traj_run<run>.txt is never overwritten.
+    """
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    run = next_run_number(out_dir)
+    if run is None:
+        run = next_run_number(out_dir)
+    elif (out_dir / f"traj_run{run}.txt").exists():
+        raise FileExistsError(f"{out_dir / f'traj_run{run}.txt'} already exists (runs are never overwritten)")
     if not tracking_lost and not poses_are_valid(poses):
         tracking_lost = True
         notes = (notes + " " if notes else "") + "invalid or empty pose output."
@@ -257,6 +265,8 @@ def main():
     ap.add_argument("--stride", type=int, default=1)
     ap.add_argument("--max-frames", type=int, default=0, help="debug/smoke test only: use first N frames")
     ap.add_argument("--results-root", type=Path, default=REPO_ROOT / "results")
+    ap.add_argument("--run", type=int, default=None,
+                    help="explicit run number N for traj_run<N>.txt (default: next free; used by the queue worker)")
     args = ap.parse_args()
 
     frames = read_rgb_txt(args.data_dir / "rgb.txt")
@@ -272,6 +282,9 @@ def main():
         notes += " TRUNCATED smoke run (--max-frames)."
     if dirty:
         notes += " Repo had uncommitted changes."
+    notes += f" host={os.environ.get('QUEUE_HOST') or socket.gethostname()}."
+    if args.run is not None and (out_dir / f"traj_run{args.run}.txt").exists():
+        raise SystemExit(f"{out_dir / f'traj_run{args.run}.txt'} already exists; refusing to overwrite a run")
 
     try:
         poses, tstamps, stats = run_slam(frames, calib, args.dataset, args.dpvo_dir,
@@ -281,12 +294,12 @@ def main():
     except Exception as e:  # tracking failure / CUDA error: record it, never leave stale meta
         write_outputs(out_dir, dataset=args.dataset, seq=args.seq, config=config, commit=sha,
                       rgb_tstamps=rgb_ts, tstamps=[], poses=[], tracking_lost=True,
-                      notes=f"{notes} Failed: {type(e).__name__}: {e}")
+                      notes=f"{notes} Failed: {type(e).__name__}: {e}", run=args.run)
         raise
     check_tstamps(tstamps, [t for t, _ in frames[::args.stride]])
     run, traj = write_outputs(out_dir, dataset=args.dataset, seq=args.seq, config=config,
                               commit=sha, rgb_tstamps=rgb_ts, tstamps=tstamps, poses=poses,
-                              notes=notes)
+                              notes=notes, run=args.run)
     print(f"Wrote {traj} ({len(poses)} poses) and {out_dir / 'meta.yaml'}")
 
 

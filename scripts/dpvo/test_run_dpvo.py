@@ -52,6 +52,16 @@ def test_all():
         _, p4 = r.write_outputs(out, dataset="tum", seq="fr1_xyz", config="c", commit="abc",
                                 rgb_tstamps=ts, tstamps=ts[:2], poses=[(math.nan,) * 7] * 2)
         assert p4 is None
+        # explicit run number (queue worker): used as is, existing run never overwritten
+        run7, p7 = r.write_outputs(out, dataset="tum", seq="fr1_xyz", config="c", commit="abc",
+                                   rgb_tstamps=ts, tstamps=ts, poses=poses, run=7)
+        assert run7 == 7 and p7.name == "traj_run7.txt"
+        try:
+            r.write_outputs(out, dataset="tum", seq="fr1_xyz", config="c", commit="abc",
+                            rgb_tstamps=ts, tstamps=ts, poses=poses, run=7)
+            raise SystemExit("explicit run overwrote an existing trajectory")
+        except FileExistsError:
+            pass
     assert r.compute_coverage([1, 3], [0, 4]) == 0.5
     assert r.compute_coverage([], [0, 4]) == 0.0
     c = r.read_calib(r.REPO_ROOT / "configs/dpvo/calib_ucu.txt")
