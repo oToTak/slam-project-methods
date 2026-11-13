@@ -19,7 +19,7 @@ echo "On the other PC (inside WSL):  mkdir -p ~ && tar -xzf slam-local-$sha.tar.
 
 # CRLF guard: Windows line endings in .sh/.py would break the scripts inside WSL
 chk=$(mktemp -d); tar -xzf "$out/slam-local-$sha.tar.gz" -C "$chk"
-if grep -rlI $'\r' --include='*.sh' --include='*.py' --include='*.txt' "$chk" >/dev/null; then
-  echo "ERROR: CRLF found in the bundle:" >&2; grep -rlI $'\r' --include='*.sh' --include='*.py' --include='*.txt' "$chk" >&2; rm -rf "$chk"; exit 1
+if grep -rlI $'\r' --include='*.sh' --include='*.py' --include='*.txt' --include='*.conf' "$chk" >/dev/null; then
+  echo "ERROR: CRLF found in the bundle:" >&2; grep -rlI $'\r' --include='*.sh' --include='*.py' --include='*.txt' --include='*.conf' "$chk" >&2; rm -rf "$chk"; exit 1
 fi
 rm -rf "$chk"; echo "bundle OK (no CRLF)"
