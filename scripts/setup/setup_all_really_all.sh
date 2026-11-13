@@ -66,7 +66,8 @@ bash "$here/run_queue_tests.sh" 2>&1 | tail -n 6 || tests_ok=0
 [ "$tests_ok" = 1 ] && echo "  tests: finished (look for OK above)" || todo "some unit tests failed: scroll up and send the output to whoever helps you"
 
 echo "== 5/5 queue plan (dry run: nothing is downloaded or computed) =="
-bash "$SLAM_REPO/scripts/run_queue.sh" --dry-run --from 1 --dir up --methods dpvo --runs 3 | head -n 8 || todo "queue dry-run failed"
+plan_out=$(bash "$SLAM_REPO/scripts/run_queue.sh" --dry-run --from 1 --dir up --methods dpvo --runs 3 2>&1) || todo "queue dry-run failed"
+printf '%s\n' "$plan_out" | head -n 8
 
 if [ "$accept" = 1 ]; then
   echo "== acceptance: seq01 =="
