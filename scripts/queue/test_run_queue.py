@@ -92,17 +92,20 @@ class QueueTest(unittest.TestCase):
         self.peers.mkdir()
         self.env = dict(os.environ, DATA_ROOT=str(self.data), QUEUE_HOST="T1", FAKE_CALLS=str(self.calls),
                         QUEUE_FETCH_CMD=f"bash {self.root / 'fetch.sh'}", QUEUE_PEERS_DIR=str(self.peers),
-                        QUEUE_PUSH_CMD=f"bash {self.root / 'push.sh'}", REPORT_REPO=str(self.root / "no-remote.git"))
-        for k in ("FAKE_FETCH_FAIL", "FAKE_RUN_FAIL", "FAKE_SHORT", "PEER_ON_PUSH"):
+                        QUEUE_PUSH_CMD=f"bash {self.root / 'push.sh'}", REPORT_REPO=str(self.root / "no-remote.git"),
+                        QUEUE_WIN_FREE_GB="10000")             # no powershell.exe in tests
+        for k in ("FAKE_FETCH_FAIL", "FAKE_RUN_FAIL", "FAKE_SHORT", "PEER_ON_PUSH", "DATA_BUDGET_GB"):
             self.env.pop(k, None)
 
     def tearDown(self):
         self.tmp.cleanup()
 
-    def queue(self, *args, methods="fake", **extra_env):
+    def queue(self, *args, methods="fake", disk_check=False, **extra_env):
         cmd = [sys.executable, "-u", str(HERE / "run_queue.py"), "--registry", str(self.root / "methods.conf"),
                "--results-root", str(self.res), "--eval-script", str(self.root / "eval.py"),
-               "--methods", methods, "--no-disk-check", "--report-every", "0", "--no-keepawake", *args]
+               "--methods", methods, "--report-every", "0", "--no-keepawake", *args]
+        if not disk_check:
+            cmd.append("--no-disk-check")
         env = dict(self.env, **extra_env)
         for k in [k for k, v in env.items() if v is None]:
             del env[k]
@@ -375,6 +378,51 @@ class QueueTest(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertEqual(self.lines("fetch.calls"), ["1", "2"])
         self.assertEqual(self.lines("push.calls"), [])                         # --report-every 0 + --no-peers: no push
+
+    # --- disk: DATA_BUDGET_GB and the Windows drive under the WSL vhdx (seq01 needs 6.5 * 1.35 + 5 = 13.8 GB)
+
+    def test_budget_blocks_a_sequence_that_does_not_fit(self):
+        r = self.queue("--only", "1", disk_check=True, DATA_BUDGET_GB="10")
+        self.assertEqual(r.returncode, 4, r.stdout + r.stderr)
+        self.assertIn("DATA_BUDGET_GB 10 GB", r.stdout)
+        self.assertEqual(self.lines("fetch.calls"), [])
+        r = self.queue("--only", "1", disk_check=True, DATA_BUDGET_GB="20")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertEqual(self.lines("fetch.calls"), ["1"])
+        self.assertIn("місце: треба ≈ 13.8 GB", r.stdout)
+
+    def test_budget_counts_what_is_already_in_data_root(self):
+        (self.data / "other").mkdir()
+        with open(self.data / "other" / "big.bin", "wb") as f:              # sparse: 20 GB apparent, ~0 on disk
+            f.truncate(20 * 10**9)
+        r = self.queue("--only", "1", disk_check=True, DATA_BUDGET_GB="30")  # 30 - 20 = 10 < 13.8
+        self.assertEqual(r.returncode, 4, r.stdout + r.stderr)
+        self.assertIn("зайнято 20.0 GB", r.stdout)
+        r = self.queue("--only", "1", disk_check=True, DATA_BUDGET_GB="40")  # 40 - 20 = 20 >= 13.8
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_windows_drive_under_vhdx_limits_and_failure_falls_back_to_df(self):
+        r = self.queue("--only", "1", disk_check=True, QUEUE_WIN_FREE_GB="10")
+        self.assertEqual(r.returncode, 4, r.stdout + r.stderr)
+        self.assertIn("диск Windows", r.stdout)
+        r = self.queue("--only", "1", disk_check=True, QUEUE_WIN_FREE_GB="none")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertIn("не вдалось дізнатися вільне місце диска Windows", r.stdout)
+
+    def test_status_and_dry_run_explain_where_the_number_comes_from(self):
+        env = dict(DATA_BUDGET_GB="40", QUEUE_WIN_FREE_GB="123")
+        st = self.queue("--status", **env).stdout
+        self.assertIn("мінімум із: df", st)
+        self.assertIn("диск Windows тест під vhdx 123.0 GB", st)
+        self.assertIn("бюджет DATA_BUDGET_GB 40 GB − зайнято", st)
+        dry = self.queue("--dry-run", "--from", "1", "--stop-before", "5", "--keep-data", **env).stdout
+        self.assertIn("місце для даних: доступно 40.0 GB", dry)
+        plan = {ln.split()[0]: ln for ln in dry.splitlines() if ln.startswith("seq0")}
+        self.assertIn("качати + рахувати", plan["seq01"])                      # 13.8 of 40.0
+        self.assertIn("качати + рахувати", plan["seq02"])                      # 18.8 of 31.2 (seq01 data kept)
+        self.assertIn("СТОП: не вміститься", plan["seq03"])                    # 18.6 > 17.4
+        self.assertIn("не вдалось дізнатися", self.queue("--status", QUEUE_WIN_FREE_GB="none").stdout)
+        self.assertEqual(self.queue("--status", DATA_BUDGET_GB="abc").returncode, 1)
 
     @unittest.skipUnless(shutil.which("git"), "git is not installed")
     def test_peers_through_real_git_from_a_local_repository(self):

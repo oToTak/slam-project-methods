@@ -19,8 +19,12 @@ uses the last cache and keeps computing. --set-stop N / --stop-before N stay as 
 Methods are registry entries method:mode (scripts/queue/methods.conf); --methods takes 'dpvo' (every mode of a
 method), 'orbslam3:mono_inertial' (one mode) or 'all'.
 
+Disk: a sequence is taken only if its download+export fits into the minimum of `df` of DATA_ROOT, the free space of
+the Windows drive holding the WSL vhdx (asked via powershell.exe when DATA_ROOT is inside WSL, where `df` shows the
+virtual vhdx size) and DATA_BUDGET_GB (env, optional) minus the current size of DATA_ROOT.
+
 Test hooks (environment): QUEUE_FETCH_CMD (fake fetch), QUEUE_PEERS_DIR (directory with runner-<host>/ sub-folders
-instead of git), QUEUE_PUSH_CMD (fake push_status.sh). See test_run_queue.py.
+instead of git), QUEUE_PUSH_CMD (fake push_status.sh), QUEUE_WIN_FREE_GB (<GB> or 'none'). See test_run_queue.py.
 
 Stdlib only; runs under any Python >= 3.8 in WSL. See scripts/queue/methods.conf for the method contract.
 """
@@ -656,6 +660,95 @@ def free_gb(path):
     return shutil.disk_usage(p).free / 1e9
 
 
+# In WSL `df` of the ext4 root shows the virtual size of ext4.vhdx (e.g. 993 GB free), not the free space of the
+# Windows drive that holds the vhdx. Ask Windows for that drive (registry Lxss -> BasePath of this distro).
+WIN_FREE_PS = (r"$k = Get-ChildItem 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss' | Get-ItemProperty | "
+               r"Where-Object { $_.DistributionName -eq '%s' } | Select-Object -First 1; "
+               r"if (-not $k) { exit 3 }; $p = $k.BasePath -replace '^\\\\\?\\', ''; "
+               r"$r = [System.IO.Path]::GetPathRoot($p); $d = New-Object System.IO.DriveInfo($r); "
+               r"Write-Output ($r + '|' + $d.AvailableFreeSpace)")
+
+
+def on_windows_drive(path):
+    """True for a drvfs mount like /mnt/t/...: there `df` already reports the real Windows drive."""
+    parts = Path(path).resolve().parts
+    return len(parts) >= 3 and parts[1] == "mnt" and len(parts[2]) == 1
+
+
+def windows_free_gb():
+    """(free GB, drive) of the Windows drive holding this WSL distro's vhdx, or (None, reason).
+    Test hook: QUEUE_WIN_FREE_GB=<GB> or 'none' (= could not be determined)."""
+    hook = os.environ.get("QUEUE_WIN_FREE_GB")
+    if hook is not None:
+        try:
+            return float(hook), "тест"
+        except ValueError:
+            return None, "тестова заглушка: не визначено"
+    distro = os.environ.get("WSL_DISTRO_NAME", "")
+    if not re.fullmatch(r"[A-Za-z0-9._-]+", distro):
+        return None, "не WSL (нема WSL_DISTRO_NAME)"
+    try:
+        r = subprocess.run(["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", WIN_FREE_PS % distro],
+                           capture_output=True, text=True, timeout=60, stdin=subprocess.DEVNULL)
+    except (OSError, subprocess.TimeoutExpired) as e:
+        return None, f"powershell.exe: {e}"
+    drive, _, free = (r.stdout.strip().splitlines() or [""])[-1].partition("|")
+    if r.returncode != 0 or not free.strip().isdigit():
+        return None, f"powershell.exe не дав відповіді (код {r.returncode})"
+    return int(free) / 1e9, drive.strip()
+
+
+def dir_size_gb(path):
+    """Apparent size of everything under path (files only, symlinks not followed)."""
+    total = 0
+    for root, dirs, files in os.walk(path):
+        for f in files:
+            try:
+                st = os.lstat(os.path.join(root, f))
+            except OSError:
+                continue
+            if not os.path.islink(os.path.join(root, f)):
+                total += st.st_size
+    return total / 1e9
+
+
+def data_budget_gb():
+    v = os.environ.get("DATA_BUDGET_GB", "").strip()
+    if not v:
+        return None
+    try:
+        b = float(v)
+    except ValueError:
+        raise QueueAbort(1, f"DATA_BUDGET_GB={v!r}: має бути число гігабайтів")
+    if b <= 0:
+        raise QueueAbort(1, f"DATA_BUDGET_GB={v!r}: має бути більше нуля")
+    return b
+
+
+def disk_room(ctx):
+    """How much the worker may still put under DATA_ROOT, and why: min of
+    `df`, the Windows drive under the WSL vhdx (only when DATA_ROOT is inside WSL), DATA_BUDGET_GB - size of DATA_ROOT.
+    Returns (avail_gb, explanation, warnings)."""
+    df = free_gb(ctx.data_root)
+    parts, warns = [(df, f"df {fmt_gb(df)}")], []
+    if on_windows_drive(ctx.data_root):
+        parts[0] = (df, f"df {fmt_gb(df)} (диск Windows через /mnt, число правдиве)")
+    else:
+        win, where = windows_free_gb()
+        if win is None:
+            warns.append(f"не вдалось дізнатися вільне місце диска Windows під WSL ({where}); "
+                         "df у WSL показує віртуальний розмір vhdx і може брехати")
+        else:
+            parts.append((win, f"диск Windows {where} під vhdx {fmt_gb(win)}"))
+    budget = data_budget_gb()
+    if budget is not None:
+        used = dir_size_gb(ctx.data_root) if ctx.data_root.is_dir() else 0.0
+        parts.append((budget - used, f"бюджет DATA_BUDGET_GB {budget:g} GB − зайнято {fmt_gb(used)} = {fmt_gb(budget - used)}"))
+    avail = max(min(v for v, _ in parts), 0.0)
+    why = "; ".join(t for _, t in parts)
+    return avail, (f"доступно {fmt_gb(avail)} = мінімум із: {why}" if len(parts) > 1 else f"доступно {why}"), warns
+
+
 def cleanup_seq(ctx, log, n):
     """Delete the .mcap and the export of one sequence. Refuses anything outside DATA_ROOT or with an unexpected name."""
     root = ctx.data_root.resolve()
@@ -830,10 +923,14 @@ def process_seq(ctx, log, n):
             log(f"== {seq}: прогонів до виконання {len(todo)}; лог {seq_log}")
             if not (ctx.export_dir(n) / "rgb.txt").exists():
                 need = disk_need_gb(ctx, n)
-                free = free_gb(ctx.data_root)
-                if not ctx.args.no_disk_check and free < need:
-                    raise QueueAbort(4, f"мало місця на диску даних ({ctx.data_root}): для {seq} треба ≈ {fmt_gb(need)}, "
-                                        f"вільно {fmt_gb(free)}. Нічого не видаляю: звільни місце й запусти ту саму команду.")
+                if not ctx.args.no_disk_check:
+                    avail, why, warns = disk_room(ctx)
+                    for w in warns:
+                        log(f"   УВАГА: {w}")
+                    if avail < need:
+                        raise QueueAbort(4, f"мало місця для даних ({ctx.data_root}): для {seq} треба ≈ {fmt_gb(need)}, {why}. "
+                                            "Нічого не видаляю: звільни місце (або збільш DATA_BUDGET_GB) й запусти ту саму команду.")
+                    log(f"   місце: треба ≈ {fmt_gb(need)}, {why}")
                 fetch_seq(ctx, log, fh, n)
             for r, method in todo:
                 if INTERRUPT.is_set():
@@ -1139,8 +1236,12 @@ def cmd_dry_run(ctx):
     for line in peer_lines(ctx):
         print(f"[dry-run] {line}")
     print(f"[dry-run] порядок: {' -> '.join(seq_name(n) for n in order) or '(порожньо)'}")
+    avail, why, warns = disk_room(ctx)
+    for w in warns:
+        print(f"[dry-run] УВАГА: {w}")
+    print(f"[dry-run] місце для даних: {why}" + ("; --keep-data: дані сиквенсів лишаються й з'їдають це місце" if a.keep_data else ""))
     print(f"{'seq':6} {'.mcap':>8}  {'прогонів лишилось':<18} {'треба місця':>12}  {'дія':<34} хто що порахував")
-    total_dl, peak = 0.0, 0.0
+    total_dl, peak, room = 0.0, 0.0, avail
     for n in order:
         todo = pending_runs(ctx, n, owners)
         busy = peer_claims(ctx, n) if todo else []
@@ -1152,14 +1253,18 @@ def cmd_dry_run(ctx):
             act = "пропустити (готово)"
         elif busy:
             act = f"пропустити (рахує {'+'.join(busy)})"
+        elif need and need > room:
+            act = f"СТОП: не вміститься (є {fmt_gb(room)})"
         else:
             act = "качати + рахувати" if need else "рахувати (експорт є)"
+            if need and a.keep_data:
+                room -= need - DISK_RESERVE_GB      # the data of this sequence stays on disk
         cells = []
         for k in ctx.methods:
             d, want, _, hosts = cell_state(ctx, k, n, owners)
             cells.append(f"{ctx.label(k)} {d}/{want}" + (f" {'+'.join(sorted(hosts, key=host_rank))}" if hosts else ""))
         print(f"{seq_name(n):6} {fmt_gb(MCAP_GB[n]):>8}  {len(todo):<18} {fmt_gb(need) if need else '-':>12}  {act:<34} {', '.join(cells)}")
-    print(f"[dry-run] вільно на {ctx.data_root}: {fmt_gb(free_gb(ctx.data_root))}; найбільша потреба для одного сиквенсу: {fmt_gb(peak)}; "
+    print(f"[dry-run] доступно {fmt_gb(avail)}; найбільша потреба для одного сиквенсу: {fmt_gb(peak)}; "
           f"всього завантажити: {fmt_gb(total_dl)} (стан іншого ПК може змінитись до старту)")
     print("[dry-run] нічого не завантажено й не запущено.")
     return 0
@@ -1172,7 +1277,11 @@ def cmd_status(ctx):
     alive = bool(st.get("pid")) and pid_alive(st["pid"])
     stop = read_stop(ctx)
     owners = summary_owners(ctx)
-    print(f"Хост: {ctx.host}   дані: {ctx.data_root} (вільно {fmt_gb(free_gb(ctx.data_root))})   summary: {ctx.summary.name}")
+    avail, why, warns = disk_room(ctx)
+    print(f"Хост: {ctx.host}   дані: {ctx.data_root}   summary: {ctx.summary.name}")
+    print(f"Місце для даних: {why}")
+    for w in warns:
+        print(f"УВАГА: {w}")
     print(f"Методи (прогонів): {', '.join(f'{k}×{ctx.runs_for(k)}' for k in ctx.methods)}   "
           f"межа stop-before: {stop if stop is not None else 'нема'}")
     if alive:
@@ -1258,6 +1367,11 @@ def main(argv=None):
     if a.stop_before is not None and not a.only and (a.stop_before <= a.frm if a.dir == "up" else a.stop_before >= a.frm):
         ap.error(f"--stop-before {a.stop_before} leaves nothing to do when going {a.dir} from {a.frm}")
     ctx = Ctx(a)
+    try:
+        data_budget_gb()                  # a bad DATA_BUDGET_GB stops every command before any work
+    except QueueAbort as e:
+        print(f"СТОП: {e}", file=sys.stderr)
+        return e.code
     if a.set_stop is not None:
         if a.set_stop.lower() == "none":
             write_stop(ctx, None)
