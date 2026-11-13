@@ -1,15 +1,3 @@
- 99%|█████████▉| 82363/83148 [12:15<00:04, 164.42it/s]
- 99%|█████████▉| 82385/83148 [12:16<00:04, 163.71it/s]
- 99%|█████████▉| 82408/83148 [12:16<00:04, 164.58it/s]
- 99%|█████████▉| 82430/83148 [12:16<00:04, 164.23it/s]
- 99%|█████████▉| 82451/83148 [12:16<00:04, 160.95it/s]
- 99%|█████████▉| 82473/83148 [12:16<00:04, 160.00it/s]
- 99%|█████████▉| 82496/83148 [12:16<00:04, 162.26it/s]
- 99%|█████████▉| 82521/83148 [12:16<00:03, 167.24it/s]
- 99%|█████████▉| 82544/83148 [12:17<00:03, 165.79it/s]
- 99%|█████████▉| 82566/83148 [12:17<00:03, 164.05it/s]
- 99%|█████████▉| 82587/83148 [12:17<00:03, 161.48it/s]
- 99%|█████████▉| 82609/83148 [12:17<00:03, 161.38it/s]
  99%|█████████▉| 82632/83148 [12:17<00:03, 163.82it/s]
  99%|█████████▉| 82654/83148 [12:17<00:03, 163.73it/s]
  99%|█████████▉| 82677/83148 [12:17<00:02, 165.81it/s]
@@ -58,3 +46,15 @@ plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
 20:13:45    готово за 14.4 хв: поз 10699/10699; рядок додано в summary_StarDestroyer.csv
 20:13:45 -- seq13 dpvo:mono run3/3: старт
+NVIDIA GeForce RTX 3060; wall 881s (12.1 fps); VRAM peak 2048 MiB total used (base 1052), torch alloc 705 / reserved 922 MiB; RAM peak 1652 MiB.
+Wrote /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_run3.txt (10699 poses) and /home/calc/slam-data/results/dpvo/mono/ucu/seq13/meta.yaml
+== dpvo mono ucu/seq13 run3 ==
+ATE RMSE   : 64.297 m   (matched 357/358)
+coverage   : 1.00   tracking_lost: false   poses: 10699   max gap: 19.114 s
+drift 50 m : 51.900 m (307 seg)   100 m: 92.346 m (256 seg)
+plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_xy.pdf
+appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
+20:28:30    готово за 14.8 хв: поз 10699/10699; рядок додано в summary_StarDestroyer.csv
+20:28:30 seq13: усі прогони готові
+20:28:30   видалено /home/calc/slam-data/ucu/sequence-13
+20:28:31   видалено /home/calc/slam-data/ucu_tum/seq13

@@ -1,10 +1,10 @@
-host: StarDestroyer   updated: 2026-11-13T20:21:58+02:00   code: b0f45fd
+host: StarDestroyer   updated: 2026-11-13T20:28:33+02:00   code: b0f45fd
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
-Місце для даних: доступно 45.3 GB = мінімум із: df 991.7 GB; диск Windows C:\ під vhdx 164.6 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 14.7 GB = 45.3 GB
+Місце для даних: доступно 59.5 GB = мінімум із: df 1006.0 GB; диск Windows C:\ під vhdx 164.5 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 0.5 GB = 59.5 GB
 Методи (прогонів): dpvo:mono×3   межа stop-before: нема
-Воркер ПРАЦЮЄ (pid 374): seq13 dpvo:mono run3 з 2026-11-13T20:13:45; напрямок down від 13
-Інший ПК Teodor: останній звіт 2026-11-13 18:49 (1.5 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11
+Воркер ПРАЦЮЄ (pid 374): seq12   з 2026-11-13T20:28:32; напрямок down від 13
+Інший ПК Teodor: останній звіт 2026-11-13 18:49 (1.7 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11
 
  #  seq       .mcap  прогони (готово/треба, хто) стан         дані на диску
  1  seq01    6.5 GB  dpvo 3/3 Teodor            готово       -
@@ -18,11 +18,11 @@ host: StarDestroyer   updated: 2026-11-13T20:21:58+02:00   code: b0f45fd
  9  seq09   11.8 GB  dpvo 0/3                   чекає        -
 10  seq10   19.5 GB  dpvo 0/3                   чекає        -
 11  seq11   10.4 GB  dpvo 0/3                   чекає        -
-12  seq12   10.9 GB  dpvo 0/3                   чекає        -
-13  seq13   10.7 GB  dpvo 2/3 StarDestroyer     в роботі     є .mcap
+12  seq12   10.9 GB  dpvo 0/3                   в роботі     -
+13  seq13   10.7 GB  dpvo 3/3 StarDestroyer     готово       -
 
-Ти тут: 13 (seq13, зараз рахується)
-Від твого кінця (13, down) повністю готових сиквенсів ще нема.
+Ти тут: 12 (seq12, зараз рахується)
+Готово підряд від твого кінця (13, down): seq13 … seq13
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 75 %, 4412 MiB, 12288 MiB, 57
+NVIDIA GeForce RTX 3060, 25 %, 3316 MiB, 12288 MiB, 46
