@@ -1,1 +1,1 @@
-{"pid": 1549, "host": "Teodor", "seq": "seq02", "method": null, "run": null, "since": "2026-11-13T15:13:37", "frm": 1, "dir": "up", "runs": 3, "methods": ["dpvo:mono"]}
+{"pid": 1549, "host": "Teodor", "seq": "seq02", "method": "dpvo:mono", "run": 1, "since": "2026-11-13T15:41:26", "frm": 1, "dir": "up", "runs": 3, "methods": ["dpvo:mono"]}
