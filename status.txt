@@ -1,10 +1,12 @@
-host: StarDestroyer   updated: 2026-11-13T13:35:39+02:00   bundle: 5f54bfc
+host: StarDestroyer   updated: 2026-11-13T14:56:48+02:00   code: b0f45fd
 
-Хост: StarDestroyer   дані: /home/calc/slam-data (вільно 993.7 GB)   summary: summary_StarDestroyer.csv
-Методи: dpvo   прогонів на метод: 3   межа stop-before: нема
-Воркер не працює
+Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
+Місце для даних: доступно 47.2 GB = мінімум із: df 993.7 GB; диск Windows C:\ під vhdx 170.1 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 12.8 GB = 47.2 GB
+Методи (прогонів): dpvo:mono×3   межа stop-before: нема
+Воркер ПРАЦЮЄ (pid 369): seq13   з 2026-11-13T14:56:48; напрямок down від 13
+Інші ПК: гілок runner-* інших ПК ще нема
 
- #  seq       .mcap  прогони (готово/треба)     стан         дані на диску
+ #  seq       .mcap  прогони (готово/треба, хто) стан         дані на диску
  1  seq01    6.5 GB  dpvo 0/3                   чекає        -
  2  seq02   10.2 GB  dpvo 0/3                   чекає        -
  3  seq03   10.1 GB  dpvo 0/3                   чекає        -
@@ -17,10 +19,10 @@ host: StarDestroyer   updated: 2026-11-13T13:35:39+02:00   bundle: 5f54bfc
 10  seq10   19.5 GB  dpvo 0/3                   чекає        -
 11  seq11   10.4 GB  dpvo 0/3                   чекає        -
 12  seq12   10.9 GB  dpvo 0/3                   чекає        -
-13  seq13   10.7 GB  dpvo 0/3                   чекає        є .mcap
+13  seq13   10.7 GB  dpvo 0/3                   в роботі     є .mcap
 
-Ти тут: 13 (seq13, наступний у напрямку down від 13)
+Ти тут: 13 (seq13, зараз рахується)
 Від твого кінця (13, down) повністю готових сиквенсів ще нема.
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 1 %, 1050 MiB, 12288 MiB, 39
+NVIDIA GeForce RTX 3060, 0 %, 361 MiB, 12288 MiB, 43
