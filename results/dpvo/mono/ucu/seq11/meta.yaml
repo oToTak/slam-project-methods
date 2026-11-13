@@ -1,0 +1,10 @@
+method: dpvo
+mode: mono
+dataset: ucu
+seq: seq11
+run: 1
+commit: b0f45fd950072169f01ddf018d1fee380e6bdfb7
+config: configs/dpvo/calib_ucu.txt
+coverage: 1.00
+tracking_lost: false
+notes: "DPVO 0ac95b6, config/default.yaml, stride=1, 10308 frames. host=StarDestroyer. NVIDIA GeForce RTX 3060; wall 947s (10.9 fps); VRAM peak 2162 MiB total used (base 1052), torch alloc 725 / reserved 1036 MiB; RAM peak 1622 MiB."
