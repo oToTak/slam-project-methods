@@ -1,6 +1,6 @@
-host: StarDestroyer   updated: 2026-11-13T13:29:58+02:00   bundle: 5f54bfc
+host: StarDestroyer   updated: 2026-11-13T13:35:39+02:00   bundle: 5f54bfc
 
-Хост: StarDestroyer   дані: /home/calc/slam-data (вільно 994.8 GB)   summary: summary_StarDestroyer.csv
+Хост: StarDestroyer   дані: /home/calc/slam-data (вільно 993.7 GB)   summary: summary_StarDestroyer.csv
 Методи: dpvo   прогонів на метод: 3   межа stop-before: нема
 Воркер не працює
 
@@ -23,4 +23,4 @@ host: StarDestroyer   updated: 2026-11-13T13:29:58+02:00   bundle: 5f54bfc
 Від твого кінця (13, down) повністю готових сиквенсів ще нема.
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 0 %, 958 MiB, 12288 MiB, 43
+NVIDIA GeForce RTX 3060, 1 %, 1050 MiB, 12288 MiB, 39
