@@ -6,12 +6,21 @@ The unit of work is a sequence. For every sequence the worker does, in one pass:
   -> check the output -> scripts/eval.py -> a row in results/summary_<host>.csv
   -> delete the .mcap and the export (only if every wanted run is finished).
 
-Two PCs split the range from opposite ends (no shared file, no network between them):
+Two PCs split the range from opposite ends:
   main PC :  run_queue.sh --from 1  --dir up     (1, 2, 3, ...)
   brother :  run_queue.sh --from 13 --dir down   (13, 12, 11, ...)
-A human asks the other side where they are and sets the meeting point with --set-stop N
-(or --stop-before N); a running worker re-reads it before every run, so no restart is needed.
-Finished runs are skipped, so overlapping ranges only cost a quick "already done".
+Each PC pushes its progress to its own branch runner-<host> (scripts/report/push_status.sh). Before every sequence
+the worker fetches the other runner-* branches (read only, into $DATA_ROOT/peers/<host>/, never into results/)
+and skips runs that are already in another PC's summary and sequences another PC is working on right now
+(its report is younger than --peer-stale-h). Taking a sequence, the worker pushes its state at once and fetches
+again; if both PCs took the same sequence, the host whose name sorts first keeps it. Without network the worker
+uses the last cache and keeps computing. --set-stop N / --stop-before N stay as a manual emergency boundary.
+
+Methods are registry entries method:mode (scripts/queue/methods.conf); --methods takes 'dpvo' (every mode of a
+method), 'orbslam3:mono_inertial' (one mode) or 'all'.
+
+Test hooks (environment): QUEUE_FETCH_CMD (fake fetch), QUEUE_PEERS_DIR (directory with runner-<host>/ sub-folders
+instead of git), QUEUE_PUSH_CMD (fake push_status.sh). See test_run_queue.py.
 
 Stdlib only; runs under any Python >= 3.8 in WSL. See scripts/queue/methods.conf for the method contract.
 """
@@ -19,6 +28,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import contextlib
 import csv
 import json
 import os
@@ -32,7 +42,12 @@ import sys
 import threading
 import time
 from pathlib import Path
-from typing import NamedTuple
+from typing import NamedTuple, Optional
+
+try:
+    import fcntl
+except ImportError:                       # not POSIX: the peer cache is used without a file lock
+    fcntl = None
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 N_SEQ = 13
@@ -44,6 +59,8 @@ DISK_RESERVE_GB = 5.0
 POSE_TOL = 0.98            # a run is "ok" when poses >= POSE_TOL * frames (stride 1 => equal)
 DATASET = "ucu"
 MAX_CONSECUTIVE_FAILED_SEQS = 2
+DEFAULT_REPORT_REPO = "https://github.com/oToTak/slam-project-methods.git"   # same default as push_status.sh
+PEER_GIT_TIMEOUT_S = 120
 
 
 class Method(NamedTuple):
@@ -51,6 +68,11 @@ class Method(NamedTuple):
     mode: str
     script: str
     gpu: bool
+    runs: Optional[int] = None            # runs per sequence; None = --runs
+
+    @property
+    def key(self):
+        return f"{self.name}:{self.mode}"
 
 
 class QueueAbort(Exception):
@@ -103,16 +125,50 @@ def sequence_order(frm, direction, stop_before=None):
 
 
 def load_registry(path):
+    """{'method:mode': Method} in file order. Line: method | mode | script | gpu|cpu [| runs]."""
     reg = {}
     for ln, line in enumerate(Path(path).read_text().splitlines(), 1):
         line = line.split("#", 1)[0].strip()
         if not line:
             continue
         parts = [p.strip() for p in line.split("|")]
-        if len(parts) != 4 or parts[3] not in ("gpu", "cpu") or not all(parts):
-            raise SystemExit(f"{path}:{ln}: expected 'method | mode | script | gpu|cpu', got: {line}")
-        reg[parts[0]] = Method(parts[0], parts[1], parts[2], parts[3] == "gpu")
+        ok = len(parts) in (4, 5) and all(parts) and parts[3] in ("gpu", "cpu") \
+            and not any(c in parts[0] + parts[1] for c in ":, ")
+        runs = None
+        if ok and len(parts) == 5:
+            ok = parts[4].isdigit() and int(parts[4]) >= 1
+            runs = int(parts[4]) if ok else None
+        if not ok:
+            raise SystemExit(f"{path}:{ln}: expected 'method | mode | script | gpu|cpu [| runs]', got: {line}")
+        m = Method(parts[0], parts[1], parts[2], parts[3] == "gpu", runs)
+        if m.key in reg:
+            raise SystemExit(f"{path}:{ln}: {m.key} is already in the registry")
+        reg[m.key] = m
     return reg
+
+
+def select_methods(reg, spec):
+    """--methods value -> registry keys in registry order. Tokens: 'all', 'method' (all its modes), 'method:mode'."""
+    want = set()
+    tokens = [t.strip() for t in spec.split(",") if t.strip()]
+    for tok in tokens:
+        if tok == "all":
+            hits = list(reg)
+        elif ":" in tok:
+            hits = [tok] if tok in reg else []
+        else:
+            hits = [k for k, m in reg.items() if m.name == tok]
+        if not hits:
+            raise SystemExit(f"unknown method {tok!r}; registry has: {', '.join(reg)}")
+        want.update(hits)
+    if not want:
+        raise SystemExit(f"no methods selected by {spec!r}; registry has: {', '.join(reg)}")
+    return [k for k in reg if k in want]
+
+
+def host_rank(h):
+    """Sort key of host names; the tie-break of a simultaneous claim: the first one keeps the sequence."""
+    return (h.casefold(), h)
 
 
 def pid_alive(pid):
@@ -168,12 +224,26 @@ class Ctx:
         self.state_file = self.logs / f"queue_{self.host}.state.json"
         self.stop_file = self.logs / f"queue_{self.host}.stop"
         self.registry = load_registry(args.registry)
-        names = list(self.registry) if args.methods.strip() == "all" else [m.strip() for m in args.methods.split(",") if m.strip()]
-        unknown = [m for m in names if m not in self.registry]
-        if unknown or not names:
-            raise SystemExit(f"unknown method(s) {unknown or args.methods!r}; registry {args.registry} has: {', '.join(self.registry)}")
-        self.methods = names
+        self.methods = select_methods(self.registry, args.methods)      # registry keys 'method:mode'
         self.state = {}
+        self.peers_root = self.data_root / "peers"
+        self.use_peers = not getattr(args, "no_peers", False)
+        self.stale_h = getattr(args, "peer_stale_h", 3.0)
+        self.peers = []               # loaded from the cache by refresh_peers()
+        self.peers_loaded_at = 0.0
+        self.reporter = None
+
+    def runs_for(self, key):
+        return self.registry[key].runs or self.args.runs
+
+    @property
+    def max_runs(self):
+        return max(self.runs_for(k) for k in self.methods)
+
+    def label(self, key):
+        """'dpvo' when the method has one mode in the registry, else 'orbslam3:mono_inertial'."""
+        name = self.registry[key].name
+        return name if sum(m.name == name for m in self.registry.values()) == 1 else key
 
     def raw_dir(self, n):
         return self.data_root / "ucu" / f"sequence-{n}"
@@ -181,47 +251,275 @@ class Ctx:
     def export_dir(self, n):
         return self.data_root / "ucu_tum" / seq_name(n)
 
-    def res_dir(self, method, n):
-        return self.results_root / method / self.registry[method].mode / DATASET / seq_name(n)
+    def res_dir(self, key, n):
+        m = self.registry[key]
+        return self.results_root / m.name / m.mode / DATASET / seq_name(n)
 
 
-def summary_keys(ctx):
-    """(method, mode, dataset, seq, run) of every row in results/summary*.csv (any host; sidecar tables excluded)."""
-    keys = set()
-    for p in ctx.results_root.glob("summary*.csv"):
+def read_summary_rows(path, host, owners):
+    """Add (method, mode, dataset, seq, run) of every row of one summary csv to owners {key: {hosts}}."""
+    try:
+        with open(path, newline="") as f:
+            for row in csv.DictReader(f):
+                k = (row.get("method"), row.get("mode"), row.get("dataset"), row.get("seq"), row.get("run"))
+                owners.setdefault(k, set()).add(host)
+    except OSError:
+        pass
+
+
+def summary_owners(ctx, peers=True):
+    """{(method, mode, dataset, seq, run): {hosts}} from results/summary*.csv of this PC (sidecar tables excluded)
+    and, with peers=True, from the cached summaries of the other PCs."""
+    owners = {}
+    for p in sorted(ctx.results_root.glob("summary*.csv")):
         if p.name.startswith("summary_extra"):
             continue
-        try:
-            with open(p, newline="") as f:
-                for row in csv.DictReader(f):
-                    keys.add((row.get("method"), row.get("mode"), row.get("dataset"), row.get("seq"), row.get("run")))
-        except OSError:
-            pass
-    return keys
+        host = p.stem[len("summary_"):] if p.stem.startswith("summary_") else ctx.host   # legacy summary.csv: this PC
+        read_summary_rows(p, host, owners)
+    if peers:
+        for peer in ctx.peers:
+            for k in peer["keys"]:
+                owners.setdefault(k, set()).add(peer["host"])
+    return owners
 
 
-def run_state(ctx, method, n, r, keys=None):
-    """'done' | 'bad' | None (pending). A summary row counts as done: results are append-only."""
-    d = ctx.res_dir(method, n)
+def summary_keys(ctx, peers=True):
+    return set(summary_owners(ctx, peers))
+
+
+def run_key(ctx, key, n, r):
+    m = ctx.registry[key]
+    return (m.name, m.mode, DATASET, seq_name(n), str(r))
+
+
+def run_state(ctx, key, n, r, keys=None):
+    """'done' | 'bad' | None (pending). A summary row (here or on another PC) counts as done: results are append-only."""
+    d = ctx.res_dir(key, n)
     if (d / f".done_run{r}").exists():
         return "done"
     if (d / f".bad_run{r}").exists():
         return "bad"
-    keys = summary_keys(ctx) if keys is None else keys
-    if (method, ctx.registry[method].mode, DATASET, seq_name(n), str(r)) in keys:
+    keys = summary_owners(ctx) if keys is None else keys
+    if run_key(ctx, key, n, r) in keys:
         return "done"
     return None
 
 
-def pending_runs(ctx, n):
-    keys = summary_keys(ctx)
-    return [(r, m) for r in range(1, ctx.args.runs + 1) for m in ctx.methods
-            if run_state(ctx, m, n, r, keys) is None]
+def pending_runs(ctx, n, keys=None):
+    keys = summary_owners(ctx) if keys is None else keys
+    return [(r, k) for r in range(1, ctx.max_runs + 1) for k in ctx.methods
+            if r <= ctx.runs_for(k) and run_state(ctx, k, n, r, keys) is None]
 
 
-def seq_complete(ctx, n):
-    keys = summary_keys(ctx)
-    return all(run_state(ctx, m, n, r, keys) == "done" for m in ctx.methods for r in range(1, ctx.args.runs + 1))
+def seq_complete(ctx, n, keys=None):
+    keys = summary_owners(ctx) if keys is None else keys
+    return all(run_state(ctx, k, n, r, keys) == "done" for k in ctx.methods for r in range(1, ctx.runs_for(k) + 1))
+
+
+def cell_state(ctx, key, n, owners):
+    """(done, wanted, bad, hosts that did the done runs) of one method on one sequence."""
+    want = ctx.runs_for(key)
+    done, bad, hosts = 0, 0, set()
+    for r in range(1, want + 1):
+        st = run_state(ctx, key, n, r, owners)
+        if st == "done":
+            done += 1
+            hosts |= owners.get(run_key(ctx, key, n, r)) or {ctx.host}     # marker without a row: this PC
+        elif st == "bad":
+            bad += 1
+    return done, want, bad, hosts
+
+
+# ----------------------------------------------------------------------------- peers: the other PCs' runner-<host> branches
+
+@contextlib.contextmanager
+def peers_lock(ctx, exclusive):
+    """flock on $DATA_ROOT/peers/.lock: the worker and a --status started by push_status.sh may refresh at once."""
+    ctx.peers_root.mkdir(parents=True, exist_ok=True)
+    if fcntl is None:
+        yield
+        return
+    with open(ctx.peers_root / ".lock", "a") as f:
+        fcntl.flock(f, fcntl.LOCK_EX if exclusive else fcntl.LOCK_SH)
+        try:
+            yield
+        finally:
+            fcntl.flock(f, fcntl.LOCK_UN)
+
+
+def peer_host_ok(h):
+    return bool(re.fullmatch(r"[A-Za-z0-9_][A-Za-z0-9_.-]*", h))
+
+
+def summary_name_ok(name):
+    return bool(re.fullmatch(r"summary[A-Za-z0-9_.-]*\.csv", name)) and not name.startswith("summary_extra")
+
+
+def snapshot_from_dir(src, me):
+    """Test source: <src>/runner-<host>/{results/summary_<host>.csv, queue_state.json, .commit_time (epoch s)}."""
+    src = Path(src)
+    if not src.is_dir():
+        raise RuntimeError(f"нема каталогу {src}")
+    out = {}
+    for b in sorted(src.iterdir()):
+        host = b.name[len("runner-"):]
+        if not b.is_dir() or not b.name.startswith("runner-") or host == me or not peer_host_ok(host):
+            continue
+        files = {p.name: p.read_bytes() for p in sorted((b / "results").glob("summary*.csv")) if summary_name_ok(p.name)}
+        if (b / "queue_state.json").is_file():
+            files["queue_state.json"] = (b / "queue_state.json").read_bytes()
+        ct = b / ".commit_time"
+        commit = int(float(ct.read_text().strip())) if ct.is_file() else \
+            int(max((p.stat().st_mtime for p in b.rglob("*") if p.is_file()), default=0))
+        out[host] = {"files": files, "commit_time": commit}
+    return out
+
+
+def report_repo():
+    return os.environ.get("REPORT_REPO", DEFAULT_REPORT_REPO)
+
+
+def git_env():
+    """Same token mechanism as push_status.sh (~/.config/slam/github_token + askpass); no token: anonymous read."""
+    env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
+    if report_repo().startswith("https://"):
+        cfg = Path.home() / ".config" / "slam"
+        tok = cfg / "github_token"
+        if tok.is_file() and tok.stat().st_size > 0:
+            ask = cfg / "git-askpass-peers.sh"      # own file: push_status.sh rewrites git-askpass.sh concurrently
+            text = '#!/bin/sh\ncase "$1" in *sername*) echo x-access-token ;; *) cat "%s" ;; esac\n' % tok
+            if not ask.is_file() or ask.read_text() != text:
+                ask.write_text(text)
+                ask.chmod(0o700)
+            env["GIT_ASKPASS"] = str(ask)
+    return env
+
+
+def git_out(args, env, binary=False):
+    r = subprocess.run(["git", "-c", "credential.helper=", *args], env=env, capture_output=True,
+                       timeout=PEER_GIT_TIMEOUT_S, start_new_session=True)
+    if r.returncode != 0:
+        err = (r.stderr.decode(errors="replace").strip().splitlines() or [f"код {r.returncode}"])[-1]
+        raise RuntimeError(f"git {args[2] if args[0] == '--git-dir' else args[0]}: {err}")
+    return r.stdout if binary else r.stdout.decode(errors="replace")
+
+
+def snapshot_from_git(ctx):
+    """Fetch refs/heads/runner-* (depth 1) into a private bare repo $DATA_ROOT/peers/.repo.git and read the other
+    hosts' files with ``git show`` (no checkout, the worker's own working tree is never touched)."""
+    env = git_env()
+    repo = ctx.peers_root / ".repo.git"
+    if not (repo / "HEAD").exists():
+        git_out(["init", "-q", "--bare", str(repo)], env)
+    g = ["--git-dir", str(repo)]
+    git_out(g + ["fetch", "-q", "--prune", "--no-tags", "--depth=1", report_repo(),
+                 "+refs/heads/runner-*:refs/remotes/origin/runner-*"], env)
+    out = {}
+    refs = git_out(g + ["for-each-ref", "--format=%(refname:strip=3) %(committerdate:unix)", "refs/remotes/origin/"], env)
+    for line in refs.splitlines():
+        branch, _, ts = line.strip().partition(" ")
+        host = branch[len("runner-"):]
+        if not branch.startswith("runner-") or host == ctx.host or not peer_host_ok(host):
+            continue
+        ref = f"refs/remotes/origin/{branch}"
+        files = {}
+        for where, wanted in ((["results/"], summary_name_ok), ([], lambda nm: nm == "queue_state.json")):
+            for ent in git_out(g + ["ls-tree", ref, *where], env).splitlines():
+                meta, _, p = ent.partition("\t")
+                name = p.rsplit("/", 1)[-1]
+                if meta.split()[1:2] == ["blob"] and wanted(name):
+                    files[name] = git_out(g + ["show", f"{ref}:{p}"], env, binary=True)
+        out[host] = {"files": files, "commit_time": int(ts) if ts.isdigit() else 0}
+    return out
+
+
+def write_peer_cache(ctx, snap):
+    """Replace $DATA_ROOT/peers/<host>/ with the snapshot (call under the exclusive lock)."""
+    root, now = ctx.peers_root, int(time.time())
+    for host, s in snap.items():
+        tmp = root / f".{host}.new"
+        shutil.rmtree(tmp, ignore_errors=True)
+        tmp.mkdir(parents=True)
+        for name, data in s["files"].items():
+            (tmp / name).write_bytes(data)
+        (tmp / "meta.json").write_text(json.dumps({"host": host, "commit_time": s["commit_time"], "fetched_at": now}))
+        shutil.rmtree(root / host, ignore_errors=True)
+        tmp.rename(root / host)
+    for d in root.iterdir():                         # branch deleted on the remote: forget that host
+        if d.is_dir() and not d.name.startswith(".") and d.name not in snap:
+            shutil.rmtree(d, ignore_errors=True)
+
+
+def load_peers(ctx):
+    peers = []
+    if not ctx.peers_root.is_dir():
+        return peers
+    try:
+        with peers_lock(ctx, False):
+            for d in sorted(ctx.peers_root.iterdir()):
+                if not d.is_dir() or d.name.startswith(".") or d.name == ctx.host:
+                    continue
+                meta = read_json(d / "meta.json")
+                owners = {}
+                for p in sorted(d.glob("summary*.csv")):
+                    if summary_name_ok(p.name):
+                        read_summary_rows(p, d.name, owners)
+                peers.append({"host": d.name, "keys": set(owners), "state": read_json(d / "queue_state.json"),
+                              "commit_time": meta.get("commit_time") or 0, "fetched_at": meta.get("fetched_at")})
+    except OSError:
+        pass
+    return peers
+
+
+def refresh_peers(ctx, log, max_age_s=0.0):
+    """Fetch the other PCs' branches into the cache and load it into ctx.peers. Never raises and never blocks the
+    computation for long: on any failure it logs a warning and keeps the last cache."""
+    if not ctx.use_peers:
+        ctx.peers = []
+        return
+    if max_age_s and time.time() - ctx.peers_loaded_at < max_age_s:
+        return
+    src = os.environ.get("QUEUE_PEERS_DIR")
+    fetch_file = ctx.peers_root / ".last_fetch.json"
+    try:
+        with peers_lock(ctx, True):
+            snap = snapshot_from_dir(src, ctx.host) if src else snapshot_from_git(ctx)
+            write_peer_cache(ctx, snap)
+            fetch_file.write_text(json.dumps({"ok_at": int(time.time()), "error": None}))
+    except Exception as e:                       # network, token, git, disk: never stop the worker because of peers
+        err = str(e) or e.__class__.__name__
+        log(f"УВАГА: не вдалось оновити стан інших ПК ({err}); працюю з останнім кешем {ctx.peers_root}")
+        try:
+            prev = read_json(fetch_file)
+            fetch_file.write_text(json.dumps({"ok_at": prev.get("ok_at"), "error": err, "error_at": int(time.time())}))
+        except OSError:
+            pass
+    ctx.peers = load_peers(ctx)
+    ctx.peers_loaded_at = time.time()
+
+
+def peer_age_h(peer, now=None):
+    ct = peer.get("commit_time") or 0
+    return None if not ct else ((now or time.time()) - ct) / 3600
+
+
+def peer_fresh(ctx, peer):
+    age = peer_age_h(peer)
+    return age is not None and age < ctx.stale_h
+
+
+def peer_claims(ctx, n):
+    """Hosts whose fresh report (younger than --peer-stale-h) says they are working on sequence n."""
+    return sorted((p["host"] for p in ctx.peers if p["state"].get("seq") == seq_name(n) and peer_fresh(ctx, p)),
+                  key=host_rank)
+
+
+def fmt_age(h):
+    if h is None:
+        return "невідомо коли"
+    if h < 1:
+        return f"{max(h * 60, 0):.0f} хв тому"
+    return f"{h:.1f} год тому"
 
 
 # ----------------------------------------------------------------------------- state / boundary files
@@ -367,18 +665,20 @@ def cleanup_seq(ctx, log, n):
 
 # ----------------------------------------------------------------------------- one run
 
-def child_env(ctx):
+def child_env(ctx, m=None):
     env = dict(os.environ)
     env.update(NO_EVAL="1", QUEUE_HOST=ctx.host, RESULTS_ROOT=str(ctx.results_root),
                SUMMARY_FILE=str(ctx.summary), DATA_ROOT=str(ctx.data_root))
+    if m is not None:                     # one script may serve several modes of a method
+        env.update(QUEUE_METHOD=m.name, QUEUE_MODE=m.mode)
     return env
 
 
-def eval_command(ctx, method, n, r, run_log):
-    m = ctx.registry[method]
+def eval_command(ctx, key, n, r, run_log):
+    m = ctx.registry[key]
     py = Path(os.environ.get("SLAM_VENV", str(Path.home() / "venvs" / "slam"))) / "bin" / "python"
     py = str(py) if py.exists() else sys.executable
-    return [py, str(ctx.args.eval_script), "--method", method, "--mode", m.mode, "--dataset", DATASET,
+    return [py, str(ctx.args.eval_script), "--method", m.name, "--mode", m.mode, "--dataset", DATASET,
             "--seq", seq_name(n), "--run", str(r), "--summary", str(ctx.summary),
             "--results-root", str(ctx.results_root), "--log", str(run_log)]
 
@@ -388,15 +688,15 @@ def write_marker(path, **fields):
     path.write_text("".join(f"{k}={v}\n" for k, v in fields.items()))
 
 
-def do_run(ctx, log, seq_fh, n, r, method):
-    """One (method, run) on sequence n. Returns 'done' | 'bad' | 'failed'. Raises Interrupted."""
-    m, seq = ctx.registry[method], seq_name(n)
-    d = ctx.res_dir(method, n)
+def do_run(ctx, log, seq_fh, n, r, key):
+    """One (method:mode, run) on sequence n. Returns 'done' | 'bad' | 'failed'. Raises Interrupted."""
+    m, seq = ctx.registry[key], seq_name(n)
+    d = ctx.res_dir(key, n)
     traj = d / f"traj_run{r}.txt"
-    run_log = ctx.logs / f"queue_{ctx.host}_{seq}_{method}_run{r}.log"
-    set_state(ctx, seq=seq, method=method, run=r, since=now_iso())
+    run_log = ctx.logs / f"queue_{ctx.host}_{seq}_{m.name}_{m.mode}_run{r}.log"
+    set_state(ctx, seq=seq, method=key, run=r, since=now_iso())
     t0 = time.time()
-    log(f"-- {seq} {method} run{r}/{ctx.args.runs}: старт")
+    log(f"-- {seq} {key} run{r}/{ctx.runs_for(key)}: старт")
     with open(run_log, "a", buffering=1, encoding="utf-8") as rl:
         logs = [seq_fh, rl]
         if traj.exists():
@@ -404,7 +704,7 @@ def do_run(ctx, log, seq_fh, n, r, method):
         else:
             cmd = ["bash", str(REPO_ROOT / m.script), DATASET, seq, "--run", str(r)]
             try:
-                rc, reason, tail = run_streamed(cmd, env=child_env(ctx), cwd=REPO_ROOT, logs=logs,
+                rc, reason, tail = run_streamed(cmd, env=child_env(ctx, m), cwd=REPO_ROOT, logs=logs,
                                                 timeout_s=ctx.args.timeout_h * 3600)
             except OSError as e:
                 log(f"   НЕ ВДАЛОСЬ запустити {cmd[1]}: {e}")
@@ -421,7 +721,7 @@ def do_run(ctx, log, seq_fh, n, r, method):
                 for ln in tail:
                     log(f"   | {ln}")
                 return "failed"
-        rc, reason, tail = run_streamed(eval_command(ctx, method, n, r, run_log), env=child_env(ctx), cwd=REPO_ROOT,
+        rc, reason, tail = run_streamed(eval_command(ctx, key, n, r, run_log), env=child_env(ctx, m), cwd=REPO_ROOT,
                                         logs=logs, timeout_s=1800)
         if reason == "interrupt":
             raise Interrupted()                       # trajectory is complete: next start does the evaluation only
@@ -430,7 +730,7 @@ def do_run(ctx, log, seq_fh, n, r, method):
             for ln in tail:
                 log(f"   | {ln}")
             return "failed"
-    if (method, m.mode, DATASET, seq, str(r)) not in summary_keys(ctx):
+    if run_key(ctx, key, n, r) not in summary_keys(ctx, peers=False):
         log(f"   ПОМИЛКА: eval.py не додав рядок у {ctx.summary.name}")
         return "failed"
     frames = count_data_lines(ctx.export_dir(n) / "rgb.txt")
@@ -467,12 +767,54 @@ def fetch_seq(ctx, log, fh, n):
                             "Перевір інтернет і вхід у Hugging Face: ~/.local/bin/hf auth whoami. Повторний запуск продовжить.")
 
 
-def process_seq(ctx, log, n):
-    """Returns 'skipped' | 'done' | 'failed' | 'stopped'."""
+def done_elsewhere(ctx, n, owners):
+    """Other hosts that have at least one wanted run of sequence n in their summary."""
+    hosts = set()
+    for k in ctx.methods:
+        for r in range(1, ctx.runs_for(k) + 1):
+            hosts |= owners.get(run_key(ctx, k, n, r), set())
+    hosts.discard(ctx.host)
+    return sorted(hosts, key=host_rank)
+
+
+def claim_seq(ctx, log, n):
+    """Publish at once that this PC takes sequence n, then look again: if another PC took it at the same moment,
+    the host whose name sorts first keeps it (both PCs reach the same verdict). True = the sequence is ours."""
     seq = seq_name(n)
-    todo = pending_runs(ctx, n)
+    set_state(ctx, seq=seq, method=None, run=None, since=now_iso())
+    if not ctx.use_peers or ctx.reporter is None:
+        return True                       # nothing published: the other PC sees only finished runs
+    ctx.reporter.push(force=True)
+    refresh_peers(ctx, log)
+    rivals = [h for h in peer_claims(ctx, n) if host_rank(h) < host_rank(ctx.host)]
+    if rivals:
+        log(f"{seq}: {', '.join(rivals)} узяв його одночасно з нами; за правилом (перша назва хоста за абеткою) "
+            "сиквенс лишається йому, пропускаю")
+        set_state(ctx, seq=None, method=None, run=None, since=now_iso())
+        return False
+    return True
+
+
+def process_seq(ctx, log, n):
+    """Returns 'skipped' | 'busy' | 'done' | 'failed' | 'stopped'."""
+    seq = seq_name(n)
+    owners = summary_owners(ctx)
+    todo = pending_runs(ctx, n, owners)
     if not todo:
-        log(f"{seq}: усе вже пораховано, пропускаю")
+        who = done_elsewhere(ctx, n, owners)
+        log(f"{seq}: усе вже пораховано{' (є в ' + ', '.join(who) + ')' if who else ''}, пропускаю")
+        return "skipped"
+    busy = peer_claims(ctx, n)
+    if busy:
+        ages = {p["host"]: peer_age_h(p) for p in ctx.peers}
+        log(f"{seq}: зараз рахує {', '.join(f'{h} (звіт {fmt_age(ages.get(h))})' for h in busy)}, пропускаю")
+        return "busy"
+    if not claim_seq(ctx, log, n):
+        return "busy"
+    todo = pending_runs(ctx, n)           # the other PC may have finished something in the meantime
+    if not todo:
+        log(f"{seq}: поки захоплював, усе вже пораховано іншим ПК, пропускаю")
+        set_state(ctx, seq=None, method=None, run=None, since=now_iso())
         return "skipped"
     ctx.logs.mkdir(parents=True, exist_ok=True)
     seq_log = ctx.logs / f"queue_{ctx.host}_{seq}_{time.strftime('%Y%m%d_%H%M%S')}.log"
@@ -480,7 +822,6 @@ def process_seq(ctx, log, n):
         log.attach(fh)
         try:
             log(f"== {seq}: прогонів до виконання {len(todo)}; лог {seq_log}")
-            set_state(ctx, seq=seq, method=None, run=None, since=now_iso())
             if not (ctx.export_dir(n) / "rgb.txt").exists():
                 need = disk_need_gb(ctx, n)
                 free = free_gb(ctx.data_root)
@@ -548,6 +889,7 @@ class Reporter:
         self.stop_ev = threading.Event()
         self.thread = None
         self.last_msg = None
+        self.lock = threading.Lock()      # a claim push from the main thread vs. the periodic one
         self.script = REPO_ROOT / "scripts" / "report" / "push_status.sh"
         self.logfile = ctx.logs / f"report_{ctx.host}.log"
 
@@ -564,11 +906,16 @@ class Reporter:
             pass
 
     def push(self, force=False):
+        with self.lock:
+            self._push(force)
+
+    def _push(self, force):
         a = self.ctx.args
         env = dict(os.environ, PUSH_FORCE="1" if force else "0", QUEUE_HOST=self.ctx.host, QUEUE_FROM=str(a.frm), QUEUE_DIR=a.dir,
                    QUEUE_METHODS=",".join(self.ctx.methods), QUEUE_RUNS=str(a.runs), DATA_ROOT=str(self.ctx.data_root))
+        cmd = shlex.split(os.environ["QUEUE_PUSH_CMD"]) if os.environ.get("QUEUE_PUSH_CMD") else ["bash", str(self.script)]
         try:
-            r = subprocess.run(["bash", str(self.script)], env=env, capture_output=True, text=True, timeout=300,
+            r = subprocess.run(cmd, env=env, capture_output=True, text=True, timeout=300,
                                start_new_session=True)
             msg = (r.stdout.strip().splitlines() or [""])[-1] if r.returncode == 0 else \
                   "ПОМИЛКА: " + ((r.stderr.strip().splitlines() or r.stdout.strip().splitlines() or ["?"])[-1])
@@ -595,10 +942,11 @@ class Reporter:
 
 
 def report_possible(ctx):
+    if os.environ.get("QUEUE_PUSH_CMD"):
+        return None
     if not (REPO_ROOT / "scripts" / "report" / "push_status.sh").exists():
         return "нема scripts/report/push_status.sh"
-    repo = os.environ.get("REPORT_REPO", "https://github.com/oToTak/slam-project-methods.git")
-    if repo.startswith("https://") and not (Path.home() / ".config" / "slam" / "github_token").is_file():
+    if report_repo().startswith("https://") and not (Path.home() / ".config" / "slam" / "github_token").is_file():
         return "нема токена GitHub: bash scripts/report/push_status.sh --token"
     return None
 
@@ -643,24 +991,33 @@ def cmd_run(ctx):
     signal.signal(signal.SIGHUP, _on_signal)     # terminal window closed: stop like Ctrl-C, do not orphan the method process
     log(f"Воркер {ctx.host}: з {a.frm} {'вгору' if a.dir == 'up' else 'вниз'}"
         f"{', лише ' + seq_name(a.only) if a.only else ''}, межа stop-before = {stop if stop is not None else 'нема'}, "
-        f"методи {','.join(ctx.methods)}, прогонів {a.runs}, summary {ctx.summary}")
+        f"методи {','.join(f'{k}×{ctx.runs_for(k)}' for k in ctx.methods)}, summary {ctx.summary}")
     counts = collections.Counter()
     consecutive_failed = 0
     code = 0
+    finished = False
     keep = KeepAwake()
     if not a.no_keepawake:
         log("ПК не засинатиме, поки йде робота (Windows keep-awake)" if keep.start()
             else "УВАГА: не вдалось увімкнути keep-awake (powershell.exe): не дай ПК заснути вручну")
     reporter = None
-    if a.report_every > 0:
+    if a.report_every > 0 or ctx.use_peers:
         why = report_possible(ctx)
         if why:
-            log(f"УВАГА: звіти на GitHub вимкнені: {why}")
+            log(f"УВАГА: звіти на GitHub вимкнені: {why}"
+                + ("; інший ПК не бачитиме, який сиквенс я взяв, лише готові прогони" if ctx.use_peers else ""))
         else:
             reporter = Reporter(ctx, a.report_every)
-            reporter.start()
-            log(f"звіт на GitHub: раз на {a.report_every:g} хв і в кінці (журнал {reporter.logfile.name})")
+            if a.report_every > 0:
+                reporter.start()
+                log(f"звіт на GitHub: раз на {a.report_every:g} хв, при захопленні сиквенсу і в кінці (журнал {reporter.logfile.name})")
+    ctx.reporter = reporter
+    if not ctx.use_peers:
+        log("інші ПК не враховую (--no-peers)")
     try:
+        refresh_peers(ctx, log)
+        if ctx.use_peers:
+            log(f"інші ПК: {', '.join(p['host'] for p in ctx.peers) or 'гілок runner-* інших ПК ще нема'}")
         check_environment(ctx, log, need_hf=any(pending_runs(ctx, n) and not (ctx.export_dir(n) / "rgb.txt").exists() for n in order if allowed(ctx, n)))
         for n in order:
             if INTERRUPT.is_set():
@@ -668,6 +1025,7 @@ def cmd_run(ctx):
             if not allowed(ctx, n):
                 log(f"{seq_name(n)}: за межею (stop-before {read_stop(ctx)}) — кінець відрізка")
                 break
+            refresh_peers(ctx, log, max_age_s=60)
             res = process_seq(ctx, log, n)
             counts[res] += 1
             if res == "stopped":
@@ -681,7 +1039,8 @@ def cmd_run(ctx):
             elif res == "done":
                 consecutive_failed = 0
         else:
-            log("відрізок пройдено до кінця")
+            finished = True
+            log("у моєму напрямку більше нічого брати" + ("" if a.only else " (відрізок пройдено до кінця)"))
     except Interrupted:
         log("Перервано. Готові прогони збережені; повторний запуск тієї самої команди продовжить.")
         code = 130
@@ -693,88 +1052,152 @@ def cmd_run(ctx):
         if reporter is not None:
             reporter.finish()
         keep.stop()
+    if finished:
+        print()
+        print_table(ctx, summary_owners(ctx))
     log("підсумок: " + ", ".join(f"{k}={v}" for k, v in sorted(counts.items())) + f" | код виходу {code}")
     return code
 
 
-def cmd_dry_run(ctx):
-    a = ctx.args
-    order = [a.only] if a.only else sequence_order(a.frm, a.dir, a.stop_before if a.stop_before is not None else read_stop(ctx))
-    print(f"[dry-run] хост {ctx.host}; методи {','.join(ctx.methods)}; прогонів {a.runs}; summary {ctx.summary}")
-    print(f"[dry-run] порядок: {' -> '.join(seq_name(n) for n in order) or '(порожньо)'}")
-    print(f"{'seq':6} {'.mcap':>8}  {'прогонів лишилось':<18} {'треба місця':>12}  дія")
-    total_dl, peak = 0.0, 0.0
-    for n in order:
-        todo = pending_runs(ctx, n)
-        need = disk_need_gb(ctx, n) if todo else 0.0
-        peak = max(peak, need)
-        if todo and not (ctx.export_dir(n) / "rgb.txt").exists():
-            total_dl += 0.0 if any(ctx.raw_dir(n).glob("*.mcap")) else MCAP_GB[n]
-        act = "пропустити (готово)" if not todo else ("качати + рахувати" if need else "рахувати (експорт є)")
-        print(f"{seq_name(n):6} {fmt_gb(MCAP_GB[n]):>8}  {len(todo):<18} {fmt_gb(need) if need else '-':>12}  {act}")
-    print(f"[dry-run] вільно на {ctx.data_root}: {fmt_gb(free_gb(ctx.data_root))}; найбільша потреба для одного сиквенсу: {fmt_gb(peak)}; "
-          f"всього завантажити: {fmt_gb(total_dl)}")
-    print("[dry-run] нічого не завантажено й не запущено.")
-    return 0
+def peer_lines(ctx):
+    """Lines about the other PCs: last report, what they compute now, whether the cache is fresh."""
+    if not ctx.use_peers:
+        return ["Інші ПК: не враховую (--no-peers)"]
+    fetch = read_json(ctx.peers_root / ".last_fetch.json")
+    out = []
+    if fetch.get("error"):
+        ok_at = fetch.get("ok_at")
+        out.append(f"УВАГА: стан інших ПК не оновився ({fetch['error']}); показую кеш"
+                   + (f" від {time.strftime('%Y-%m-%d %H:%M', time.localtime(ok_at))}" if ok_at else " (порожній)"))
+    if not ctx.peers:
+        out.append("Інші ПК: гілок runner-* інших ПК ще нема")
+    for p in ctx.peers:
+        age = peer_age_h(p)
+        when = time.strftime("%Y-%m-%d %H:%M", time.localtime(p["commit_time"])) if p["commit_time"] else "?"
+        st = p["state"]
+        if not st.get("pid"):
+            now = "не рахує"
+        else:
+            now = f"рахує {st.get('seq') or '(готується)'} {st.get('method') or ''} " \
+                  f"{('run' + str(st['run'])) if st.get('run') else ''}".rstrip() + f" з {st.get('since')}"
+            if not peer_fresh(ctx, p):
+                now += f" — звіт старший за {ctx.stale_h:g} год, вважаю зупиненим (не блокує)"
+        out.append(f"Інший ПК {p['host']}: останній звіт {when} ({fmt_age(age)}); {now}")
+    return out
 
 
-def cmd_status(ctx):
-    a = ctx.args
-    st = read_json(ctx.state_file)
-    alive = bool(st.get("pid")) and pid_alive(st["pid"])
-    stop = read_stop(ctx)
-    keys = summary_keys(ctx)
-    print(f"Хост: {ctx.host}   дані: {ctx.data_root} (вільно {fmt_gb(free_gb(ctx.data_root))})   summary: {ctx.summary.name}")
-    print(f"Методи: {','.join(ctx.methods)}   прогонів на метод: {a.runs}   межа stop-before: {stop if stop is not None else 'нема'}")
-    if alive:
-        print(f"Воркер ПРАЦЮЄ (pid {st['pid']}): {st.get('seq')} {st.get('method') or ''} "
-              f"{('run' + str(st['run'])) if st.get('run') else ''} з {st.get('since')}; напрямок {st.get('dir')} від {st.get('frm')}")
-    else:
-        print("Воркер не працює" + (" (знайдено застарілий файл стану — ігнорую)" if st else ""))
-    print()
-    print(f"{'#':>2}  {'seq':6} {'.mcap':>8}  {'прогони (готово/треба)':<26} {'стан':<12} дані на диску")
-    running_seq = st.get("seq") if alive else None
+def disk_label(ctx, n):
+    if ctx.raw_dir(n).is_dir() and any(ctx.raw_dir(n).glob("*.mcap")):
+        return "є .mcap"
+    return "є експорт" if (ctx.export_dir(n) / "rgb.txt").exists() else "-"
+
+
+def print_table(ctx, owners, running_seq=None):
+    """13 rows: per method 'done/wanted' and who did it (merged with the other PCs), state, data on disk."""
+    rows = []
     for n in range(1, N_SEQ + 1):
         cells, bad, done_all, done_any = [], 0, True, False
-        for m in ctx.methods:
-            states = [run_state(ctx, m, n, r, keys) for r in range(1, a.runs + 1)]
-            d = states.count("done")
-            bad += states.count("bad")
-            done_all &= d == a.runs
+        for k in ctx.methods:
+            d, want, b, hosts = cell_state(ctx, k, n, owners)
+            bad += b
+            done_all &= d == want
             done_any |= d > 0
-            cells.append(f"{m} {d}/{a.runs}")
+            cells.append(f"{ctx.label(k)} {d}/{want}" + (f" {'+'.join(sorted(hosts, key=host_rank))}" if hosts else ""))
+        busy = peer_claims(ctx, n)
         if seq_name(n) == running_seq:
             label = "в роботі"
         elif done_all:
             label = "готово"
+        elif busy:
+            label = "рахує " + "+".join(busy)
         elif bad:
             label = "ПЕРЕВІР"
         elif done_any:
             label = "частково"
         else:
             label = "чекає"
-        on_disk = "є .mcap" if ctx.raw_dir(n).is_dir() and any(ctx.raw_dir(n).glob("*.mcap")) else ("є експорт" if (ctx.export_dir(n) / "rgb.txt").exists() else "-")
-        print(f"{n:>2}  {seq_name(n):6} {fmt_gb(MCAP_GB[n]):>8}  {', '.join(cells):<26} {label:<12} {on_disk}")
+        rows.append((n, ", ".join(cells), label))
+    w = max([26] + [len(c) for _, c, _ in rows])
+    lw = max([12] + [len(lb) for _, _, lb in rows])
+    print(f"{'#':>2}  {'seq':6} {'.mcap':>8}  {'прогони (готово/треба, хто)':<{w}} {'стан':<{lw}} дані на диску")
+    for n, c, lb in rows:
+        print(f"{n:>2}  {seq_name(n):6} {fmt_gb(MCAP_GB[n]):>8}  {c:<{w}} {lb:<{lw}} {disk_label(ctx, n)}")
+
+
+def cmd_dry_run(ctx):
+    a = ctx.args
+    refresh_peers(ctx, lambda msg: print(f"[dry-run] {msg}"))
+    order = [a.only] if a.only else sequence_order(a.frm, a.dir, a.stop_before if a.stop_before is not None else read_stop(ctx))
+    owners = summary_owners(ctx)
+    print(f"[dry-run] хост {ctx.host}; методи {', '.join(f'{k}×{ctx.runs_for(k)}' for k in ctx.methods)}; summary {ctx.summary}")
+    for line in peer_lines(ctx):
+        print(f"[dry-run] {line}")
+    print(f"[dry-run] порядок: {' -> '.join(seq_name(n) for n in order) or '(порожньо)'}")
+    print(f"{'seq':6} {'.mcap':>8}  {'прогонів лишилось':<18} {'треба місця':>12}  {'дія':<34} хто що порахував")
+    total_dl, peak = 0.0, 0.0
+    for n in order:
+        todo = pending_runs(ctx, n, owners)
+        busy = peer_claims(ctx, n) if todo else []
+        need = disk_need_gb(ctx, n) if todo and not busy else 0.0
+        peak = max(peak, need)
+        if todo and not busy and not (ctx.export_dir(n) / "rgb.txt").exists():
+            total_dl += 0.0 if any(ctx.raw_dir(n).glob("*.mcap")) else MCAP_GB[n]
+        if not todo:
+            act = "пропустити (готово)"
+        elif busy:
+            act = f"пропустити (рахує {'+'.join(busy)})"
+        else:
+            act = "качати + рахувати" if need else "рахувати (експорт є)"
+        cells = []
+        for k in ctx.methods:
+            d, want, _, hosts = cell_state(ctx, k, n, owners)
+            cells.append(f"{ctx.label(k)} {d}/{want}" + (f" {'+'.join(sorted(hosts, key=host_rank))}" if hosts else ""))
+        print(f"{seq_name(n):6} {fmt_gb(MCAP_GB[n]):>8}  {len(todo):<18} {fmt_gb(need) if need else '-':>12}  {act:<34} {', '.join(cells)}")
+    print(f"[dry-run] вільно на {ctx.data_root}: {fmt_gb(free_gb(ctx.data_root))}; найбільша потреба для одного сиквенсу: {fmt_gb(peak)}; "
+          f"всього завантажити: {fmt_gb(total_dl)} (стан іншого ПК може змінитись до старту)")
+    print("[dry-run] нічого не завантажено й не запущено.")
+    return 0
+
+
+def cmd_status(ctx):
+    a = ctx.args
+    refresh_peers(ctx, lambda msg: None)          # a failed refresh is shown by peer_lines() below
+    st = read_json(ctx.state_file)
+    alive = bool(st.get("pid")) and pid_alive(st["pid"])
+    stop = read_stop(ctx)
+    owners = summary_owners(ctx)
+    print(f"Хост: {ctx.host}   дані: {ctx.data_root} (вільно {fmt_gb(free_gb(ctx.data_root))})   summary: {ctx.summary.name}")
+    print(f"Методи (прогонів): {', '.join(f'{k}×{ctx.runs_for(k)}' for k in ctx.methods)}   "
+          f"межа stop-before: {stop if stop is not None else 'нема'}")
+    if alive:
+        print(f"Воркер ПРАЦЮЄ (pid {st['pid']}): {st.get('seq')} {st.get('method') or ''} "
+              f"{('run' + str(st['run'])) if st.get('run') else ''} з {st.get('since')}; напрямок {st.get('dir')} від {st.get('frm')}")
+    else:
+        print("Воркер не працює" + (" (знайдено застарілий файл стану — ігнорую)" if st else ""))
+    for line in peer_lines(ctx):
+        print(line)
+    print()
+    print_table(ctx, owners, st.get("seq") if alive else None)
     order_all = sequence_order(a.frm, a.dir, None)
     chain = []
     for n in order_all:
-        if seq_complete(ctx, n):
+        if seq_complete(ctx, n, owners):
             chain.append(n)
         else:
             break
     print()
-    nxt = next((n for n in ([a.only] if a.only else order_all) if pending_runs(ctx, n)), None)
+    nxt = next((n for n in ([a.only] if a.only else order_all) if pending_runs(ctx, n, owners) and not peer_claims(ctx, n)), None)
     if alive and st.get("seq"):
         here = f"{int(str(st['seq'])[3:])} ({st['seq']}, зараз рахується)"
     elif nxt is None:
-        here = "відрізок пройдено до кінця"
+        here = "у твоєму напрямку більше нічого брати"
     elif allowed(ctx, nxt):
         here = f"{nxt} ({seq_name(nxt)}, наступний у напрямку {a.dir} від {a.frm})"
     else:
         here = f"{nxt} ({seq_name(nxt)}) — це вже за межею stop-before {stop}: твій відрізок завершено"
     print(f"Ти тут: {here}")
     if chain:
-        print(f"Готово підряд від твого кінця ({a.frm}, {a.dir}): {seq_name(chain[0])} … {seq_name(chain[-1])}  ← це й повідом іншому ПК")
+        print(f"Готово підряд від твого кінця ({a.frm}, {a.dir}): {seq_name(chain[0])} … {seq_name(chain[-1])}")
     else:
         print(f"Від твого кінця ({a.frm}, {a.dir}) повністю готових сиквенсів ще нема.")
     return 0
@@ -788,15 +1211,22 @@ def build_parser():
                     help="do not take sequence N or any later one in the direction of travel (also saved for a running worker)")
     ap.add_argument("--set-stop", metavar="N|none", help="only write/clear the boundary file and exit (a running worker picks it up)")
     ap.add_argument("--only", type=int, default=None, metavar="N", help="process just this one sequence")
-    ap.add_argument("--methods", default="dpvo", help="comma list of methods from the registry, or 'all' (default dpvo)")
-    ap.add_argument("--runs", type=int, default=1, help="runs per method per sequence (default 1)")
+    ap.add_argument("--methods", default="dpvo",
+                    help="comma list: 'dpvo' (every mode of a method), 'orbslam3:mono_inertial' (one mode) or 'all' (default dpvo)")
+    ap.add_argument("--runs", type=int, default=1,
+                    help="runs per method per sequence (default 1); a 'runs' column in methods.conf overrides it per method")
     ap.add_argument("--status", action="store_true", help="print the table of all 13 positions and 'you are here', then exit")
     ap.add_argument("--dry-run", action="store_true", help="print the plan and the disk need; download and run nothing")
     ap.add_argument("--timeout-h", type=float, default=12.0, help="timeout of one method run, hours (default 12)")
     ap.add_argument("--fetch-timeout-h", type=float, default=8.0, help="timeout of download+export of one sequence, hours (default 8)")
     ap.add_argument("--keep-data", action="store_true", help="never delete the .mcap and the export")
     ap.add_argument("--report-every", type=float, default=10.0, metavar="MIN",
-                    help="push progress to git every MIN minutes and at the end (0 = off; needs scripts/report/push_status.sh --token)")
+                    help="push progress to git every MIN minutes and at the end (0 = no periodic push; the claim of a "
+                         "sequence is still pushed unless --no-peers; needs scripts/report/push_status.sh --token)")
+    ap.add_argument("--no-peers", action="store_true",
+                    help="ignore the other PCs' runner-* branches (no fetch, no claim push)")
+    ap.add_argument("--peer-stale-h", type=float, default=3.0, metavar="H",
+                    help="another PC's claim of a sequence counts only if its branch was updated less than H hours ago (default 3)")
     ap.add_argument("--no-keepawake", action="store_true", help="do not stop Windows from sleeping while the worker runs")
     ap.add_argument("--results-root", default=str(REPO_ROOT / "results"))
     ap.add_argument("--registry", default=str(Path(__file__).with_name("methods.conf")))
