@@ -9,8 +9,10 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y --no-install-recommends \
   build-essential cmake ninja-build unzip git curl wget ca-certificates pkg-config \
-  libgl1 libglib2.0-0
+  libgl1 libglib2.0-0 python3-dev
 # (libgl1, libglib2.0-0: runtime libraries of opencv-python, needed by `import cv2`)
+# (python3-dev: Python.h for building the DPVO CUDA extensions; uv reuses the system
+#  python3.10, which on a native Ubuntu has no headers without this package)
 
 # NVIDIA's WSL-Ubuntu repo: ships the toolkit WITHOUT a Linux driver (WSL uses the Windows driver).
 if ! dpkg -s cuda-keyring >/dev/null 2>&1; then

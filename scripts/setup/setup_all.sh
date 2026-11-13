@@ -18,7 +18,8 @@ fi
 nvidia-smi -L
 
 echo "== 1/6 system packages + CUDA toolkit 12.1 (sudo) =="
-if [ -x /usr/local/cuda-12.1/bin/nvcc ] && command -v cmake >/dev/null && command -v ninja >/dev/null && command -v unzip >/dev/null; then
+if [ -x /usr/local/cuda-12.1/bin/nvcc ] && command -v cmake >/dev/null && command -v ninja >/dev/null && command -v unzip >/dev/null \
+   && [ -f /usr/include/python3.10/Python.h ]; then
   echo "already installed, skipping"
 else
   if [ "$(id -u)" -eq 0 ]; then bash "$here/01_system_root.sh"; else sudo bash "$here/01_system_root.sh"; fi
