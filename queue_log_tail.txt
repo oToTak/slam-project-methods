@@ -1,60 +1,6 @@
- 99%|█████████▉| 82632/83148 [12:17<00:03, 163.82it/s]
- 99%|█████████▉| 82654/83148 [12:17<00:03, 163.73it/s]
- 99%|█████████▉| 82677/83148 [12:17<00:02, 165.81it/s]
- 99%|█████████▉| 82699/83148 [12:18<00:02, 164.88it/s]
- 99%|█████████▉| 82722/83148 [12:18<00:02, 164.78it/s]
-100%|█████████▉| 82745/83148 [12:18<00:02, 165.38it/s]
-100%|█████████▉| 82768/83148 [12:18<00:02, 166.70it/s]
-100%|█████████▉| 82790/83148 [12:18<00:02, 164.50it/s]
-100%|█████████▉| 82813/83148 [12:18<00:02, 163.26it/s]
-100%|█████████▉| 82835/83148 [12:18<00:01, 163.72it/s]
-100%|█████████▉| 82858/83148 [12:18<00:01, 166.78it/s]
-100%|█████████▉| 82878/83148 [12:19<00:01, 161.39it/s]
-100%|█████████▉| 82901/83148 [12:19<00:01, 164.72it/s]
-100%|█████████▉| 82923/83148 [12:19<00:01, 160.96it/s]
-100%|█████████▉| 82946/83148 [12:19<00:01, 162.69it/s]
-100%|█████████▉| 82971/83148 [12:19<00:01, 170.51it/s]
-100%|█████████▉| 82994/83148 [12:19<00:00, 172.87it/s]
-100%|█████████▉| 83016/83148 [12:19<00:00, 171.45it/s]
-100%|█████████▉| 83037/83148 [12:20<00:00, 168.75it/s]
-100%|█████████▉| 83059/83148 [12:20<00:00, 169.44it/s]
-100%|█████████▉| 83082/83148 [12:20<00:00, 169.76it/s]
-100%|█████████▉| 83104/83148 [12:20<00:00, 168.80it/s]
-100%|█████████▉| 83127/83148 [12:20<00:00, 170.40it/s]
-100%|██████████| 83148/83148 [12:20<00:00, 112.26it/s]
-Found 667 common timestamps for color 10699 color and 668 depth images.
-Found 667 common timestamps for color 10699 color and 669 depth images.
-seq13,download_s=0,export_s=741,mcap_bytes=10711443165,export_bytes=3520984192
-19:44:11 -- seq13 dpvo:mono run1/3: старт
-NVIDIA GeForce RTX 3060; wall 902s (11.9 fps); VRAM peak 2048 MiB total used (base 1052), torch alloc 715 / reserved 922 MiB; RAM peak 1614 MiB.
-Wrote /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_run1.txt (10699 poses) and /home/calc/slam-data/results/dpvo/mono/ucu/seq13/meta.yaml
-== dpvo mono ucu/seq13 run1 ==
-ATE RMSE   : 63.387 m   (matched 357/358)
-coverage   : 1.00   tracking_lost: false   poses: 10699   max gap: 19.114 s
-drift 50 m : 52.350 m (307 seg)   100 m: 91.582 m (256 seg)
-plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_xy.pdf
-appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-19:59:21    готово за 15.2 хв: поз 10699/10699; рядок додано в summary_StarDestroyer.csv
-19:59:21 -- seq13 dpvo:mono run2/3: старт
-NVIDIA GeForce RTX 3060; wall 859s (12.4 fps); VRAM peak 2048 MiB total used (base 1052), torch alloc 706 / reserved 922 MiB; RAM peak 1627 MiB.
-Wrote /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_run2.txt (10699 poses) and /home/calc/slam-data/results/dpvo/mono/ucu/seq13/meta.yaml
-== dpvo mono ucu/seq13 run2 ==
-ATE RMSE   : 17.139 m   (matched 357/358)
-coverage   : 1.00   tracking_lost: false   poses: 10699   max gap: 19.114 s
-drift 50 m : 19.959 m (307 seg)   100 m: 25.057 m (256 seg)
-plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_xy.pdf
-appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-20:13:45    готово за 14.4 хв: поз 10699/10699; рядок додано в summary_StarDestroyer.csv
-20:13:45 -- seq13 dpvo:mono run3/3: старт
-NVIDIA GeForce RTX 3060; wall 881s (12.1 fps); VRAM peak 2048 MiB total used (base 1052), torch alloc 705 / reserved 922 MiB; RAM peak 1652 MiB.
-Wrote /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_run3.txt (10699 poses) and /home/calc/slam-data/results/dpvo/mono/ucu/seq13/meta.yaml
-== dpvo mono ucu/seq13 run3 ==
-ATE RMSE   : 64.297 m   (matched 357/358)
-coverage   : 1.00   tracking_lost: false   poses: 10699   max gap: 19.114 s
-drift 50 m : 51.900 m (307 seg)   100 m: 92.346 m (256 seg)
-plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_xy.pdf
-appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-20:28:30    готово за 14.8 хв: поз 10699/10699; рядок додано в summary_StarDestroyer.csv
-20:28:30 seq13: усі прогони готові
-20:28:30   видалено /home/calc/slam-data/ucu/sequence-13
-20:28:31   видалено /home/calc/slam-data/ucu_tum/seq13
+20:28:38 == seq12: прогонів до виконання 3; лог /home/calc/slam-data/logs/queue_StarDestroyer_seq12_20261113_202838.log
+20:28:38    місце: треба ≈ 19.7 GB, доступно 59.5 GB = мінімум із: df 1006.0 GB; диск Windows C:\ під vhdx 164.5 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 0.5 GB = 59.5 GB
+20:28:38    завантаження й експорт sequence-12 (час піде у fetch_timings.csv)
+
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]
+Fetching 3 files:  33%|███▎      | 1/3 [00:00<00:00,  3.73it/s]
