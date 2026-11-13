@@ -1,13 +1,3 @@
- 99%|█████████▉| 82138/83148 [12:14<00:06, 161.95it/s]
- 99%|█████████▉| 82159/83148 [12:14<00:06, 156.72it/s]
- 99%|█████████▉| 82181/83148 [12:14<00:06, 157.88it/s]
- 99%|█████████▉| 82204/83148 [12:15<00:05, 160.31it/s]
- 99%|█████████▉| 82227/83148 [12:15<00:05, 161.94it/s]
- 99%|█████████▉| 82249/83148 [12:15<00:05, 159.99it/s]
- 99%|█████████▉| 82272/83148 [12:15<00:05, 161.78it/s]
- 99%|█████████▉| 82295/83148 [12:15<00:05, 163.30it/s]
- 99%|█████████▉| 82318/83148 [12:15<00:05, 165.03it/s]
- 99%|█████████▉| 82340/83148 [12:15<00:05, 161.42it/s]
  99%|█████████▉| 82363/83148 [12:15<00:04, 164.42it/s]
  99%|█████████▉| 82385/83148 [12:16<00:04, 163.71it/s]
  99%|█████████▉| 82408/83148 [12:16<00:04, 164.58it/s]
@@ -58,3 +48,13 @@ plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
 19:59:21    готово за 15.2 хв: поз 10699/10699; рядок додано в summary_StarDestroyer.csv
 19:59:21 -- seq13 dpvo:mono run2/3: старт
+NVIDIA GeForce RTX 3060; wall 859s (12.4 fps); VRAM peak 2048 MiB total used (base 1052), torch alloc 706 / reserved 922 MiB; RAM peak 1627 MiB.
+Wrote /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_run2.txt (10699 poses) and /home/calc/slam-data/results/dpvo/mono/ucu/seq13/meta.yaml
+== dpvo mono ucu/seq13 run2 ==
+ATE RMSE   : 17.139 m   (matched 357/358)
+coverage   : 1.00   tracking_lost: false   poses: 10699   max gap: 19.114 s
+drift 50 m : 19.959 m (307 seg)   100 m: 25.057 m (256 seg)
+plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq13/traj_xy.pdf
+appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
+20:13:45    готово за 14.4 хв: поз 10699/10699; рядок додано в summary_StarDestroyer.csv
+20:13:45 -- seq13 dpvo:mono run3/3: старт
