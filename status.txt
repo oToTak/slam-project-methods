@@ -1,14 +1,14 @@
-host: Teodor   updated: 2026-11-13T15:13:35+02:00   code: b0f45fd
+host: Teodor   updated: 2026-11-13T15:14:19+02:00   code: b0f45fd
 
 Хост: Teodor   дані: /mnt/t/slam-data   summary: summary_Teodor.csv
 Місце для даних: доступно 67.8 GB = мінімум із: df 177.7 GB (диск Windows через /mnt, число правдиве); бюджет DATA_BUDGET_GB 80 GB − зайнято 12.2 GB = 67.8 GB
 Методи (прогонів): dpvo:mono×3   межа stop-before: нема
-Воркер ПРАЦЮЄ (pid 1549): None   з 2026-11-13T15:13:34; напрямок up від 1
-Інший ПК StarDestroyer: останній звіт 2026-11-13 15:06 (8 хв тому); не рахує
+Воркер ПРАЦЮЄ (pid 1549): seq02   з 2026-11-13T15:13:37; напрямок up від 1
+Інший ПК StarDestroyer: останній звіт 2026-11-13 15:06 (9 хв тому); не рахує
 
  #  seq       .mcap  прогони (готово/треба, хто) стан         дані на диску
  1  seq01    6.5 GB  dpvo 3/3 Teodor            готово       є .mcap
- 2  seq02   10.2 GB  dpvo 0/3                   чекає        -
+ 2  seq02   10.2 GB  dpvo 0/3                   в роботі     -
  3  seq03   10.1 GB  dpvo 0/3                   чекає        -
  4  seq04   12.8 GB  dpvo 0/3                   чекає        -
  5  seq05   12.7 GB  dpvo 0/3                   чекає        -
@@ -21,8 +21,8 @@ host: Teodor   updated: 2026-11-13T15:13:35+02:00   code: b0f45fd
 12  seq12   10.9 GB  dpvo 0/3                   чекає        -
 13  seq13   10.7 GB  dpvo 0/3                   чекає        -
 
-Ти тут: 2 (seq02, наступний у напрямку up від 1)
+Ти тут: 2 (seq02, зараз рахується)
 Готово підряд від твого кінця (1, up): seq01 … seq01
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce GTX 1660 SUPER, 1 %, 1029 MiB, 6144 MiB, 44
+NVIDIA GeForce GTX 1660 SUPER, 0 %, 1016 MiB, 6144 MiB, 44
