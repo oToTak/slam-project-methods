@@ -1,0 +1,10 @@
+method: dpvo
+mode: mono
+dataset: ucu
+seq: seq01
+run: 3
+commit: d250f3ef349ca5012866858656e24999e7818648
+config: configs/dpvo/calib_ucu.txt
+coverage: 1.00
+tracking_lost: false
+notes: "DPVO 0ac95b6, config/default.yaml, stride=1, 6532 frames. Repo had uncommitted changes. NVIDIA GeForce GTX 1660 SUPER; wall 5219s (1.3 fps); VRAM peak 3232 MiB total used (base 1014), torch alloc 718 / reserved 2160 MiB; RAM peak 1388 MiB."
