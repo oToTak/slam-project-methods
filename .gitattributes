@@ -3,3 +3,6 @@
 *.py text eol=lf
 *.txt text eol=lf
 *.conf text eol=lf
+
+# Windows launchers must keep CRLF
+*.bat text eol=crlf
