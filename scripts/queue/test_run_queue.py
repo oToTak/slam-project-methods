@@ -79,7 +79,7 @@ class QueueTest(unittest.TestCase):
     def queue(self, *args, **extra_env):
         cmd = [sys.executable, "-u", str(HERE / "run_queue.py"), "--registry", str(self.root / "methods.conf"),
                "--results-root", str(self.res), "--eval-script", str(self.root / "eval.py"),
-               "--methods", "fake", "--no-disk-check", *args]
+               "--methods", "fake", "--no-disk-check", "--report-every", "0", "--no-keepawake", *args]
         return subprocess.run(cmd, env=dict(self.env, **extra_env), capture_output=True, text=True, timeout=120)
 
     def lines(self, name):

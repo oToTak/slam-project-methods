@@ -147,7 +147,10 @@ class Log:
 
     def __call__(self, msg):
         line = f"{time.strftime('%H:%M:%S')} {msg}"
-        print(line, flush=True)
+        try:
+            print(line, flush=True)
+        except OSError:                   # terminal closed (SIGHUP): keep logging to the file
+            pass
         if self.fh:
             self.fh.write(line + "\n")
 
@@ -298,7 +301,10 @@ def _on_signal(signum, frame):
             _kill_group(proc, signal.SIGKILL)
         os._exit(130)
     INTERRUPT.set()
-    print("\n[!] Перервано (Ctrl-C): завершую поточний прогін, готове лишається. Ще раз Ctrl-C — негайний вихід.", flush=True)
+    try:
+        print("\n[!] Перервано (Ctrl-C або закрито вікно): завершую поточний прогін, готове лишається. Ще раз Ctrl-C — негайний вихід.", flush=True)
+    except OSError:
+        pass
     if proc is not None and proc.poll() is None:
         _terminate(proc, "interrupt")
 
@@ -502,6 +508,101 @@ def process_seq(ctx, log, n):
             log.attach(None)
 
 
+# ----------------------------------------------------------------------------- reporter and keep-awake
+
+KEEP_AWAKE_PS = ("Add-Type -Name P -Namespace W -MemberDefinition '[DllImport(\"kernel32.dll\")] "
+                 "public static extern uint SetThreadExecutionState(uint f);'; "
+                 "[void][W.P]::SetThreadExecutionState([uint32]2147483649); [void][Console]::In.ReadToEnd()")
+
+
+class KeepAwake:
+    """Keeps Windows from sleeping while the worker lives (SetThreadExecutionState via powershell.exe).
+    The helper exits when our end of its stdin closes, also if this process is killed hard."""
+    def __init__(self):
+        self.proc = None
+
+    def start(self):
+        try:
+            self.proc = subprocess.Popen(["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", KEEP_AWAKE_PS],
+                                         stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return True
+        except OSError:
+            self.proc = None
+            return False
+
+    def stop(self):
+        if self.proc is not None:
+            try:
+                self.proc.stdin.close()
+                self.proc.wait(timeout=10)
+            except Exception:
+                self.proc.kill()
+            self.proc = None
+
+
+class Reporter:
+    """Every ``every_min`` minutes (and once at the end) runs scripts/report/push_status.sh, which pushes progress and
+    results to a git branch. Never raises and never blocks the worker; failures only go to stdout and the report log."""
+    def __init__(self, ctx, every_min):
+        self.ctx, self.every = ctx, every_min * 60
+        self.stop_ev = threading.Event()
+        self.thread = None
+        self.last_msg = None
+        self.script = REPO_ROOT / "scripts" / "report" / "push_status.sh"
+        self.logfile = ctx.logs / f"report_{ctx.host}.log"
+
+    def _say(self, msg):
+        line = f"{time.strftime('%H:%M:%S')} [звіт] {msg}"
+        try:
+            print(line, flush=True)
+        except OSError:
+            pass
+        try:
+            with open(self.logfile, "a", encoding="utf-8") as f:
+                f.write(line + "\n")
+        except OSError:
+            pass
+
+    def push(self, force=False):
+        a = self.ctx.args
+        env = dict(os.environ, PUSH_FORCE="1" if force else "0", QUEUE_HOST=self.ctx.host, QUEUE_FROM=str(a.frm), QUEUE_DIR=a.dir,
+                   QUEUE_METHODS=",".join(self.ctx.methods), QUEUE_RUNS=str(a.runs), DATA_ROOT=str(self.ctx.data_root))
+        try:
+            r = subprocess.run(["bash", str(self.script)], env=env, capture_output=True, text=True, timeout=300,
+                               start_new_session=True)
+            msg = (r.stdout.strip().splitlines() or [""])[-1] if r.returncode == 0 else \
+                  "ПОМИЛКА: " + ((r.stderr.strip().splitlines() or r.stdout.strip().splitlines() or ["?"])[-1])
+        except (OSError, subprocess.TimeoutExpired) as e:
+            msg = f"ПОМИЛКА: {e}"
+        # repeat only changes, so a long outage does not flood the log
+        if msg.split(" ", 1)[-1] != (self.last_msg or "").split(" ", 1)[-1] or "pushed" in msg:
+            self._say(msg)
+        self.last_msg = msg
+
+    def _loop(self):
+        while not self.stop_ev.wait(0 if self.last_msg is None else self.every):
+            self.push()
+
+    def start(self):
+        self.thread = threading.Thread(target=self._loop, daemon=True)
+        self.thread.start()
+
+    def finish(self):
+        self.stop_ev.set()
+        if self.thread is not None:
+            self.thread.join(timeout=310)
+        self.push(force=True)            # last state, after the worker has cleared its own state file
+
+
+def report_possible(ctx):
+    if not (REPO_ROOT / "scripts" / "report" / "push_status.sh").exists():
+        return "нема scripts/report/push_status.sh"
+    repo = os.environ.get("REPORT_REPO", "https://github.com/oToTak/slam-project-methods.git")
+    if repo.startswith("https://") and not (Path.home() / ".config" / "slam" / "github_token").is_file():
+        return "нема токена GitHub: bash scripts/report/push_status.sh --token"
+    return None
+
+
 # ----------------------------------------------------------------------------- commands
 
 def check_environment(ctx, log, need_hf):
@@ -539,12 +640,26 @@ def cmd_run(ctx):
               frm=a.frm, dir=a.dir, runs=a.runs, methods=ctx.methods)
     signal.signal(signal.SIGINT, _on_signal)
     signal.signal(signal.SIGTERM, _on_signal)
+    signal.signal(signal.SIGHUP, _on_signal)     # terminal window closed: stop like Ctrl-C, do not orphan the method process
     log(f"Воркер {ctx.host}: з {a.frm} {'вгору' if a.dir == 'up' else 'вниз'}"
         f"{', лише ' + seq_name(a.only) if a.only else ''}, межа stop-before = {stop if stop is not None else 'нема'}, "
         f"методи {','.join(ctx.methods)}, прогонів {a.runs}, summary {ctx.summary}")
     counts = collections.Counter()
     consecutive_failed = 0
     code = 0
+    keep = KeepAwake()
+    if not a.no_keepawake:
+        log("ПК не засинатиме, поки йде робота (Windows keep-awake)" if keep.start()
+            else "УВАГА: не вдалось увімкнути keep-awake (powershell.exe): не дай ПК заснути вручну")
+    reporter = None
+    if a.report_every > 0:
+        why = report_possible(ctx)
+        if why:
+            log(f"УВАГА: звіти на GitHub вимкнені: {why}")
+        else:
+            reporter = Reporter(ctx, a.report_every)
+            reporter.start()
+            log(f"звіт на GitHub: раз на {a.report_every:g} хв і в кінці (журнал {reporter.logfile.name})")
     try:
         check_environment(ctx, log, need_hf=any(pending_runs(ctx, n) and not (ctx.export_dir(n) / "rgb.txt").exists() for n in order if allowed(ctx, n)))
         for n in order:
@@ -575,6 +690,9 @@ def cmd_run(ctx):
         code = e.code
     finally:
         clear_state(ctx)
+        if reporter is not None:
+            reporter.finish()
+        keep.stop()
     log("підсумок: " + ", ".join(f"{k}={v}" for k, v in sorted(counts.items())) + f" | код виходу {code}")
     return code
 
@@ -677,6 +795,9 @@ def build_parser():
     ap.add_argument("--timeout-h", type=float, default=12.0, help="timeout of one method run, hours (default 12)")
     ap.add_argument("--fetch-timeout-h", type=float, default=8.0, help="timeout of download+export of one sequence, hours (default 8)")
     ap.add_argument("--keep-data", action="store_true", help="never delete the .mcap and the export")
+    ap.add_argument("--report-every", type=float, default=10.0, metavar="MIN",
+                    help="push progress to git every MIN minutes and at the end (0 = off; needs scripts/report/push_status.sh --token)")
+    ap.add_argument("--no-keepawake", action="store_true", help="do not stop Windows from sleeping while the worker runs")
     ap.add_argument("--results-root", default=str(REPO_ROOT / "results"))
     ap.add_argument("--registry", default=str(Path(__file__).with_name("methods.conf")))
     # test hooks / escape hatches (documented in test_run_queue.py)
