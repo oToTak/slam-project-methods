@@ -1,0 +1,56 @@
+# Collects the progress of every PC (branches runner-<host>, pushed by scripts/report/push_status.sh)
+# into ONE table on main: status/STATUS.md (+ status/status.json, status/summaries/).
+# Commits to main ONLY status/ and ONLY when its content changed (a newer report time alone is not
+# a change, see build_status.py), so main does not fill up with commits.
+# Never touches results/, code or the runner-* branches.
+#
+# Why no `on: push: branches: [runner-*]`: GitHub takes the workflow file from the pushed commit,
+# and runner-* are orphan branches without .github/, so such a trigger would never fire.
+# Instead: a schedule (also marks PCs that went silent as stale), a manual button, and
+# repository_dispatch (type runner-status) that push_status.sh can send after a push for an
+# immediate update.
+name: status
+
+on:
+  schedule:
+    - cron: "7,27,47 * * * *" # every 20 min (off the full hour, when GitHub is busiest)
+  workflow_dispatch:
+  repository_dispatch:
+    types: [runner-status]
+
+concurrency:
+  group: status
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Fetch runner branches
+        run: git fetch --no-tags --depth=1 origin '+refs/heads/runner-*:refs/remotes/origin/runner-*'
+
+      - name: Build status/
+        run: python3 -I scripts/report/build_status.py --repo . --refs 'refs/remotes/origin/runner-*' --out status
+
+      - name: Commit and push if the content changed
+        run: |
+          git add -A -- status
+          if git diff --cached --quiet; then echo "status/ unchanged, nothing to commit"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Update status/ from runner branches" -- status
+          # main may have moved meanwhile (Teodor pushed); only this job writes status/, so a rebase is safe
+          for i in 1 2 3; do
+            if git push origin HEAD:main; then exit 0; fi
+            git fetch origin main && git rebase origin/main || exit 1
+          done
+          exit 1
