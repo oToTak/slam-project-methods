@@ -10,14 +10,46 @@
 #   4/5 unit tests (run_dpvo, eval, queue with stubs: CPU only, nothing downloaded)
 #   5/5 queue dry-run for both ends + the commands to start the work
 # Log: $DATA_ROOT/logs/setup_really_all_<time>.log.  New methods get their own recipe next to this file and one call here.
+#
+#   bash scripts/setup/setup_all_really_all.sh --check    INSTALLS NOTHING, writes no log: is the base environment there, and for
+#       every method of scripts/queue/methods.conf is its recipe scripts/setup/<method>.sh --check happy? (scripts/start.sh uses it)
+#       Human lines plus machine lines:  CHECK base ok|missing   CHECK method <name> ok|missing|norecipe
+#       Exit 0 = everything installed, 1 = something missing.
 set -uo pipefail
 here=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 source "$here/env.sh"
+source "$here/../sync/common.sh"
+
+check_installed() {
+  local rc=0 m recipe out reg="$SLAM_REPO/scripts/queue/methods.conf"
+  echo "  repo $SLAM_REPO | data $DATA_ROOT | results $RESULTS_ROOT"
+  if command -v nvidia-smi >/dev/null && nvidia-smi -L >/dev/null 2>&1; then echo "  [ok]      GPU: $(nvidia-smi -L | head -1)"
+  else echo "  [warn]    nvidia-smi does not see a GPU: GPU methods will refuse to start (update the NVIDIA driver on Windows, wsl --shutdown)"; fi
+  if [ -x "$SLAM_VENV/bin/evo" ] && [ -x "$SLAM_VENV/bin/hf" ]; then
+    echo "  [ok]      base: evo + hf in $SLAM_VENV"; echo "CHECK base ok"
+  else
+    echo "  [missing] base environment (evo, hf in $SLAM_VENV): installed by scripts/setup/setup_all.sh"; echo "CHECK base missing"; rc=1
+  fi
+  [ -f "$reg" ] || { echo "  [missing] registry $reg"; return 1; }
+  for m in $(registry_methods "$reg"); do
+    recipe="$here/$m.sh"
+    if [ ! -f "$recipe" ]; then
+      echo "  [missing] $m: no recipe scripts/setup/$m.sh (cannot be installed automatically)"; echo "CHECK method $m norecipe"; rc=1
+    elif out=$(timeout 300 bash "$recipe" --check 2>&1); then
+      echo "  [ok]      $m: $(printf '%s\n' "$out" | tail -n 1)"; echo "CHECK method $m ok"
+    else
+      echo "  [missing] $m: $(printf '%s\n' "$out" | tail -n 1)"; echo "CHECK method $m missing"; rc=1
+    fi
+  done
+  return $rc
+}
+
 accept=0
 case "${1:-}" in
   "") ;;
   --accept) accept=1 ;;
-  *) echo "usage: $0 [--accept]" >&2; exit 2 ;;
+  --check) check_installed; exit $? ;;
+  *) echo "usage: $0 [--accept | --check]" >&2; exit 2 ;;
 esac
 mkdir -p "$DATA_ROOT/logs"
 log="$DATA_ROOT/logs/setup_really_all_$(date +%Y%m%d_%H%M%S).log"
@@ -65,7 +97,9 @@ bash "$here/run_dpvo_tests.sh" 2>&1 | tail -n 3 || tests_ok=0
 bash "$here/run_queue_tests.sh" 2>&1 | tail -n 6 || tests_ok=0
 [ "$tests_ok" = 1 ] && echo "  tests: finished (look for OK above)" || todo "some unit tests failed: scroll up and send the output to whoever helps you"
 
-echo "== 5/5 queue plan (dry run: nothing is downloaded or computed) =="
+echo "== 5/5 installed methods + queue plan (dry run: nothing is downloaded or computed) =="
+chk_out=$(check_installed 2>&1) || todo "not every method of the registry is installed (START.bat runs the missing recipes; see [missing] above)"
+printf '%s\n' "$chk_out" | grep -v '^CHECK '
 plan_out=$(bash "$SLAM_REPO/scripts/run_queue.sh" --dry-run --from 1 --dir up --methods dpvo --runs 3 2>&1) || todo "queue dry-run failed"
 printf '%s\n' "$plan_out" | head -n 8
 
@@ -79,12 +113,12 @@ cat <<EOF
 == setup_all_really_all finished $(date) ==
 $( [ "$warn" = 0 ] && echo "No warnings." || echo "There were warnings ([warn] lines above): fix them before the long run." )
 
-Start the work (the same command can be re-run after Ctrl-C or a reboot: finished runs are skipped):
-  main PC (from the start):   cd $SLAM_REPO && bash scripts/run_queue.sh --from 1  --dir up   --methods dpvo --runs 3
-  brother's PC (from the end): cd $SLAM_REPO && bash scripts/run_queue.sh --from 13 --dir down --methods dpvo --runs 3
-Where am I / what to tell the other side:  bash scripts/run_queue.sh --status
-When you learn where the other PC is (say it is on 8): bash scripts/run_queue.sh --set-stop 8   (works while the worker runs)
-Give back at the end: results/summary_$(hostname).csv, results/summary_extra_$(hostname).csv, results/dpvo/, $DATA_ROOT/logs/fetch_timings.csv
+Start the work: double-click START.bat (the same on both PCs; it runs scripts/start.sh in the worker clone $SLAM_RUNNER_DIR).
+  No worker clone yet?  bash scripts/sync/migrate_to_git.sh --pc main   (or --pc brother), see scripts/RUNBOOK.md
+  Re-running after Ctrl-C or a reboot is safe: finished runs are skipped.
+Where am I:  STATUS.bat   (or: bash $SLAM_RUNNER_DIR/scripts/start.sh --status)
+Installed methods (installs nothing):  bash scripts/setup/setup_all_really_all.sh --check
+Results of the worker: $DATA_ROOT/results (outside git); logs: $DATA_ROOT/logs
 Log of this script: $log
 EOF
 [ "$warn" = 0 ]
