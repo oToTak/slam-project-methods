@@ -238,3 +238,7 @@ models/*
 
 # Env secrets
 .env
+
+# Queue worker markers (scripts/queue/run_queue.py): local bookkeeping, travels with results/ but not through git
+results/**/.done_run*
+results/**/.bad_run*
