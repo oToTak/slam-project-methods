@@ -82,7 +82,14 @@ if [ "$rc" = 1 ]; then
 elif [ "$rc" = 2 ]; then
   die "$RUNNER_CONF зіпсований: $CONF_ERROR. Виправ або видали файл (тоді спитаю знову)."
 fi
-summary="з seq$(printf %02d "$START_AT") $([ "$DIRECTION" = up ] && echo 'вгору' || echo 'вниз'), тримати .mcap: $KEEP_DATA, прогонів: $RUNS, методи: $METHODS"
+if [ "$BUDGET_SET" = 0 ] && [ "$mode" = run ]; then        # e.g. written by migrate_to_git.sh --pc main: ask once
+  if conf_ask_budget; then conf_load || die "$RUNNER_CONF: $CONF_ERROR"
+  else warn "у $RUNNER_CONF нема DATA_BUDGET_GB і нема кого спитати: рахую без ліміту (лише реальне вільне місце)"; fi
+fi
+# the worker (scripts/queue/run_queue.py) reads the budget from the environment; empty = only the real free space counts
+if [ -n "$DATA_BUDGET_GB" ]; then export DATA_BUDGET_GB; else unset DATA_BUDGET_GB; fi
+budget_txt="без ліміту"; [ -n "${DATA_BUDGET_GB:-}" ] && budget_txt="$DATA_BUDGET_GB ГБ"
+summary="з seq$(printf %02d "$START_AT") $([ "$DIRECTION" = up ] && echo 'вгору' || echo 'вниз'), бюджет даних: $budget_txt$([ "$KEEP_DATA" = yes ] && echo ', .mcap тримати'), прогонів: $RUNS, методи: $METHODS"
 [ "$mode" != status ] && echo "  $summary"
 echo "  результати: $RESULTS_ROOT | дані й логи: $DATA_ROOT"
 

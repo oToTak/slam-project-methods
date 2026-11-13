@@ -22,7 +22,7 @@ mkdir -p "$HOME/.local/bin" "$SLAM_VENV/bin" "$DATA_ROOT"
 calls=$tmp/calls.log; : > "$calls"
 cat > "$SLAM_VENV/bin/python" <<EOF
 #!/bin/sh
-echo "python \$*" >> "$calls"
+echo "python budget=\${DATA_BUDGET_GB:-none} \$*" >> "$calls"
 case "\$*" in *--status*) echo "STATUS-TABLE" ;; esac
 EOF
 printf '#!/bin/sh\nexit 0\n' > "$SLAM_VENV/bin/evo"
@@ -75,7 +75,8 @@ check "migrate: summary copied" [ -f "$res/summary_testhost.csv" ]
 check "migrate: trajectory copied" [ -f "$res/dpvo/mono/ucu/seq13/traj_run1.txt" ]
 check "migrate: template README not copied" [ ! -e "$res/README.md" ]
 check "migrate: runner.conf brother preset" grep -qx 'START_AT=13' "$conf"
-check "migrate: keeps data on brother" grep -qx 'KEEP_DATA=yes' "$conf"
+check "migrate: brother does not keep data" grep -qx 'KEEP_DATA=no' "$conf"
+check "migrate: brother disk budget 60" grep -qx 'DATA_BUDGET_GB=60' "$conf"
 check "migrate: check ran, installs nothing" bash -c "printf '%s' \"\$1\" | grep -q 'fake dpvo missing' && [ ! -f '$DATA_ROOT/dpvo_installed' ]" _ "$out"
 echo "dpvo,mono,ucu,seq12,1" >> "$res/summary_testhost.csv"
 out=$(bash "$work/scripts/sync/migrate_to_git.sh" --pc brother --no-windows 2>&1); rc=$?
@@ -98,7 +99,9 @@ check "start: says code updated" has <(printf '%s' "$out") "код оновле�
 check "start: ran the missing recipe" has "$calls" "recipe dpvo install"
 check "start: method without recipe switched off" has <(printf '%s' "$out") "fakem: нема рецепта"
 check "start: status shown" has "$calls" "--status --from 13 --dir down --methods dpvo --runs 3"
-check "start: queue started from 13 down, keep data" has "$calls" "--from 13 --dir down --methods dpvo --runs 3 --report-every 10 --keep-data"
+check "start: queue started from 13 down" has "$calls" "--from 13 --dir down --methods dpvo --runs 3 --report-every 10"
+check "start: budget 60 passed to the worker" has "$calls" "python budget=60 "
+check "start: brother does not keep data" bash -c "! grep -q -- '--keep-data' '$calls'"
 check "start: results outside git" has "$calls" "--results-root $res "
 
 # ---------------------------------------------------------------- 4. --check installs and starts nothing
@@ -139,6 +142,13 @@ EOF
 bash "$runner/scripts/start.sh" --no-pull < /dev/null > /dev/null 2>&1
 check "all installed: --methods all, from 1 up, data deleted" has "$calls" "--from 1 --dir up --methods all --runs 3 --report-every 10"
 check "main preset: no --keep-data" bash -c "! grep -q -- '--keep-data' '$calls'"
+check "no budget key, no tty: runs without a budget" has "$calls" "python budget=none "
+printf 'START_AT=1\nKEEP_DATA=no\nDATA_BUDGET_GB=\n' > "$conf"; : > "$calls"
+out=$(bash "$runner/scripts/start.sh" --no-pull < /dev/null 2>&1)
+check "empty budget = no limit, not asked again" bash -c "grep -q 'python budget=none ' '$calls' && ! printf '%s' \"\$1\" | grep -q 'нема DATA_BUDGET_GB'" _ "$out"
+printf 'START_AT=1\nKEEP_DATA=no\nDATA_BUDGET_GB=0\n' > "$conf"
+out=$(bash "$runner/scripts/start.sh" --no-pull < /dev/null 2>&1); rc=$?
+check "budget 0 refused" bash -c "[ $rc != 0 ] && printf '%s' \"\$1\" | grep -q 'DATA_BUDGET_GB must be'" _ "$out"
 rm -f "$runner/scripts/setup/fakem.sh"
 
 # ---------------------------------------------------------------- 9. no settings and nobody to ask: refuse
@@ -149,6 +159,13 @@ check "no conf, no tty: queue not started" bash -c "! grep -q -- '--report-every
 printf 'START_AT=7\nKEEP_DATA=yes\n' > "$conf"
 out=$(bash "$runner/scripts/start.sh" --no-pull < /dev/null 2>&1); rc=$?
 check "broken conf: refuses with reason" bash -c "[ $rc != 0 ] && printf '%s' \"\$1\" | grep -q 'START_AT must be 1 or 13'" _ "$out"
+
+# ---------------------------------------------------------------- 9b. first start in a terminal asks direction and budget
+if command -v script > /dev/null; then
+  rm -f "$conf"
+  printf '13\n60\n' | script -qec "bash '$runner/scripts/start.sh' --check --no-pull" /dev/null > /dev/null 2>&1
+  check "first start: asks direction and budget" bash -c "grep -qx 'START_AT=13' '$conf' && grep -qx 'DATA_BUDGET_GB=60' '$conf' && grep -qx 'KEEP_DATA=no' '$conf'"
+fi
 
 # ---------------------------------------------------------------- 10. syntax of every shell script touched by S3
 for f in "$src"/scripts/start.sh "$src"/scripts/*_start.sh "$src"/scripts/*_status.sh "$src"/scripts/run_queue.sh \

@@ -90,7 +90,7 @@ bash scripts/accept_seq01.sh        # або: bash scripts/setup/setup_all_reall
 перевірка кількості поз → `eval.py` → рядок у `$RESULTS_ROOT/summary_<хост>.csv` → видаляє `.mcap` й експорт (лише коли все пораховано). На диску одночасно один сиквенс.
 
 **Звичайний запуск на обох ПК — `START.bat`** → `~/slam-runner/scripts/start.sh`: `git pull --ff-only` → налаштування ПК
-(`~/.config/slam/runner.conf`: `START_AT=1|13`, `KEEP_DATA=yes|no`, `RUNS`, `METHODS`, `REPORT_EVERY`) → `setup_all_really_all.sh --check`
+(`~/.config/slam/runner.conf`: `START_AT=1|13`, `DATA_BUDGET_GB` (передається воркеру через оточення), `KEEP_DATA=no`, `RUNS`, `METHODS`, `REPORT_EVERY`) → `setup_all_really_all.sh --check`
 (+ рецепт `scripts/setup/<метод>.sh` для відсутнього методу; не встановився — цього разу без нього) → входи HF/GitHub → `--status` → черга.
 `start.sh --check` — кроки 1–5 без встановлення й запуску; `start.sh --status` — лише таблиця (`STATUS.bat`). Порядок для людей — [`../RUNBOOK.md`](../RUNBOOK.md).
 
@@ -102,8 +102,8 @@ bash scripts/accept_seq01.sh        # або: bash scripts/setup/setup_all_reall
 ```bash
 # головний ПК (1, 2, 3, …)
 cd ~/slam-runner && bash scripts/run_queue.sh --from 1 --dir up --methods all --runs 3
-# ПК брата (13, 12, 11, …), дані тримає
-cd ~/slam-runner && bash scripts/run_queue.sh --from 13 --dir down --methods all --runs 3 --keep-data
+# ПК брата (13, 12, 11, …), бюджет диска 60 ГБ
+cd ~/slam-runner && DATA_BUDGET_GB=60 bash scripts/run_queue.sh --from 13 --dir down --methods all --runs 3
 ```
 - **Перервати:** `Ctrl-C` (один раз; готові прогони лишаються, незавершений викидається). **Продовжити:** та сама команда — готове пропускається.
 - **Де я:** `bash scripts/run_queue.sh --status` — таблиця 13 позицій (готово / в роботі / частково / чекає / ПЕРЕВІР) і рядок «Ти тут: N»

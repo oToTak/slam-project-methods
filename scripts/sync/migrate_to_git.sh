@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # One-time switch of a PC to the worker clone ~/slam-runner (git clone of GitHub main). Same script for both PCs; safe to re-run.
-#   bash scripts/sync/migrate_to_git.sh --pc brother   old copy ~/slam-local (bundle); this PC works from seq13 down, keeps .mcap
-#   bash scripts/sync/migrate_to_git.sh --pc main      old copy = the development repo; from seq01 up, deletes .mcap after a sequence
+#   bash scripts/sync/migrate_to_git.sh --pc brother   old copy ~/slam-local (bundle); from seq13 down, disk budget 60 GB
+#   bash scripts/sync/migrate_to_git.sh --pc main      old copy = the development repo; from seq01 up, disk budget asked at the first START
 # Options: --old DIR      where the old results/ are (default above)
 #                         (main: this repo, or /mnt/t/my_repos/slam-project-methods when run from the clone itself)
 #          --no-windows   do not touch launchers on the Windows side
@@ -98,8 +98,8 @@ fi
 echo "== 4/6 Налаштування цього ПК ($RUNNER_CONF) =="
 if [ -f "$RUNNER_CONF" ]; then
   echo "  вже є, не змінюю:"; grep -v '^#' "$RUNNER_CONF" | sed 's/^/    /'
-elif [ "$pc" = brother ]; then act conf_write 13 yes; echo "  записано: з 13 вниз, .mcap тримати"
-elif [ "$pc" = main ]; then act conf_write 1 no; echo "  записано: з 1 вгору, .mcap видаляти"
+elif [ "$pc" = brother ]; then act conf_write 13 60; echo "  записано: з 13 вниз, бюджет даних 60 ГБ, .mcap не тримати"
+elif [ "$pc" = main ]; then act conf_write 1; echo "  записано: з 1 вгору, .mcap не тримати; бюджет даних START.bat спитає при першому запуску"
 else echo "  нема; START.bat спитає два питання при першому запуску"; fi
 
 echo "== 5/6 Що встановлено (нічого не ставлю) =="

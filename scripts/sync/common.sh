@@ -13,10 +13,11 @@ slam_git_auth() {
   export GIT_ASKPASS="$askpass"
 }
 
-# Settings of THIS PC (not in git). Sets START_AT (1|13), DIRECTION (up|down), KEEP_DATA (yes|no), RUNS, METHODS, REPORT_EVERY.
+# Settings of THIS PC (not in git). Sets START_AT (1|13), DIRECTION (up|down), KEEP_DATA (yes|no), RUNS, METHODS, REPORT_EVERY,
+# DATA_BUDGET_GB (empty = no limit) and BUDGET_SET (1 if the file has the key at all, so we do not ask again).
 # Returns 0 = loaded, 1 = no file, 2 = file is broken (CONF_ERROR says why).
 conf_load() {
-  START_AT=""; DIRECTION=""; KEEP_DATA=no; RUNS=3; METHODS=all; REPORT_EVERY=10; CONF_ERROR=""
+  START_AT=""; DIRECTION=""; KEEP_DATA=no; RUNS=3; METHODS=all; REPORT_EVERY=10; DATA_BUDGET_GB=""; BUDGET_SET=0; CONF_ERROR=""
   [ -f "$RUNNER_CONF" ] || return 1
   local k v
   while IFS='=' read -r k v || [ -n "$k" ]; do
@@ -28,6 +29,7 @@ conf_load() {
       RUNS) RUNS=$v ;;
       METHODS) METHODS=$v ;;
       REPORT_EVERY) REPORT_EVERY=$v ;;
+      DATA_BUDGET_GB) DATA_BUDGET_GB=$v; BUDGET_SET=1 ;;
     esac
   done < "$RUNNER_CONF"
   case "$START_AT" in 1) DIRECTION=up ;; 13) DIRECTION=down ;; *) CONF_ERROR="START_AT must be 1 or 13, got '$START_AT'"; return 2 ;; esac
@@ -35,19 +37,21 @@ conf_load() {
   [[ "$RUNS" =~ ^[1-9][0-9]*$ ]] || { CONF_ERROR="RUNS must be a positive number, got '$RUNS'"; return 2; }
   [[ "$METHODS" =~ ^[A-Za-z0-9_:,]+$ ]] || { CONF_ERROR="METHODS must be 'all' or a comma list like dpvo,orbslam3:mono, got '$METHODS'"; return 2; }
   [[ "$REPORT_EVERY" =~ ^[0-9]+([.][0-9]+)?$ ]] || { CONF_ERROR="REPORT_EVERY must be minutes (0 = off), got '$REPORT_EVERY'"; return 2; }
+  [ -z "$DATA_BUDGET_GB" ] || [[ "$DATA_BUDGET_GB" =~ ^[0-9]+([.][0-9]+)?$ && ! "$DATA_BUDGET_GB" =~ ^0+([.]0*)?$ ]] \
+    || { CONF_ERROR="DATA_BUDGET_GB must be gigabytes > 0, or empty for no limit, got '$DATA_BUDGET_GB'"; return 2; }
   return 0
 }
 
-# conf_write START_AT KEEP_DATA
+# conf_write START_AT [DATA_BUDGET_GB]   (second argument absent = no DATA_BUDGET_GB line: start.sh asks for it)
 conf_write() {
   mkdir -p "$(dirname "$RUNNER_CONF")" && chmod 700 "$(dirname "$RUNNER_CONF")" 2>/dev/null
   cat > "$RUNNER_CONF" <<EOF
 # Settings of THIS PC for scripts/start.sh (START.bat). Not in git. Edit by hand, or delete the file to be asked again.
 # START_AT: 1 = this PC works from seq01 upwards (main PC), 13 = from seq13 downwards (brother's PC)
 START_AT=$1
-# KEEP_DATA: yes = keep the .mcap and the export of every sequence (6-20 GB of .mcap each, plus the export),
-#            so a method added later does not download it again; no = delete them once all runs of the sequence are done
-KEEP_DATA=$2
+# KEEP_DATA: no = delete the .mcap and the export once all runs of a sequence are done (both PCs; 6-20 GB of .mcap each);
+#            yes = keep them so a method added later does not download again (only with real free space for 13 sequences)
+KEEP_DATA=no
 # runs per method per sequence (a method may ask for fewer in scripts/queue/methods.conf)
 RUNS=3
 # all = every method of the registry that is installed; or a comma list (dpvo,orbslam3 or orbslam3:mono_inertial)
@@ -55,22 +59,45 @@ METHODS=all
 # push progress to the branch runner-<host> every N minutes (0 = off; then the other PC does not see this one)
 REPORT_EVERY=10
 EOF
+  [ $# -ge 2 ] && conf_set_budget "$2"
+  return 0
 }
 
-# Ask the two questions once (needs a terminal). Returns 1 if there is nobody to ask.
+# Append/replace DATA_BUDGET_GB (GB the data in DATA_ROOT may take; empty = no limit, only the real free space counts).
+conf_set_budget() {
+  local tmp="$RUNNER_CONF.tmp"
+  grep -v -e '^DATA_BUDGET_GB=' -e '^# DATA_BUDGET_GB:' "$RUNNER_CONF" > "$tmp" 2>/dev/null
+  {
+    echo "# DATA_BUDGET_GB: at most this many GB of data in DATA_ROOT (the worker skips a sequence that does not fit); empty = no limit"
+    echo "DATA_BUDGET_GB=$1"
+  } >> "$tmp" && mv "$tmp" "$RUNNER_CONF"
+}
+
+# Ask for the disk budget (needs a terminal). Returns 1 if there is nobody to ask.
+conf_ask_budget() {
+  [ -t 0 ] || return 1
+  local g
+  echo "  Скільки місця можна зайняти даними на цьому ПК? Дивись реальне вільне місце диска у Windows (Провідник),"
+  echo "  а не те, що показує WSL (там віртуальний розмір диска, ~1 ТБ). Найбільший сиквенс у дорозі займає ~26 ГБ."
+  while :; do
+    read -rp "  Бюджет у ГБ (ПК брата: 60; Enter = без ліміту): " g || return 1
+    g=$(printf '%s' "$g" | tr -d ' ')
+    if [ -z "$g" ] || [[ "$g" =~ ^[0-9]+([.][0-9]+)?$ && ! "$g" =~ ^0+([.]0*)?$ ]]; then break; fi
+    echo "  Введи число гігабайтів більше 0 або просто Enter."
+  done
+  conf_set_budget "$g"
+}
+
+# Ask the questions once (needs a terminal). Returns 1 if there is nobody to ask.
 conf_ask() {
   [ -t 0 ] || return 1
-  local a b
+  local a
   echo "  Перший запуск на цьому ПК: два питання (відповіді запишу в $RUNNER_CONF, потім можна змінити в ньому)."
   while :; do
     read -rp "  Цей ПК копає з початку (1) чи з кінця (13)? Головний ПК: 1, ПК брата: 13. [1/13]: " a || return 1
     case "$a" in 1|13) break ;; esac; echo "  Введи 1 або 13."
   done
-  while :; do
-    read -rp "  Тримати .mcap після сиквенсу? Так, якщо на диску сотні ГБ (брат: так, головний ПК: ні). [y/n]: " b || return 1
-    case "$b" in y|Y|yes|т|Т|так) b=yes; break ;; n|N|no|н|Н|ні) b=no; break ;; esac; echo "  Введи y або n."
-  done
-  conf_write "$a" "$b"
+  conf_write "$a" && conf_ask_budget
 }
 
 # Methods of the registry (first column of scripts/queue/methods.conf), unique, in file order.
