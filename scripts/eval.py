@@ -115,6 +115,17 @@ def fmt(x, nd=6):
     return "" if x is None or (isinstance(x, float) and not math.isfinite(x)) else f"{x:.{nd}f}"
 
 
+def extra_path_for(summary):
+    """Sidecar table next to a summary file: summary.csv -> summary_extra.csv,
+    summary_<host>.csv -> summary_extra_<host>.csv (two PCs never share a file), other.csv -> other_extra.csv."""
+    summary = Path(summary)
+    if summary.name == "summary.csv":
+        return summary.with_name("summary_extra.csv")
+    if summary.name.startswith("summary_"):
+        return summary.with_name("summary_extra_" + summary.name[len("summary_"):])
+    return summary.with_name(summary.stem + "_extra" + summary.suffix)
+
+
 def next_run(res_dir):
     nums = [int(m.group(1)) for p in Path(res_dir).glob("traj_run*.txt")
             if (m := re.fullmatch(r"traj_run(\d+)\.txt", p.name))]
@@ -321,7 +332,7 @@ def evaluate(args):
         print("(dry run: nothing written)")
         return row
     summary = Path(args.summary) if args.summary else Path(args.results_root) / "summary.csv"
-    extra_path = summary.with_name("summary_extra.csv")
+    extra_path = extra_path_for(summary)
     append_row(summary, SUMMARY_FIELDS, row, ["method", "mode", "dataset", "seq", "run"])
     append_row(extra_path, EXTRA_FIELDS, extra, ["method", "mode", "dataset", "seq", "run"])
     update_meta(meta_path, int(run), coverage, lost, "; ".join(notes) if notes else "",
@@ -351,7 +362,8 @@ def build_parser():
                     help="if set, a trajectory gap longer than this also sets tracking_lost (rule to be agreed)")
     ap.add_argument("--commit", help="commit hash for the row (default: meta.yaml / git HEAD)")
     ap.add_argument("--results-root", default=str(REPO_ROOT / "results"))
-    ap.add_argument("--summary", help="summary.csv path (default: <results-root>/summary.csv)")
+    ap.add_argument("--summary", help="summary.csv path (default: <results-root>/summary.csv); "
+                                      "the queue worker passes results/summary_<host>.csv, the sidecar becomes summary_extra_<host>.csv")
     ap.add_argument("--no-plot", action="store_true")
     ap.add_argument("--dry-run", action="store_true", help="print metrics, write nothing")
     return ap

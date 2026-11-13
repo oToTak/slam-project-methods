@@ -157,6 +157,17 @@ class EvalTest(unittest.TestCase):
         self.run_eval("--run", "1")
         self.assertEqual((d / "meta.yaml").read_text(), before)
 
+    def test_per_host_summary_has_its_own_sidecar(self):
+        self.assertEqual(ev.extra_path_for("r/summary.csv"), Path("r/summary_extra.csv"))
+        self.assertEqual(ev.extra_path_for("r/summary_PC1.csv"), Path("r/summary_extra_PC1.csv"))
+        self.assertEqual(ev.extra_path_for("r/other.csv"), Path("r/other_extra.csv"))
+        self.write_traj(1)
+        self.run_eval("--summary", str(self.res / "summary_PC1.csv"))
+        self.assertEqual(len(self.rows("summary_PC1.csv")), 1)
+        self.assertEqual(len(self.rows("summary_extra_PC1.csv")), 1)
+        self.assertFalse((self.res / "summary.csv").exists())
+        self.assertFalse((self.res / "summary_extra.csv").exists())
+
     def test_empty_trajectory_is_full_failure(self):
         d = self.res / "testm" / "mono" / "ucu" / "seqS"
         d.mkdir(parents=True)
