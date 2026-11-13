@@ -1,7 +1,4 @@
 @echo off
-chcp 65001 >nul
-title SLAM MAIN - STATUS
-for %%I in ("%~dp0..\..") do set "REPO=%%~fI"
-wsl -d Ubuntu-22.04 --cd "%REPO%" -- bash scripts/main_status.sh
-echo.
-pause
+rem Old name, kept so old shortcuts do not silently do something else: exactly the same as STATUS.bat.
+echo (STATUS_MAIN.bat - stara nazva, zapuskayu STATUS.bat)
+call "%~dp0STATUS.bat" %*

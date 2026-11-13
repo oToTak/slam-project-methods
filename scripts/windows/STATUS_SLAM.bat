@@ -1,6 +1,4 @@
 @echo off
-chcp 65001 >nul
-title SLAM - STATUS
-wsl -d Ubuntu-22.04 --cd ~/slam-local -- bash scripts/brother_status.sh
-echo.
-pause
+rem Old name, kept so old shortcuts do not silently do something else: exactly the same as STATUS.bat.
+echo (STATUS_SLAM.bat - stara nazva, zapuskayu STATUS.bat)
+call "%~dp0STATUS.bat" %*
