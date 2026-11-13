@@ -1,0 +1,205 @@
+{
+ "generated_at": "2026-11-13T12:41:20.520067+00:00",
+ "content_hash": "cb91bd1be13639726311b393fb3997b879d0656b805fe514b09fca00783e8e47",
+ "dataset": "ucu",
+ "total_done": 0,
+ "total_needed": 39,
+ "methods": [
+  {
+   "key": "dpvo:mono",
+   "method": "dpvo",
+   "mode": "mono",
+   "runs": 3
+  }
+ ],
+ "method_done": {
+  "dpvo:mono": 0
+ },
+ "hosts": {
+  "StarDestroyer": {
+   "ref": "refs/remotes/origin/runner-StarDestroyer",
+   "last_report": "2026-11-13T13:35:39+02:00",
+   "stale": false,
+   "worker": "idle",
+   "busy": false,
+   "seq": null,
+   "method": null,
+   "run": null,
+   "since": null,
+   "dir": null,
+   "runs_done": 0
+  }
+ },
+ "sequences": [
+  {
+   "n": 1,
+   "seq": "seq01",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 2,
+   "seq": "seq02",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 3,
+   "seq": "seq03",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 4,
+   "seq": "seq04",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 5,
+   "seq": "seq05",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 6,
+   "seq": "seq06",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 7,
+   "seq": "seq07",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 8,
+   "seq": "seq08",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 9,
+   "seq": "seq09",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 10,
+   "seq": "seq10",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 11,
+   "seq": "seq11",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 12,
+   "seq": "seq12",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  },
+  {
+   "n": 13,
+   "seq": "seq13",
+   "cells": {
+    "dpvo:mono": {
+     "done": 0,
+     "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    }
+   }
+  }
+ ],
+ "other_results": []
+}
