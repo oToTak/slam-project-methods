@@ -2,9 +2,9 @@ method: dpvo
 mode: mono
 dataset: ucu
 seq: seq02
-run: 1
+run: 2
 commit: b0f45fd950072169f01ddf018d1fee380e6bdfb7
 config: configs/dpvo/calib_ucu.txt
 coverage: 1.00
 tracking_lost: false
-notes: "DPVO 0ac95b6, config/default.yaml, stride=1, 10159 frames. host=Teodor. NVIDIA GeForce GTX 1660 SUPER; wall 5557s (1.8 fps); VRAM peak 3230 MiB total used (base 1014), torch alloc 726 / reserved 2158 MiB; RAM peak 1411 MiB."
+notes: "DPVO 0ac95b6, config/default.yaml, stride=1, 10159 frames. host=Teodor. NVIDIA GeForce GTX 1660 SUPER; wall 5513s (1.8 fps); VRAM peak 3232 MiB total used (base 1014), torch alloc 726 / reserved 2160 MiB; RAM peak 1404 MiB."
