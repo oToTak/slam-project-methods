@@ -1,0 +1,15 @@
+# data and heavy artifacts (CONVENTIONS.md §9)
+data/
+*.zip
+*.pth
+*.mcap
+build/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# os
+.DS_Store
