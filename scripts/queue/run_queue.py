@@ -376,14 +376,20 @@ def snapshot_from_dir(src, me):
 
 
 def report_repo():
-    return os.environ.get("REPORT_REPO", DEFAULT_REPORT_REPO)
+    """The repository with the runner-* branches: same lookup as push_status.sh (REPORT_REPO, then SLAM_GIT_URL)."""
+    return os.environ.get("REPORT_REPO") or os.environ.get("SLAM_GIT_URL") or DEFAULT_REPORT_REPO
+
+
+def conf_dir():
+    """Settings of this PC (github_token); SLAM_CONF_DIR from scripts/setup/env.sh, default ~/.config/slam."""
+    return Path(os.environ.get("SLAM_CONF_DIR") or Path.home() / ".config" / "slam")
 
 
 def git_env():
-    """Same token mechanism as push_status.sh (~/.config/slam/github_token + askpass); no token: anonymous read."""
+    """Same token mechanism as push_status.sh (github_token + askpass); no token: anonymous read."""
     env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
     if report_repo().startswith("https://"):
-        cfg = Path.home() / ".config" / "slam"
+        cfg = conf_dir()
         tok = cfg / "github_token"
         if tok.is_file() and tok.stat().st_size > 0:
             ask = cfg / "git-askpass-peers.sh"      # own file: push_status.sh rewrites git-askpass.sh concurrently
@@ -946,7 +952,7 @@ def report_possible(ctx):
         return None
     if not (REPO_ROOT / "scripts" / "report" / "push_status.sh").exists():
         return "нема scripts/report/push_status.sh"
-    if report_repo().startswith("https://") and not (Path.home() / ".config" / "slam" / "github_token").is_file():
+    if report_repo().startswith("https://") and not (conf_dir() / "github_token").is_file():
         return "нема токена GitHub: bash scripts/report/push_status.sh --token"
     return None
 
