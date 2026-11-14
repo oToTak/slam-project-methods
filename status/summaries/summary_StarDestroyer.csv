@@ -25,3 +25,5 @@ dpvo,mono,ucu,seq06,2,4.284,,1.00,false,b0f45fd
 dpvo,mono,ucu,seq06,3,4.428,,1.00,false,b0f45fd
 dpvo,mono,ucu,seq05,1,11.567,,1.00,false,b0f45fd
 dpvo,mono,ucu,seq05,2,14.794,,1.00,false,b0f45fd
+wheel_odom,odom,ucu,seq13,1,101.462,,0.95,false,e30fda3
+wheel_odom,odom,ucu,seq12,1,103.061,,1.00,false,e30fda3

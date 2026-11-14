@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-14T19:29:14.063150+00:00",
- "content_hash": "f549d05dd02e90b6bb44477cd93db1e858fc50f336b741988be28e77b1805cda",
+ "generated_at": "2026-11-14T23:23:50.183109+00:00",
+ "content_hash": "615e432d85b0035883f22f7aae1dcb520e3f7d8b20b301214a857d16c33a9352",
  "dataset": "ucu",
- "total_done": 31,
+ "total_done": 33,
  "total_needed": 52,
  "methods": [
   {
@@ -20,21 +20,21 @@
  ],
  "method_done": {
   "dpvo:mono": 31,
-  "wheel_odom:odom": 0
+  "wheel_odom:odom": 2
  },
  "hosts": {
   "StarDestroyer": {
    "ref": "refs/remotes/origin/runner-StarDestroyer",
-   "last_report": "2026-11-14T11:09:14+02:00",
-   "stale": true,
-   "worker": "idle",
-   "busy": false,
-   "seq": null,
+   "last_report": "2026-11-14T23:37:07+02:00",
+   "stale": false,
+   "worker": "running",
+   "busy": true,
+   "seq": "seq11",
    "method": null,
    "run": null,
-   "since": null,
-   "dir": null,
-   "runs_done": 26
+   "since": "2026-11-14T23:37:04",
+   "dir": "down",
+   "runs_done": 28
   },
   "Teodor": {
    "ref": "refs/remotes/origin/runner-Teodor",
@@ -377,9 +377,13 @@
      "in_progress": []
     },
     "wheel_odom:odom": {
-     "done": 0,
+     "done": 1,
      "needed": 1,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -407,9 +411,13 @@
      "in_progress": []
     },
     "wheel_odom:odom": {
-     "done": 0,
+     "done": 1,
      "needed": 1,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
