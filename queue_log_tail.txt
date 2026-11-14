@@ -1,15 +1,3 @@
-100%|█████████▉| 144973/145496 [20:06<00:03, 137.89it/s]
-100%|█████████▉| 144987/145496 [20:06<00:03, 135.06it/s]
-100%|█████████▉| 145002/145496 [20:06<00:03, 136.22it/s]
-100%|█████████▉| 145018/145496 [20:07<00:03, 140.64it/s]
-100%|█████████▉| 145033/145496 [20:07<00:03, 140.78it/s]
-100%|█████████▉| 145048/145496 [20:07<00:03, 141.28it/s]
-100%|█████████▉| 145063/145496 [20:07<00:03, 140.95it/s]
-100%|█████████▉| 145078/145496 [20:07<00:02, 142.31it/s]
-100%|█████████▉| 145093/145496 [20:07<00:02, 141.24it/s]
-100%|█████████▉| 145109/145496 [20:07<00:02, 143.62it/s]
-100%|█████████▉| 145124/145496 [20:07<00:02, 143.56it/s]
-100%|█████████▉| 145140/145496 [20:07<00:02, 144.35it/s]
 100%|█████████▉| 145155/145496 [20:08<00:02, 145.16it/s]
 100%|█████████▉| 145170/145496 [20:08<00:02, 145.75it/s]
 100%|█████████▉| 145185/145496 [20:08<00:02, 145.66it/s]
@@ -58,3 +46,15 @@ plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq06/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
 09:25:58    готово за 28.3 хв: поз 18745/18745; рядок додано в summary_StarDestroyer.csv
 09:25:58 -- seq06 dpvo:mono run3/3: старт
+NVIDIA GeForce RTX 3060; wall 1681s (11.2 fps); VRAM peak 2162 MiB total used (base 1052), torch alloc 754 / reserved 1036 MiB; RAM peak 1649 MiB.
+Wrote /home/calc/slam-data/results/dpvo/mono/ucu/seq06/traj_run3.txt (18745 poses) and /home/calc/slam-data/results/dpvo/mono/ucu/seq06/meta.yaml
+== dpvo mono ucu/seq06 run3 ==
+ATE RMSE   : 4.428 m   (matched 626/627)
+coverage   : 1.00   tracking_lost: false   poses: 18745   max gap: 210.954 s
+drift 50 m : 4.227 m (574 seg)   100 m: 5.744 m (527 seg)
+plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq06/traj_xy.pdf
+appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
+09:54:04    готово за 28.1 хв: поз 18745/18745; рядок додано в summary_StarDestroyer.csv
+09:54:04 seq06: усі прогони готові
+09:54:04   видалено /home/calc/slam-data/ucu/sequence-6
+09:54:04   видалено /home/calc/slam-data/ucu_tum/seq06
