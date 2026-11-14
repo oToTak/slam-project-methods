@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-13T20:02:25.366655+00:00",
- "content_hash": "32cc372ae7ff29540b72733bccc8aa3e9f40c390d971c0379b660d6c6dc047ab",
+ "generated_at": "2026-11-14T00:49:57.737443+00:00",
+ "content_hash": "d1071b686d0f8b336fef3f85872d1b117f3164c2eacc302b8a2d77d9c1bcd8b3",
  "dataset": "ucu",
- "total_done": 8,
+ "total_done": 17,
  "total_needed": 39,
  "methods": [
   {
@@ -13,21 +13,21 @@
   }
  ],
  "method_done": {
-  "dpvo:mono": 8
+  "dpvo:mono": 17
  },
  "hosts": {
   "StarDestroyer": {
    "ref": "refs/remotes/origin/runner-StarDestroyer",
-   "last_report": "2026-11-13T21:40:09+02:00",
+   "last_report": "2026-11-14T02:14:39+02:00",
    "stale": false,
    "worker": "running",
    "busy": true,
-   "seq": "seq12",
+   "seq": "seq09",
    "method": null,
    "run": null,
-   "since": "2026-11-13T21:40:04",
+   "since": "2026-11-14T02:14:37",
    "dir": "down",
-   "runs_done": 3
+   "runs_done": 12
   },
   "Teodor": {
    "ref": "refs/remotes/origin/runner-Teodor",
@@ -183,9 +183,19 @@
    "seq": "seq10",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -196,9 +206,19 @@
    "seq": "seq11",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -209,9 +229,19 @@
    "seq": "seq12",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }

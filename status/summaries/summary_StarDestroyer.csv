@@ -2,3 +2,12 @@ method,mode,dataset,seq,run,ate_rmse_m,rpe_trans_m,coverage,tracking_lost,commit
 dpvo,mono,ucu,seq13,1,63.387,,1.00,false,b0f45fd
 dpvo,mono,ucu,seq13,2,17.139,,1.00,false,b0f45fd
 dpvo,mono,ucu,seq13,3,64.297,,1.00,false,b0f45fd
+dpvo,mono,ucu,seq12,1,4.000,,1.00,false,b0f45fd
+dpvo,mono,ucu,seq12,2,4.285,,1.00,false,b0f45fd
+dpvo,mono,ucu,seq12,3,4.038,,1.00,false,b0f45fd
+dpvo,mono,ucu,seq11,1,4.572,,1.00,false,b0f45fd
+dpvo,mono,ucu,seq11,2,4.577,,1.00,false,b0f45fd
+dpvo,mono,ucu,seq11,3,4.578,,1.00,false,b0f45fd
+dpvo,mono,ucu,seq10,1,11.480,,1.00,false,b0f45fd
+dpvo,mono,ucu,seq10,2,12.907,,1.00,false,b0f45fd
+dpvo,mono,ucu,seq10,3,11.638,,1.00,false,b0f45fd
