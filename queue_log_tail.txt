@@ -1,15 +1,3 @@
-100%|█████████▉| 144785/145191 [21:52<00:03, 125.95it/s]
-100%|█████████▉| 144799/145191 [21:53<00:03, 123.46it/s]
-100%|█████████▉| 144814/145191 [21:53<00:03, 120.44it/s]
-100%|█████████▉| 144827/145191 [21:53<00:03, 119.40it/s]
-100%|█████████▉| 144839/145191 [21:53<00:03, 116.60it/s]
-100%|█████████▉| 144851/145191 [21:53<00:02, 114.86it/s]
-100%|█████████▉| 144863/145191 [21:53<00:02, 112.39it/s]
-100%|█████████▉| 144875/145191 [21:53<00:02, 111.86it/s]
-100%|█████████▉| 144887/145191 [21:53<00:02, 106.32it/s]
-100%|█████████▉| 144898/145191 [21:53<00:02, 104.78it/s]
-100%|█████████▉| 144909/145191 [21:54<00:02, 103.58it/s]
-100%|█████████▉| 144920/145191 [21:54<00:02, 101.89it/s]
 100%|█████████▉| 144931/145191 [21:54<00:02, 101.73it/s]
 100%|█████████▉| 144942/145191 [21:54<00:02, 101.32it/s]
 100%|█████████▉| 144953/145191 [21:54<00:02, 101.10it/s]
@@ -58,3 +46,15 @@ plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq08/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
 05:17:52    готово за 27.8 хв: поз 18667/18667; рядок додано в summary_StarDestroyer.csv
 05:17:52 -- seq08 dpvo:mono run3/3: старт
+NVIDIA GeForce RTX 3060; wall 1669s (11.2 fps); VRAM peak 2558 MiB total used (base 1052), torch alloc 812 / reserved 1432 MiB; RAM peak 1662 MiB.
+Wrote /home/calc/slam-data/results/dpvo/mono/ucu/seq08/traj_run3.txt (18667 poses) and /home/calc/slam-data/results/dpvo/mono/ucu/seq08/meta.yaml
+== dpvo mono ucu/seq08 run3 ==
+ATE RMSE   : 63.328 m   (matched 623/623)
+coverage   : 1.00   tracking_lost: false   poses: 18667   max gap: 0.167 s
+drift 50 m : 38.355 m (572 seg)   100 m: 66.496 m (522 seg)
+plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq08/traj_xy.pdf
+appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
+05:45:46    готово за 27.9 хв: поз 18667/18667; рядок додано в summary_StarDestroyer.csv
+05:45:46 seq08: усі прогони готові
+05:45:46   видалено /home/calc/slam-data/ucu/sequence-8
+05:45:46   видалено /home/calc/slam-data/ucu_tum/seq08
