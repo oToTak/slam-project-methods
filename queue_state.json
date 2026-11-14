@@ -1,1 +1,1 @@
-{"pid": 367, "host": "StarDestroyer", "seq": "seq07", "method": "dpvo:mono", "run": 3, "since": "2026-11-14T07:22:04", "frm": 13, "dir": "down", "runs": 3, "methods": ["dpvo:mono"]}
+{"pid": 367, "host": "StarDestroyer", "seq": "seq06", "method": null, "run": null, "since": "2026-11-14T07:49:01", "frm": 13, "dir": "down", "runs": 3, "methods": ["dpvo:mono"]}
