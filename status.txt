@@ -1,17 +1,17 @@
-host: StarDestroyer   updated: 2026-11-14T09:54:06+02:00   code: b0f45fd
+host: StarDestroyer   updated: 2026-11-14T10:23:58+02:00   code: b0f45fd
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
-Місце для даних: доступно 55.6 GB = мінімум із: df 1001.9 GB; диск Windows C:\ під vhdx 161.9 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 4.4 GB = 55.6 GB
+Місце для даних: доступно 38.2 GB = мінімум із: df 984.4 GB; диск Windows C:\ під vhdx 161.9 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 21.8 GB = 38.2 GB
 Методи (прогонів): dpvo:mono×3   межа stop-before: нема
-Воркер ПРАЦЮЄ (pid 367): seq05   з 2026-11-14T09:54:05; напрямок down від 13
-Інший ПК Teodor: останній звіт 2026-11-13 18:49 (15.1 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
+Воркер ПРАЦЮЄ (pid 367): seq05 dpvo:mono run1 з 2026-11-14T10:21:19; напрямок down від 13
+Інший ПК Teodor: останній звіт 2026-11-13 18:49 (15.6 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
 
  #  seq       .mcap  прогони (готово/треба, хто) стан         дані на диску
  1  seq01    6.5 GB  dpvo 3/3 Teodor            готово       -
  2  seq02   10.2 GB  dpvo 2/3 Teodor            частково     -
  3  seq03   10.1 GB  dpvo 0/3                   чекає        -
  4  seq04   12.8 GB  dpvo 0/3                   чекає        -
- 5  seq05   12.7 GB  dpvo 0/3                   в роботі     -
+ 5  seq05   12.7 GB  dpvo 0/3                   в роботі     є .mcap
  6  seq06   18.8 GB  dpvo 3/3 StarDestroyer     готово       -
  7  seq07   18.5 GB  dpvo 3/3 StarDestroyer     готово       -
  8  seq08   18.7 GB  dpvo 3/3 StarDestroyer     готово       -
@@ -25,4 +25,4 @@ host: StarDestroyer   updated: 2026-11-14T09:54:06+02:00   code: b0f45fd
 Готово підряд від твого кінця (13, down): seq13 … seq06
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 0 %, 1383 MiB, 12288 MiB, 46
+NVIDIA GeForce RTX 3060, 71 %, 2482 MiB, 12288 MiB, 57
