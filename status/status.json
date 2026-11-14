@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-14T00:49:57.737443+00:00",
- "content_hash": "d1071b686d0f8b336fef3f85872d1b117f3164c2eacc302b8a2d77d9c1bcd8b3",
+ "generated_at": "2026-11-14T07:30:03.997910+00:00",
+ "content_hash": "4c0d5ce4d287fb81303f4d3a86821d111ea24f82f7c5046aa3e8c0b0ea85427d",
  "dataset": "ucu",
- "total_done": 17,
+ "total_done": 27,
  "total_needed": 39,
  "methods": [
   {
@@ -13,21 +13,21 @@
   }
  ],
  "method_done": {
-  "dpvo:mono": 17
+  "dpvo:mono": 27
  },
  "hosts": {
   "StarDestroyer": {
    "ref": "refs/remotes/origin/runner-StarDestroyer",
-   "last_report": "2026-11-14T02:14:39+02:00",
+   "last_report": "2026-11-14T09:03:36+02:00",
    "stale": false,
    "worker": "running",
    "busy": true,
-   "seq": "seq09",
-   "method": null,
-   "run": null,
-   "since": "2026-11-14T02:14:37",
+   "seq": "seq06",
+   "method": "dpvo:mono",
+   "run": 2,
+   "since": "2026-11-14T08:57:42",
    "dir": "down",
-   "runs_done": 12
+   "runs_done": 22
   },
   "Teodor": {
    "ref": "refs/remotes/origin/runner-Teodor",
@@ -131,11 +131,17 @@
    "seq": "seq06",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 1,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
-     "in_progress": []
+     "in_progress": [
+      "StarDestroyer"
+     ]
     }
    }
   },
@@ -144,9 +150,19 @@
    "seq": "seq07",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -157,9 +173,19 @@
    "seq": "seq08",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -170,9 +196,19 @@
    "seq": "seq09",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
