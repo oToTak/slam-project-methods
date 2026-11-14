@@ -644,12 +644,28 @@ def run_streamed(cmd, *, env, cwd, logs, timeout_s):
 
 # ----------------------------------------------------------------------------- disk and data
 
-def disk_need_gb(ctx, n):
-    """Free space needed to bring sequence n to the exported state (0 if the export already exists)."""
-    if (ctx.export_dir(n) / "rgb.txt").exists():
+# Files a method needs in the exported sequence besides rgb.txt. An export made before such a file existed is completed by
+# scripts/data/fetch_ucu.sh (it adds odom.txt in place), so the worker fetches again when a method of the pending runs lacks its file.
+EXPORT_NEEDS = {"wheel_odom": "odom.txt"}
+
+
+def export_ready(ctx, n, keys=None):
+    """True if the exported sequence n has rgb.txt and every extra file the methods in `keys` (registry keys) need."""
+    d = ctx.export_dir(n)
+    if not (d / "rgb.txt").exists():
+        return False
+    names = {ctx.registry[k].name for k in (ctx.methods if keys is None else keys)}
+    return all((d / EXPORT_NEEDS[m]).exists() for m in names if m in EXPORT_NEEDS)
+
+
+def disk_need_gb(ctx, n, keys=None):
+    """Free space needed to bring sequence n to the exported state (0 if the export is already complete for `keys`)."""
+    if export_ready(ctx, n, keys):
         return 0.0
     size = MCAP_GB[n]
     have_mcap = any(ctx.raw_dir(n).glob("*.mcap")) if ctx.raw_dir(n).is_dir() else False
+    if (ctx.export_dir(n) / "rgb.txt").exists():      # only the missing extra file: the .mcap again, no new export
+        return 0.0 if have_mcap else size + DISK_RESERVE_GB
     return (0.0 if have_mcap else size) + EXPORT_SHARE * size + DISK_RESERVE_GB
 
 
@@ -921,8 +937,9 @@ def process_seq(ctx, log, n):
         log.attach(fh)
         try:
             log(f"== {seq}: прогонів до виконання {len(todo)}; лог {seq_log}")
-            if not (ctx.export_dir(n) / "rgb.txt").exists():
-                need = disk_need_gb(ctx, n)
+            todo_keys = {k for _, k in todo}
+            if not export_ready(ctx, n, todo_keys):
+                need = disk_need_gb(ctx, n, todo_keys)
                 if not ctx.args.no_disk_check:
                     avail, why, warns = disk_room(ctx)
                     for w in warns:
@@ -1121,7 +1138,7 @@ def cmd_run(ctx):
         refresh_peers(ctx, log)
         if ctx.use_peers:
             log(f"інші ПК: {', '.join(p['host'] for p in ctx.peers) or 'гілок runner-* інших ПК ще нема'}")
-        check_environment(ctx, log, need_hf=any(pending_runs(ctx, n) and not (ctx.export_dir(n) / "rgb.txt").exists() for n in order if allowed(ctx, n)))
+        check_environment(ctx, log, need_hf=any(pending_runs(ctx, n) and not export_ready(ctx, n, {k for _, k in pending_runs(ctx, n)}) for n in order if allowed(ctx, n)))
         for n in order:
             if INTERRUPT.is_set():
                 raise Interrupted()
@@ -1245,9 +1262,10 @@ def cmd_dry_run(ctx):
     for n in order:
         todo = pending_runs(ctx, n, owners)
         busy = peer_claims(ctx, n) if todo else []
-        need = disk_need_gb(ctx, n) if todo and not busy else 0.0
+        tk = {k for _, k in todo}
+        need = disk_need_gb(ctx, n, tk) if todo and not busy else 0.0
         peak = max(peak, need)
-        if todo and not busy and not (ctx.export_dir(n) / "rgb.txt").exists():
+        if todo and not busy and not export_ready(ctx, n, tk):
             total_dl += 0.0 if any(ctx.raw_dir(n).glob("*.mcap")) else MCAP_GB[n]
         if not todo:
             act = "пропустити (готово)"

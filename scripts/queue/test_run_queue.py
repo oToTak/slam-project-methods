@@ -177,6 +177,30 @@ class QueueTest(unittest.TestCase):
         (ctx.export_dir(10) / "rgb.txt").write_text("1.0 a\n")
         self.assertEqual(rq.disk_need_gb(ctx, 10), 0.0)
 
+    def test_method_needing_odom_fetches_an_export_without_it(self):
+        """wheel_odom needs odom.txt: an old export (rgb.txt only) is completed by fetch; a complete one is not fetched again."""
+        run = self.root / "run.sh"
+        (self.root / "methods.conf").write_text(f"wheel_odom | odom | {run} | cpu | 1\nfake | mono | {run} | cpu\n")
+
+        def export(n, odom):
+            d = self.data / "ucu_tum" / f"seq{n:02d}"
+            d.mkdir(parents=True)
+            (d / "rgb.txt").write_text("".join(f"{i}.0 rgb/{i}.png\n" for i in range(1, 11)))
+            if odom:
+                (d / "odom.txt").write_text("1.0 0 0 0 0 0 0 1\n")
+        export(1, odom=False)
+        export(2, odom=True)
+        export(3, odom=False)
+        r = self.queue("--only", "1", "--keep-data", methods="wheel_odom")        # odom.txt missing -> fetched
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertEqual(self.lines("fetch.calls"), ["1"])
+        r = self.queue("--only", "2", "--keep-data", methods="wheel_odom")        # complete export -> not fetched
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertEqual(self.lines("fetch.calls"), ["1"])
+        r = self.queue("--only", "3", "--keep-data", methods="fake")              # method without that need -> not fetched
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertEqual(self.lines("fetch.calls"), ["1"])
+
     # --- worker behaviour
 
     def test_up_from_one_stops_before_boundary_and_cleans_up(self):
