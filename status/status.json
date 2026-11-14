@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-14T07:30:03.997910+00:00",
- "content_hash": "4c0d5ce4d287fb81303f4d3a86821d111ea24f82f7c5046aa3e8c0b0ea85427d",
+ "generated_at": "2026-11-14T14:31:02.950280+00:00",
+ "content_hash": "17564257a39e2c810c48b9d1b5fcc9e6aa421efb458517fde50d3a6fe5b96ff7",
  "dataset": "ucu",
- "total_done": 27,
+ "total_done": 31,
  "total_needed": 39,
  "methods": [
   {
@@ -13,21 +13,21 @@
   }
  ],
  "method_done": {
-  "dpvo:mono": 27
+  "dpvo:mono": 31
  },
  "hosts": {
   "StarDestroyer": {
    "ref": "refs/remotes/origin/runner-StarDestroyer",
-   "last_report": "2026-11-14T09:03:36+02:00",
-   "stale": false,
-   "worker": "running",
-   "busy": true,
-   "seq": "seq06",
-   "method": "dpvo:mono",
-   "run": 2,
-   "since": "2026-11-14T08:57:42",
-   "dir": "down",
-   "runs_done": 22
+   "last_report": "2026-11-14T11:09:14+02:00",
+   "stale": true,
+   "worker": "idle",
+   "busy": false,
+   "seq": null,
+   "method": null,
+   "run": null,
+   "since": null,
+   "dir": null,
+   "runs_done": 26
   },
   "Teodor": {
    "ref": "refs/remotes/origin/runner-Teodor",
@@ -118,9 +118,16 @@
    "seq": "seq05",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 2,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -131,17 +138,21 @@
    "seq": "seq06",
    "cells": {
     "dpvo:mono": {
-     "done": 1,
+     "done": 3,
      "needed": 3,
      "runs": {
       "1": [
        "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
       ]
      },
      "bad": [],
-     "in_progress": [
-      "StarDestroyer"
-     ]
+     "in_progress": []
     }
    }
   },
