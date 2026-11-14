@@ -1,0 +1,10 @@
+method: wheel_odom
+mode: odom
+dataset: ucu
+seq: seq12
+run: 1
+commit: e30fda3813cef9c9ba399d434debd7a45a595987
+config: 
+coverage: 1.00
+tracking_lost: false
+notes: "wheel odometry (/odom) resampled to rgb.txt times: linear position, slerp orientation; 6727 odometry poses, 10904 of 10908 frames inside the odometry time span. Deterministic: 1 run. Pose frame = odom frame (evaluation aligns SE(3)). host=StarDestroyer."
