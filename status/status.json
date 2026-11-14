@@ -1,19 +1,26 @@
 {
- "generated_at": "2026-11-14T14:31:02.950280+00:00",
- "content_hash": "17564257a39e2c810c48b9d1b5fcc9e6aa421efb458517fde50d3a6fe5b96ff7",
+ "generated_at": "2026-11-14T19:29:14.063150+00:00",
+ "content_hash": "f549d05dd02e90b6bb44477cd93db1e858fc50f336b741988be28e77b1805cda",
  "dataset": "ucu",
  "total_done": 31,
- "total_needed": 39,
+ "total_needed": 52,
  "methods": [
   {
    "key": "dpvo:mono",
    "method": "dpvo",
    "mode": "mono",
    "runs": 3
+  },
+  {
+   "key": "wheel_odom:odom",
+   "method": "wheel_odom",
+   "mode": "odom",
+   "runs": 1
   }
  ],
  "method_done": {
-  "dpvo:mono": 31
+  "dpvo:mono": 31,
+  "wheel_odom:odom": 0
  },
  "hosts": {
   "StarDestroyer": {
@@ -64,6 +71,13 @@
      },
      "bad": [],
      "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
     }
    }
   },
@@ -84,6 +98,13 @@
      },
      "bad": [],
      "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
     }
    }
   },
@@ -97,6 +118,13 @@
      "runs": {},
      "bad": [],
      "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
     }
    }
   },
@@ -107,6 +135,13 @@
     "dpvo:mono": {
      "done": 0,
      "needed": 3,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
      "runs": {},
      "bad": [],
      "in_progress": []
@@ -128,6 +163,13 @@
        "StarDestroyer"
       ]
      },
+     "bad": [],
+     "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
      "bad": [],
      "in_progress": []
     }
@@ -153,6 +195,13 @@
      },
      "bad": [],
      "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
     }
    }
   },
@@ -174,6 +223,13 @@
        "StarDestroyer"
       ]
      },
+     "bad": [],
+     "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
      "bad": [],
      "in_progress": []
     }
@@ -199,6 +255,13 @@
      },
      "bad": [],
      "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
     }
    }
   },
@@ -220,6 +283,13 @@
        "StarDestroyer"
       ]
      },
+     "bad": [],
+     "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
      "bad": [],
      "in_progress": []
     }
@@ -245,6 +315,13 @@
      },
      "bad": [],
      "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
     }
    }
   },
@@ -266,6 +343,13 @@
        "StarDestroyer"
       ]
      },
+     "bad": [],
+     "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
      "bad": [],
      "in_progress": []
     }
@@ -291,6 +375,13 @@
      },
      "bad": [],
      "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
+     "bad": [],
+     "in_progress": []
     }
    }
   },
@@ -312,6 +403,13 @@
        "StarDestroyer"
       ]
      },
+     "bad": [],
+     "in_progress": []
+    },
+    "wheel_odom:odom": {
+     "done": 0,
+     "needed": 1,
+     "runs": {},
      "bad": [],
      "in_progress": []
     }
