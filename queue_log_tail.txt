@@ -1,60 +1,14 @@
-100%|█████████▉| 98509/98835 [12:24<00:03, 101.68it/s]
-100%|█████████▉| 98522/98835 [12:24<00:03, 102.20it/s]
-100%|█████████▉| 98533/98835 [12:25<00:02, 101.24it/s]
-100%|█████████▉| 98544/98835 [12:25<00:02, 100.27it/s]
-100%|█████████▉| 98555/98835 [12:25<00:02, 99.39it/s] 
-100%|█████████▉| 98565/98835 [12:25<00:02, 96.54it/s]
-100%|█████████▉| 98576/98835 [12:25<00:02, 96.12it/s]
-100%|█████████▉| 98589/98835 [12:25<00:02, 98.81it/s]
-100%|█████████▉| 98599/98835 [12:25<00:02, 95.92it/s]
-100%|█████████▉| 98611/98835 [12:25<00:02, 98.00it/s]
-100%|█████████▉| 98623/98835 [12:25<00:02, 100.80it/s]
-100%|█████████▉| 98634/98835 [12:26<00:02, 99.96it/s] 
-100%|█████████▉| 98645/98835 [12:26<00:01, 98.59it/s]
-100%|█████████▉| 98658/98835 [12:26<00:01, 103.51it/s]
-100%|█████████▉| 98669/98835 [12:26<00:01, 102.09it/s]
-100%|█████████▉| 98684/98835 [12:26<00:01, 109.74it/s]
-100%|█████████▉| 98698/98835 [12:26<00:01, 112.07it/s]
-100%|█████████▉| 98713/98835 [12:26<00:01, 116.58it/s]
-100%|█████████▉| 98727/98835 [12:26<00:00, 116.74it/s]
-100%|█████████▉| 98741/98835 [12:27<00:00, 116.96it/s]
-100%|█████████▉| 98756/98835 [12:27<00:00, 116.76it/s]
-100%|█████████▉| 98775/98835 [12:27<00:00, 129.55it/s]
-100%|█████████▉| 98790/98835 [12:27<00:00, 128.55it/s]
-100%|█████████▉| 98804/98835 [12:27<00:00, 125.33it/s]
-100%|█████████▉| 98820/98835 [12:27<00:00, 127.81it/s]
-100%|██████████| 98835/98835 [12:27<00:00, 132.19it/s]
-Found 797 common timestamps for color 12741 color and 798 depth images.
-Found 797 common timestamps for color 12741 color and 798 depth images.
-wrote /home/calc/slam-data/ucu_tum/seq04.partial/odom.txt (7855 poses)
-seq04,download_s=730,export_s=753,mcap_bytes=12758091089,export_bytes=4503579660
-11:00:36 -- seq04 dpvo:mono run1/3: старт
-NVIDIA GeForce RTX 3060; wall 1141s (11.2 fps); VRAM peak 2162 MiB total used (base 1052), torch alloc 740 / reserved 1036 MiB; RAM peak 1647 MiB.
-Wrote /home/calc/slam-data/results/dpvo/mono/ucu/seq04/traj_run1.txt (12741 poses) and /home/calc/slam-data/results/dpvo/mono/ucu/seq04/meta.yaml
-== dpvo mono ucu/seq04 run1 ==
-ATE RMSE   : 7.989 m   (matched 425/425)
+11:51:45 == seq04: прогонів до виконання 1; лог /home/calc/slam-data/logs/queue_StarDestroyer_seq04_20261115_115145.log
+11:51:45 -- seq04 dpvo:mono run3/3: старт
+NVIDIA GeForce RTX 3060; wall 1129s (11.3 fps); VRAM peak 2162 MiB total used (base 1052), torch alloc 739 / reserved 1036 MiB; RAM peak 1641 MiB.
+Wrote /home/calc/slam-data/results/dpvo/mono/ucu/seq04/traj_run3.txt (12741 poses) and /home/calc/slam-data/results/dpvo/mono/ucu/seq04/meta.yaml
+== dpvo mono ucu/seq04 run3 ==
+ATE RMSE   : 7.039 m   (matched 425/425)
 coverage   : 1.00   tracking_lost: false   poses: 12741   max gap: 0.100 s
-drift 50 m : 10.017 m (371 seg)   100 m: 13.199 m (319 seg)
+drift 50 m : 8.842 m (371 seg)   100 m: 11.381 m (319 seg)
 plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq04/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-11:19:42    готово за 19.1 хв: поз 12741/12741; рядок додано в summary_StarDestroyer.csv
-11:19:42 -- seq04 wheel_odom:odom run1/1: старт
-Wrote /home/calc/slam-data/results/wheel_odom/odom/ucu/seq04/traj_run1.txt (12741 poses of 12741 frames, coverage 1.00)
-== wheel_odom odom ucu/seq04 run1 ==
-ATE RMSE   : 31.186 m   (matched 425/425)
-coverage   : 1.00   tracking_lost: false   poses: 12741   max gap: 0.100 s
-drift 50 m : 43.393 m (371 seg)   100 m: 54.822 m (319 seg)
-plot: /home/calc/slam-data/results/wheel_odom/odom/ucu/seq04/traj_xy.pdf
-appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-11:19:44    готово за 0.0 хв: поз 12741/12741; рядок додано в summary_StarDestroyer.csv
-11:19:44 -- seq04 dpvo:mono run2/3: старт
-NVIDIA GeForce RTX 3060; wall 1130s (11.3 fps); VRAM peak 2160 MiB total used (base 1052), torch alloc 738 / reserved 1034 MiB; RAM peak 1625 MiB.
-Wrote /home/calc/slam-data/results/dpvo/mono/ucu/seq04/traj_run2.txt (12741 poses) and /home/calc/slam-data/results/dpvo/mono/ucu/seq04/meta.yaml
-== dpvo mono ucu/seq04 run2 ==
-ATE RMSE   : 6.796 m   (matched 425/425)
-coverage   : 1.00   tracking_lost: false   poses: 12741   max gap: 0.100 s
-drift 50 m : 8.606 m (371 seg)   100 m: 11.099 m (319 seg)
-plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq04/traj_xy.pdf
-appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-11:38:38    готово за 18.9 хв: поз 12741/12741; рядок додано в summary_StarDestroyer.csv
-11:38:38 -- seq04 dpvo:mono run3/3: старт
+12:10:38    готово за 18.9 хв: поз 12741/12741; рядок додано в summary_StarDestroyer.csv
+12:10:38 seq04: усі прогони готові
+12:10:38   видалено /home/calc/slam-data/ucu/sequence-4
+12:10:38   видалено /home/calc/slam-data/ucu_tum/seq04
