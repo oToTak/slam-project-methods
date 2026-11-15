@@ -1,28 +1,28 @@
-host: StarDestroyer   updated: 2026-11-15T16:49:17+02:00   code: b5c479d
+host: StarDestroyer   updated: 2026-11-15T16:54:46+02:00   code: b5c479d
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
-Місце для даних: доступно 38.9 GB = мінімум із: df 985.0 GB; диск Windows C:\ під vhdx 138.8 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 21.1 GB = 38.9 GB
+Місце для даних: доступно 52.5 GB = мінімум із: df 998.6 GB; диск Windows C:\ під vhdx 138.8 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 7.5 GB = 52.5 GB
 Методи (прогонів): dpvo:mono×3, wheel_odom:odom×1   межа stop-before: нема
-Воркер ПРАЦЮЄ (pid 376): seq02 dpvo:mono run3 з 2026-11-15T16:39:31; напрямок down від 13
-Інший ПК Teodor: останній звіт 2026-11-13 18:49 (46.0 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
+Воркер ПРАЦЮЄ (pid 376): seq01   з 2026-11-15T16:54:45; напрямок down від 13
+Інший ПК Teodor: останній звіт 2026-11-13 18:49 (46.1 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
 
- #  seq       .mcap  прогони (готово/треба, хто)                          стан         дані на диску
- 1  seq01    6.5 GB  dpvo 3/3 Teodor, wheel_odom 0/1                      частково     -
- 2  seq02   10.2 GB  dpvo 2/3 Teodor, wheel_odom 1/1 StarDestroyer        в роботі     є .mcap
- 3  seq03   10.1 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
- 4  seq04   12.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
- 5  seq05   12.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
- 6  seq06   18.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
- 7  seq07   18.5 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
- 8  seq08   18.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
- 9  seq09   11.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
-10  seq10   19.5 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
-11  seq11   10.4 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
-12  seq12   10.9 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
-13  seq13   10.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
+ #  seq       .mcap  прогони (готово/треба, хто)                                 стан         дані на диску
+ 1  seq01    6.5 GB  dpvo 3/3 Teodor, wheel_odom 0/1                             в роботі     -
+ 2  seq02   10.2 GB  dpvo 3/3 StarDestroyer+Teodor, wheel_odom 1/1 StarDestroyer готово       -
+ 3  seq03   10.1 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
+ 4  seq04   12.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
+ 5  seq05   12.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
+ 6  seq06   18.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
+ 7  seq07   18.5 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
+ 8  seq08   18.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
+ 9  seq09   11.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
+10  seq10   19.5 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
+11  seq11   10.4 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
+12  seq12   10.9 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
+13  seq13   10.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
 
-Ти тут: 2 (seq02, зараз рахується)
-Готово підряд від твого кінця (13, down): seq13 … seq03
+Ти тут: 1 (seq01, зараз рахується)
+Готово підряд від твого кінця (13, down): seq13 … seq02
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 73 %, 2439 MiB, 12288 MiB, 58
+NVIDIA GeForce RTX 3060, 0 %, 1225 MiB, 12288 MiB, 47
