@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-14T23:23:50.183109+00:00",
- "content_hash": "615e432d85b0035883f22f7aae1dcb520e3f7d8b20b301214a857d16c33a9352",
+ "generated_at": "2026-11-15T02:51:52.389061+00:00",
+ "content_hash": "470dd56634cd99211b35ff9e0722fc1d6a300a2e05fd351bd08eb62a938db36b",
  "dataset": "ucu",
  "total_done": 33,
  "total_needed": 52,
@@ -26,13 +26,13 @@
   "StarDestroyer": {
    "ref": "refs/remotes/origin/runner-StarDestroyer",
    "last_report": "2026-11-14T23:37:07+02:00",
-   "stale": false,
+   "stale": true,
    "worker": "running",
-   "busy": true,
-   "seq": "seq11",
+   "busy": false,
+   "seq": null,
    "method": null,
    "run": null,
-   "since": "2026-11-14T23:37:04",
+   "since": null,
    "dir": "down",
    "runs_done": 28
   },
