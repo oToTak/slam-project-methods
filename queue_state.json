@@ -1,1 +1,1 @@
-{"pid": 376, "host": "StarDestroyer", "seq": "seq04", "method": "dpvo:mono", "run": 2, "since": "2026-11-15T11:19:44", "frm": 13, "dir": "down", "runs": 3, "methods": ["dpvo:mono", "wheel_odom:odom"]}
+{"pid": 376, "host": "StarDestroyer", "seq": "seq04", "method": "dpvo:mono", "run": 3, "since": "2026-11-15T11:38:38", "frm": 13, "dir": "down", "runs": 3, "methods": ["dpvo:mono", "wheel_odom:odom"]}
