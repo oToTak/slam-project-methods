@@ -29,3 +29,4 @@ wheel_odom,odom,ucu,seq13,1,101.462,,0.95,false,e30fda3
 wheel_odom,odom,ucu,seq12,1,103.061,,1.00,false,e30fda3
 wheel_odom,odom,ucu,seq11,1,91.833,,1.00,false,b55c750
 wheel_odom,odom,ucu,seq10,1,80.233,,1.00,false,b55c750
+wheel_odom,odom,ucu,seq09,1,61.908,,0.87,false,b55c750
