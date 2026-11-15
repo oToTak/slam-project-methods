@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-15T10:37:41.042453+00:00",
- "content_hash": "cbca26edd0f945461f051e68319a5c902b74a7b8687f0702f0f5e94e6957c583",
+ "generated_at": "2026-11-15T17:23:55.413395+00:00",
+ "content_hash": "d87cd9f5a84974f434c56310a3ef84042ec326b81122cd5d1e462a652be61fba",
  "dataset": "ucu",
- "total_done": 45,
+ "total_done": 52,
  "total_needed": 52,
  "methods": [
   {
@@ -19,22 +19,22 @@
   }
  ],
  "method_done": {
-  "dpvo:mono": 35,
-  "wheel_odom:odom": 10
+  "dpvo:mono": 39,
+  "wheel_odom:odom": 13
  },
  "hosts": {
   "StarDestroyer": {
    "ref": "refs/remotes/origin/runner-StarDestroyer",
-   "last_report": "2026-11-15T12:31:52+02:00",
+   "last_report": "2026-11-15T17:11:23+02:00",
    "stale": false,
-   "worker": "running",
-   "busy": true,
-   "seq": "seq03",
-   "method": "dpvo:mono",
-   "run": 1,
-   "since": "2026-11-15T12:31:28",
-   "dir": "down",
-   "runs_done": 40
+   "worker": "idle",
+   "busy": false,
+   "seq": null,
+   "method": null,
+   "run": null,
+   "since": null,
+   "dir": null,
+   "runs_done": 47
   },
   "Teodor": {
    "ref": "refs/remotes/origin/runner-Teodor",
@@ -73,9 +73,13 @@
      "in_progress": []
     },
     "wheel_odom:odom": {
-     "done": 0,
+     "done": 1,
      "needed": 1,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -86,7 +90,7 @@
    "seq": "seq02",
    "cells": {
     "dpvo:mono": {
-     "done": 2,
+     "done": 3,
      "needed": 3,
      "runs": {
       "1": [
@@ -94,15 +98,22 @@
       ],
       "2": [
        "Teodor"
+      ],
+      "3": [
+       "StarDestroyer"
       ]
      },
      "bad": [],
      "in_progress": []
     },
     "wheel_odom:odom": {
-     "done": 0,
+     "done": 1,
      "needed": 1,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -113,18 +124,30 @@
    "seq": "seq03",
    "cells": {
     "dpvo:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
-     "in_progress": [
-      "StarDestroyer"
-     ]
+     "in_progress": []
     },
     "wheel_odom:odom": {
-     "done": 0,
+     "done": 1,
      "needed": 1,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
