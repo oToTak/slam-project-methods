@@ -27,3 +27,15 @@ dpvo,mono,ucu,seq05,1,11.567,,1.00,false,b0f45fd
 dpvo,mono,ucu,seq05,2,14.794,,1.00,false,b0f45fd
 wheel_odom,odom,ucu,seq13,1,101.462,,0.95,false,e30fda3
 wheel_odom,odom,ucu,seq12,1,103.061,,1.00,false,e30fda3
+wheel_odom,odom,ucu,seq11,1,91.833,,1.00,false,b55c750
+wheel_odom,odom,ucu,seq10,1,80.233,,1.00,false,b55c750
+wheel_odom,odom,ucu,seq09,1,61.908,,0.87,false,b55c750
+wheel_odom,odom,ucu,seq08,1,60.857,,1.00,false,b55c750
+wheel_odom,odom,ucu,seq07,1,102.665,,0.89,false,b55c750
+wheel_odom,odom,ucu,seq06,1,60.103,,0.75,false,b55c750
+wheel_odom,odom,ucu,seq05,1,30.334,,1.00,false,b55c750
+dpvo,mono,ucu,seq05,3,13.289,,1.00,false,b55c750
+dpvo,mono,ucu,seq04,1,7.989,,1.00,false,b55c750
+wheel_odom,odom,ucu,seq04,1,31.186,,1.00,false,b55c750
+dpvo,mono,ucu,seq04,2,6.796,,1.00,false,b55c750
+dpvo,mono,ucu,seq04,3,7.039,,1.00,false,b55c750
