@@ -1,16 +1,16 @@
-host: StarDestroyer   updated: 2026-11-15T11:05:34+02:00   code: b55c750
+host: StarDestroyer   updated: 2026-11-15T11:25:40+02:00   code: b55c750
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
 Місце для даних: доступно 38.3 GB = мінімум із: df 984.5 GB; диск Windows C:\ під vhdx 149.7 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 21.7 GB = 38.3 GB
 Методи (прогонів): dpvo:mono×3, wheel_odom:odom×1   межа stop-before: нема
-Воркер ПРАЦЮЄ (pid 376): seq04 dpvo:mono run1 з 2026-11-15T11:00:36; напрямок down від 13
-Інший ПК Teodor: останній звіт 2026-11-13 18:49 (40.3 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
+Воркер ПРАЦЮЄ (pid 376): seq04 dpvo:mono run2 з 2026-11-15T11:19:44; напрямок down від 13
+Інший ПК Teodor: останній звіт 2026-11-13 18:49 (40.6 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
 
  #  seq       .mcap  прогони (готово/треба, хто)                          стан         дані на диску
  1  seq01    6.5 GB  dpvo 3/3 Teodor, wheel_odom 0/1                      частково     -
  2  seq02   10.2 GB  dpvo 2/3 Teodor, wheel_odom 0/1                      частково     -
  3  seq03   10.1 GB  dpvo 0/3, wheel_odom 0/1                             чекає        -
- 4  seq04   12.8 GB  dpvo 0/3, wheel_odom 0/1                             в роботі     є .mcap
+ 4  seq04   12.8 GB  dpvo 1/3 StarDestroyer, wheel_odom 1/1 StarDestroyer в роботі     є .mcap
  5  seq05   12.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
  6  seq06   18.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
  7  seq07   18.5 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
@@ -25,4 +25,4 @@ host: StarDestroyer   updated: 2026-11-15T11:05:34+02:00   code: b55c750
 Готово підряд від твого кінця (13, down): seq13 … seq05
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 73 %, 2615 MiB, 12288 MiB, 57
+NVIDIA GeForce RTX 3060, 75 %, 2615 MiB, 12288 MiB, 58
