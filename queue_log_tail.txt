@@ -13,3 +13,15 @@ plot: /home/calc/slam-data/results/wheel_odom/odom/ucu/seq05/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
 10:16:39    готово за 0.0 хв: поз 12671/12672; рядок додано в summary_StarDestroyer.csv
 10:16:39 -- seq05 dpvo:mono run3/3: старт
+NVIDIA GeForce RTX 3060; wall 1143s (11.1 fps); VRAM peak 2162 MiB total used (base 1052), torch alloc 751 / reserved 1036 MiB; RAM peak 1629 MiB.
+Wrote /home/calc/slam-data/results/dpvo/mono/ucu/seq05/traj_run3.txt (12672 poses) and /home/calc/slam-data/results/dpvo/mono/ucu/seq05/meta.yaml
+== dpvo mono ucu/seq05 run3 ==
+ATE RMSE   : 13.289 m   (matched 424/424)
+coverage   : 1.00   tracking_lost: false   poses: 12672   max gap: 0.367 s
+drift 50 m : 15.675 m (372 seg)   100 m: 22.377 m (322 seg)
+plot: /home/calc/slam-data/results/dpvo/mono/ucu/seq05/traj_xy.pdf
+appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
+10:35:46    готово за 19.1 хв: поз 12672/12672; рядок додано в summary_StarDestroyer.csv
+10:35:46 seq05: усі прогони готові
+10:35:46   видалено /home/calc/slam-data/ucu/sequence-5
+10:35:47   видалено /home/calc/slam-data/ucu_tum/seq05

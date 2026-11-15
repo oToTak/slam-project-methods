@@ -1,17 +1,17 @@
-host: StarDestroyer   updated: 2026-11-15T10:25:22+02:00   code: b55c750
+host: StarDestroyer   updated: 2026-11-15T10:35:48+02:00   code: b55c750
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
-Місце для даних: доступно 38.2 GB = мінімум із: df 984.3 GB; диск Windows C:\ під vhdx 132.8 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 21.8 GB = 38.2 GB
+Місце для даних: доступно 55.6 GB = мінімум із: df 1001.8 GB; диск Windows C:\ під vhdx 132.8 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 4.4 GB = 55.6 GB
 Методи (прогонів): dpvo:mono×3, wheel_odom:odom×1   межа stop-before: нема
-Воркер ПРАЦЮЄ (pid 376): seq05 dpvo:mono run3 з 2026-11-15T10:16:39; напрямок down від 13
-Інший ПК Teodor: останній звіт 2026-11-13 18:49 (39.6 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
+Воркер ПРАЦЮЄ (pid 376): seq04   з 2026-11-15T10:35:47; напрямок down від 13
+Інший ПК Teodor: останній звіт 2026-11-13 18:49 (39.8 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
 
  #  seq       .mcap  прогони (готово/треба, хто)                          стан         дані на диску
  1  seq01    6.5 GB  dpvo 3/3 Teodor, wheel_odom 0/1                      частково     -
  2  seq02   10.2 GB  dpvo 2/3 Teodor, wheel_odom 0/1                      частково     -
  3  seq03   10.1 GB  dpvo 0/3, wheel_odom 0/1                             чекає        -
- 4  seq04   12.8 GB  dpvo 0/3, wheel_odom 0/1                             чекає        -
- 5  seq05   12.7 GB  dpvo 2/3 StarDestroyer, wheel_odom 1/1 StarDestroyer в роботі     є .mcap
+ 4  seq04   12.8 GB  dpvo 0/3, wheel_odom 0/1                             в роботі     -
+ 5  seq05   12.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
  6  seq06   18.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
  7  seq07   18.5 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
  8  seq08   18.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
@@ -21,8 +21,8 @@ host: StarDestroyer   updated: 2026-11-15T10:25:22+02:00   code: b55c750
 12  seq12   10.9 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
 13  seq13   10.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer готово       -
 
-Ти тут: 5 (seq05, зараз рахується)
-Готово підряд від твого кінця (13, down): seq13 … seq06
+Ти тут: 4 (seq04, зараз рахується)
+Готово підряд від твого кінця (13, down): seq13 … seq05
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 74 %, 2736 MiB, 12288 MiB, 58
+NVIDIA GeForce RTX 3060, 1 %, 1524 MiB, 12288 MiB, 47

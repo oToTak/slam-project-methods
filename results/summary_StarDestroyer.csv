@@ -34,3 +34,4 @@ wheel_odom,odom,ucu,seq08,1,60.857,,1.00,false,b55c750
 wheel_odom,odom,ucu,seq07,1,102.665,,0.89,false,b55c750
 wheel_odom,odom,ucu,seq06,1,60.103,,0.75,false,b55c750
 wheel_odom,odom,ucu,seq05,1,30.334,,1.00,false,b55c750
+dpvo,mono,ucu,seq05,3,13.289,,1.00,false,b55c750
