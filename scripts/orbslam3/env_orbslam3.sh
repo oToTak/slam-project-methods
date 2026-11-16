@@ -14,7 +14,7 @@ export ORB3_PANGOLIN_SHORT="${ORB3_PANGOLIN_SHORT:-7364b59}"       # expected `g
 export ORB3_PANGOLIN_SRC="${ORB3_PANGOLIN_SRC:-$HOME/src/Pangolin}"
 export ORB3_PANGOLIN_PREFIX="${ORB3_PANGOLIN_PREFIX:-$ORB3_PREFIX/pangolin}"
 # ORB-SLAM3 asks for -std=c++11, Pangolin's headers (sigslot) need >= C++14: the recipe rewrites the flag. Fallback: c++17.
-export ORB3_CXX_STD="${ORB3_CXX_STD:-c++14}"
+export ORB3_CXX_STD="${ORB3_CXX_STD:-c++17}"
 export ORB3_BIN="${ORB3_BIN:-$ORB3_PREFIX/bin/orbslam3_tum}"
 export ORB3_VOCAB="${ORB3_VOCAB:-$ORB3_DIR/Vocabulary/ORBvoc.txt}"
 # Frame pacing of the driver: 0 = no sleeping (as the task asks); 1 = real time like the upstream examples.
