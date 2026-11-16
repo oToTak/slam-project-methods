@@ -1,10 +1,10 @@
-host: StarDestroyer   updated: 2026-11-16T09:14:10+02:00   code: c8c9029
+host: StarDestroyer   updated: 2026-11-16T15:09:46+02:00   code: ef95729
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
-Місце для даних: доступно 52.5 GB = мінімум із: df 998.6 GB; диск Windows C:\ під vhdx 147.5 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 7.5 GB = 52.5 GB
+Місце для даних: доступно 52.5 GB = мінімум із: df 998.6 GB; диск Windows C:\ під vhdx 148.2 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 7.5 GB = 52.5 GB
 Методи (прогонів): dpvo:mono×3, wheel_odom:odom×1   межа stop-before: нема
 Воркер не працює
-Інший ПК Teodor: останній звіт 2026-11-13 18:49 (62.4 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
+Інший ПК Teodor: останній звіт 2026-11-13 18:49 (68.3 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
 
  #  seq       .mcap  прогони (готово/треба, хто)                                 стан         дані на диску
  1  seq01    6.5 GB  dpvo 3/3 Teodor, wheel_odom 1/1 StarDestroyer               готово       -
@@ -25,4 +25,4 @@ host: StarDestroyer   updated: 2026-11-16T09:14:10+02:00   code: c8c9029
 Готово підряд від твого кінця (13, down): seq13 … seq01
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 8 %, 1469 MiB, 12288 MiB, 34
+NVIDIA GeForce RTX 3060, 2 %, 294 MiB, 12288 MiB, 23
