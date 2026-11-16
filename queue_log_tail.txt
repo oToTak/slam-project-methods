@@ -1,60 +1,60 @@
-Loop closure: BACKEND_THRESH=64.0 MAX_EDGE_AGE=1000 GLOBAL_OPT_FREQ=15; 0 loop-edge batches (0 edges), 0 global BA calls (0s of 1028s); 440 keyframes kept; BA failures swallowed by DPVO: 0.
-Wrote /home/calc/slam-data/results/dpvslam/mono/ucu/seq12/traj_run1.txt (10908 poses) and /home/calc/slam-data/results/dpvslam/mono/ucu/seq12/meta.yaml
-== dpvslam mono ucu/seq12 run1 ==
-ATE RMSE   : 4.440 m   (matched 364/364)
-coverage   : 1.00   tracking_lost: false   poses: 10908   max gap: 0.167 s
-drift 50 m : 6.244 m (313 seg)   100 m: 7.282 m (266 seg)
-plot: /home/calc/slam-data/results/dpvslam/mono/ucu/seq12/traj_xy.pdf
+RE-TRACK ATTEMPT 20 with initOption 20 and start-lvl 3 (ab -1.759047 -48.553123): 5.469553 4.506890 4.021811 3.681472 nan -> nan nan 6.877775 5.451598 nan 
+RE-TRACK ATTEMPT 21 with initOption 21 and start-lvl 3 (ab -1.755213 -48.553002): 5.469553 4.506890 4.021811 3.681472 nan -> 5.474138 4.510372 4.022963 3.687062 nan 
+RE-TRACK ATTEMPT 22 with initOption 22 and start-lvl 3 (ab -1.755008 -48.586715): 5.469553 4.506890 4.021811 3.681472 nan -> 5.483864 4.519430 4.021403 3.683879 nan 
+RE-TRACK ATTEMPT 23 with initOption 23 and start-lvl 3 (ab -1.755192 -48.549958): 5.469553 4.506890 4.021403 3.681472 nan -> 5.471414 4.508747 4.018653 3.686772 nan 
+RE-TRACK ATTEMPT 24 with initOption 24 and start-lvl 3 (ab -1.755018 -48.585482): 5.469553 4.506890 4.018653 3.681472 nan -> 5.484285 4.519618 4.021855 3.692291 nan 
+RE-TRACK ATTEMPT 25 with initOption 25 and start-lvl 3 (ab -1.755260 -48.543855): 5.469553 4.506890 4.018653 3.681472 nan -> 5.467024 4.506160 4.028855 3.706819 nan 
+RE-TRACK ATTEMPT 26 with initOption 26 and start-lvl 3 (ab -1.755229 -48.549567): 5.467024 4.506160 4.018653 3.681472 nan -> 5.470773 4.509097 4.027382 3.689593 nan 
+RE-TRACK ATTEMPT 27 with initOption 27 and start-lvl 3 (ab -1.755004 -48.587066): 5.467024 4.506160 4.018653 3.681472 nan -> 5.484113 4.519775 4.021802 3.691872 nan 
+RE-TRACK ATTEMPT 28 with initOption 28 and start-lvl 3 (ab -1.755026 -48.584100): 5.467024 4.506160 4.018653 3.681472 nan -> 5.484850 4.521082 4.022238 3.684835 nan 
+RE-TRACK ATTEMPT 29 with initOption 29 and start-lvl 3 (ab -1.759047 -48.553123): 5.467024 4.506160 4.018653 3.681472 nan -> nan nan 6.833097 5.169116 nan 
+RE-TRACK ATTEMPT 30 with initOption 30 and start-lvl 3 (ab -1.755218 -48.547783): 5.467024 4.506160 4.018653 3.681472 nan -> 5.468870 4.508836 4.022801 3.688336 nan 
+RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab -1.745652 -47.699736): 5.093529 4.443092 4.343346 4.007521 nan -> 5.094556 4.444231 4.343770 4.008209 nan 
+RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab -1.745652 -47.699718): 5.093529 4.443092 4.343346 4.007521 nan -> 5.094587 4.444461 4.344547 4.007632 nan 
+RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab -1.745650 -47.699949): 5.093529 4.443092 4.343346 4.007521 nan -> 5.094608 4.444549 4.344876 4.007668 nan 
+RE-TRACK ATTEMPT 4 with initOption 4 and start-lvl 3 (ab -1.745638 -47.702031): 5.093529 4.443092 4.343346 4.007521 nan -> 5.093610 4.443252 4.344051 4.002857 nan 
+RE-TRACK ATTEMPT 5 with initOption 5 and start-lvl 3 (ab -1.745652 -47.699700): 5.093529 4.443092 4.343346 4.002857 nan -> 5.094507 4.444298 4.344614 4.004872 nan 
+RE-TRACK ATTEMPT 6 with initOption 6 and start-lvl 3 (ab -1.745632 -47.702688): 5.093529 4.443092 4.343346 4.002857 nan -> 5.093140 4.441925 4.341855 4.014308 nan 
+RE-TRACK ATTEMPT 7 with initOption 7 and start-lvl 3 (ab -1.745516 -47.716965): 5.093140 4.441925 4.341855 4.002857 nan -> 5.092206 4.443812 4.346951 3.985728 nan 
+RE-TRACK ATTEMPT 8 with initOption 8 and start-lvl 3 (ab -1.745638 -47.701948): 5.092206 4.441925 4.341855 3.985728 nan -> 5.093666 4.443375 4.343710 4.009271 nan 
+RE-TRACK ATTEMPT 9 with initOption 9 and start-lvl 3 (ab -1.745654 -47.699352): 5.092206 4.441925 4.341855 3.985728 nan -> 5.094592 4.444364 4.345069 4.014823 nan 
+RE-TRACK ATTEMPT 10 with initOption 10 and start-lvl 3 (ab -1.745630 -47.702987): 5.092206 4.441925 4.341855 3.985728 nan -> 5.093359 4.442701 4.342628 4.010108 nan 
+RE-TRACK ATTEMPT 11 with initOption 11 and start-lvl 3 (ab -1.743990 -47.605395): 5.092206 4.441925 4.341855 3.985728 nan -> nan nan 6.843204 5.409957 nan 
+RE-TRACK ATTEMPT 12 with initOption 12 and start-lvl 3 (ab -1.745646 -47.699466): 5.092206 4.441925 4.341855 3.985728 nan -> 5.094940 4.444400 4.345158 4.014924 nan 
+RE-TRACK ATTEMPT 13 with initOption 13 and start-lvl 3 (ab -1.745654 -47.699389): 5.092206 4.441925 4.341855 3.985728 nan -> 5.094612 4.444372 4.345039 4.013392 nan 
+RE-TRACK ATTEMPT 14 with initOption 14 and start-lvl 3 (ab -1.745631 -47.702741): 5.092206 4.441925 4.341855 3.985728 nan -> 5.093201 4.442346 4.342262 4.012598 nan 
+RE-TRACK ATTEMPT 15 with initOption 15 and start-lvl 3 (ab -1.743990 -47.605395): 5.092206 4.441925 4.341855 3.985728 nan -> nan nan 7.081519 5.701949 nan 
+RE-TRACK ATTEMPT 16 with initOption 16 and start-lvl 3 (ab -1.745641 -47.701538): 5.092206 4.441925 4.341855 3.985728 nan -> 5.093694 4.443324 4.343923 4.006673 nan 
+RE-TRACK ATTEMPT 17 with initOption 17 and start-lvl 3 (ab -1.745632 -47.702619): 5.092206 4.441925 4.341855 3.985728 nan -> 5.093185 4.442086 4.342494 4.004978 nan 
+RE-TRACK ATTEMPT 18 with initOption 18 and start-lvl 3 (ab -1.743990 -47.605395): 5.092206 4.441925 4.341855 3.985728 nan -> nan nan 7.043521 5.474138 nan 
+RE-TRACK ATTEMPT 19 with initOption 19 and start-lvl 3 (ab -1.745651 -47.699747): 5.092206 4.441925 4.341855 3.985728 nan -> 5.094566 4.444347 4.344637 4.009057 nan 
+RE-TRACK ATTEMPT 20 with initOption 20 and start-lvl 3 (ab -1.743990 -47.605395): 5.092206 4.441925 4.341855 3.985728 nan -> nan nan 7.174582 5.748352 nan 
+RE-TRACK ATTEMPT 21 with initOption 21 and start-lvl 3 (ab -1.745632 -47.702610): 5.092206 4.441925 4.341855 3.985728 nan -> 5.093204 4.442104 4.342447 4.011666 nan 
+RE-TRACK ATTEMPT 22 with initOption 22 and start-lvl 3 (ab -1.745640 -47.701724): 5.092206 4.441925 4.341855 3.985728 nan -> 5.093669 4.443346 4.343946 4.006927 nan 
+RE-TRACK ATTEMPT 23 with initOption 23 and start-lvl 3 (ab -1.743990 -47.605395): 5.092206 4.441925 4.341855 3.985728 nan -> nan nan 7.151007 5.734767 nan 
+RE-TRACK ATTEMPT 24 with initOption 24 and start-lvl 3 (ab -1.743990 -47.605395): 5.092206 4.441925 4.341855 3.985728 nan -> nan nan 7.199311 5.736351 nan 
+RE-TRACK ATTEMPT 25 with initOption 25 and start-lvl 3 (ab -1.745652 -47.699673): 5.092206 4.441925 4.341855 3.985728 nan -> 5.094585 4.444390 4.344879 4.010648 nan 
+RE-TRACK ATTEMPT 26 with initOption 26 and start-lvl 3 (ab -1.745631 -47.702766): 5.092206 4.441925 4.341855 3.985728 nan -> 5.093248 4.442411 4.342364 4.012978 nan 
+RE-TRACK ATTEMPT 27 with initOption 27 and start-lvl 3 (ab -1.745651 -47.699824): 5.092206 4.441925 4.341855 3.985728 nan -> 5.094543 4.444252 4.343801 4.009851 nan 
+RE-TRACK ATTEMPT 28 with initOption 28 and start-lvl 3 (ab -1.745634 -47.702458): 5.092206 4.441925 4.341855 3.985728 nan -> 5.093522 4.443078 4.343189 4.006202 nan 
+RE-TRACK ATTEMPT 29 with initOption 29 and start-lvl 3 (ab -1.743990 -47.605395): 5.092206 4.441925 4.341855 3.985728 nan -> nan nan 6.874899 5.434162 nan 
+RE-TRACK ATTEMPT 30 with initOption 30 and start-lvl 3 (ab -1.743990 -47.605395): 5.092206 4.441925 4.341855 3.985728 nan -> nan nan 7.092121 5.538492 nan 
+DSO_STATS frames=10908 fed=10908 valid=10672 keyframes=1391 dropped=0 resets=7 lost=0 lost_at=-1 initialized=1 wall_s=179.2
+destroyed ThreadReduce
+Wrote /home/calc/slam-data/results/dso/mono/ucu/seq12/traj_run1.txt (10672 poses of 10908 frames, coverage 0.98) and /home/calc/slam-data/results/dso/mono/ucu/seq12/meta.yaml
+== dso mono ucu/seq12 run1 ==
+ATE RMSE   : 3.832 m   (matched 356/364)
+coverage   : 0.98   tracking_lost: false   poses: 10672   max gap: 0.234 s
+drift 50 m : 5.523 m (305 seg)   100 m: 6.491 m (258 seg)
+plot: /home/calc/slam-data/results/dso/mono/ucu/seq12/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-19:18:37    готово за 17.2 хв: поз 10908/10908; рядок додано в summary_StarDestroyer.csv
-19:18:37 -- seq12 orbslam3:mono run1/3: старт
-ORB3_INFO frames=10908 imu_rows=0 mode=mono pace=0
-
-ORB-SLAM3 Copyright (C) 2017-2020 Carlos Campos, Richard Elvira, Juan J. Gómez, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
-ORB-SLAM2 Copyright (C) 2014-2016 Raúl Mur-Artal, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
-This program comes with ABSOLUTELY NO WARRANTY;
-This is free software, and you are welcome to redistribute it
-under certain conditions. See LICENSE.txt.
-
-Input sensor was set to: Monocular
-Loading settings from /home/calc/slam-runner/configs/orbslam3/UCU_mono.yaml
-Camera1.k3 optional parameter does not exist...
-	-Loaded camera 1
-Camera.newHeight optional parameter does not exist...
-Camera.newWidth optional parameter does not exist...
-	-Loaded image info
-	-Loaded ORB settings
-Viewer.imageViewScale optional parameter does not exist...
-	-Loaded viewer settings
-System.LoadAtlasFromFile optional parameter does not exist...
-System.SaveAtlasToFile optional parameter does not exist...
-	-Loaded Atlas settings
-System.thFarPoints optional parameter does not exist...
-	-Loaded misc parameters
-----------------------------------
-SLAM settings: 
-	-Camera 1 parameters (Pinhole): [ 601.17333984375 600.266357421875 314.01644897460938 250.03944396972656 ]
-	-Camera 1 distortion parameters: [  0.1392686665058136 -0.30741280317306519 0.00072727992665022612 0.00066557613899931312 ]
-	-Original image size: [ 640 , 480 ]
-	-Current image size: [ 640 , 480 ]
-	-Sequence FPS: 30
-	-Features per image: 1000
-	-ORB scale factor: 1.2000000476837158
-	-ORB number of scales: 8
-	-Initial FAST threshold: 20
-	-Min FAST threshold: 7
-
-
-Loading ORB Vocabulary. This could take a while...
-Vocabulary loaded!
-
-Initialization of Atlas from scratch 
-Creation of new map with id: 0
-Creation of new map with last KF id: 0
-Seq. Name: 
-There are 1 cameras in the atlas
-Camera 0 is pinhole
-First KF:0; Map init KF:0
-New Map created with 82 points
-ORB3_PROGRESS 500/10908 state=2
-ORB3_PROGRESS 1000/10908 state=2
+19:24:57    готово за 3.0 хв: поз 10672/10908; рядок додано в summary_StarDestroyer.csv
+19:24:57 -- seq12 openvins:mono_inertial run1/3: старт
+ERROR: IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)
+IMU_STATS {"covers_frames": false, "dropped": {"non_finite": 0, "non_increasing_time": 0}, "ends_after_last_frame_s": 0.04399538040161133, "error": "IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)", "gap_limit_s": 0.05, "max_gap_s": 0.012067317962646484, "median_dt_s": 0.007999897003173828, "n": 45543, "n_gaps_over_limit": 0, "rate_hz": 125.00160934612863, "span_s": 364.343590259552, "starts_before_first_frame_s": -0.13171815872192383, "t_first": 1785926953.2374518, "t_last": 1785927317.581042}
+IMU data unusable (see above)
+19:24:57    ПОМИЛКА: scripts/openvins/run.sh завершився з кодом 1. Кінець логу:
+19:24:57    | ERROR: IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)
+19:24:57    | IMU_STATS {"covers_frames": false, "dropped": {"non_finite": 0, "non_increasing_time": 0}, "ends_after_last_frame_s": 0.04399538040161133, "error": "IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)", "gap_limit_s": 0.05, "max_gap_s": 0.012067317962646484, "median_dt_s": 0.007999897003173828, "n": 45543, "n_gaps_over_limit": 0, "rate_hz": 125.00160934612863, "span_s": 364.343590259552, "starts_before_first_frame_s": -0.13171815872192383, "t_first": 1785926953.2374518, "t_last": 1785927317.581042}
+19:24:57    | IMU data unusable (see above)
+19:24:57 -- seq12 dpvslam:mono run2/3: старт
