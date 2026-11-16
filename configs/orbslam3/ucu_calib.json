@@ -1,0 +1,41 @@
+{
+  "_comment": "UCU SLAM Dataset v1 calibration facts needed by ORB-SLAM3. Copied (not re-measured) from the dataset repo ucu-autonomous-ugv/ucu-slam-dataset, pinned commit f46dfd6135a75af9da64a759c44928856a3d5b7d, files calibration/calibration.yaml and calibration/raw/{camchain-imucam.yaml,imu.yaml,results-imucam.txt}. scripts/orbslam3/test_orbslam3.py compares this file with those sources when they are present on the PC.",
+  "resolution": [640, 480],
+  "fps": 30,
+  "camera": {
+    "model": "pinhole",
+    "distortion_model": "radtan",
+    "fx": 601.1733383650345,
+    "fy": 600.2663647399592,
+    "cx": 314.0164516341506,
+    "cy": 250.039444021504,
+    "k1": 0.139268662386042,
+    "k2": -0.30741279731381366,
+    "p1": 0.0007272799549728076,
+    "p2": 0.0006655761403425819
+  },
+  "T_cam_imu": [
+    [-0.9993405708143623, 0.02320852031476546, 0.027924686376516957, 0.050964124466524936],
+    [0.02794872313159668, 0.0007119015586896599, 0.9996091046361509, 0.049003980744463355],
+    [0.023179568584015226, 0.9997303925463971, -0.0013600806185959985, -0.004907455166771748],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "T_cam_imu_note": "Kalibr camchain-imucam.yaml cam0/T_cam_imu = T_ci (IMU -> camera). Numerically identical to calibration.yaml T_base_color, which the dataset names as if it were base<-color, i.e. the dataset naming is inverted (old-dvpo/CONVENTIONS.md). ORB-SLAM3 IMU.T_b_c1 must be camera -> body = T_ic = inverse(T_cam_imu); the settings generator computes it. IMU frame == base_link (T_base_imu = I).",
+  "T_ic_kalibr_report_rounded": [
+    [-0.99934057, 0.02794872, 0.02317957, 0.04967467],
+    [0.02320852, 0.0007119, 0.99973039, 0.00368844],
+    [0.02792469, 0.9996091, -0.00136008, -0.05041466],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "T_ic_kalibr_report_note": "'T_ic (cam0 to imu0)' as printed (8 decimals) in calibration/raw/results-imucam.txt. Used only as a cross-check of the inverse in the stub tests.",
+  "timeshift_cam_imu_s": 0.014895025043715156,
+  "timeshift_note": "Kalibr t_imu = t_cam + shift. Already applied by the official exporter (old-dvpo/CONVENTIONS.md section 3): do NOT shift timestamps again. Informational only.",
+  "imu": {
+    "rate_hz": 125,
+    "accelerometer_noise_density": 0.002046311532059803,
+    "accelerometer_random_walk": 3.2793722442857696e-05,
+    "gyroscope_noise_density": 0.0004491777211520533,
+    "gyroscope_random_walk": 1.4932100720276404e-05,
+    "units": "continuous-time Kalibr densities: noise [unit/sqrt(Hz)], random walk [unit/s/sqrt(Hz)]; accel m/s^2, gyro rad/s. ORB-SLAM3 scales them itself (Tracking.cc: Ng*sqrt(freq), Ngw/sqrt(freq))."
+  }
+}
