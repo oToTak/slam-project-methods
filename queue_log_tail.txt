@@ -1,60 +1,60 @@
-REPEAT LEVEL!
-RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab -73732975551.324692 31.341362): nan nan nan nan nan -> 11.820369 11.104588 10.070438 7.858729 nan 
-REPEAT LEVEL!
-RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab -67.507426 31.501282): nan nan nan nan nan -> 11.871097 10.889024 10.074511 8.384250 nan 
-REPEAT LEVEL!
-RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab -28.829960 33.617197): nan nan nan nan nan -> 12.205739 11.554050 10.670757 8.655141 nan 
-RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab -44.845669 2.185051): nan nan nan nan nan -> 1.224503 1.436327 1.989744 1.865622 nan 
-RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab -44.845670 2.185054): nan nan nan nan nan -> 1.224497 1.436328 1.989748 1.869467 nan 
-RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab -44.845662 2.185051): nan nan nan nan nan -> 1.224502 1.436330 1.989940 1.866177 nan 
-RE-TRACK ATTEMPT 4 with initOption 4 and start-lvl 3 (ab -44.845662 2.185051): nan nan nan nan nan -> 1.224502 1.436330 1.989940 1.866177 nan 
-RE-TRACK ATTEMPT 5 with initOption 5 and start-lvl 3 (ab -455565046530915.750000 1.480650): nan nan nan nan nan -> 0.905427 1.042519 1.276222 2.528825 nan 
-RE-TRACK ATTEMPT 6 with initOption 6 and start-lvl 3 (ab -47.586603 1.239370): nan nan nan nan nan -> 0.583525 0.645683 0.856432 1.509701 nan 
-RE-TRACK ATTEMPT 7 with initOption 7 and start-lvl 3 (ab -44.845675 2.185074): nan nan nan nan nan -> 1.224479 1.436338 1.990286 1.864096 nan 
-RE-TRACK ATTEMPT 8 with initOption 8 and start-lvl 3 (ab -225.565190 2.164618): nan nan nan nan nan -> 1.323738 1.664069 3.920558 3.341494 nan 
-RE-TRACK ATTEMPT 9 with initOption 9 and start-lvl 3 (ab -6711197758204407709696.000000 1.339110): nan nan nan nan nan -> 0.677377 0.932604 1.381533 1.353302 nan 
-RE-TRACK ATTEMPT 10 with initOption 10 and start-lvl 3 (ab -44.845688 2.185052): nan nan nan nan nan -> 1.224499 1.436327 1.989935 1.874875 nan 
-RE-TRACK ATTEMPT 11 with initOption 11 and start-lvl 3 (ab -15525059725409506.000000 1.145935): nan nan nan nan nan -> 0.524326 0.631563 1.115968 1.066305 nan 
-RE-TRACK ATTEMPT 12 with initOption 12 and start-lvl 3 (ab -709.386092 1.149485): nan nan nan nan nan -> 0.522235 0.636142 1.106586 1.073067 nan 
-RE-TRACK ATTEMPT 13 with initOption 13 and start-lvl 3 (ab -547.700353 1.261993): nan nan nan nan nan -> 0.545498 0.577695 0.756696 2.335267 nan 
-RE-TRACK ATTEMPT 14 with initOption 14 and start-lvl 3 (ab -45.593782 1.543889): nan nan nan nan nan -> 0.759237 0.751020 0.730860 1.096630 nan 
-RE-TRACK ATTEMPT 15 with initOption 15 and start-lvl 3 (ab -35656988.275368 1.351706): nan nan nan nan nan -> 0.682225 0.779630 1.090334 2.511115 nan 
-RE-TRACK ATTEMPT 16 with initOption 16 and start-lvl 3 (ab -33665223582.222996 1.870286): nan nan nan nan nan -> 1.571795 1.456663 1.757653 2.369608 nan 
-RE-TRACK ATTEMPT 17 with initOption 17 and start-lvl 3 (ab -160.363745 1.453439): nan nan nan nan nan -> 0.779047 1.117893 1.701016 2.734504 nan 
-RE-TRACK ATTEMPT 18 with initOption 18 and start-lvl 3 (ab -48.641099 1.109793): nan nan nan nan nan -> 0.438528 0.460738 0.552429 0.773948 nan 
-RE-TRACK ATTEMPT 19 with initOption 19 and start-lvl 3 (ab -995.269222 1.288585): nan nan nan nan nan -> 0.587494 0.592987 0.853329 1.813469 nan 
-RE-TRACK ATTEMPT 20 with initOption 20 and start-lvl 3 (ab -1613.286342 2.173463): nan nan nan nan nan -> 1.479065 1.910232 2.670553 2.853488 nan 
-RE-TRACK ATTEMPT 21 with initOption 21 and start-lvl 3 (ab -320.469725 1.557998): nan nan nan nan nan -> 0.986404 0.983839 0.978921 2.012322 nan 
-RE-TRACK ATTEMPT 22 with initOption 22 and start-lvl 3 (ab -1804.016193 2.177796): nan nan nan nan nan -> 1.428560 3.313220 3.910973 3.544497 nan 
-RE-TRACK ATTEMPT 23 with initOption 23 and start-lvl 3 (ab -114.618398 2.275839): nan nan nan nan nan -> 1.730239 1.697214 2.471758 2.844659 nan 
-RE-TRACK ATTEMPT 24 with initOption 24 and start-lvl 3 (ab -3867.429799 2.236586): nan nan nan nan nan -> 1.414274 1.765213 2.328086 3.375076 nan 
-RE-TRACK ATTEMPT 25 with initOption 25 and start-lvl 3 (ab -45.576502 1.550790): nan nan nan nan nan -> 0.742700 0.750124 0.733343 1.085777 nan 
-RE-TRACK ATTEMPT 26 with initOption 26 and start-lvl 3 (ab -9176.459878 1.478709): nan nan nan nan nan -> 0.635922 0.724294 0.816606 1.622403 nan 
-RE-TRACK ATTEMPT 27 with initOption 27 and start-lvl 3 (ab -4627603.559073 1.188952): nan nan nan nan nan -> 0.488826 0.485974 1.486812 2.732311 nan 
-RE-TRACK ATTEMPT 28 with initOption 28 and start-lvl 3 (ab -47.960024 1.391800): nan nan nan nan nan -> 2.203007 2.244509 2.972373 2.574289 nan 
-RE-TRACK ATTEMPT 29 with initOption 29 and start-lvl 3 (ab -48.988376 1.152502): nan nan nan nan nan -> 0.383297 0.503528 0.482883 0.745775 nan 
-RE-TRACK ATTEMPT 30 with initOption 30 and start-lvl 3 (ab -48.912221 1.151437): nan nan nan nan nan -> 0.383806 0.505228 0.485017 0.831442 nan 
-BIG ERROR! tracking failed entirely. Take predictred pose and hope we may somehow recover.
-Initial Tracking failed: LOST!
+iteration 00493: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3861!
+iteration 00494: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3842!
+iteration 00495: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3823!
+iteration 00496: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3803!
+iteration 00497: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3784!
+iteration 00498: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3766!
+iteration 00499: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3747!
+iteration 00500: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3747!
+
+Rectified Kamera Matrix:
+611.496       0 314.842
+      0 610.427 250.293
+      0       0       1
+
+NO PHOTOMETRIC Calibration!
+Reading Photometric Calibration from file 
+PhotometricUndistorter: Could not open file!
+using pyramid levels 0 to 3. coarsest resolution: 80 x 60!
+INITIALIZE FROM INITIALIZER (2019 pts)!
+RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab -29.281968 5.850847): 4.827272 5.058757 5.249370 5.124398 nan -> 4.943534 5.144315 5.252230 5.122731 nan 
+RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab -29.439979 5.982412): 4.827272 5.058757 5.249370 5.122731 nan -> 4.827943 5.068364 5.250083 5.124699 nan 
+RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab -29.220440 5.701031): 4.827272 5.058757 5.249370 5.122731 nan -> 4.877199 5.146128 5.256711 5.129993 nan 
+RE-TRACK ATTEMPT 4 with initOption 4 and start-lvl 3 (ab -29.219893 5.700428): 4.827272 5.058757 5.249370 5.122731 nan -> 4.876939 5.139069 5.313569 5.134752 nan 
+RE-TRACK ATTEMPT 5 with initOption 5 and start-lvl 3 (ab -31.774444 3.543588): 4.827272 5.058757 5.249370 5.122731 nan -> 2.583349 2.663374 2.700475 3.215800 nan 
+RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab -29.308343 5.305769): 4.817842 5.314138 5.663698 5.442732 nan -> 4.776772 5.311412 5.659509 5.608077 nan 
+RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab -29.324562 5.231824): 4.776772 5.311412 5.659509 5.442732 nan -> 4.797579 5.332375 5.664026 5.438630 nan 
+RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab -29.307835 5.315346): 4.776772 5.311412 5.659509 5.438630 nan -> 4.778383 5.297211 5.659492 5.431544 nan 
+RE-TRACK ATTEMPT 4 with initOption 4 and start-lvl 3 (ab -29.307697 5.307537): 4.776772 5.297211 5.659492 5.431544 nan -> 4.774049 5.312843 5.638851 5.978184 nan 
+RE-TRACK ATTEMPT 5 with initOption 5 and start-lvl 3 (ab -31.267444 3.335902): 4.774049 5.297211 5.638851 5.431544 nan -> 2.730594 2.916687 2.831765 3.440616 nan 
+RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab -31.821606 4.742135): nan nan nan nan nan -> 3.478558 3.867051 4.200212 4.944453 nan 
+RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab -29.428813 5.172568): nan nan nan nan nan -> 4.784602 5.418357 5.743006 5.605651 nan 
+RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab -29.432328 5.180663): 4.784602 5.418357 5.743006 5.605651 nan -> 4.785738 5.429118 5.742986 5.606243 nan 
+RE-TRACK ATTEMPT 4 with initOption 4 and start-lvl 3 (ab -29.429691 5.175948): 4.784602 5.418357 5.742986 5.605651 nan -> 4.785155 5.409621 5.743974 5.612051 nan 
+RE-TRACK ATTEMPT 5 with initOption 5 and start-lvl 3 (ab -33.238958 3.243020): 4.784602 5.409621 5.742986 5.605651 nan -> 2.319869 2.501623 2.448197 2.820757 nan 
+RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab -30.510213 5.358389): 5.057938 4.902896 5.831203 5.674010 nan -> 5.059944 4.891168 5.712828 5.770715 nan 
+RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab -30.180215 4.471003): 5.057938 4.891168 5.712828 5.674010 nan -> 4.599174 5.232042 5.860395 5.727555 nan 
+RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab -31.014434 3.773394): 4.599174 4.891168 5.712828 5.674010 nan -> 3.317596 3.840967 3.906614 5.389356 nan 
+KF Tracking failed: LOST!
 LOST!!
-DSO_STATS frames=10699 fed=5525 valid=5518 keyframes=295 dropped=1 resets=0 lost=1 lost_at=5524 initialized=1 wall_s=56.6
+DSO_STATS frames=10699 fed=1699 valid=1685 keyframes=75 dropped=8 resets=0 lost=1 lost_at=1698 initialized=1 wall_s=17.9
 destroyed ThreadReduce
-Wrote /home/calc/slam-data/results/dso/mono/ucu/seq13/traj_run2.txt (5518 poses of 10699 frames, coverage 0.54) and /home/calc/slam-data/results/dso/mono/ucu/seq13/meta.yaml
-== dso mono ucu/seq13 run2 ==
-ATE RMSE   : 27.447 m   (matched 185/358)
-coverage   : 0.54   tracking_lost: false   poses: 5518   max gap: 19.314 s
-drift 50 m : 41.062 m (133 seg)   100 m: 55.203 m (82 seg)
+Wrote /home/calc/slam-data/results/dso/mono/ucu/seq13/traj_run3.txt (1669 poses of 10699 frames, coverage 0.20) and /home/calc/slam-data/results/dso/mono/ucu/seq13/meta.yaml
+== dso mono ucu/seq13 run3 ==
+ATE RMSE   : 1.182 m   (matched 56/358)
+coverage   : 0.20   tracking_lost: false   poses: 1669   max gap: 19.314 s
+drift 50 m : 2.668 m (4 seg)   100 m: - m (0 seg)
 note: log matches /tracking (is )?lost|lost tracking|tracking failed/
-note: ATE matched 185/358 timestamps
+note: ATE matched 56/358 timestamps
 plot: /home/calc/slam-data/results/dso/mono/ucu/seq13/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-18:20:49    готово за 1.0 хв: поз 5518/10699; рядок додано в summary_StarDestroyer.csv
-18:20:49 -- seq13 openvins:mono_inertial run2/3: старт
+18:38:20    ПЕРЕВІР: поз 1669 із 10699 кадрів (поріг 50%); рядок у summary_StarDestroyer.csv є, маркер .bad_run3 поставлено, дані сиквенсу залишаю
+18:38:20 -- seq13 openvins:mono_inertial run3/3: старт
 ERROR: IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)
 IMU_STATS {"covers_frames": false, "dropped": {"non_finite": 0, "non_increasing_time": 0}, "ends_after_last_frame_s": 0.026282072067260742, "error": "IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)", "gap_limit_s": 0.05, "max_gap_s": 0.00824284553527832, "median_dt_s": 0.007999897003173828, "n": 44777, "n_gaps_over_limit": 0, "rate_hz": 125.00160934612863, "span_s": 358.2077226638794, "starts_before_first_frame_s": -18.22529149055481, "t_first": 1785955416.7467098, "t_last": 1785955774.9544325}
 IMU data unusable (see above)
-18:20:49    ПОМИЛКА: scripts/openvins/run.sh завершився з кодом 1. Кінець логу:
-18:20:49    | ERROR: IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)
-18:20:49    | IMU_STATS {"covers_frames": false, "dropped": {"non_finite": 0, "non_increasing_time": 0}, "ends_after_last_frame_s": 0.026282072067260742, "error": "IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)", "gap_limit_s": 0.05, "max_gap_s": 0.00824284553527832, "median_dt_s": 0.007999897003173828, "n": 44777, "n_gaps_over_limit": 0, "rate_hz": 125.00160934612863, "span_s": 358.2077226638794, "starts_before_first_frame_s": -18.22529149055481, "t_first": 1785955416.7467098, "t_last": 1785955774.9544325}
-18:20:49    | IMU data unusable (see above)
-18:20:49 -- seq13 dpvslam:mono run3/3: старт
+18:38:20    ПОМИЛКА: scripts/openvins/run.sh завершився з кодом 1. Кінець логу:
+18:38:20    | ERROR: IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)
+18:38:20    | IMU_STATS {"covers_frames": false, "dropped": {"non_finite": 0, "non_increasing_time": 0}, "ends_after_last_frame_s": 0.026282072067260742, "error": "IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)", "gap_limit_s": 0.05, "max_gap_s": 0.00824284553527832, "median_dt_s": 0.007999897003173828, "n": 44777, "n_gaps_over_limit": 0, "rate_hz": 125.00160934612863, "span_s": 358.2077226638794, "starts_before_first_frame_s": -18.22529149055481, "t_first": 1785955416.7467098, "t_last": 1785955774.9544325}
+18:38:20    | IMU data unusable (see above)
+18:38:20 seq13: НЕ всі прогони готові — .mcap й експорт лишаю для розбору (повторний запуск доробить)
