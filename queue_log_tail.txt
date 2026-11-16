@@ -1,60 +1,60 @@
-iteration 00493: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3861!
-iteration 00494: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3842!
-iteration 00495: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3823!
-iteration 00496: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3803!
-iteration 00497: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3784!
-iteration 00498: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3766!
-iteration 00499: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3747!
-iteration 00500: range: x: -0.5149 - 0.5301; y: -0.4100 - 0.3747!
-
-Rectified Kamera Matrix:
-611.496       0 314.842
-      0 610.427 250.293
-      0       0       1
-
-NO PHOTOMETRIC Calibration!
-Reading Photometric Calibration from file 
-PhotometricUndistorter: Could not open file!
-using pyramid levels 0 to 3. coarsest resolution: 80 x 60!
-INITIALIZE FROM INITIALIZER (2019 pts)!
-RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab -29.281968 5.850847): 4.827272 5.058757 5.249370 5.124398 nan -> 4.943534 5.144315 5.252230 5.122731 nan 
-RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab -29.439979 5.982412): 4.827272 5.058757 5.249370 5.122731 nan -> 4.827943 5.068364 5.250083 5.124699 nan 
-RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab -29.220440 5.701031): 4.827272 5.058757 5.249370 5.122731 nan -> 4.877199 5.146128 5.256711 5.129993 nan 
-RE-TRACK ATTEMPT 4 with initOption 4 and start-lvl 3 (ab -29.219893 5.700428): 4.827272 5.058757 5.249370 5.122731 nan -> 4.876939 5.139069 5.313569 5.134752 nan 
-RE-TRACK ATTEMPT 5 with initOption 5 and start-lvl 3 (ab -31.774444 3.543588): 4.827272 5.058757 5.249370 5.122731 nan -> 2.583349 2.663374 2.700475 3.215800 nan 
-RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab -29.308343 5.305769): 4.817842 5.314138 5.663698 5.442732 nan -> 4.776772 5.311412 5.659509 5.608077 nan 
-RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab -29.324562 5.231824): 4.776772 5.311412 5.659509 5.442732 nan -> 4.797579 5.332375 5.664026 5.438630 nan 
-RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab -29.307835 5.315346): 4.776772 5.311412 5.659509 5.438630 nan -> 4.778383 5.297211 5.659492 5.431544 nan 
-RE-TRACK ATTEMPT 4 with initOption 4 and start-lvl 3 (ab -29.307697 5.307537): 4.776772 5.297211 5.659492 5.431544 nan -> 4.774049 5.312843 5.638851 5.978184 nan 
-RE-TRACK ATTEMPT 5 with initOption 5 and start-lvl 3 (ab -31.267444 3.335902): 4.774049 5.297211 5.638851 5.431544 nan -> 2.730594 2.916687 2.831765 3.440616 nan 
-RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab -31.821606 4.742135): nan nan nan nan nan -> 3.478558 3.867051 4.200212 4.944453 nan 
-RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab -29.428813 5.172568): nan nan nan nan nan -> 4.784602 5.418357 5.743006 5.605651 nan 
-RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab -29.432328 5.180663): 4.784602 5.418357 5.743006 5.605651 nan -> 4.785738 5.429118 5.742986 5.606243 nan 
-RE-TRACK ATTEMPT 4 with initOption 4 and start-lvl 3 (ab -29.429691 5.175948): 4.784602 5.418357 5.742986 5.605651 nan -> 4.785155 5.409621 5.743974 5.612051 nan 
-RE-TRACK ATTEMPT 5 with initOption 5 and start-lvl 3 (ab -33.238958 3.243020): 4.784602 5.409621 5.742986 5.605651 nan -> 2.319869 2.501623 2.448197 2.820757 nan 
-RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab -30.510213 5.358389): 5.057938 4.902896 5.831203 5.674010 nan -> 5.059944 4.891168 5.712828 5.770715 nan 
-RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab -30.180215 4.471003): 5.057938 4.891168 5.712828 5.674010 nan -> 4.599174 5.232042 5.860395 5.727555 nan 
-RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab -31.014434 3.773394): 4.599174 4.891168 5.712828 5.674010 nan -> 3.317596 3.840967 3.906614 5.389356 nan 
-KF Tracking failed: LOST!
-LOST!!
-DSO_STATS frames=10699 fed=1699 valid=1685 keyframes=75 dropped=8 resets=0 lost=1 lost_at=1698 initialized=1 wall_s=17.9
-destroyed ThreadReduce
-Wrote /home/calc/slam-data/results/dso/mono/ucu/seq13/traj_run3.txt (1669 poses of 10699 frames, coverage 0.20) and /home/calc/slam-data/results/dso/mono/ucu/seq13/meta.yaml
-== dso mono ucu/seq13 run3 ==
-ATE RMSE   : 1.182 m   (matched 56/358)
-coverage   : 0.20   tracking_lost: false   poses: 1669   max gap: 19.314 s
-drift 50 m : 2.668 m (4 seg)   100 m: - m (0 seg)
-note: log matches /tracking (is )?lost|lost tracking|tracking failed/
-note: ATE matched 56/358 timestamps
-plot: /home/calc/slam-data/results/dso/mono/ucu/seq13/traj_xy.pdf
-appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-18:38:20    ПЕРЕВІР: поз 1669 із 10699 кадрів (поріг 50%); рядок у summary_StarDestroyer.csv є, маркер .bad_run3 поставлено, дані сиквенсу залишаю
-18:38:20 -- seq13 openvins:mono_inertial run3/3: старт
-ERROR: IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)
-IMU_STATS {"covers_frames": false, "dropped": {"non_finite": 0, "non_increasing_time": 0}, "ends_after_last_frame_s": 0.026282072067260742, "error": "IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)", "gap_limit_s": 0.05, "max_gap_s": 0.00824284553527832, "median_dt_s": 0.007999897003173828, "n": 44777, "n_gaps_over_limit": 0, "rate_hz": 125.00160934612863, "span_s": 358.2077226638794, "starts_before_first_frame_s": -18.22529149055481, "t_first": 1785955416.7467098, "t_last": 1785955774.9544325}
-IMU data unusable (see above)
-18:38:20    ПОМИЛКА: scripts/openvins/run.sh завершився з кодом 1. Кінець логу:
-18:38:20    | ERROR: IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)
-18:38:20    | IMU_STATS {"covers_frames": false, "dropped": {"non_finite": 0, "non_increasing_time": 0}, "ends_after_last_frame_s": 0.026282072067260742, "error": "IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)", "gap_limit_s": 0.05, "max_gap_s": 0.00824284553527832, "median_dt_s": 0.007999897003173828, "n": 44777, "n_gaps_over_limit": 0, "rate_hz": 125.00160934612863, "span_s": 358.2077226638794, "starts_before_first_frame_s": -18.22529149055481, "t_first": 1785955416.7467098, "t_last": 1785955774.9544325}
-18:38:20    | IMU data unusable (see above)
-18:38:20 seq13: НЕ всі прогони готові — .mcap й експорт лишаю для розбору (повторний запуск доробить)
+ 99%|█████████▉| 83719/84530 [10:49<00:05, 140.02it/s]
+ 99%|█████████▉| 83736/84530 [10:50<00:05, 147.30it/s]
+ 99%|█████████▉| 83752/84530 [10:50<00:05, 149.78it/s]
+ 99%|█████████▉| 83768/84530 [10:50<00:05, 151.76it/s]
+ 99%|█████████▉| 83784/84530 [10:50<00:04, 151.53it/s]
+ 99%|█████████▉| 83800/84530 [10:50<00:04, 152.45it/s]
+ 99%|█████████▉| 83816/84530 [10:50<00:05, 133.32it/s]
+ 99%|█████████▉| 83832/84530 [10:50<00:05, 138.52it/s]
+ 99%|█████████▉| 83847/84530 [10:50<00:04, 139.89it/s]
+ 99%|█████████▉| 83862/84530 [10:50<00:04, 140.78it/s]
+ 99%|█████████▉| 83877/84530 [10:51<00:04, 141.62it/s]
+ 99%|█████████▉| 83892/84530 [10:51<00:04, 141.67it/s]
+ 99%|█████████▉| 83907/84530 [10:51<00:04, 141.67it/s]
+ 99%|█████████▉| 83922/84530 [10:51<00:04, 141.86it/s]
+ 99%|█████████▉| 83937/84530 [10:51<00:04, 142.32it/s]
+ 99%|█████████▉| 83952/84530 [10:51<00:04, 142.43it/s]
+ 99%|█████████▉| 83968/84530 [10:51<00:03, 144.38it/s]
+ 99%|█████████▉| 83983/84530 [10:51<00:03, 143.83it/s]
+ 99%|█████████▉| 83998/84530 [10:51<00:03, 142.98it/s]
+ 99%|█████████▉| 84013/84530 [10:51<00:03, 142.99it/s]
+ 99%|█████████▉| 84028/84530 [10:52<00:03, 142.85it/s]
+ 99%|█████████▉| 84043/84530 [10:52<00:03, 142.43it/s]
+ 99%|█████████▉| 84058/84530 [10:52<00:03, 142.38it/s]
+ 99%|█████████▉| 84073/84530 [10:52<00:03, 142.60it/s]
+ 99%|█████████▉| 84088/84530 [10:52<00:03, 142.65it/s]
+ 99%|█████████▉| 84103/84530 [10:52<00:03, 141.88it/s]
+100%|█████████▉| 84118/84530 [10:52<00:02, 142.17it/s]
+100%|█████████▉| 84133/84530 [10:52<00:02, 142.57it/s]
+100%|█████████▉| 84148/84530 [10:52<00:02, 142.84it/s]
+100%|█████████▉| 84163/84530 [10:53<00:02, 143.14it/s]
+100%|█████████▉| 84178/84530 [10:53<00:02, 142.84it/s]
+100%|█████████▉| 84195/84530 [10:53<00:02, 149.09it/s]
+100%|█████████▉| 84210/84530 [10:53<00:02, 147.54it/s]
+100%|█████████▉| 84225/84530 [10:53<00:02, 146.50it/s]
+100%|█████████▉| 84240/84530 [10:53<00:01, 145.15it/s]
+100%|█████████▉| 84255/84530 [10:53<00:01, 144.48it/s]
+100%|█████████▉| 84270/84530 [10:53<00:01, 144.12it/s]
+100%|█████████▉| 84285/84530 [10:53<00:01, 144.10it/s]
+100%|█████████▉| 84300/84530 [10:53<00:01, 144.16it/s]
+100%|█████████▉| 84315/84530 [10:54<00:01, 142.36it/s]
+100%|█████████▉| 84330/84530 [10:54<00:01, 142.27it/s]
+100%|█████████▉| 84345/84530 [10:54<00:01, 142.42it/s]
+100%|█████████▉| 84360/84530 [10:54<00:01, 142.47it/s]
+100%|█████████▉| 84375/84530 [10:54<00:01, 141.89it/s]
+100%|█████████▉| 84390/84530 [10:54<00:00, 140.56it/s]
+100%|█████████▉| 84405/84530 [10:54<00:00, 140.73it/s]
+100%|█████████▉| 84420/84530 [10:54<00:00, 141.16it/s]
+100%|█████████▉| 84435/84530 [10:54<00:00, 140.76it/s]
+100%|█████████▉| 84450/84530 [10:55<00:00, 140.69it/s]
+100%|█████████▉| 84465/84530 [10:55<00:00, 140.98it/s]
+100%|█████████▉| 84480/84530 [10:55<00:00, 140.76it/s]
+100%|█████████▉| 84495/84530 [10:55<00:00, 140.93it/s]
+100%|█████████▉| 84510/84530 [10:55<00:00, 141.25it/s]
+100%|█████████▉| 84525/84530 [10:55<00:00, 141.68it/s]
+100%|██████████| 84530/84530 [10:55<00:00, 128.94it/s]
+Found 655 common timestamps for color 10908 color and 656 depth images.
+Found 655 common timestamps for color 10908 color and 656 depth images.
+wrote /home/calc/slam-data/ucu_tum/seq12.partial/odom.txt (6727 poses)
+seq12,download_s=717,export_s=659,mcap_bytes=10889194002,export_bytes=4656282470
+19:01:24 -- seq12 dpvslam:mono run1/3: старт
