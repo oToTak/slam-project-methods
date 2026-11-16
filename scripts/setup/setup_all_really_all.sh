@@ -7,7 +7,7 @@
 #   1/5 machine check (WSL, RAM, free disk, GPU)
 #   2/5 scripts/setup/setup_all.sh   (apt + CUDA 12.1 [sudo, once], uv/evo/hf, DPVO @0ac95b6 + CUDA build, weights, TUM sanity, verify)
 #   3/5 Hugging Face login (you type the token yourself; skipped when already logged in) + dataset access check
-#   4/5 unit tests (run_dpvo, eval, queue with stubs: CPU only, nothing downloaded)
+#   4/5 unit tests (run_dpvo, dpvslam wrapper, eval, queue with stubs: CPU only, nothing downloaded)
 #   5/5 queue dry-run for both ends + the commands to start the work
 # Log: $DATA_ROOT/logs/setup_really_all_<time>.log.  New methods get their own recipe next to this file and one call here.
 #
@@ -94,6 +94,7 @@ fi
 echo "== 4/5 unit tests =="
 tests_ok=1
 bash "$here/run_dpvo_tests.sh" 2>&1 | tail -n 3 || tests_ok=0
+bash "$here/run_dpvslam_tests.sh" 2>&1 | tail -n 3 || tests_ok=0
 bash "$here/run_queue_tests.sh" 2>&1 | tail -n 6 || tests_ok=0
 [ "$tests_ok" = 1 ] && echo "  tests: finished (look for OK above)" || todo "some unit tests failed: scroll up and send the output to whoever helps you"
 

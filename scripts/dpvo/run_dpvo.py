@@ -16,9 +16,13 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-METHOD, MODE = "dpvo", "mono"
+METHOD, MODE = "dpvo", "mono"       # METHOD is the default; --method dpvslam reuses everything below (scripts/dpvslam/run.sh)
 # (top/bottom, left/right) crop in pixels after undistortion, as in DPVO evaluate_tum.py
 CROP_AFTER_UNDISTORT = {"tum": (8, 16)}
+# Fixed cfg options of each method on top of config/default.yaml (yacs "KEY VALUE ..." list, like DPVO's own --opts).
+# DPV-SLAM = the same DPVO repo/commit with the proximity loop closure (README "SLAM Backends": --opts LOOP_CLOSURE True).
+# CLASSIC_LOOP_CLOSURE (image retrieval, needs DBoW2 + DPRetrieval built with cmake/apt) is deliberately NOT used.
+METHOD_OPTS = {"dpvo": [], "dpvslam": ["LOOP_CLOSURE", "True"]}
 
 
 # ---------------------------------------------------------------- pure helpers
@@ -90,10 +94,39 @@ def poses_are_valid(poses):
     return len(poses) >= 2 and all(math.isfinite(float(v)) for p in poses for v in p)
 
 
-def format_meta(*, dataset, seq, run, commit, config, coverage, tracking_lost, notes):
+def effective_opts(method, extra_opts=None):
+    """cfg option list for ``method``: its fixed options, then the caller's extra ones (later keys win in yacs)."""
+    return list(METHOD_OPTS[method]) + list(extra_opts or [])
+
+
+def base_notes(method, extra_opts, stride, n_frames):
+    """First part of meta.yaml `notes`. For plain DPVO it is exactly the text used before --method existed."""
+    if method == "dpvslam":
+        what = ("DPV-SLAM = DPVO 0ac95b6 + proximity loop closure (cfg LOOP_CLOSURE=True), "
+                "classic image-retrieval loop closure NOT used")
+    else:
+        what = "DPVO 0ac95b6"
+    notes = f"{what}, config/default.yaml"
+    if extra_opts:
+        notes += f", extra opts {' '.join(extra_opts)}"
+    return notes + f", stride={stride}, {n_frames} frames."
+
+
+def lc_note(stats):
+    """Loop-closure facts of a run (empty for plain DPVO): how often the backend really fired."""
+    if "lc_cfg" not in stats:
+        return ""
+    return (f"Loop closure: {stats['lc_cfg']}; {stats['lc_edge_batches']} loop-edge batches "
+            f"({stats['lc_edges']} edges), {stats['global_ba_calls']} global BA calls "
+            f"({stats['global_ba_s']:.0f}s of {stats['wall_s']:.0f}s); {stats['n_keyframes']} keyframes kept; "
+            f"BA failures swallowed by DPVO: {stats['ba_failures']}"
+            + (f" (first: {stats['ba_first_error']})" if stats["ba_failures"] else "") + ".")
+
+
+def format_meta(*, dataset, seq, run, commit, config, coverage, tracking_lost, notes, method=METHOD):
     """meta.yaml text per CONVENTIONS section 4 (hand-written: no PyYAML needed in Colab)."""
     return (
-        f"method: {METHOD}\n"
+        f"method: {method}\n"
         f"mode: {MODE}\n"
         f"dataset: {dataset}\n"
         f"seq: {seq}\n"
@@ -107,7 +140,7 @@ def format_meta(*, dataset, seq, run, commit, config, coverage, tracking_lost, n
 
 
 def write_outputs(out_dir, *, dataset, seq, config, commit, rgb_tstamps, tstamps, poses,
-                  tracking_lost=False, notes="", run=None):
+                  tracking_lost=False, notes="", run=None, method=METHOD):
     """Write traj_run<N>.txt (unless tracking lost) and meta.yaml. Returns (run, traj_path or None).
 
     ``run`` is chosen by the caller (the queue worker passes it explicitly); default = next free number.
@@ -130,7 +163,7 @@ def write_outputs(out_dir, *, dataset, seq, config, commit, rgb_tstamps, tstamps
         coverage = compute_coverage(tstamps, rgb_tstamps)
     (out_dir / "meta.yaml").write_text(format_meta(
         dataset=dataset, seq=seq, run=run, commit=commit, config=config,
-        coverage=coverage, tracking_lost=tracking_lost, notes=notes))
+        coverage=coverage, tracking_lost=tracking_lost, notes=notes, method=method))
     return run, traj_path
 
 
@@ -204,8 +237,58 @@ class _GpuSampler:
         self.peak = max(self.peak, self._used())
 
 
-def run_slam(frames, calib, dataset, dpvo_dir, network=None, stride=1):
-    """Feed frames with their rgb.txt timestamps to DPVO.
+def _count_loop_closure(slam, lc):
+    """Count what the DPV-SLAM backend does, without changing it: loop-edge batches returned by
+    PatchGraph.edges_loop() and global-BA calls (+ their wall time). Never breaks the run."""
+    import time
+
+    import torch
+
+    try:
+        orig_edges = slam.pg.edges_loop
+
+        def edges_loop():
+            res = orig_edges()
+            n = int(res[0].numel()) // slam.M if len(res) == 2 else 0     # (kk, jj) of M patches per loop edge
+            if n:
+                lc["lc_edge_batches"] += 1
+                lc["lc_edges"] += n
+            return res
+
+        slam.pg.edges_loop = edges_loop
+        orig_ba = slam._DPVO__run_global_BA        # name-mangled private method of DPVO
+
+        def global_ba():
+            torch.cuda.synchronize()
+            t = time.time()
+            try:
+                return orig_ba()
+            finally:
+                torch.cuda.synchronize()
+                lc["global_ba_calls"] += 1
+                lc["global_ba_s"] += time.time() - t
+
+        slam._DPVO__run_global_BA = global_ba
+        # DPVO.update() swallows every BA exception ("Warning BA failed...", e.g. CUDA OOM of the dense 6N x 6N global BA):
+        # count them so a run whose backend silently did nothing is visible in meta notes. The error is re-raised unchanged.
+        ba_mod = sys.modules[type(slam).__module__].fastba
+        orig_fastba = ba_mod.BA
+
+        def fastba_counted(*a, **k):
+            try:
+                return orig_fastba(*a, **k)
+            except BaseException as e:
+                lc["ba_failures"] += 1
+                lc.setdefault("ba_first_error", f"{type(e).__name__}: {str(e).splitlines()[0][:100] if str(e) else ''}")
+                raise
+
+        ba_mod.BA = fastba_counted
+    except Exception as e:                          # instrumentation is optional
+        print(f"WARNING: loop-closure counters disabled: {e}")
+
+
+def run_slam(frames, calib, dataset, dpvo_dir, network=None, stride=1, cfg_opts=None):
+    """Feed frames with their rgb.txt timestamps to DPVO (``cfg_opts``: yacs KEY VALUE list, e.g. LOOP_CLOSURE True).
 
     Returns (poses Nx7, tstamps N, stats) where stats holds wall time, GPU name and memory peaks.
     """
@@ -220,9 +303,12 @@ def run_slam(frames, calib, dataset, dpvo_dir, network=None, stride=1):
     from dpvo.dpvo import DPVO
 
     cfg.merge_from_file(str(Path(dpvo_dir) / "config" / "default.yaml"))
+    if cfg_opts:
+        cfg.merge_from_list(list(cfg_opts))
     network = network or str(Path(dpvo_dir) / "dpvo.pth")
     torch.manual_seed(1234)
     slam = None
+    lc = {"lc_edge_batches": 0, "lc_edges": 0, "global_ba_calls": 0, "global_ba_s": 0.0, "ba_failures": 0}
     torch.cuda.reset_peak_memory_stats()
     t0 = time.time()
     with torch.no_grad(), _GpuSampler() as gpu:
@@ -231,7 +317,10 @@ def run_slam(frames, calib, dataset, dpvo_dir, network=None, stride=1):
             intr = torch.as_tensor(intr, dtype=torch.float, device="cuda")
             if slam is None:
                 slam = DPVO(cfg, network, ht=image.shape[-2], wd=image.shape[-1], viz=False)
+                if cfg.LOOP_CLOSURE:
+                    _count_loop_closure(slam, lc)
             slam(ts, image, intr)
+        n_keyframes = int(slam.n)
         poses, tstamps = slam.terminate()
     stats = {
         "wall_s": time.time() - t0,
@@ -243,6 +332,10 @@ def run_slam(frames, calib, dataset, dpvo_dir, network=None, stride=1):
         "ram_peak_mib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024,  # Linux: KiB
         "n_frames": len(frames[::stride]),
     }
+    if cfg.LOOP_CLOSURE:
+        stats.update(lc, n_keyframes=n_keyframes,
+                     lc_cfg=f"BACKEND_THRESH={cfg.BACKEND_THRESH} MAX_EDGE_AGE={cfg.MAX_EDGE_AGE} "
+                            f"GLOBAL_OPT_FREQ={cfg.GLOBAL_OPT_FREQ}")
     return np.asarray(poses), np.asarray(tstamps), stats
 
 
@@ -255,6 +348,10 @@ def stats_note(stats):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--method", default=METHOD, choices=sorted(METHOD_OPTS),
+                    help="dpvo (default) or dpvslam = DPVO + proximity loop closure (METHOD_OPTS); sets the results folder")
+    ap.add_argument("--opts", nargs="*", default=[], metavar="KEY VALUE",
+                    help="extra DPVO cfg options after the method's own (yacs list); recorded in meta notes")
     ap.add_argument("--dataset", required=True, choices=["tum", "ucu"])
     ap.add_argument("--seq", required=True)
     ap.add_argument("--data-dir", required=True, type=Path)
@@ -274,10 +371,11 @@ def main():
         frames = frames[:args.max_frames]
     calib = read_calib(args.calib if args.calib.is_absolute() else REPO_ROOT / args.calib)
     rgb_ts = [t for t, _ in frames]
-    out_dir = args.results_root / METHOD / MODE / args.dataset / args.seq
+    out_dir = args.results_root / args.method / MODE / args.dataset / args.seq
+    opts = effective_opts(args.method, args.opts)
     sha, dirty = git_commit()
     config = str(args.calib)
-    notes = f"DPVO 0ac95b6, config/default.yaml, stride={args.stride}, {len(frames)} frames."
+    notes = base_notes(args.method, args.opts, args.stride, len(frames))
     if args.max_frames > 0:
         notes += " TRUNCATED smoke run (--max-frames)."
     if dirty:
@@ -288,18 +386,21 @@ def main():
 
     try:
         poses, tstamps, stats = run_slam(frames, calib, args.dataset, args.dpvo_dir,
-                                         args.network, args.stride)
+                                         args.network, args.stride, opts)
         notes += " " + stats_note(stats)
         print(stats_note(stats))
+        if lc_note(stats):
+            notes += " " + lc_note(stats)
+            print(lc_note(stats))
     except Exception as e:  # tracking failure / CUDA error: record it, never leave stale meta
         write_outputs(out_dir, dataset=args.dataset, seq=args.seq, config=config, commit=sha,
                       rgb_tstamps=rgb_ts, tstamps=[], poses=[], tracking_lost=True,
-                      notes=f"{notes} Failed: {type(e).__name__}: {e}", run=args.run)
+                      notes=f"{notes} Failed: {type(e).__name__}: {e}", run=args.run, method=args.method)
         raise
     check_tstamps(tstamps, [t for t, _ in frames[::args.stride]])
     run, traj = write_outputs(out_dir, dataset=args.dataset, seq=args.seq, config=config,
                               commit=sha, rgb_tstamps=rgb_ts, tstamps=tstamps, poses=poses,
-                              notes=notes, run=args.run)
+                              notes=notes, run=args.run, method=args.method)
     print(f"Wrote {traj} ({len(poses)} poses) and {out_dir / 'meta.yaml'}")
 
 

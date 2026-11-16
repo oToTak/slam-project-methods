@@ -132,6 +132,7 @@ cd ~/slam-runner && DATA_BUDGET_GB=60 bash scripts/run_queue.sh --from 13 --dir 
 | `../sync/common.sh`, `../sync/test_start.sh` | спільні функції (токен для git, `runner.conf`); тести `start.sh` і переходу на заглушках |
 | `setup_all_really_all.sh` | **один скрипт для обох ПК:** перевірка машини → `setup_all.sh` → вхід у HF → тести → план черги. `--check`: лише що встановлено (нічого не ставить) |
 | `dpvo.sh` | рецепт методу `dpvo`: `--check` (швидка перевірка) / без аргументів — встановлення (= `setup_all.sh`). Шаблон для інших методів |
+| `dpvslam.sh` | рецепт методу `dpvslam` (DPV-SLAM = DPVO + близький loop closure `LOOP_CLOSURE True`): `--check` / без аргументів лише докидає pip-пакети (`pypose numba scipy einops`) у venv DPVO, без sudo і збірки; тест: `run_dpvslam_tests.sh` |
 | `setup_all.sh` | усе встановлення (кроки 01→02→04→05 + TUM + перевірка) |
 | `../run_queue.sh` | черга сиквенсів з одного кінця (`--from/--dir/--stop-before/--status`), код у `../queue/run_queue.py` |
 | `../queue/methods.conf` | реєстр методів черги: метод → режим → `run.sh` → gpu/cpu |
