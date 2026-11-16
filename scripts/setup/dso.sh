@@ -82,6 +82,9 @@ step_patch() {
   if grep -q 'CV_LOAD_IMAGE' "$rw"; then echo "[3 patch] CV_LOAD_IMAGE_* still present in $rw"; return 1; fi
   sed -E -i -e "s/-std=c\+\+[0-9a-z]+/-std=$DSO_CXX_STD/" -e "s/-march=[A-Za-z0-9_.-]+/-march=$DSO_MARCH/" "$cm"
   grep -q -- "-std=$DSO_CXX_STD" "$cm" && grep -q -- "-march=$DSO_MARCH" "$cm" || { echo "[3 patch] could not set the compiler flags in $cm"; return 1; }
+  # Boost >= 1.73 no longer exports the global bind placeholders _1.._4 that util/IndexThreadReduce.h relies on.
+  local ih="$DSO_DIR/src/util/IndexThreadReduce.h"
+  grep -q 'using namespace boost::placeholders' "$ih" || sed -i 's|#include "boost/thread.hpp"|#include "boost/thread.hpp"\n#include <boost/bind/bind.hpp>\nusing namespace boost::placeholders;|' "$ih"
   git -C "$DSO_DIR" diff > "$DSO_PREFIX/dso_local_patches.diff" 2>/dev/null
   echo "[3 patch] OpenCV 4 image flags fixed; -std=$DSO_CXX_STD -march=$DSO_MARCH (diff saved in $DSO_PREFIX/dso_local_patches.diff)"
 }
