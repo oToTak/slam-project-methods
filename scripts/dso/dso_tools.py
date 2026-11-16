@@ -170,15 +170,17 @@ def format_pose_line(ts_token, pose):
     return f"{lib.ts_9dec(ts_token)} " + " ".join(f"{v:.9f}" for v in pose)
 
 
-def format_meta(*, dataset, seq, run, commit, config, coverage, tracking_lost, notes):
+def format_meta(*, dataset, seq, run, commit, config, coverage, tracking_lost, notes, method=METHOD, mode=MODE):
     import json
-    return (f"method: {METHOD}\nmode: {MODE}\ndataset: {dataset}\nseq: {seq}\nrun: {run}\ncommit: {commit}\n"
+    return (f"method: {method}\nmode: {mode}\ndataset: {dataset}\nseq: {seq}\nrun: {run}\ncommit: {commit}\n"
             f"config: {config}\ncoverage: {coverage:.2f}\ntracking_lost: {'true' if tracking_lost else 'false'}\n"
             f"notes: {json.dumps(notes, ensure_ascii=False)}\n")
 
 
-def process(*, poses, rgb, out_dir, run, dataset, seq, config, max_frames=0, note="", driver_failed=None, commit=None):
-    """Returns the exit code. Writes traj_run<run>.txt (unless lost) and meta.yaml. Never overwrites a run."""
+def process(*, poses, rgb, out_dir, run, dataset, seq, config, max_frames=0, note="", driver_failed=None, commit=None,
+            method=METHOD, mode=MODE, label="DSO", rows=None, malformed=0):
+    """Returns the exit code. Writes traj_run<run>.txt (unless lost) and meta.yaml. Never overwrites a run.
+    `rows` (list of (frame_index, pose7)) replaces reading `poses`: scripts/openvins/openvins_tools.py composes its own poses and reuses this."""
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     traj = out_dir / f"traj_run{run}.txt"
@@ -204,17 +206,18 @@ def process(*, poses, rgb, out_dir, run, dataset, seq, config, max_frames=0, not
     if driver_failed:
         lost, notes = True, f"{notes} Driver failed: {driver_failed}."
     else:
-        rows, malformed = read_poses(poses)
+        if rows is None:
+            rows, malformed = read_poses(poses)
         kept, st = map_to_frames(rows, len(frames))
         if len(kept) < MIN_POSES:
             lost = True
-            notes += f" No usable trajectory: {len(rows)} raw poses, {len(kept)} usable (DSO never initialised or lost tracking at once)."
+            notes += f" No usable trajectory: {len(rows)} raw poses, {len(kept)} usable ({label} never initialised or lost tracking at once)."
         else:
             selected = sorted(kept)
             tstamps = [frames[j][0] for j in selected]
             notes += (f" {len(selected)} of {len(frames)} frames have a pose ({100.0 * len(selected) / len(frames):.1f}% of frames; "
                       f"outside-sequence {st['outside']}, duplicate {st['duplicate']}, malformed {malformed}); frames without a pose "
-                      f"(before initialisation, after DSO got lost, before a reset) are NOT interpolated.")
+                      f"(before initialisation, after {label} got lost, before a reset) are NOT interpolated.")
     coverage = 0.0
     if not lost:
         tmp = out_dir / f".traj_run{run}.txt.tmp"
@@ -224,7 +227,7 @@ def process(*, poses, rgb, out_dir, run, dataset, seq, config, max_frames=0, not
         os.replace(tmp, traj)
         coverage = common.compute_coverage([float(t) for t in tstamps], ftimes)
     (out_dir / "meta.yaml").write_text(format_meta(dataset=dataset, seq=seq, run=run, commit=commit, config=config, coverage=coverage,
-                                                   tracking_lost=lost, notes=notes), encoding="utf-8")
+                                                   tracking_lost=lost, notes=notes, method=method, mode=mode), encoding="utf-8")
     if lost:
         print(f"No trajectory written for {seq} run {run}: {notes.strip()}")
         return EXIT_LOST
