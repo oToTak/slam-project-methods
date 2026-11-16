@@ -160,6 +160,13 @@ class QueueTest(unittest.TestCase):
         reg = rq.load_registry(self.root / "two.conf")
         self.assertEqual(list(reg), ["a:mono", "a:inertial", "b:mono"])
         self.assertEqual(reg["a:inertial"].runs, 1)
+        self.assertIsNone(reg["a:inertial"].pose_tol)
+        (self.root / "tol.conf").write_text("a | mono | r.sh | cpu | - | 0.2\na | x | r.sh | cpu | 2 | 0.5\n")
+        tol = rq.load_registry(self.root / "tol.conf")
+        self.assertEqual((tol["a:mono"].runs, tol["a:mono"].pose_tol, tol["a:x"].runs, tol["a:x"].pose_tol), (None, 0.2, 2, 0.5))
+        (self.root / "badtol.conf").write_text("a | mono | r.sh | cpu | 3 | 0\n")
+        with self.assertRaises(SystemExit):
+            rq.load_registry(self.root / "badtol.conf")
         self.assertEqual(rq.select_methods(reg, "a"), ["a:mono", "a:inertial"])
         self.assertEqual(rq.select_methods(reg, "a:inertial"), ["a:inertial"])
         self.assertEqual(rq.select_methods(reg, "b,a:mono"), ["a:mono", "b:mono"])          # registry order

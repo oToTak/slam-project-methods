@@ -73,6 +73,7 @@ class Method(NamedTuple):
     script: str
     gpu: bool
     runs: Optional[int] = None            # runs per sequence; None = --runs
+    pose_tol: Optional[float] = None      # per-method POSE_TOL (methods that honestly lose tracking); None = POSE_TOL
 
     @property
     def key(self):
@@ -129,22 +130,27 @@ def sequence_order(frm, direction, stop_before=None):
 
 
 def load_registry(path):
-    """{'method:mode': Method} in file order. Line: method | mode | script | gpu|cpu [| runs]."""
+    """{'method:mode': Method} in file order. Line: method | mode | script | gpu|cpu [| runs [| pose_tol]] ('-' = default runs)."""
     reg = {}
     for ln, line in enumerate(Path(path).read_text().splitlines(), 1):
         line = line.split("#", 1)[0].strip()
         if not line:
             continue
         parts = [p.strip() for p in line.split("|")]
-        ok = len(parts) in (4, 5) and all(parts) and parts[3] in ("gpu", "cpu") \
-            and not any(c in parts[0] + parts[1] for c in ":, ")
-        runs = None
-        if ok and len(parts) == 5:
+        ok = len(parts) in (4, 5, 6) and all(parts) and parts[3] in ("gpu", "cpu")             and not any(c in parts[0] + parts[1] for c in ":, ")
+        runs, tol = None, None
+        if ok and len(parts) >= 5 and parts[4] != "-":
             ok = parts[4].isdigit() and int(parts[4]) >= 1
             runs = int(parts[4]) if ok else None
+        if ok and len(parts) == 6:
+            try:
+                tol = float(parts[5])
+            except ValueError:
+                ok = False
+            ok = ok and 0 < tol <= 1
         if not ok:
-            raise SystemExit(f"{path}:{ln}: expected 'method | mode | script | gpu|cpu [| runs]', got: {line}")
-        m = Method(parts[0], parts[1], parts[2], parts[3] == "gpu", runs)
+            raise SystemExit(f"{path}:{ln}: expected 'method | mode | script | gpu|cpu [| runs [| pose_tol]]', got: {line}")
+        m = Method(parts[0], parts[1], parts[2], parts[3] == "gpu", runs, tol)
         if m.key in reg:
             raise SystemExit(f"{path}:{ln}: {m.key} is already in the registry")
         reg[m.key] = m
@@ -851,13 +857,14 @@ def do_run(ctx, log, seq_fh, n, r, key):
     frames = count_data_lines(ctx.export_dir(n) / "rgb.txt")
     poses = count_data_lines(traj)
     wall = time.time() - t0
-    ok = frames > 0 and poses >= POSE_TOL * frames
+    tol = ctx.registry[key].pose_tol or POSE_TOL
+    ok = frames > 0 and poses >= tol * frames
     write_marker(d / (f".done_run{r}" if ok else f".bad_run{r}"), host=ctx.host, finished=now_iso(),
                  wall_s=f"{wall:.0f}", poses=poses, frames=frames)
     if ok:
         log(f"   готово за {wall / 60:.1f} хв: поз {poses}/{frames}; рядок додано в {ctx.summary.name}")
         return "done"
-    log(f"   ПЕРЕВІР: поз {poses} із {frames} кадрів (поріг {POSE_TOL:.0%}); рядок у {ctx.summary.name} є, "
+    log(f"   ПЕРЕВІР: поз {poses} із {frames} кадрів (поріг {tol:.0%}); рядок у {ctx.summary.name} є, "
         f"маркер .bad_run{r} поставлено, дані сиквенсу залишаю")
     return "bad"
 
