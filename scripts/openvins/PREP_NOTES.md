@@ -40,7 +40,7 @@ bash scripts/setup/openvins.sh --check        # exit 0 = driver + lib + pinned s
 # configs (already committed; regenerate/check):
 python scripts/openvins/make_config.py --check
 # sanity on EuRoC (cam0 only, made by scripts/orbslam3/euroc_to_tum.py):
-bash scripts/openvins/run.sh euroc MH_01_easy --run 1
+bash scripts/openvins/run.sh euroc MH_01 --run 1
 # real run (what the queue will call):
 bash scripts/openvins/run.sh ucu seq01 --run 1
 ```
@@ -70,6 +70,6 @@ The filter needs an initialisation phase (at least about 2 s of data), so the fi
 6. EuRoC sanity: IMU rate of EuRoC is 200 Hz; `convert_imu.py` must accept it; `eval.py` EuRoC path (`--gt groundtruth.txt --rgb rgb.txt`) is untested for this method.
 7. Determinism: single thread, but check whether 3 runs differ; if identical, set `runs` to 1 in the registry line.
 8. Frame gap until initialisation (at least 2 s) and its effect on coverage, see section 7.
-9. `-fsee`-style compile flags: the driver CMake sets `-DROS_AVAILABLE=0 -DENABLE_ARUCO_TAGS=0` and C++14; verify no SSE/march mismatch with the library's own flags (the library is built with its default Release flags).
+9. Compile flags: the driver CMake sets `-DROS_AVAILABLE=0 -DENABLE_ARUCO_TAGS=0` and C++14; verify there is no `-march`/Eigen-alignment mismatch with the library's own flags (the library is built with its default Release flags).
 10. `START_BUSY_PATTERN` in the queue: add `|ov_ucu_driver`.
 11. `.gitattributes` files (`scripts/openvins/.gitattributes`, `configs/openvins/.gitattributes`) force LF; check they survive the merge.

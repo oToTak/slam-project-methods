@@ -51,7 +51,7 @@ Output: `results/dso/mono/ucu/seqNN/traj_run<R>.txt` (TUM, one line per frame th
 
 1. Uncompiled C++ driver: `dso_headless.cc` + `driver/CMakeLists.txt`. First `--no-apt` run is the compile test; expect small fixes (API names of the pinned commit).
 2. GCC 11 + Eigen 3.4 with `-std=c++0x`: DSO is old code. Fallback knobs (env, `scripts/dso/env_dso.sh`): `DSO_CXX_STD=c++14`.
-3. `-march=native`: DSO needs matching alignment between lib and driver (both are built with the same flag). If segfaults/alignment asserts: `DSO_MARCH=x86-64-v2` and re-run `dso.sh --no-apt` with `OV_FORCE`-like stamps cleared (`rm -r ~/opt/dso/.stamps`).
+3. `-march=native`: DSO needs matching alignment between lib and driver (both are built with the same flag). If segfaults/alignment asserts: `DSO_MARCH=x86-64-v2` and re-run `DSO_FORCE=1 bash scripts/setup/dso.sh --no-apt`.
 4. `-fno-access-control` in the driver is a deliberate hack to read the private `allFrameHistory` / `allKeyFramesHistory`; verify it compiles and the poses are sane (compare `poses_tracked.txt` vs `poses_refined.txt`).
 5. Mono result quality on UCU: unknown. May lose tracking early (rolling shutter, auto-exposure, fast turns). `crop` FOV loss. Report as is, do not tune per sequence.
 6. Run-to-run non-determinism: DSO is not deterministic in the multithreaded mode; the driver uses `linearizeOperation` (no sleeps, single pipeline order), which may make the 3 runs nearly identical. If identical, lower `runs` to 1 in the registry line (decision for the lead).
