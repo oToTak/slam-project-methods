@@ -93,6 +93,8 @@ step_patch() {
   [ -f "$f" ] || { echo "no $f"; return 1; }
   grep -q -- "-std=$ORB3_CXX_STD" "$f" || sed -E -i "s/-std=c\+\+(11|14|17)/-std=$ORB3_CXX_STD/g" "$f"
   grep -q -- "-std=$ORB3_CXX_STD" "$f" || { echo "[3 patch] could not set -std=$ORB3_CXX_STD in $f"; return 1; }
+  # C++17 forbids ++ on a bool (upstream LoopClosing.cc: mnFullBAIdx++ on a bool, same effect as "= true" under C++14); sets the flag only.
+  sed -i 's/mnFullBAIdx++;/mnFullBAIdx = true;/' "$ORB3_DIR/src/LoopClosing.cc"
   git -C "$ORB3_DIR" diff > "$ORB3_PREFIX/orbslam3_local_patches.diff" 2>/dev/null
   echo "[3 patch] CMakeLists.txt uses -std=$ORB3_CXX_STD (diff saved in $ORB3_PREFIX/orbslam3_local_patches.diff)"
 }
