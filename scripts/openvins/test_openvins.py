@@ -73,13 +73,13 @@ def test_config_keys_and_values():
     assert scalar(est, "max_cameras") == "1" and scalar(est, "use_stereo") == "false"
     assert scalar(est, "num_opencv_threads") == "0" and scalar(est, "use_aruco") == "false" and scalar(est, "use_mask") == "false"
     assert scalar(est, "relative_config_imu") == '"kalibr_imu_chain.yaml"' and scalar(est, "relative_config_imucam") == '"kalibr_imucam_chain.yaml"'
-    assert scalar(est, "init_dyn_use") == "false" and scalar(est, "calib_cam_extrinsics") == "true"
+    assert scalar(est, "init_dyn_use") == "true" and scalar(est, "calib_cam_extrinsics") == "true"
 
-    # IMU noise = dataset calibration, as is
+    # IMU noise = dataset calibration x NOISE_SCALE
     im = cal["imu"]
     for key, src in (("accelerometer_noise_density", "accelerometer_noise_density"), ("accelerometer_random_walk", "accelerometer_random_walk"),
                      ("gyroscope_noise_density", "gyroscope_noise_density"), ("gyroscope_random_walk", "gyroscope_random_walk")):
-        assert float(scalar(imu, key)) == im[src], key
+        assert abs(float(scalar(imu, key)) - im[src] * mc.NOISE_SCALE) <= 1e-12 * im[src] * mc.NOISE_SCALE, key
     assert float(scalar(imu, "update_rate")) == im["rate_hz"] and scalar(imu, "model") == '"kalibr"'
 
     # camera: intrinsics, distortion, resolution from the same calibration file (and the DPVO calibration of the dataset)
@@ -121,7 +121,7 @@ def test_variants_and_sync():
         assert mc.main(["--out", d, "--init", "dynamic", "--no-online-calib"]) == 0
         assert (Path(d) / "estimator_config.yaml").read_text() == dyn
         try:
-            mc.main(["--write", "--init", "dynamic"])
+            mc.main(["--write", "--init", "static"])
             raise AssertionError("--write with a variant accepted")
         except SystemExit:
             pass
