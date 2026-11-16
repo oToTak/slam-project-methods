@@ -1,60 +1,60 @@
- 99%|█████████▉| 83719/84530 [10:49<00:05, 140.02it/s]
- 99%|█████████▉| 83736/84530 [10:50<00:05, 147.30it/s]
- 99%|█████████▉| 83752/84530 [10:50<00:05, 149.78it/s]
- 99%|█████████▉| 83768/84530 [10:50<00:05, 151.76it/s]
- 99%|█████████▉| 83784/84530 [10:50<00:04, 151.53it/s]
- 99%|█████████▉| 83800/84530 [10:50<00:04, 152.45it/s]
- 99%|█████████▉| 83816/84530 [10:50<00:05, 133.32it/s]
- 99%|█████████▉| 83832/84530 [10:50<00:05, 138.52it/s]
- 99%|█████████▉| 83847/84530 [10:50<00:04, 139.89it/s]
- 99%|█████████▉| 83862/84530 [10:50<00:04, 140.78it/s]
- 99%|█████████▉| 83877/84530 [10:51<00:04, 141.62it/s]
- 99%|█████████▉| 83892/84530 [10:51<00:04, 141.67it/s]
- 99%|█████████▉| 83907/84530 [10:51<00:04, 141.67it/s]
- 99%|█████████▉| 83922/84530 [10:51<00:04, 141.86it/s]
- 99%|█████████▉| 83937/84530 [10:51<00:04, 142.32it/s]
- 99%|█████████▉| 83952/84530 [10:51<00:04, 142.43it/s]
- 99%|█████████▉| 83968/84530 [10:51<00:03, 144.38it/s]
- 99%|█████████▉| 83983/84530 [10:51<00:03, 143.83it/s]
- 99%|█████████▉| 83998/84530 [10:51<00:03, 142.98it/s]
- 99%|█████████▉| 84013/84530 [10:51<00:03, 142.99it/s]
- 99%|█████████▉| 84028/84530 [10:52<00:03, 142.85it/s]
- 99%|█████████▉| 84043/84530 [10:52<00:03, 142.43it/s]
- 99%|█████████▉| 84058/84530 [10:52<00:03, 142.38it/s]
- 99%|█████████▉| 84073/84530 [10:52<00:03, 142.60it/s]
- 99%|█████████▉| 84088/84530 [10:52<00:03, 142.65it/s]
- 99%|█████████▉| 84103/84530 [10:52<00:03, 141.88it/s]
-100%|█████████▉| 84118/84530 [10:52<00:02, 142.17it/s]
-100%|█████████▉| 84133/84530 [10:52<00:02, 142.57it/s]
-100%|█████████▉| 84148/84530 [10:52<00:02, 142.84it/s]
-100%|█████████▉| 84163/84530 [10:53<00:02, 143.14it/s]
-100%|█████████▉| 84178/84530 [10:53<00:02, 142.84it/s]
-100%|█████████▉| 84195/84530 [10:53<00:02, 149.09it/s]
-100%|█████████▉| 84210/84530 [10:53<00:02, 147.54it/s]
-100%|█████████▉| 84225/84530 [10:53<00:02, 146.50it/s]
-100%|█████████▉| 84240/84530 [10:53<00:01, 145.15it/s]
-100%|█████████▉| 84255/84530 [10:53<00:01, 144.48it/s]
-100%|█████████▉| 84270/84530 [10:53<00:01, 144.12it/s]
-100%|█████████▉| 84285/84530 [10:53<00:01, 144.10it/s]
-100%|█████████▉| 84300/84530 [10:53<00:01, 144.16it/s]
-100%|█████████▉| 84315/84530 [10:54<00:01, 142.36it/s]
-100%|█████████▉| 84330/84530 [10:54<00:01, 142.27it/s]
-100%|█████████▉| 84345/84530 [10:54<00:01, 142.42it/s]
-100%|█████████▉| 84360/84530 [10:54<00:01, 142.47it/s]
-100%|█████████▉| 84375/84530 [10:54<00:01, 141.89it/s]
-100%|█████████▉| 84390/84530 [10:54<00:00, 140.56it/s]
-100%|█████████▉| 84405/84530 [10:54<00:00, 140.73it/s]
-100%|█████████▉| 84420/84530 [10:54<00:00, 141.16it/s]
-100%|█████████▉| 84435/84530 [10:54<00:00, 140.76it/s]
-100%|█████████▉| 84450/84530 [10:55<00:00, 140.69it/s]
-100%|█████████▉| 84465/84530 [10:55<00:00, 140.98it/s]
-100%|█████████▉| 84480/84530 [10:55<00:00, 140.76it/s]
-100%|█████████▉| 84495/84530 [10:55<00:00, 140.93it/s]
-100%|█████████▉| 84510/84530 [10:55<00:00, 141.25it/s]
-100%|█████████▉| 84525/84530 [10:55<00:00, 141.68it/s]
-100%|██████████| 84530/84530 [10:55<00:00, 128.94it/s]
-Found 655 common timestamps for color 10908 color and 656 depth images.
-Found 655 common timestamps for color 10908 color and 656 depth images.
-wrote /home/calc/slam-data/ucu_tum/seq12.partial/odom.txt (6727 poses)
-seq12,download_s=717,export_s=659,mcap_bytes=10889194002,export_bytes=4656282470
-19:01:24 -- seq12 dpvslam:mono run1/3: старт
+Loop closure: BACKEND_THRESH=64.0 MAX_EDGE_AGE=1000 GLOBAL_OPT_FREQ=15; 0 loop-edge batches (0 edges), 0 global BA calls (0s of 1028s); 440 keyframes kept; BA failures swallowed by DPVO: 0.
+Wrote /home/calc/slam-data/results/dpvslam/mono/ucu/seq12/traj_run1.txt (10908 poses) and /home/calc/slam-data/results/dpvslam/mono/ucu/seq12/meta.yaml
+== dpvslam mono ucu/seq12 run1 ==
+ATE RMSE   : 4.440 m   (matched 364/364)
+coverage   : 1.00   tracking_lost: false   poses: 10908   max gap: 0.167 s
+drift 50 m : 6.244 m (313 seg)   100 m: 7.282 m (266 seg)
+plot: /home/calc/slam-data/results/dpvslam/mono/ucu/seq12/traj_xy.pdf
+appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
+19:18:37    готово за 17.2 хв: поз 10908/10908; рядок додано в summary_StarDestroyer.csv
+19:18:37 -- seq12 orbslam3:mono run1/3: старт
+ORB3_INFO frames=10908 imu_rows=0 mode=mono pace=0
+
+ORB-SLAM3 Copyright (C) 2017-2020 Carlos Campos, Richard Elvira, Juan J. Gómez, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
+ORB-SLAM2 Copyright (C) 2014-2016 Raúl Mur-Artal, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
+This program comes with ABSOLUTELY NO WARRANTY;
+This is free software, and you are welcome to redistribute it
+under certain conditions. See LICENSE.txt.
+
+Input sensor was set to: Monocular
+Loading settings from /home/calc/slam-runner/configs/orbslam3/UCU_mono.yaml
+Camera1.k3 optional parameter does not exist...
+	-Loaded camera 1
+Camera.newHeight optional parameter does not exist...
+Camera.newWidth optional parameter does not exist...
+	-Loaded image info
+	-Loaded ORB settings
+Viewer.imageViewScale optional parameter does not exist...
+	-Loaded viewer settings
+System.LoadAtlasFromFile optional parameter does not exist...
+System.SaveAtlasToFile optional parameter does not exist...
+	-Loaded Atlas settings
+System.thFarPoints optional parameter does not exist...
+	-Loaded misc parameters
+----------------------------------
+SLAM settings: 
+	-Camera 1 parameters (Pinhole): [ 601.17333984375 600.266357421875 314.01644897460938 250.03944396972656 ]
+	-Camera 1 distortion parameters: [  0.1392686665058136 -0.30741280317306519 0.00072727992665022612 0.00066557613899931312 ]
+	-Original image size: [ 640 , 480 ]
+	-Current image size: [ 640 , 480 ]
+	-Sequence FPS: 30
+	-Features per image: 1000
+	-ORB scale factor: 1.2000000476837158
+	-ORB number of scales: 8
+	-Initial FAST threshold: 20
+	-Min FAST threshold: 7
+
+
+Loading ORB Vocabulary. This could take a while...
+Vocabulary loaded!
+
+Initialization of Atlas from scratch 
+Creation of new map with id: 0
+Creation of new map with last KF id: 0
+Seq. Name: 
+There are 1 cameras in the atlas
+Camera 0 is pinhole
+First KF:0; Map init KF:0
+New Map created with 82 points
+ORB3_PROGRESS 500/10908 state=2
+ORB3_PROGRESS 1000/10908 state=2

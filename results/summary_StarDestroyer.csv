@@ -55,3 +55,4 @@ dso,mono,ucu,seq13,2,27.447,,0.54,false,0079487
 dpvslam,mono,ucu,seq13,3,19.059,,1.00,false,0079487
 orbslam3,mono,ucu,seq13,3,0.878,,0.22,false,0079487
 dso,mono,ucu,seq13,3,1.182,,0.20,false,0079487
+dpvslam,mono,ucu,seq12,1,4.440,,1.00,false,0079487

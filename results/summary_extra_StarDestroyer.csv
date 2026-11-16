@@ -55,3 +55,4 @@ dso,mono,ucu,seq13,2,185,358,41.062,55.203,133,82,19.314,5518,log matches /track
 dpvslam,mono,ucu,seq13,3,357,358,19.777,32.695,307,256,19.114,10699,
 orbslam3,mono,ucu,seq13,3,81,358,1.529,,29,0,0.067,2426,ATE matched 81/358 timestamps
 dso,mono,ucu,seq13,3,56,358,2.668,,4,0,19.314,1669,log matches /tracking (is )?lost|lost tracking|tracking failed/; ATE matched 56/358 timestamps
+dpvslam,mono,ucu,seq12,1,364,364,6.244,7.282,313,266,0.167,10908,
