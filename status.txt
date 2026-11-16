@@ -1,28 +1,28 @@
-host: StarDestroyer   updated: 2026-11-16T15:09:50+02:00   code: ef95729
+host: StarDestroyer   updated: 2026-11-16T17:22:26+02:00   code: 0079487
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
-Місце для даних: доступно 52.5 GB = мінімум із: df 998.6 GB; диск Windows C:\ під vhdx 148.2 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 7.5 GB = 52.5 GB
-Методи (прогонів): dpvo:mono×3, wheel_odom:odom×1   межа stop-before: нема
-Воркер не працює
-Інший ПК Teodor: останній звіт 2026-11-13 18:49 (68.3 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
+Місце для даних: доступно 52.5 GB = мінімум із: df 992.6 GB; диск Windows C:\ під vhdx 145.7 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 7.5 GB = 52.5 GB
+Методи (прогонів): dpvo:mono×3, wheel_odom:odom×1, dpvslam:mono×3, orbslam3:mono×3, orbslam3:mono_inertial×3, dso:mono×3, openvins:mono_inertial×3   межа stop-before: нема
+Воркер ПРАЦЮЄ (pid 4128): seq13   з 2026-11-16T17:22:26; напрямок down від 13
+Інший ПК Teodor: останній звіт 2026-11-13 18:49 (70.6 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
 
- #  seq       .mcap  прогони (готово/треба, хто)                                 стан         дані на диску
- 1  seq01    6.5 GB  dpvo 3/3 Teodor, wheel_odom 1/1 StarDestroyer               готово       -
- 2  seq02   10.2 GB  dpvo 3/3 StarDestroyer+Teodor, wheel_odom 1/1 StarDestroyer готово       -
- 3  seq03   10.1 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
- 4  seq04   12.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
- 5  seq05   12.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
- 6  seq06   18.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
- 7  seq07   18.5 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
- 8  seq08   18.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
- 9  seq09   11.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
-10  seq10   19.5 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
-11  seq11   10.4 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
-12  seq12   10.9 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
-13  seq13   10.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer        готово       -
+ #  seq       .mcap  прогони (готово/треба, хто)                                                                                                                    стан         дані на диску
+ 1  seq01    6.5 GB  dpvo 3/3 Teodor, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3               частково     -
+ 2  seq02   10.2 GB  dpvo 3/3 StarDestroyer+Teodor, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3 частково     -
+ 3  seq03   10.1 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3        частково     -
+ 4  seq04   12.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3        частково     -
+ 5  seq05   12.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3        частково     -
+ 6  seq06   18.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3        частково     -
+ 7  seq07   18.5 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3        частково     -
+ 8  seq08   18.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3        частково     -
+ 9  seq09   11.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3        частково     -
+10  seq10   19.5 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3        частково     -
+11  seq11   10.4 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3        частково     -
+12  seq12   10.9 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3        частково     -
+13  seq13   10.7 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3        в роботі     -
 
-Ти тут: у твоєму напрямку більше нічого брати
-Готово підряд від твого кінця (13, down): seq13 … seq01
+Ти тут: 13 (seq13, зараз рахується)
+Від твого кінця (13, down) повністю готових сиквенсів ще нема.
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 1 %, 294 MiB, 12288 MiB, 23
+NVIDIA GeForce RTX 3060, 0 %, 475 MiB, 12288 MiB, 34
