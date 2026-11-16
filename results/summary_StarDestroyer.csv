@@ -47,3 +47,5 @@ wheel_odom,odom,ucu,seq02,1,33.214,,0.78,false,b5c479d
 dpvo,mono,ucu,seq02,3,6.600,,1.00,false,b5c479d
 wheel_odom,odom,ucu,seq01,1,24.257,,1.00,false,b5c479d
 dpvslam,mono,ucu,seq13,1,2.382,,1.00,false,0079487
+orbslam3,mono,ucu,seq13,1,2.598,,0.12,false,0079487
+dso,mono,ucu,seq13,1,0.802,,0.20,false,0079487

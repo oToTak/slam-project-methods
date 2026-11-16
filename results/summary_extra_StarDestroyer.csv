@@ -47,3 +47,5 @@ wheel_odom,odom,ucu,seq02,1,339,339,44.208,50.296,294,241,0.100,10153,
 dpvo,mono,ucu,seq02,3,339,339,9.775,10.285,294,241,96.370,10159,
 wheel_odom,odom,ucu,seq01,1,217,218,40.251,44.584,165,113,0.067,6531,
 dpvslam,mono,ucu,seq13,1,357,358,3.180,4.037,307,256,19.114,10699,
+orbslam3,mono,ucu,seq13,1,46,358,,,0,0,0.067,1366,ATE matched 46/358 timestamps
+dso,mono,ucu,seq13,1,54,358,1.503,,2,0,19.314,1619,log matches /tracking (is )?lost|lost tracking|tracking failed/; ATE matched 54/358 timestamps
