@@ -67,3 +67,5 @@ dso,mono,ucu,seq12,3,4.254,,0.98,false,0079487
 openvins,mono_inertial,ucu,seq13,1,165424.948,,0.94,false,55bb165
 orbslam3,mono_inertial,ucu,seq13,2,206.269,,0.33,false,55bb165
 openvins,mono_inertial,ucu,seq13,2,151165.165,,0.94,false,55bb165
+orbslam3,mono_inertial,ucu,seq13,3,166.803,,0.91,false,55bb165
+openvins,mono_inertial,ucu,seq13,3,165081.473,,0.94,false,55bb165

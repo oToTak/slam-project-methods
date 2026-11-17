@@ -2,9 +2,9 @@ method: orbslam3
 mode: mono_inertial
 dataset: ucu
 seq: seq13
-run: 2
+run: 3
 commit: 55bb165dee0bce8c32a83726030deb1c73252569
 config: configs/orbslam3/UCU_mono_inertial.yaml
-coverage: 0.33
+coverage: 0.91
 tracking_lost: false
-notes: "ORB-SLAM3 4452a3c (-std=c++17), Pangolin v0.9.1, viewer off, pace=0, stride 1, wall 217s incl. vocabulary load. ORB3_STATS frames=10698 ever_ok=1 state_hist=1:6084,2:4062,3:537,4:15 track_s=137.78848607900045 wall_s=218.34127011499999 IMU_TRIM leading=1 trailing=0 of 10699 frames outside the IMU span, 10698 kept (rgb.txt trimmed copy used) host=StarDestroyer. 3694 of 10698 frames have a pose (raw 3694, unmatched 0, duplicate-frame 0, malformed 0); missing frames are NOT interpolated. Pose = camera pose from body pose via T_b_c = Kalibr T_ic. eval: ATE matched 123/358 timestamps."
+notes: "ORB-SLAM3 4452a3c (-std=c++17), Pangolin v0.9.1, viewer off, pace=0, stride 1, wall 197s incl. vocabulary load. ORB3_STATS frames=10698 ever_ok=1 state_hist=0:1,1:438,2:9827,3:429,4:3 track_s=111.71954470999984 wall_s=197.284323167 IMU_TRIM leading=1 trailing=0 of 10699 frames outside the IMU span, 10698 kept (rgb.txt trimmed copy used) host=StarDestroyer. 10249 of 10698 frames have a pose (raw 10249, unmatched 0, duplicate-frame 0, malformed 0); missing frames are NOT interpolated. Pose = camera pose from body pose via T_b_c = Kalibr T_ic."
