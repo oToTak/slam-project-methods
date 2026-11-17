@@ -198,6 +198,27 @@ def test_convert_imu():
         assert not ok and "cover" in st["error"] and not (d / "short_out.txt").exists()
         ok, st = ci.convert(d / "imu_short.txt", d / "short_out.txt", d / "rgb.txt", allow_partial=True)
         assert ok and (d / "short_out.txt").exists()
+        # real-data shape (seq13): one stray first frame stamped 18 s before the IMU starts -> trimmed copy of rgb.txt, no failure
+        stray = [f"{t0 - 8:.9f} rgb/stray.png"] + [f"{t0 + 10 + i / 10:.9f} rgb/{i}.png" for i in range(60)]
+        write(d / "rgb_stray.txt", "# h\n" + "\n".join(stray) + "\n")
+        n2 = int(7.0 * 125)
+        write(d / "imu_long.txt", "\n".join(f"{t0 + 9.9 + i / 125:.9f} 0.1 0.2 -9.8 0.01 0.02 0.03" for i in range(n2)) + "\n")
+        ok, st = ci.convert(d / "imu_long.txt", d / "o2.txt", d / "rgb_stray.txt", rgb_out=d / "w" / "rgb.txt")
+        assert ok and st["trim"]["leading"] == 1 and st["trim"]["trailing"] == 0 and st["trim"]["frames_kept"] == 60, st
+        kept = (d / "w" / "rgb.txt").read_text().splitlines()
+        assert kept[0].startswith("#") and len(kept) == 61 and "stray" not in "".join(kept)
+        tok, path = kept[1].split()
+        assert tok == f"{t0 + 10:.9f}" and path == (d / "rgb" / "0.png").resolve().as_posix()      # timestamp text kept, path absolute
+        # IMU starting 0.13 s after the first real frame (seq12): stray + 2 frames = 3 of 61 (4.9 %) -> refused unless the limit is raised
+        write(d / "imu_late.txt", "\n".join(f"{t0 + 10.13 + i / 125:.9f} 0 0 -9.8 0 0 0" for i in range(int(6.5 * 125))) + "\n")
+        ok, st = ci.convert(d / "imu_late.txt", d / "o3.txt", d / "rgb_stray.txt", rgb_out=d / "w3" / "rgb.txt")
+        assert not ok and st["trim"]["leading"] == 3 and not (d / "w3").exists()
+        ok, st = ci.convert(d / "imu_late.txt", d / "o3.txt", d / "rgb_stray.txt", rgb_out=d / "w3" / "rgb.txt", max_trim_frac=0.1)
+        assert ok and st["trim"]["leading"] == 3 and len((d / "w3" / "rgb.txt").read_text().splitlines()) == 59
+        # nothing inside the IMU span at all
+        write(d / "imu_early.txt", "\n".join(f"{t0 + 1 + i / 125:.9f} 0 0 -9.8 0 0 0" for i in range(250)) + "\n")
+        ok, st = ci.convert(d / "imu_early.txt", d / "o4.txt", d / "rgb_stray.txt", allow_partial=True, rgb_out=d / "w4" / "rgb.txt")
+        assert not ok and "no frame" in st["error"] and not (d / "w4").exists()
         # gap statistics
         rows = [(i * 0.008 + (0.2 if i > 50 else 0), 0, 0, -9.8, 0, 0, 0) for i in range(100)]
         assert ci.stats_of(rows, {}, max_gap_s=0.05)["n_gaps_over_limit"] == 1

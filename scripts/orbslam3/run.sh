@@ -64,16 +64,18 @@ raw="$work/raw_trajectory_euroc.txt"
 rm -f "$raw"                                                            # a stale raw file of an earlier attempt must never be picked up
 cd "$SLAM_REPO"
 
+rgb_used="$data_dir/rgb.txt"                                            # inertial mode: a copy trimmed to the IMU span (see convert_imu.py)
 drv=("$ORB3_BIN" "$ORB3_VOCAB" "$settings" "$data_dir" "$raw" --kf-out "$work/raw_keyframes_euroc.txt" --pace "$ORB3_PACE")
 mf=(); [ "$max_frames" -gt 0 ] && mf=(--max-frames "$max_frames")
 if [ "$mode" = mono_inertial ]; then
   [ -f "$data_dir/imu.txt" ] || { echo "Missing $data_dir/imu.txt (inertial mode)" >&2; exit 1; }
   set +e
   "$py" scripts/orbslam3/convert_imu.py --imu "$data_dir/imu.txt" --rgb "$data_dir/rgb.txt" --out "$work/imu.txt" \
-        "${mf[@]}" 2>&1 | tee "$log"
+        --rgb-out "$work/rgb.txt" "${mf[@]}" 2>&1 | tee "$log"
   irc=${PIPESTATUS[0]}
   set -e
   [ "$irc" = 0 ] || { echo "IMU data unusable (see above)" >&2; exit 1; }
+  drv[3]="$work"; rgb_used="$work/rgb.txt"                              # the driver reads SEQ_DIR/rgb.txt (absolute image paths inside)
   drv+=(--imu "$work/imu.txt")
 fi
 drv+=("${mf[@]}")
@@ -85,9 +87,11 @@ rc=${PIPESTATUS[0]}
 set -e
 wall=$((SECONDS - t_start))
 stats=$(grep -h 'ORB3_STATS' "$log" | tail -n 1 || true)
+trim=$(grep -h '^IMU_TRIM' "$log" | tail -n 1 || true)
+[ -n "$trim" ] && stats="$stats $trim"
 note="ORB-SLAM3 ${ORB3_COMMIT:0:7} (-std=$ORB3_CXX_STD), Pangolin $ORB3_PANGOLIN_TAG, viewer off, pace=$ORB3_PACE, stride 1, wall ${wall}s incl. vocabulary load. $stats"
 
-pp=("$py" scripts/orbslam3/postprocess.py --raw "$raw" --rgb "$data_dir/rgb.txt" --mode "$mode" --results-root "$RESULTS_ROOT"
+pp=("$py" scripts/orbslam3/postprocess.py --raw "$raw" --rgb "$rgb_used" --mode "$mode" --results-root "$RESULTS_ROOT"
     --seq "$seq" --run "$run" --config "$config" --note "$note" "${postargs[@]}")
 [ "$max_frames" -gt 0 ] && pp+=(--max-frames "$max_frames")
 if [ "$rc" != 0 ]; then

@@ -66,21 +66,24 @@ cd "$SLAM_REPO"
 
 mf=(); [ "$max_frames" -gt 0 ] && mf=(--max-frames "$max_frames")
 set +e
-"$py" scripts/orbslam3/convert_imu.py --imu "$data_dir/imu.txt" --rgb "$data_dir/rgb.txt" --out "$work/imu.txt" "${mf[@]}" 2>&1 | tee "$log"
+"$py" scripts/orbslam3/convert_imu.py --imu "$data_dir/imu.txt" --rgb "$data_dir/rgb.txt" --out "$work/imu.txt" \
+     --rgb-out "$work/rgb.txt" "${mf[@]}" 2>&1 | tee "$log"       # + rgb.txt without the frames outside the IMU span
 irc=${PIPESTATUS[0]}
 set -e
 [ "$irc" = 0 ] || { echo "IMU data unusable (see above)" >&2; exit 1; }
 
 t_start=$SECONDS
 set +e
-"$OV_BIN" "$cfg" "$data_dir/rgb.txt" "$work/imu.txt" "$raw" "${mf[@]}" 2>&1 | tee -a "$log"
+"$OV_BIN" "$cfg" "$work/rgb.txt" "$work/imu.txt" "$raw" "${mf[@]}" 2>&1 | tee -a "$log"
 rc=${PIPESTATUS[0]}
 set -e
 wall=$((SECONDS - t_start))
 stats=$(grep -h 'OV_STATS' "$log" | tail -n 1 || true)
+trim=$(grep -h '^IMU_TRIM' "$log" | tail -n 1 || true)
+[ -n "$trim" ] && stats="$stats $trim"
 note="OpenVINS ${OV_COMMIT:0:7} ROS-free build (ENABLE_ROS=OFF, ENABLE_ARUCO_TAGS=OFF), own driver, one camera + IMU, config $config (upstream EuRoC values, not tuned; Kalibr T_ic and IMU noise from the dataset calibration, time shift already applied by the exporter), single thread, every frame fed (no track_frequency dropping), no sleeping, wall ${wall}s. $stats"
 
-pp=("$py" scripts/openvins/openvins_tools.py post --poses "$raw" --rgb "$data_dir/rgb.txt" --results-root "$RESULTS_ROOT"
+pp=("$py" scripts/openvins/openvins_tools.py post --poses "$raw" --rgb "$work/rgb.txt" --results-root "$RESULTS_ROOT"
     --dataset "$dataset" --seq "$seq" --run "$run" --config "$config" --note "$note" "${postargs[@]}")
 [ "$max_frames" -gt 0 ] && pp+=(--max-frames "$max_frames")
 if [ "$rc" != 0 ] && [ "$rc" != 4 ]; then

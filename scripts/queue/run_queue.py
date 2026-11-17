@@ -322,8 +322,11 @@ def pending_runs(ctx, n, keys=None):
 
 
 def seq_complete(ctx, n, keys=None):
+    """Every wanted run is finished. A run flagged 'bad' (a trajectory with few poses: the method lost tracking, which on hard
+    sequences is a RESULT, its row is in the summary) counts as finished: it must not keep the 15-20 GB export on the disk
+    or stop the worker. Only runs that failed to produce a result (no marker) keep a sequence open."""
     keys = summary_owners(ctx) if keys is None else keys
-    return all(run_state(ctx, k, n, r, keys) == "done" for k in ctx.methods for r in range(1, ctx.runs_for(k) + 1))
+    return all(run_state(ctx, k, n, r, keys) in ("done", "bad") for k in ctx.methods for r in range(1, ctx.runs_for(k) + 1))
 
 
 def cell_state(ctx, key, n, owners):
@@ -865,7 +868,7 @@ def do_run(ctx, log, seq_fh, n, r, key):
         log(f"   готово за {wall / 60:.1f} хв: поз {poses}/{frames}; рядок додано в {ctx.summary.name}")
         return "done"
     log(f"   ПЕРЕВІР: поз {poses} із {frames} кадрів (поріг {tol:.0%}); рядок у {ctx.summary.name} є, "
-        f"маркер .bad_run{r} поставлено, дані сиквенсу залишаю")
+        f"маркер .bad_run{r} поставлено (це результат методу, черга йде далі)")
     return "bad"
 
 
@@ -964,7 +967,9 @@ def process_seq(ctx, log, n):
                     return "stopped"
                 do_run(ctx, log, fh, n, r, method)
             if seq_complete(ctx, n):
-                log(f"{seq}: усі прогони готові")
+                flagged = sum(1 for k in ctx.methods for r in range(1, ctx.runs_for(k) + 1) if run_state(ctx, k, n, r) == "bad")
+                log(f"{seq}: усі прогони готові" + (f" (з них {flagged} позначено ПЕРЕВІР: мало поз, рядки в summary є; дивись маркери .bad_run*)"
+                                                     if flagged else ""))
                 if ctx.args.keep_data:
                     log("  --keep-data: .mcap й експорт лишаю")
                 else:

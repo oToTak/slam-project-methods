@@ -12,8 +12,15 @@ No time shift: the exporter already moved timestamps to the base clock (old-dvpo
 camera-IMU geometry. The ORB-SLAM3 EuRoC example reads gyro before accel from its CSV; our file order is accel then gyro and
 the driver reads exactly that (no swap anywhere).
 
-Exit codes: 0 usable; 1 unusable (too few rows, or the IMU span does not cover the frames and --allow-partial was not given).
-The last stdout line is 'IMU_STATS {json}' (rate, max gap, drops, coverage of the frame span).
+Frames outside the IMU span. Both inertial drivers need IMU data before the first frame and after the last one. On the real
+sequences the IMU stream may start a little later than the camera one (seq12: 0.13 s; seq13: one stray first frame stamped 18 s
+before everything else, see PIPELINE_DEBT D1). Such leading (and trailing) frames cannot be used by an inertial method, so with
+--rgb-out this script writes a copy of rgb.txt WITHOUT them (same timestamp text, absolute image paths, nothing shifted or
+invented) and the run uses that copy. It prints 'IMU_TRIM leading=N trailing=M ...' and reports the numbers in IMU_STATS. More than
+--max-trim-frac (default 2 %) of the frames outside the IMU span is not a small start-up offset but broken data: refused.
+
+Exit codes: 0 usable; 1 unusable (too few rows, no frame left inside the IMU span, or too many frames outside it and
+--allow-partial was not given). The last stdout line is 'IMU_STATS {json}' (rate, max gap, drops, coverage of the frame span).
 """
 import argparse
 import json
@@ -74,21 +81,55 @@ def format_rows(rows):
     return "".join(f"{r[0]:.9f} " + " ".join(f"{v:.9g}" for v in r[1:]) + "\n" for r in rows)
 
 
-def convert(imu_path, out_path, rgb_path=None, max_frames=0, max_gap_s=0.05, allow_partial=False):
-    """Returns (ok, stats). Writes out_path only when ok."""
+def trim_to_span(frames, t_first, t_last):
+    """frames: [(token, t, path)] sorted by time. -> (kept, n_leading, n_trailing): frames with t_first <= t <= t_last."""
+    kept = [f for f in frames if t_first <= f[1] <= t_last]
+    n_lead = sum(1 for f in frames if f[1] < t_first)
+    return kept, n_lead, len(frames) - len(kept) - n_lead
+
+
+def write_rgb(path, frames, base_dir):
+    """rgb.txt copy with the original timestamp text and ABSOLUTE image paths (the copy lives in another folder)."""
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write("# timestamp path   (trimmed to the IMU span by scripts/orbslam3/convert_imu.py)\n")
+        for tok, _, rel in frames:
+            img = Path(rel)
+            if not img.is_absolute():
+                img = (Path(base_dir) / img).resolve()
+            fh.write(f"{tok} {img.as_posix()}\n")
+
+
+def convert(imu_path, out_path, rgb_path=None, max_frames=0, max_gap_s=0.05, allow_partial=False, rgb_out=None, max_trim_frac=0.02):
+    """Returns (ok, stats). Writes out_path (and rgb_out, if given) only when ok."""
     rows, dropped = sanitize(read_imu_txt(imu_path))
     f0 = f1 = None
+    kept = []
+    trim = None
     if rgb_path:
-        ts = [t for _, t, _ in lib.read_rgb_txt(rgb_path)]
+        frames = lib.read_rgb_txt(rgb_path)
+        ts = [t for _, t, _ in frames]
         if max_frames > 0:
             ts = ts[:max_frames]
         if ts:
             f0, f1 = ts[0], ts[-1]
+        if len(rows) >= 2:
+            kept, n_lead, n_trail = trim_to_span(frames, rows[0][0], rows[-1][0])
+            trim = {"leading": n_lead, "trailing": n_trail, "frames_in": len(frames), "frames_kept": len(kept)}
     st = stats_of(rows, dropped, f0, f1, max_gap_s)
     ok = len(rows) >= 2
-    if ok and f0 is not None and not st.get("covers_frames", False) and not allow_partial:
-        ok = False
-        st["error"] = "IMU time span does not cover the frame span (IMU must start before the first frame and end after the last)"
+    if trim is not None:
+        st["trim"] = trim
+        n_out = trim["leading"] + trim["trailing"]
+        if n_out and kept:
+            st["first_kept_frame_after_imu_start_s"] = kept[0][1] - rows[0][0]
+        if not kept:
+            ok = False
+            st["error"] = "no frame lies inside the IMU time span"
+        elif n_out and not allow_partial and n_out > max_trim_frac * len(frames):
+            ok = False
+            st["error"] = (f"IMU time span does not cover the frame span ({n_out} of {len(frames)} frames lie outside it, "
+                           f"more than {max_trim_frac:.0%}: not a start-up offset; --allow-partial trims them anyway)")
     if len(rows) < 2:
         st["error"] = "fewer than 2 usable IMU rows"
     if ok:
@@ -96,6 +137,8 @@ def convert(imu_path, out_path, rgb_path=None, max_frames=0, max_gap_s=0.05, all
         with open(out_path, "w", encoding="utf-8", newline="\n") as fh:
             fh.write("#timestamp ax ay az gx gy gz\n")
             fh.write(format_rows(rows))
+        if rgb_out and rgb_path:
+            write_rgb(rgb_out, kept, Path(rgb_path).resolve().parent)
     return ok, st
 
 
@@ -106,9 +149,15 @@ def main(argv=None):
     ap.add_argument("--rgb", type=Path, help="rgb.txt: check that the IMU span covers the frames")
     ap.add_argument("--max-frames", type=int, default=0)
     ap.add_argument("--max-gap", type=float, default=0.05, help="gap [s] counted as an IMU dropout in the stats")
-    ap.add_argument("--allow-partial", action="store_true", help="do not fail when the IMU does not cover all frames")
+    ap.add_argument("--allow-partial", action="store_true", help="trim frames outside the IMU span however many there are")
+    ap.add_argument("--rgb-out", type=Path, help="write rgb.txt without the frames outside the IMU span (absolute image paths)")
+    ap.add_argument("--max-trim-frac", type=float, default=0.02, help="largest share of frames that may lie outside the IMU span")
     args = ap.parse_args(argv)
-    ok, st = convert(args.imu, args.out, args.rgb, args.max_frames, args.max_gap, args.allow_partial)
+    ok, st = convert(args.imu, args.out, args.rgb, args.max_frames, args.max_gap, args.allow_partial, args.rgb_out, args.max_trim_frac)
+    tr = st.get("trim")
+    if tr:
+        print(f"IMU_TRIM leading={tr['leading']} trailing={tr['trailing']} of {tr['frames_in']} frames outside the IMU span, "
+              f"{tr['frames_kept']} kept" + (" (rgb.txt trimmed copy used)" if args.rgb_out and ok else ""))
     print("IMU_STATS " + json.dumps(st, sort_keys=True))
     if not ok:
         print(f"ERROR: {st.get('error', 'unusable IMU data')}", file=sys.stderr)

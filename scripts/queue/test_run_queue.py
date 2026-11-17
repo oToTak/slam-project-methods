@@ -261,14 +261,20 @@ class QueueTest(unittest.TestCase):
         self.assertEqual(self.lines("fetch.calls"), ["1", "2"])                # seq02 export still there: no second fetch
         self.assertFalse((self.data / "ucu" / "sequence-2").exists())
 
-    def test_short_trajectory_is_marked_bad_and_blocks_cleanup(self):
-        r = self.queue("--only", "1", FAKE_SHORT="seq01")
-        self.assertEqual(r.returncode, 2, r.stdout + r.stderr)
+    def test_short_trajectory_is_marked_bad_but_does_not_block_the_queue(self):
+        """A method that lost tracking on a hard sequence is a result: flagged, but the sequence completes, data is cleaned up
+        and the worker goes on (an unattended night must not stop at the first dusk sequence)."""
+        r = self.queue("--from", "1", "--stop-before", "4", FAKE_SHORT="seq01")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertTrue((self.res / "fake/mono/ucu/seq01/.bad_run1").exists())
         self.assertFalse((self.res / "fake/mono/ucu/seq01/.done_run1").exists())
-        self.assertTrue((self.data / "ucu_tum" / "seq01").exists())
+        self.assertFalse((self.data / "ucu_tum" / "seq01").exists())           # cleaned up like any finished sequence
+        self.assertEqual(self.lines("fetch.calls"), ["1", "2", "3"])           # went on to the next sequences
+        self.assertIn("ПЕРЕВІР", r.stdout)
         st = self.queue("--status", "--only", "1").stdout
         self.assertIn("ПЕРЕВІР", st)
+        r2 = self.queue("--from", "1", "--stop-before", "4")                   # nothing to redo
+        self.assertEqual(self.lines("fetch.calls"), ["1", "2", "3"])
 
     def test_fetch_failure_stops_the_queue(self):
         r = self.queue("--from", "1", "--stop-before", "4", FAKE_FETCH_FAIL="seq02")
