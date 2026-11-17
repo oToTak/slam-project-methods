@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-17T02:24:48.131583+00:00",
- "content_hash": "85c2b35bfc086a1a50ea044c5244c2791e73b9ef6bf3903ad8cfc415892b9506",
+ "generated_at": "2026-11-17T10:52:51.515489+00:00",
+ "content_hash": "1c7ee9c15454d9b2284726cb4d0b090d1b8ad628c118ad9f9d70e4d8193f295f",
  "dataset": "ucu",
  "total_done": 64,
  "total_needed": 130,
@@ -39,8 +39,8 @@
  "hosts": {
   "StarDestroyer": {
    "ref": "refs/remotes/origin/runner-StarDestroyer",
-   "last_report": "2026-11-16T20:11:47+02:00",
-   "stale": true,
+   "last_report": "2026-11-17T11:28:20+02:00",
+   "stale": false,
    "worker": "idle",
    "busy": false,
    "seq": null,
@@ -732,6 +732,8 @@
  ],
  "other_results": [
   "dpvo:mono tum fr1_xyz",
-  "dso:mono ucu (нема в methods.conf)"
+  "dso:mono ucu (нема в methods.conf)",
+  "openvins:mono_inertial ucu (нема в methods.conf)",
+  "orbslam3:mono_inertial ucu (нема в methods.conf)"
  ]
 }

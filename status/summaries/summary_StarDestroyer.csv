@@ -64,3 +64,12 @@ dso,mono,ucu,seq12,2,4.491,,0.98,false,0079487
 dpvslam,mono,ucu,seq12,3,4.088,,1.00,false,0079487
 orbslam3,mono,ucu,seq12,3,7.261,,0.96,false,0079487
 dso,mono,ucu,seq12,3,4.254,,0.98,false,0079487
+openvins,mono_inertial,ucu,seq13,1,165424.948,,0.94,false,55bb165
+orbslam3,mono_inertial,ucu,seq13,2,206.269,,0.33,false,55bb165
+openvins,mono_inertial,ucu,seq13,2,151165.165,,0.94,false,55bb165
+orbslam3,mono_inertial,ucu,seq13,3,166.803,,0.91,false,55bb165
+openvins,mono_inertial,ucu,seq13,3,165081.473,,0.94,false,55bb165
+openvins,mono_inertial,ucu,seq12,1,13.792,,0.99,false,55bb165
+orbslam3,mono_inertial,ucu,seq12,2,,,0.00,true,55bb165
+openvins,mono_inertial,ucu,seq12,2,13.792,,0.99,false,55bb165
+openvins,mono_inertial,ucu,seq12,3,14.339,,0.99,false,55bb165
