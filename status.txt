@@ -1,4 +1,4 @@
-host: StarDestroyer   updated: 2026-11-17T22:52:35+02:00   code: f773fa7
+host: StarDestroyer   updated: 2026-11-17T22:52:40+02:00   code: f773fa7
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
 Місце для даних: доступно 22.5 GB = мінімум із: df 962.4 GB; диск Windows C:\ під vhdx 143.2 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 37.5 GB = 22.5 GB
@@ -25,4 +25,4 @@ host: StarDestroyer   updated: 2026-11-17T22:52:35+02:00   code: f773fa7
 Від твого кінця (13, down) повністю готових сиквенсів ще нема.
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 0 %, 1023 MiB, 12288 MiB, 39
+NVIDIA GeForce RTX 3060, 1 %, 1023 MiB, 12288 MiB, 39
