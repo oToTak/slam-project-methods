@@ -1,60 +1,60 @@
-q_GtoI = 0.741,-0.671,-0.021,0.024 | p_IinG = -317.833,-8.891,13.389 | dist = 309.83 (meters)
-bg = -0.0026,0.0016,0.0144 | ba = 0.1314,-0.1130,-0.0856
-camera-imu timeoffset = 0.05580
-cam0 intrinsics = 610.563,625.008,315.510,235.553 | 0.193,-0.299,0.013,0.003
-cam0 extrinsics = -0.026,-0.725,-0.689,0.005 | 0.014,0.117,0.011
-q_GtoI = 0.741,-0.671,-0.021,0.024 | p_IinG = -317.831,-8.889,13.388 | dist = 309.83 (meters)
-bg = -0.0026,0.0016,0.0144 | ba = 0.1314,-0.1129,-0.0855
-camera-imu timeoffset = 0.05580
-cam0 intrinsics = 610.564,625.009,315.510,235.550 | 0.193,-0.299,0.013,0.003
-cam0 extrinsics = -0.026,-0.725,-0.689,0.005 | 0.014,0.117,0.011
-q_GtoI = 0.741,-0.671,-0.021,0.024 | p_IinG = -317.830,-8.890,13.394 | dist = 309.83 (meters)
-bg = -0.0026,0.0016,0.0144 | ba = 0.1314,-0.1132,-0.0855
-camera-imu timeoffset = 0.05580
-cam0 intrinsics = 610.565,625.010,315.510,235.550 | 0.193,-0.299,0.013,0.003
-cam0 extrinsics = -0.026,-0.725,-0.689,0.005 | 0.014,0.117,0.011
-q_GtoI = 0.741,-0.670,-0.021,0.024 | p_IinG = -317.828,-8.892,13.393 | dist = 309.83 (meters)
-bg = -0.0027,0.0016,0.0144 | ba = 0.1315,-0.1131,-0.0855
-camera-imu timeoffset = 0.05580
-cam0 intrinsics = 610.565,625.010,315.511,235.549 | 0.193,-0.299,0.013,0.003
-cam0 extrinsics = -0.026,-0.725,-0.689,0.005 | 0.014,0.117,0.011
-q_GtoI = 0.741,-0.670,-0.021,0.024 | p_IinG = -317.826,-8.894,13.391 | dist = 309.83 (meters)
-bg = -0.0027,0.0016,0.0144 | ba = 0.1317,-0.1131,-0.0855
-camera-imu timeoffset = 0.05580
-cam0 intrinsics = 610.567,625.012,315.511,235.550 | 0.193,-0.299,0.013,0.003
-cam0 extrinsics = -0.026,-0.725,-0.689,0.005 | 0.014,0.117,0.011
-q_GtoI = 0.742,-0.670,-0.020,0.024 | p_IinG = -317.824,-8.898,13.386 | dist = 309.83 (meters)
-bg = -0.0027,0.0016,0.0144 | ba = 0.1318,-0.1130,-0.0855
-camera-imu timeoffset = 0.05580
-cam0 intrinsics = 610.569,625.015,315.512,235.550 | 0.193,-0.299,0.013,0.003
-cam0 extrinsics = -0.026,-0.725,-0.689,0.005 | 0.014,0.117,0.011
-q_GtoI = 0.742,-0.670,-0.020,0.024 | p_IinG = -317.821,-8.901,13.383 | dist = 309.83 (meters)
-bg = -0.0027,0.0016,0.0145 | ba = 0.1320,-0.1130,-0.0856
-camera-imu timeoffset = 0.05580
-cam0 intrinsics = 610.572,625.018,315.513,235.552 | 0.193,-0.299,0.013,0.003
-cam0 extrinsics = -0.026,-0.725,-0.689,0.005 | 0.014,0.117,0.011
-q_GtoI = 0.742,-0.670,-0.020,0.024 | p_IinG = -317.818,-8.903,13.383 | dist = 309.84 (meters)
-bg = -0.0027,0.0016,0.0145 | ba = 0.1321,-0.1130,-0.0856
-camera-imu timeoffset = 0.05580
-cam0 intrinsics = 610.576,625.021,315.514,235.553 | 0.193,-0.299,0.013,0.003
-cam0 extrinsics = -0.026,-0.725,-0.689,0.005 | 0.014,0.117,0.011
-q_GtoI = 0.742,-0.670,-0.020,0.024 | p_IinG = -317.816,-8.900,13.382 | dist = 309.84 (meters)
-bg = -0.0027,0.0016,0.0145 | ba = 0.1323,-0.1131,-0.0856
-camera-imu timeoffset = 0.05580
-cam0 intrinsics = 610.582,625.024,315.512,235.555 | 0.193,-0.299,0.013,0.003
-cam0 extrinsics = -0.026,-0.725,-0.689,0.005 | 0.014,0.117,0.011
-q_GtoI = 0.742,-0.670,-0.020,0.024 | p_IinG = -317.816,-8.892,13.377 | dist = 309.84 (meters)
-bg = -0.0027,0.0016,0.0145 | ba = 0.1324,-0.1130,-0.0856
-camera-imu timeoffset = 0.05580
-cam0 intrinsics = 610.586,625.026,315.511,235.555 | 0.193,-0.299,0.013,0.003
-cam0 extrinsics = -0.026,-0.725,-0.689,0.005 | 0.014,0.117,0.011
-OV_STATS frames=10904 imu=45543 processed=10903 posed=10838 nonfinite=0 unreadable=0 initialized=1 first_pose_t_rel=2.168 wall_s=145.8
-Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq12/traj_run3.txt (10838 poses of 10904 frames, coverage 0.99) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq12/meta.yaml
-== openvins mono_inertial ucu/seq12 run3 ==
-ATE RMSE   : 14.339 m   (matched 362/364)
-coverage   : 0.99   tracking_lost: false   poses: 10838   max gap: 0.167 s
-drift 50 m : 14.410 m (311 seg)   100 m: 23.773 m (264 seg)
-plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq12/traj_xy.pdf
-appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-11:28:18    готово за 2.5 хв: поз 10838/10908; рядок додано в summary_StarDestroyer.csv
-11:28:18 seq12: НЕ всі прогони готові — .mcap й експорт лишаю для розбору (повторний запуск доробить)
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 10167
+mnInitialFrameId = 10156
+2243 Frames set to lost
+First KF:583; Map init KF:581
+New Map created with 67 points
+Fail to track local map!
+IMU is not or recently initialized. Reseting active map...
+SYSTEM-> Reseting active map in monocular case
+LM: Active map reset recieved
+LM: Active map reset, waiting...
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 10183
+mnInitialFrameId = 10168
+2245 Frames set to lost
+First KF:585; Map init KF:583
+New Map created with 93 points
+Fail to track local map!
+IMU is not or recently initialized. Reseting active map...
+SYSTEM-> Reseting active map in monocular case
+LM: Active map reset recieved
+LM: Active map reset, waiting...
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 10212
+mnInitialFrameId = 10184
+2247 Frames set to lost
+ORB3_PROGRESS 10500/10698 state=1
+ORB3_STATS frames=10698 ever_ok=1 state_hist=1:8424,2:2190,3:69,4:15 track_s=109.61248766000037 wall_s=175.26353433400001
+Shutdown
+
+Saving trajectory to /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq13/run1/raw_trajectory_euroc.txt ...
+There are 1 maps in the atlas
+  Map 0 has 0 KFs
+/home/calc/slam-runner/scripts/orbslam3/run.sh: line 85:   932 Segmentation fault      (core dumped) "${drv[@]}" 2>&1
+       933 Done                    | tee -a "$log"
+ORB-SLAM3 driver exited with code 139
+18:04:50    ПОМИЛКА: scripts/orbslam3/run.sh завершився з кодом 139. Кінець логу:
+18:04:50    | LM: Reset free the mutex
+18:04:50    | LM: Active map reset, Done!!!
+18:04:50    | mnFirstFrameId = 10212
+18:04:50    | mnInitialFrameId = 10184
+18:04:50    | 2247 Frames set to lost
+18:04:50    | ORB3_PROGRESS 10500/10698 state=1
+18:04:50    | ORB3_STATS frames=10698 ever_ok=1 state_hist=1:8424,2:2190,3:69,4:15 track_s=109.61248766000037 wall_s=175.26353433400001
+18:04:50    | Shutdown
+18:04:50    | 
+18:04:50    | Saving trajectory to /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq13/run1/raw_trajectory_euroc.txt ...
+18:04:50    | There are 1 maps in the atlas
+18:04:50    |   Map 0 has 0 KFs
+18:04:50    | /home/calc/slam-runner/scripts/orbslam3/run.sh: line 85:   932 Segmentation fault      (core dumped) "${drv[@]}" 2>&1
+18:04:50    |        933 Done                    | tee -a "$log"
+18:04:50    | ORB-SLAM3 driver exited with code 139
+18:04:50 seq13: НЕ всі прогони готові — .mcap й експорт лишаю для розбору (повторний запуск доробить)
