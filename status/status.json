@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-17T10:52:51.515489+00:00",
- "content_hash": "1c7ee9c15454d9b2284726cb4d0b090d1b8ad628c118ad9f9d70e4d8193f295f",
+ "generated_at": "2026-11-17T19:43:15.770691+00:00",
+ "content_hash": "f7013b9a9609dd18da9a47cdcf82df68e2f63b684731dcfb5f1b4a02c5fa585f",
  "dataset": "ucu",
  "total_done": 64,
  "total_needed": 130,
@@ -39,8 +39,8 @@
  "hosts": {
   "StarDestroyer": {
    "ref": "refs/remotes/origin/runner-StarDestroyer",
-   "last_report": "2026-11-17T11:28:20+02:00",
-   "stale": false,
+   "last_report": "2026-11-17T18:16:15+02:00",
+   "stale": true,
    "worker": "idle",
    "busy": false,
    "seq": null,
