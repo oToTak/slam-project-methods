@@ -1,0 +1,10 @@
+method: orbslam3
+mode: mono_inertial
+dataset: ucu
+seq: seq12
+run: 2
+commit: 55bb165dee0bce8c32a83726030deb1c73252569
+config: configs/orbslam3/UCU_mono_inertial.yaml
+coverage: 0.00
+tracking_lost: true
+notes: "ORB-SLAM3 4452a3c (-std=c++17), Pangolin v0.9.1, viewer off, pace=0, stride 1, wall 384s incl. vocabulary load. ORB3_STATS frames=10904 ever_ok=1 state_hist=1:10611,2:255,3:35,4:3 track_s=312.97337447899912 wall_s=391.957689835 IMU_TRIM leading=4 trailing=0 of 10908 frames outside the IMU span, 10904 kept (rgb.txt trimmed copy used) host=StarDestroyer. 37 of 10904 frames have a pose (raw 37, unmatched 0, duplicate-frame 0, malformed 0); missing frames are NOT interpolated. Pose = camera pose from body pose via T_b_c = Kalibr T_ic. eval: full failure: RuntimeError: only 1 timestamps matched within 0.02 s."

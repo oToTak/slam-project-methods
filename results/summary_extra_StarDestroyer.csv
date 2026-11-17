@@ -69,3 +69,5 @@ orbslam3,mono_inertial,ucu,seq13,2,123,358,319.895,502.948,73,22,0.067,3694,ATE 
 openvins,mono_inertial,ucu,seq13,2,355,358,83429.972,160355.987,305,254,0.133,10639,
 orbslam3,mono_inertial,ucu,seq13,3,342,358,213.046,231.701,292,241,0.067,10249,
 openvins,mono_inertial,ucu,seq13,3,355,358,88353.249,173409.520,305,254,0.133,10639,
+openvins,mono_inertial,ucu,seq12,1,362,364,14.306,23.314,311,264,0.167,10838,
+orbslam3,mono_inertial,ucu,seq12,2,,,,,0,0,0.033,37,full failure: RuntimeError: only 1 timestamps matched within 0.02 s

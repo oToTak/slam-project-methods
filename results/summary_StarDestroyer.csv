@@ -69,3 +69,5 @@ orbslam3,mono_inertial,ucu,seq13,2,206.269,,0.33,false,55bb165
 openvins,mono_inertial,ucu,seq13,2,151165.165,,0.94,false,55bb165
 orbslam3,mono_inertial,ucu,seq13,3,166.803,,0.91,false,55bb165
 openvins,mono_inertial,ucu,seq13,3,165081.473,,0.94,false,55bb165
+openvins,mono_inertial,ucu,seq12,1,13.792,,0.99,false,55bb165
+orbslam3,mono_inertial,ucu,seq12,2,,,0.00,true,55bb165
