@@ -1,60 +1,60 @@
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.495,0.184,-0.835,0.156 | p_IinG = -34736.072,11642.197,-15237.824 | dist = 42282.82 (meters)
-bg = -0.0144,-0.0060,0.0147 | ba = -0.4760,-0.5040,1.0653
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.493,0.184,-0.836,0.154 | p_IinG = -34764.498,11649.879,-15257.251 | dist = 42318.10 (meters)
-bg = -0.0144,-0.0060,0.0147 | ba = -0.4760,-0.5040,1.0653
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.494,0.178,-0.837,0.156 | p_IinG = -34792.940,11657.561,-15276.694 | dist = 42353.39 (meters)
-bg = -0.0144,-0.0060,0.0147 | ba = -0.4760,-0.5040,1.0653
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.496,0.173,-0.836,0.158 | p_IinG = -34821.394,11665.245,-15296.153 | dist = 42388.71 (meters)
-bg = -0.0144,-0.0060,0.0147 | ba = -0.4760,-0.5040,1.0653
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.497,0.171,-0.836,0.158 | p_IinG = -34849.856,11672.930,-15315.628 | dist = 42424.04 (meters)
-bg = -0.0144,-0.0060,0.0147 | ba = -0.4760,-0.5040,1.0653
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.496,0.168,-0.837,0.158 | p_IinG = -34878.332,11680.620,-15335.120 | dist = 42459.40 (meters)
-bg = -0.0144,-0.0060,0.0147 | ba = -0.4760,-0.5040,1.0653
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.491,0.167,-0.836,0.180 | p_IinG = -35182.109,11136.012,-15562.086 | dist = 42494.91 (meters)
-bg = -0.0150,-0.0056,0.0147 | ba = -0.4221,-0.5007,1.0744
-camera-imu timeoffset = -0.01788
-cam0 intrinsics = 601.189,600.191,313.946,250.139 | 0.139,-0.305,0.001,-0.000
-cam0 extrinsics = -0.017,-0.708,-0.706,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.492,0.167,-0.836,0.177 | p_IinG = -35210.830,11143.177,-15581.906 | dist = 42530.46 (meters)
-bg = -0.0150,-0.0056,0.0147 | ba = -0.4221,-0.5007,1.0744
-camera-imu timeoffset = -0.01788
-cam0 intrinsics = 601.189,600.191,313.946,250.139 | 0.139,-0.305,0.001,-0.000
-cam0 extrinsics = -0.017,-0.708,-0.706,0.001 | 0.051,0.049,-0.005
-[31mStateHelper::EKFUpdate() - diagonal at 90 is -0.00
-[0mOpenVINS driver exited with code 1
-23:52:15    ПОМИЛКА: scripts/openvins/run.sh завершився з кодом 1. Кінець логу:
-23:52:15    | camera-imu timeoffset = -0.01791
-23:52:15    | cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-23:52:15    | cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-23:52:15    | q_GtoI = -0.491,0.167,-0.836,0.180 | p_IinG = -35182.109,11136.012,-15562.086 | dist = 42494.91 (meters)
-23:52:15    | bg = -0.0150,-0.0056,0.0147 | ba = -0.4221,-0.5007,1.0744
-23:52:15    | camera-imu timeoffset = -0.01788
-23:52:15    | cam0 intrinsics = 601.189,600.191,313.946,250.139 | 0.139,-0.305,0.001,-0.000
-23:52:15    | cam0 extrinsics = -0.017,-0.708,-0.706,0.001 | 0.051,0.049,-0.005
-23:52:15    | q_GtoI = -0.492,0.167,-0.836,0.177 | p_IinG = -35210.830,11143.177,-15581.906 | dist = 42530.46 (meters)
-23:52:15    | bg = -0.0150,-0.0056,0.0147 | ba = -0.4221,-0.5007,1.0744
-23:52:15    | camera-imu timeoffset = -0.01788
-23:52:15    | cam0 intrinsics = 601.189,600.191,313.946,250.139 | 0.139,-0.305,0.001,-0.000
-23:52:15    | cam0 extrinsics = -0.017,-0.708,-0.706,0.001 | 0.051,0.049,-0.005
-23:52:15    | [31mStateHelper::EKFUpdate() - diagonal at 90 is -0.00
-23:52:15    | [0mOpenVINS driver exited with code 1
-23:52:15 -- seq11 dpvslam:mono run2/3: старт
+mnFirstFrameId = 2267
+mnInitialFrameId = 2247
+56 Frames set to lost
+First KF:22; Map init KF:20
+New Map created with 113 points
+Fail to track local map!
+IMU is not or recently initialized. Reseting active map...
+SYSTEM-> Reseting active map in monocular case
+LM: Active map reset recieved
+LM: Active map reset, waiting...
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 2288
+mnInitialFrameId = 2268
+65 Frames set to lost
+First KF:25; Map init KF:22
+New Map created with 90 points
+Fail to track local map!
+IMU is not or recently initialized. Reseting active map...
+SYSTEM-> Reseting active map in monocular case
+LM: Active map reset recieved
+LM: Active map reset, waiting...
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 2309
+mnInitialFrameId = 2296
+67 Frames set to lost
+First KF:27; Map init KF:25
+New Map created with 104 points
+Fail to track local map!
+IMU is not or recently initialized. Reseting active map...
+SYSTEM-> Reseting active map in monocular case
+LM: Active map reset recieved
+LM: Active map reset, waiting...
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 2321
+mnInitialFrameId = 2310
+69 Frames set to lost
+First KF:29; Map init KF:27
+New Map created with 97 points
+Fail to track local map!
+IMU is not or recently initialized. Reseting active map...
+SYSTEM-> Reseting active map in monocular case
+LM: Active map reset recieved
+LM: Active map reset, waiting...
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 2337
+mnInitialFrameId = 2322
+71 Frames set to lost
+ORB3_PROGRESS 2500/10308 state=1
