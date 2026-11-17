@@ -1,60 +1,60 @@
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 10707
-mnInitialFrameId = 10662
-266 Frames set to lost
-First KF:111; Map init KF:109
-New Map created with 147 points
-Fail to track local map!
-IMU is not or recently initialized. Reseting active map...
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 10713
-mnInitialFrameId = 10708
-271 Frames set to lost
-First KF:113; Map init KF:111
-New Map created with 86 points
-Fail to track local map!
-IMU is not or recently initialized. Reseting active map...
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 10822
-mnInitialFrameId = 10717
-278 Frames set to lost
-First KF:115; Map init KF:113
-New Map created with 168 points
-ORB3_STATS frames=10904 ever_ok=1 state_hist=1:10561,2:296,3:45,4:2 track_s=271.4864748079998 wall_s=347.51405758999999
-Shutdown
-
-Saving trajectory to /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq12/run1/raw_trajectory_euroc.txt ...
-There are 1 maps in the atlas
-  Map 0 has 9 KFs
-
-End of saving trajectory to /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq12/run1/raw_trajectory_euroc.txt ...
-
-Saving keyframe trajectory to /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq12/run1/raw_keyframes_euroc.txt ...
-ORB3_DONE saved /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq12/run1/raw_trajectory_euroc.txt
-Wrote /home/calc/slam-data/results/orbslam3/mono_inertial/ucu/seq12/traj_run1.txt (62 poses of 10904 frames, coverage 0.01) and /home/calc/slam-data/results/orbslam3/mono_inertial/ucu/seq12/meta.yaml
-== orbslam3 mono_inertial ucu/seq12 run1 ==
-ATE RMSE   : - m   (matched /)
-coverage   : 0.01   tracking_lost: true   poses: 62   max gap: 0.033 s
-drift 50 m : - m (0 seg)   100 m: - m (0 seg)
-note: full failure: RuntimeError: only 2 timestamps matched within 0.02 s
-appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-23:01:25    ПЕРЕВІР: поз 62 із 10908 кадрів (поріг 20%); рядок у summary_StarDestroyer.csv є, маркер .bad_run1 поставлено (це результат методу, черга йде далі)
-23:01:25 seq12: усі прогони готові (з них 6 позначено ПЕРЕВІР: мало поз, рядки в summary є; дивись маркери .bad_run*)
-23:01:25   видалено /home/calc/slam-data/ucu/sequence-12
-23:01:25   видалено /home/calc/slam-data/ucu_tum/seq12
+ 99%|█████████▉| 79389/80076 [10:32<00:07, 94.83it/s]
+ 99%|█████████▉| 79401/80076 [10:32<00:06, 98.90it/s]
+ 99%|█████████▉| 79414/80076 [10:32<00:06, 104.80it/s]
+ 99%|█████████▉| 79428/80076 [10:32<00:05, 113.05it/s]
+ 99%|█████████▉| 79440/80076 [10:32<00:05, 110.72it/s]
+ 99%|█████████▉| 79452/80076 [10:32<00:06, 102.10it/s]
+ 99%|█████████▉| 79464/80076 [10:32<00:05, 103.99it/s]
+ 99%|█████████▉| 79477/80076 [10:33<00:05, 107.66it/s]
+ 99%|█████████▉| 79488/80076 [10:33<00:05, 104.72it/s]
+ 99%|█████████▉| 79499/80076 [10:33<00:05, 102.99it/s]
+ 99%|█████████▉| 79511/80076 [10:33<00:05, 94.18it/s] 
+ 99%|█████████▉| 79523/80076 [10:33<00:06, 88.69it/s]
+ 99%|█████████▉| 79535/80076 [10:33<00:05, 93.73it/s]
+ 99%|█████████▉| 79548/80076 [10:33<00:05, 100.12it/s]
+ 99%|█████████▉| 79559/80076 [10:33<00:05, 99.75it/s] 
+ 99%|█████████▉| 79571/80076 [10:34<00:04, 101.51it/s]
+ 99%|█████████▉| 79583/80076 [10:34<00:04, 103.23it/s]
+ 99%|█████████▉| 79594/80076 [10:34<00:04, 101.86it/s]
+ 99%|█████████▉| 79605/80076 [10:34<00:04, 100.36it/s]
+ 99%|█████████▉| 79618/80076 [10:34<00:04, 101.71it/s]
+ 99%|█████████▉| 79629/80076 [10:34<00:04, 99.45it/s] 
+ 99%|█████████▉| 79640/80076 [10:34<00:04, 99.31it/s]
+ 99%|█████████▉| 79652/80076 [10:34<00:04, 101.53it/s]
+ 99%|█████████▉| 79663/80076 [10:34<00:04, 99.75it/s] 
+ 99%|█████████▉| 79674/80076 [10:35<00:04, 99.51it/s]
+100%|█████████▉| 79687/80076 [10:35<00:03, 105.06it/s]
+100%|█████████▉| 79703/80076 [10:35<00:03, 114.55it/s]
+100%|█████████▉| 79715/80076 [10:35<00:03, 108.87it/s]
+100%|█████████▉| 79726/80076 [10:35<00:03, 104.61it/s]
+100%|█████████▉| 79737/80076 [10:35<00:03, 102.75it/s]
+100%|█████████▉| 79750/80076 [10:35<00:03, 106.16it/s]
+100%|█████████▉| 79761/80076 [10:35<00:03, 104.42it/s]
+100%|█████████▉| 79772/80076 [10:35<00:02, 103.07it/s]
+100%|█████████▉| 79783/80076 [10:36<00:03, 92.15it/s] 
+100%|█████████▉| 79796/80076 [10:36<00:03, 89.63it/s]
+100%|█████████▉| 79806/80076 [10:36<00:03, 89.90it/s]
+100%|█████████▉| 79819/80076 [10:36<00:02, 97.87it/s]
+100%|█████████▉| 79829/80076 [10:36<00:02, 96.07it/s]
+100%|█████████▉| 79845/80076 [10:36<00:02, 104.54it/s]
+100%|█████████▉| 79859/80076 [10:36<00:02, 105.09it/s]
+100%|█████████▉| 79874/80076 [10:36<00:01, 107.75it/s]
+100%|█████████▉| 79893/80076 [10:37<00:01, 119.17it/s]
+100%|█████████▉| 79907/80076 [10:37<00:01, 115.18it/s]
+100%|█████████▉| 79922/80076 [10:37<00:01, 114.17it/s]
+100%|█████████▉| 79938/80076 [10:37<00:01, 116.52it/s]
+100%|█████████▉| 79953/80076 [10:37<00:01, 115.93it/s]
+100%|█████████▉| 79965/80076 [10:37<00:01, 108.44it/s]
+100%|█████████▉| 79981/80076 [10:37<00:00, 112.72it/s]
+100%|█████████▉| 79996/80076 [10:38<00:00, 113.04it/s]
+100%|█████████▉| 80010/80076 [10:38<00:00, 111.21it/s]
+100%|█████████▉| 80026/80076 [10:38<00:00, 114.83it/s]
+100%|█████████▉| 80041/80076 [10:38<00:00, 114.25it/s]
+100%|█████████▉| 80055/80076 [10:38<00:00, 111.33it/s]
+100%|█████████▉| 80071/80076 [10:38<00:00, 115.10it/s]
+100%|██████████| 80076/80076 [10:38<00:00, 125.38it/s]
+Found 679 common timestamps for color 10308 color and 679 depth images.
+Found 679 common timestamps for color 10308 color and 679 depth images.
+wrote /home/calc/slam-data/ucu_tum/seq11.partial/odom.txt (6352 poses)
+seq11,download_s=711,export_s=642,mcap_bytes=10362890185,export_bytes=4791669708
+23:24:04 -- seq11 dpvslam:mono run1/3: старт

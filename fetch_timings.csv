@@ -21,3 +21,4 @@ seq02,download_s=618,export_s=595,mcap_bytes=10167345684,export_bytes=3415484358
 seq01,download_s=384,export_s=383,mcap_bytes=6512342911,export_bytes=2082170714
 seq13,download_s=540,export_s=682,mcap_bytes=10711443165,export_bytes=3521718605
 seq12,download_s=717,export_s=659,mcap_bytes=10889194002,export_bytes=4656282470
+seq11,download_s=711,export_s=642,mcap_bytes=10362890185,export_bytes=4791669708
