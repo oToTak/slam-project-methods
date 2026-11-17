@@ -77,3 +77,6 @@ orbslam3,mono_inertial,ucu,seq12,3,,,0.01,true,77d32f8
 orbslam3,mono_inertial,ucu,seq13,1,20.258,,0.39,false,f773fa7
 orbslam3,mono_inertial,ucu,seq12,1,,,0.01,true,f773fa7
 dpvslam,mono,ucu,seq11,1,4.475,,1.00,false,f773fa7
+orbslam3,mono,ucu,seq11,1,4.750,,0.98,false,f773fa7
+orbslam3,mono_inertial,ucu,seq11,1,1.217,,0.10,false,f773fa7
+dso,mono,ucu,seq11,1,4.915,,1.00,false,f773fa7
