@@ -1,60 +1,60 @@
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 10747
-mnInitialFrameId = 10719
-340 Frames set to lost
-First KF:125; Map init KF:123
-New Map created with 77 points
 Fail to track local map!
-IMU is not or recently initialized. Reseting active map...
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 10801
-mnInitialFrameId = 10748
-342 Frames set to lost
-First KF:127; Map init KF:125
-New Map created with 76 points
 Fail to track local map!
-IMU is not or recently initialized. Reseting active map...
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 10822
-mnInitialFrameId = 10802
-348 Frames set to lost
-First KF:129; Map init KF:127
-New Map created with 129 points
-ORB3_STATS frames=10904 ever_ok=1 state_hist=1:10488,2:368,3:41,4:7 track_s=261.31517557400116 wall_s=330.47037043199998
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Creation of new map with id: 1
+Stored map with ID: 0
+Creation of new map with last KF id: 1454
+ORB3_STATS frames=10698 ever_ok=1 state_hist=0:1,1:5560,2:4863,3:268,4:6 track_s=90.785783078000151 wall_s=156.73334797300001
 Shutdown
 
-Saving trajectory to /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq12/run3/raw_trajectory_euroc.txt ...
-There are 1 maps in the atlas
-  Map 0 has 9 KFs
+Saving trajectory to /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq13/run1/raw_trajectory_euroc.txt ...
+There are 2 maps in the atlas
+  Map 0 has 548 KFs
+  Map 1 has 0 KFs
 
-End of saving trajectory to /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq12/run3/raw_trajectory_euroc.txt ...
+End of saving trajectory to /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq13/run1/raw_trajectory_euroc.txt ...
 
-Saving keyframe trajectory to /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq12/run3/raw_keyframes_euroc.txt ...
-ORB3_DONE saved /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq12/run3/raw_trajectory_euroc.txt
-Wrote /home/calc/slam-data/results/orbslam3/mono_inertial/ucu/seq12/traj_run3.txt (60 poses of 10904 frames, coverage 0.01) and /home/calc/slam-data/results/orbslam3/mono_inertial/ucu/seq12/meta.yaml
-== orbslam3 mono_inertial ucu/seq12 run3 ==
-ATE RMSE   : - m   (matched /)
-coverage   : 0.01   tracking_lost: true   poses: 60   max gap: 0.033 s
-drift 50 m : - m (0 seg)   100 m: - m (0 seg)
-note: full failure: RuntimeError: only 2 timestamps matched within 0.02 s
+Saving keyframe trajectory to /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq13/run1/raw_keyframes_euroc.txt ...
+ORB3_DONE saved /home/calc/slam-data/orbslam3_work/mono_inertial/ucu/seq13/run1/raw_trajectory_euroc.txt
+Wrote /home/calc/slam-data/results/orbslam3/mono_inertial/ucu/seq13/traj_run1.txt (4351 poses of 10698 frames, coverage 0.41) and /home/calc/slam-data/results/orbslam3/mono_inertial/ucu/seq13/meta.yaml
+== orbslam3 mono_inertial ucu/seq13 run1 ==
+ATE RMSE   : 20.258 m   (matched 146/358)
+coverage   : 0.39   tracking_lost: false   poses: 4351   max gap: 0.067 s
+drift 50 m : 24.236 m (96 seg)   100 m: 47.414 m (45 seg)
+note: ATE matched 146/358 timestamps
+plot: /home/calc/slam-data/results/orbslam3/mono_inertial/ucu/seq13/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-18:16:13    ПЕРЕВІР: поз 60 із 10908 кадрів (поріг 20%); рядок у summary_StarDestroyer.csv є, маркер .bad_run3 поставлено (це результат методу, черга йде далі)
-18:16:13 seq12: НЕ всі прогони готові — .mcap й експорт лишаю для розбору (повторний запуск доробить)
+22:55:27    готово за 2.7 хв: поз 4351/10699; рядок додано в summary_StarDestroyer.csv
+22:55:27 seq13: усі прогони готові (з них 5 позначено ПЕРЕВІР: мало поз, рядки в summary є; дивись маркери .bad_run*)
+22:55:27   видалено /home/calc/slam-data/ucu/sequence-13
+22:55:27   видалено /home/calc/slam-data/ucu_tum/seq13
