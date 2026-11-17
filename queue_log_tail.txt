@@ -1,60 +1,60 @@
- 99%|█████████▉| 79389/80076 [10:32<00:07, 94.83it/s]
- 99%|█████████▉| 79401/80076 [10:32<00:06, 98.90it/s]
- 99%|█████████▉| 79414/80076 [10:32<00:06, 104.80it/s]
- 99%|█████████▉| 79428/80076 [10:32<00:05, 113.05it/s]
- 99%|█████████▉| 79440/80076 [10:32<00:05, 110.72it/s]
- 99%|█████████▉| 79452/80076 [10:32<00:06, 102.10it/s]
- 99%|█████████▉| 79464/80076 [10:32<00:05, 103.99it/s]
- 99%|█████████▉| 79477/80076 [10:33<00:05, 107.66it/s]
- 99%|█████████▉| 79488/80076 [10:33<00:05, 104.72it/s]
- 99%|█████████▉| 79499/80076 [10:33<00:05, 102.99it/s]
- 99%|█████████▉| 79511/80076 [10:33<00:05, 94.18it/s] 
- 99%|█████████▉| 79523/80076 [10:33<00:06, 88.69it/s]
- 99%|█████████▉| 79535/80076 [10:33<00:05, 93.73it/s]
- 99%|█████████▉| 79548/80076 [10:33<00:05, 100.12it/s]
- 99%|█████████▉| 79559/80076 [10:33<00:05, 99.75it/s] 
- 99%|█████████▉| 79571/80076 [10:34<00:04, 101.51it/s]
- 99%|█████████▉| 79583/80076 [10:34<00:04, 103.23it/s]
- 99%|█████████▉| 79594/80076 [10:34<00:04, 101.86it/s]
- 99%|█████████▉| 79605/80076 [10:34<00:04, 100.36it/s]
- 99%|█████████▉| 79618/80076 [10:34<00:04, 101.71it/s]
- 99%|█████████▉| 79629/80076 [10:34<00:04, 99.45it/s] 
- 99%|█████████▉| 79640/80076 [10:34<00:04, 99.31it/s]
- 99%|█████████▉| 79652/80076 [10:34<00:04, 101.53it/s]
- 99%|█████████▉| 79663/80076 [10:34<00:04, 99.75it/s] 
- 99%|█████████▉| 79674/80076 [10:35<00:04, 99.51it/s]
-100%|█████████▉| 79687/80076 [10:35<00:03, 105.06it/s]
-100%|█████████▉| 79703/80076 [10:35<00:03, 114.55it/s]
-100%|█████████▉| 79715/80076 [10:35<00:03, 108.87it/s]
-100%|█████████▉| 79726/80076 [10:35<00:03, 104.61it/s]
-100%|█████████▉| 79737/80076 [10:35<00:03, 102.75it/s]
-100%|█████████▉| 79750/80076 [10:35<00:03, 106.16it/s]
-100%|█████████▉| 79761/80076 [10:35<00:03, 104.42it/s]
-100%|█████████▉| 79772/80076 [10:35<00:02, 103.07it/s]
-100%|█████████▉| 79783/80076 [10:36<00:03, 92.15it/s] 
-100%|█████████▉| 79796/80076 [10:36<00:03, 89.63it/s]
-100%|█████████▉| 79806/80076 [10:36<00:03, 89.90it/s]
-100%|█████████▉| 79819/80076 [10:36<00:02, 97.87it/s]
-100%|█████████▉| 79829/80076 [10:36<00:02, 96.07it/s]
-100%|█████████▉| 79845/80076 [10:36<00:02, 104.54it/s]
-100%|█████████▉| 79859/80076 [10:36<00:02, 105.09it/s]
-100%|█████████▉| 79874/80076 [10:36<00:01, 107.75it/s]
-100%|█████████▉| 79893/80076 [10:37<00:01, 119.17it/s]
-100%|█████████▉| 79907/80076 [10:37<00:01, 115.18it/s]
-100%|█████████▉| 79922/80076 [10:37<00:01, 114.17it/s]
-100%|█████████▉| 79938/80076 [10:37<00:01, 116.52it/s]
-100%|█████████▉| 79953/80076 [10:37<00:01, 115.93it/s]
-100%|█████████▉| 79965/80076 [10:37<00:01, 108.44it/s]
-100%|█████████▉| 79981/80076 [10:37<00:00, 112.72it/s]
-100%|█████████▉| 79996/80076 [10:38<00:00, 113.04it/s]
-100%|█████████▉| 80010/80076 [10:38<00:00, 111.21it/s]
-100%|█████████▉| 80026/80076 [10:38<00:00, 114.83it/s]
-100%|█████████▉| 80041/80076 [10:38<00:00, 114.25it/s]
-100%|█████████▉| 80055/80076 [10:38<00:00, 111.33it/s]
-100%|█████████▉| 80071/80076 [10:38<00:00, 115.10it/s]
-100%|██████████| 80076/80076 [10:38<00:00, 125.38it/s]
-Found 679 common timestamps for color 10308 color and 679 depth images.
-Found 679 common timestamps for color 10308 color and 679 depth images.
-wrote /home/calc/slam-data/ucu_tum/seq11.partial/odom.txt (6352 poses)
-seq11,download_s=711,export_s=642,mcap_bytes=10362890185,export_bytes=4791669708
-23:24:04 -- seq11 dpvslam:mono run1/3: старт
+This is free software, and you are welcome to redistribute it
+under certain conditions. See LICENSE.txt.
+
+Input sensor was set to: Monocular
+Loading settings from /home/calc/slam-runner/configs/orbslam3/UCU_mono.yaml
+Camera1.k3 optional parameter does not exist...
+	-Loaded camera 1
+Camera.newHeight optional parameter does not exist...
+Camera.newWidth optional parameter does not exist...
+	-Loaded image info
+	-Loaded ORB settings
+Viewer.imageViewScale optional parameter does not exist...
+	-Loaded viewer settings
+System.LoadAtlasFromFile optional parameter does not exist...
+System.SaveAtlasToFile optional parameter does not exist...
+	-Loaded Atlas settings
+System.thFarPoints optional parameter does not exist...
+	-Loaded misc parameters
+----------------------------------
+SLAM settings: 
+	-Camera 1 parameters (Pinhole): [ 601.17333984375 600.266357421875 314.01644897460938 250.03944396972656 ]
+	-Camera 1 distortion parameters: [  0.1392686665058136 -0.30741280317306519 0.00072727992665022612 0.00066557613899931312 ]
+	-Original image size: [ 640 , 480 ]
+	-Current image size: [ 640 , 480 ]
+	-Sequence FPS: 30
+	-Features per image: 1000
+	-ORB scale factor: 1.2000000476837158
+	-ORB number of scales: 8
+	-Initial FAST threshold: 20
+	-Min FAST threshold: 7
+
+
+Loading ORB Vocabulary. This could take a while...
+Vocabulary loaded!
+
+Initialization of Atlas from scratch 
+Creation of new map with id: 0
+Creation of new map with last KF id: 0
+Seq. Name: 
+There are 1 cameras in the atlas
+Camera 0 is pinhole
+First KF:0; Map init KF:0
+New Map created with 82 points
+ORB3_PROGRESS 500/10308 state=2
+ORB3_PROGRESS 1000/10308 state=2
+ORB3_PROGRESS 1500/10308 state=2
+ORB3_PROGRESS 2000/10308 state=2
+ORB3_PROGRESS 2500/10308 state=2
+ORB3_PROGRESS 3000/10308 state=2
+ORB3_PROGRESS 3500/10308 state=2
+ORB3_PROGRESS 4000/10308 state=2
+ORB3_PROGRESS 4500/10308 state=2
+ORB3_PROGRESS 5000/10308 state=2
+ORB3_PROGRESS 5500/10308 state=2
+ORB3_PROGRESS 6000/10308 state=2
+ORB3_PROGRESS 6500/10308 state=2
+ORB3_PROGRESS 7000/10308 state=2
+ORB3_PROGRESS 7500/10308 state=2
+ORB3_PROGRESS 8000/10308 state=2
+ORB3_PROGRESS 8500/10308 state=2

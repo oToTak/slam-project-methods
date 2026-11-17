@@ -76,3 +76,4 @@ openvins,mono_inertial,ucu,seq12,3,362,364,14.410,23.773,311,264,0.167,10838,
 orbslam3,mono_inertial,ucu,seq12,3,,,,,0,0,0.033,60,full failure: RuntimeError: only 2 timestamps matched within 0.02 s
 orbslam3,mono_inertial,ucu,seq13,1,146,358,24.236,47.414,96,45,0.067,4351,ATE matched 146/358 timestamps
 orbslam3,mono_inertial,ucu,seq12,1,,,,,0,0,0.033,62,full failure: RuntimeError: only 2 timestamps matched within 0.02 s
+dpvslam,mono,ucu,seq11,1,344,344,6.175,6.097,304,255,0.100,10308,
