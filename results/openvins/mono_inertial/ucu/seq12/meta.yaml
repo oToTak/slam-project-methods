@@ -2,9 +2,9 @@ method: openvins
 mode: mono_inertial
 dataset: ucu
 seq: seq12
-run: 1
+run: 2
 commit: 55bb165dee0bce8c32a83726030deb1c73252569
 config: configs/openvins/ucu/estimator_config.yaml
 coverage: 0.99
 tracking_lost: false
-notes: "OpenVINS d0075dd ROS-free build (ENABLE_ROS=OFF, ENABLE_ARUCO_TAGS=OFF), own driver, one camera + IMU, config configs/openvins/ucu/estimator_config.yaml (upstream EuRoC values, not tuned; Kalibr T_ic and IMU noise from the dataset calibration, time shift already applied by the exporter), single thread, every frame fed (no track_frequency dropping), no sleeping, wall 133s. OV_STATS frames=10904 imu=45543 processed=10903 posed=10838 nonfinite=0 unreadable=0 initialized=1 first_pose_t_rel=2.168 wall_s=133.1 IMU_TRIM leading=4 trailing=0 of 10908 frames outside the IMU span, 10904 kept (rgb.txt trimmed copy used) host=StarDestroyer. 10838 of 10904 frames have a pose (99.4% of frames; outside-sequence 0, duplicate 0, malformed 0); frames without a pose (before initialisation, after OpenVINS got lost, before a reset) are NOT interpolated."
+notes: "OpenVINS d0075dd ROS-free build (ENABLE_ROS=OFF, ENABLE_ARUCO_TAGS=OFF), own driver, one camera + IMU, config configs/openvins/ucu/estimator_config.yaml (upstream EuRoC values, not tuned; Kalibr T_ic and IMU noise from the dataset calibration, time shift already applied by the exporter), single thread, every frame fed (no track_frequency dropping), no sleeping, wall 130s. OV_STATS frames=10904 imu=45543 processed=10903 posed=10838 nonfinite=0 unreadable=0 initialized=1 first_pose_t_rel=2.168 wall_s=129.9 IMU_TRIM leading=4 trailing=0 of 10908 frames outside the IMU span, 10904 kept (rgb.txt trimmed copy used) host=StarDestroyer. 10838 of 10904 frames have a pose (99.4% of frames; outside-sequence 0, duplicate 0, malformed 0); frames without a pose (before initialisation, after OpenVINS got lost, before a reset) are NOT interpolated."
