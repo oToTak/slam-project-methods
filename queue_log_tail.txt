@@ -1,60 +1,60 @@
-RE-TRACK ATTEMPT 20 with initOption 20 and start-lvl 3 (ab 0.346701 -149.671294): 7.235085 6.114246 5.945526 5.024393 nan -> 7.235994 6.115746 5.946614 5.044934 nan 
-RE-TRACK ATTEMPT 21 with initOption 21 and start-lvl 3 (ab 0.346734 -149.679594): 7.235085 6.114246 5.945526 5.024393 nan -> 7.236576 6.115438 5.946561 5.038759 nan 
-RE-TRACK ATTEMPT 22 with initOption 22 and start-lvl 3 (ab 0.346721 -149.676705): 7.235085 6.114246 5.945526 5.024393 nan -> 7.236320 6.115858 5.945853 5.044784 nan 
-RE-TRACK ATTEMPT 23 with initOption 23 and start-lvl 3 (ab 0.346690 -149.669851): 7.235085 6.114246 5.945526 5.024393 nan -> 7.235996 6.115423 5.945907 5.044312 nan 
-RE-TRACK ATTEMPT 24 with initOption 24 and start-lvl 3 (ab 0.346708 -149.673988): 7.235085 6.114246 5.945526 5.024393 nan -> 7.236016 6.115367 5.945839 5.043472 nan 
-RE-TRACK ATTEMPT 25 with initOption 25 and start-lvl 3 (ab 0.346727 -149.676775): 7.235085 6.114246 5.945526 5.024393 nan -> 7.235994 6.115705 5.945912 5.044128 nan 
-RE-TRACK ATTEMPT 26 with initOption 26 and start-lvl 3 (ab 0.346671 -149.664879): 7.235085 6.114246 5.945526 5.024393 nan -> 7.236552 6.115859 5.946321 5.043723 nan 
-RE-TRACK ATTEMPT 27 with initOption 27 and start-lvl 3 (ab 0.353059 -150.779338): 7.235085 6.114246 5.945526 5.024393 nan -> nan nan nan 11.749603 nan 
-RE-TRACK ATTEMPT 28 with initOption 28 and start-lvl 3 (ab 0.346767 -149.687038): 7.235085 6.114246 5.945526 5.024393 nan -> 7.236603 6.115307 5.945595 5.046118 nan 
-RE-TRACK ATTEMPT 29 with initOption 29 and start-lvl 3 (ab 0.346729 -149.678382): 7.235085 6.114246 5.945526 5.024393 nan -> 7.236599 6.115306 5.946170 5.045612 nan 
-RE-TRACK ATTEMPT 30 with initOption 30 and start-lvl 3 (ab 0.353059 -150.779338): 7.235085 6.114246 5.945526 5.024393 nan -> nan nan nan 11.815205 nan 
-RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab 0.362074 -152.449085): 7.617860 6.298213 5.223134 5.513070 nan -> 7.617692 6.298134 5.219603 5.516216 nan 
-RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab 0.362109 -152.452573): 7.617692 6.298134 5.219603 5.513070 nan -> 7.617586 6.297877 5.221105 5.513803 nan 
-RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab 0.362201 -152.471157): 7.617586 6.297877 5.219603 5.513070 nan -> 7.617759 6.298028 5.223018 5.514043 nan 
-RE-TRACK ATTEMPT 4 with initOption 4 and start-lvl 3 (ab 0.362077 -152.449937): 7.617586 6.297877 5.219603 5.513070 nan -> 7.617627 6.297956 5.219242 5.518734 nan 
-RE-TRACK ATTEMPT 5 with initOption 5 and start-lvl 3 (ab 0.362031 -152.450921): 7.617586 6.297877 5.219242 5.513070 nan -> 7.615862 6.294920 5.216560 5.512862 nan 
-RE-TRACK ATTEMPT 6 with initOption 6 and start-lvl 3 (ab 0.362024 -152.442834): 7.615862 6.294920 5.216560 5.512862 nan -> 7.616714 6.298537 5.217775 5.502388 nan 
-RE-TRACK ATTEMPT 7 with initOption 7 and start-lvl 3 (ab 0.362108 -152.452150): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617670 6.298275 5.222666 5.520927 nan 
-RE-TRACK ATTEMPT 8 with initOption 8 and start-lvl 3 (ab 0.362061 -152.445736): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617834 6.298403 5.219747 5.521480 nan 
-RE-TRACK ATTEMPT 9 with initOption 9 and start-lvl 3 (ab 0.362058 -152.445190): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617819 6.298388 5.220002 5.522531 nan 
-RE-TRACK ATTEMPT 10 with initOption 10 and start-lvl 3 (ab 0.362079 -152.450240): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617723 6.298196 5.219783 5.516699 nan 
-RE-TRACK ATTEMPT 11 with initOption 11 and start-lvl 3 (ab 0.350449 -150.629680): 7.615862 6.294920 5.216560 5.502388 nan -> nan nan nan 11.666493 nan 
-RE-TRACK ATTEMPT 12 with initOption 12 and start-lvl 3 (ab 0.362024 -152.437427): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617665 6.298041 5.219280 5.517221 nan 
-RE-TRACK ATTEMPT 13 with initOption 13 and start-lvl 3 (ab 0.362063 -152.448571): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617352 6.298163 5.219156 5.520909 nan 
-RE-TRACK ATTEMPT 14 with initOption 14 and start-lvl 3 (ab 0.350449 -150.629680): 7.615862 6.294920 5.216560 5.502388 nan -> nan nan nan 11.945970 nan 
-RE-TRACK ATTEMPT 15 with initOption 15 and start-lvl 3 (ab 0.362056 -152.446902): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617385 6.298254 5.219076 5.520040 nan 
-RE-TRACK ATTEMPT 16 with initOption 16 and start-lvl 3 (ab 0.362072 -152.448250): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617878 6.298552 5.220065 5.519625 nan 
-RE-TRACK ATTEMPT 17 with initOption 17 and start-lvl 3 (ab 0.362040 -152.439779): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617538 6.297944 5.220406 5.516874 nan 
-RE-TRACK ATTEMPT 18 with initOption 18 and start-lvl 3 (ab 0.362063 -152.446441): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617752 6.298258 5.219798 5.521079 nan 
-RE-TRACK ATTEMPT 19 with initOption 19 and start-lvl 3 (ab 0.362099 -152.450148): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617668 6.298290 5.222564 5.520963 nan 
-RE-TRACK ATTEMPT 20 with initOption 20 and start-lvl 3 (ab 0.362062 -152.446168): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617800 6.298391 5.219804 5.521097 nan 
-RE-TRACK ATTEMPT 21 with initOption 21 and start-lvl 3 (ab 0.362033 -152.439064): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617840 6.298538 5.220156 5.521312 nan 
-RE-TRACK ATTEMPT 22 with initOption 22 and start-lvl 3 (ab 0.362047 -152.442677): 7.615862 6.294920 5.216560 5.502388 nan -> 7.618117 6.299314 5.220646 5.521690 nan 
-RE-TRACK ATTEMPT 23 with initOption 23 and start-lvl 3 (ab 0.362068 -152.450357): 7.615862 6.294920 5.216560 5.502388 nan -> 7.616868 6.297791 5.218664 5.509238 nan 
-RE-TRACK ATTEMPT 24 with initOption 24 and start-lvl 3 (ab 0.362058 -152.445139): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617844 6.298460 5.219810 5.521794 nan 
-RE-TRACK ATTEMPT 25 with initOption 25 and start-lvl 3 (ab 0.362068 -152.447414): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617779 6.298317 5.219506 5.520477 nan 
-RE-TRACK ATTEMPT 26 with initOption 26 and start-lvl 3 (ab 0.362072 -152.447509): 7.615862 6.294920 5.216560 5.502388 nan -> 7.616430 6.295588 5.219337 5.521890 nan 
-RE-TRACK ATTEMPT 27 with initOption 27 and start-lvl 3 (ab 0.362012 -152.431466): 7.615862 6.294920 5.216560 5.502388 nan -> 7.618506 6.299649 5.221416 5.513139 nan 
-RE-TRACK ATTEMPT 28 with initOption 28 and start-lvl 3 (ab 0.362063 -152.446283): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617839 6.298482 5.219975 5.521384 nan 
-RE-TRACK ATTEMPT 29 with initOption 29 and start-lvl 3 (ab 0.362011 -152.437165): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617519 6.297457 5.218869 5.518694 nan 
-RE-TRACK ATTEMPT 30 with initOption 30 and start-lvl 3 (ab 0.362093 -152.453543): 7.615862 6.294920 5.216560 5.502388 nan -> 7.617674 6.298014 5.219680 5.513413 nan 
-RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab 0.357175 -151.436774): 8.073485 6.812841 6.081638 6.122428 nan -> 8.072847 6.812687 6.081548 6.122018 nan 
-RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab 0.357243 -151.452574): 8.072847 6.812687 6.081548 6.122018 nan -> 8.073282 6.811950 6.080907 6.122514 nan 
-RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab 0.357205 -151.444613): 8.072847 6.811950 6.080907 6.122018 nan -> 8.072954 6.812724 6.081543 6.123873 nan 
-RE-TRACK ATTEMPT 4 with initOption 4 and start-lvl 3 (ab 0.357412 -151.479019): 8.072847 6.811950 6.080907 6.122018 nan -> 8.070347 6.811412 6.082350 6.119789 nan 
-RE-TRACK ATTEMPT 5 with initOption 5 and start-lvl 3 (ab 0.357132 -151.427528): 8.070347 6.811412 6.080907 6.119789 nan -> 8.076496 6.818076 6.090341 6.117582 nan 
-RE-TRACK ATTEMPT 6 with initOption 6 and start-lvl 3 (ab 0.357154 -151.431558): 8.070347 6.811412 6.080907 6.117582 nan -> 8.055206 6.789855 6.083569 6.119657 nan 
-RE-TRACK ATTEMPT 7 with initOption 7 and start-lvl 3 (ab 0.357304 -151.463884): 8.055206 6.789855 6.080907 6.117582 nan -> 8.074270 6.812709 6.083099 6.123240 nan 
-RE-TRACK ATTEMPT 8 with initOption 8 and start-lvl 3 (ab 0.357032 -151.408543): 8.055206 6.789855 6.080907 6.117582 nan -> 8.056893 6.791427 6.087614 6.123224 nan 
-RE-TRACK ATTEMPT 9 with initOption 9 and start-lvl 3 (ab 0.357157 -151.438805): 8.055206 6.789855 6.080907 6.117582 nan -> 8.048555 6.785321 6.086738 6.115535 nan 
-RE-TRACK ATTEMPT 10 with initOption 10 and start-lvl 3 (ab 0.357312 -151.463634): 8.048555 6.785321 6.080907 6.115535 nan -> 8.070736 6.808357 6.078447 6.122849 nan 
-RE-TRACK ATTEMPT 11 with initOption 11 and start-lvl 3 (ab 0.357167 -151.435570): 8.048555 6.785321 6.078447 6.115535 nan -> 8.072645 6.815053 6.082064 6.123533 nan 
-RE-TRACK ATTEMPT 12 with initOption 12 and start-lvl 3 (ab 0.357146 -151.432763): 8.048555 6.785321 6.078447 6.115535 nan -> 8.073187 6.813849 6.082839 6.123105 nan 
-RE-TRACK ATTEMPT 13 with initOption 13 and start-lvl 3 (ab 0.357713 -151.533734): 8.048555 6.785321 6.078447 6.115535 nan -> 8.064092 6.801690 6.081700 6.117361 nan 
-RE-TRACK ATTEMPT 14 with initOption 14 and start-lvl 3 (ab 0.356840 -151.372619): 8.048555 6.785321 6.078447 6.115535 nan -> 8.073282 6.819462 6.086988 6.123627 nan 
-RE-TRACK ATTEMPT 15 with initOption 15 and start-lvl 3 (ab 0.357103 -151.424170): 8.048555 6.785321 6.078447 6.115535 nan -> 8.054800 6.792244 6.098795 6.110442 nan 
-RE-TRACK ATTEMPT 16 with initOption 16 and start-lvl 3 (ab 0.356949 -151.390423): 8.048555 6.785321 6.078447 6.110442 nan -> 8.072877 6.815601 6.084646 6.122931 nan 
-RE-TRACK ATTEMPT 17 with initOption 17 and start-lvl 3 (ab 0.357258 -151.457586): 8.048555 6.785321 6.078447 6.110442 nan -> 8.054110 6.787251 6.080343 6.122261 nan 
-RE-TRACK ATTEMPT 18 with initOption 18 and start-lvl 3 (ab 0.357251 -151.453402): 8.048555 6.785321 6.078447 6.110442 nan -> 8.072427 6.810649 6.080154 6.123155 nan 
-RE-TRACK ATTEMPT 19 with initOption 19 and start-lvl 3 (ab 0.357125 -151.426694): 8.048555 6.785321 6.078447 6.110442 nan -> 8.073316 6.814229 6.083345 6.121981 nan 
+q_GtoI = 0.999,0.037,0.023,0.028 | p_IinG = -99315.174,195369.561,102024.088 | dist = 240199.62 (meters)
+bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
+camera-imu timeoffset = -0.01469
+cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
+cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = 0.999,0.036,0.023,0.028 | p_IinG = -99323.384,195386.375,102034.819 | dist = 240221.19 (meters)
+bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
+camera-imu timeoffset = -0.01469
+cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
+cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = 0.999,0.035,0.023,0.028 | p_IinG = -99331.596,195403.189,102045.550 | dist = 240242.76 (meters)
+bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
+camera-imu timeoffset = -0.01469
+cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
+cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = 0.999,0.033,0.023,0.028 | p_IinG = -99339.810,195420.002,102056.283 | dist = 240264.33 (meters)
+bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
+camera-imu timeoffset = -0.01469
+cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
+cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = 0.999,0.032,0.023,0.028 | p_IinG = -99348.026,195436.815,102067.015 | dist = 240285.90 (meters)
+bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
+camera-imu timeoffset = -0.01469
+cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
+cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = 0.999,0.031,0.023,0.028 | p_IinG = -99356.244,195453.627,102077.749 | dist = 240307.47 (meters)
+bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
+camera-imu timeoffset = -0.01469
+cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
+cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = 0.999,0.030,0.023,0.028 | p_IinG = -99364.464,195470.439,102088.483 | dist = 240329.05 (meters)
+bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
+camera-imu timeoffset = -0.01469
+cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
+cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = 0.999,0.028,0.023,0.028 | p_IinG = -99372.686,195487.250,102099.217 | dist = 240350.62 (meters)
+bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
+camera-imu timeoffset = -0.01469
+cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
+cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = 0.999,0.027,0.023,0.028 | p_IinG = -99380.910,195504.060,102109.953 | dist = 240372.20 (meters)
+bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
+camera-imu timeoffset = -0.01469
+cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
+cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = 0.999,0.026,0.023,0.028 | p_IinG = -99389.136,195520.871,102120.689 | dist = 240393.77 (meters)
+bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
+camera-imu timeoffset = -0.01469
+cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
+cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+OV_STATS frames=19524 imu=81543 processed=19524 posed=19445 nonfinite=0 unreadable=0 initialized=1 first_pose_t_rel=2.935 wall_s=183.8
+Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq10/traj_run3.txt (19445 poses of 19524 frames, coverage 1.00) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq10/meta.yaml
+== openvins mono_inertial ucu/seq10 run3 ==
+ATE RMSE   : 73256.484 m   (matched 649/653)
+coverage   : 1.00   tracking_lost: false   poses: 19445   max gap: 0.100 s
+drift 50 m : 21260.555 m (593 seg)   100 m: 41632.844 m (542 seg)
+plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq10/traj_xy.pdf
+appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
+08:22:33    готово за 3.1 хв: поз 19445/19524; рядок додано в summary_StarDestroyer.csv
+08:22:33 seq10: НЕ всі прогони готові — .mcap й експорт лишаю для розбору (повторний запуск доробить)
