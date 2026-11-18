@@ -8,7 +8,8 @@
 # Writes $RESULTS_ROOT/orbslam3/<mode>/<dataset>/<seq>/traj_run<R>.txt + meta.yaml: TUM format, one line per frame that HAS a pose
 # (ORB-SLAM3 SaveTrajectoryEuRoC, never keyframes only; frames without a pose are absent, nothing is interpolated or invented).
 # Never overwrites an existing traj_run<R>.txt. Exit code 0 only if a trajectory was written (and evaluated, unless NO_EVAL=1);
-# non-zero on any failure, on tracking that never initialised, or when the driver produced no usable poses.
+# 4 = the method gave no usable trajectory (never initialised, no poses, or the driver crashed by a signal: a RESULT, the queue records it);
+# any other non-zero = failure of the run (the queue retries once).
 # ORB-SLAM3 is NOT deterministic: the registry asks for 3 runs. ORB3_PACE=1 would run in real time (default 0 = no sleeping).
 # Log: $DATA_ROOT/logs/orbslam3_<mode>_<seq>_run<R>_<timestamp>.log   Raw driver output: $DATA_ROOT/orbslam3_work/...
 set -euo pipefail
@@ -81,10 +82,31 @@ fi
 drv+=("${mf[@]}")
 
 t_start=$SECONDS
-set +e
-"${drv[@]}" 2>&1 | tee -a "$log"
-rc=${PIPESTATUS[0]}
-set -e
+ulimit -c 0 2>/dev/null || true                                         # a crash must not leave a multi-GB core file on the data disk
+# A driver killed by a signal (SIGSEGV 139, SIGABRT 134, SIGFPE 136, ...) is a crash INSIDE the method, not a broken PC. Known case: tracking
+# was lost at the very end, ORB-SLAM3 reset its only map (0 keyframes) and SaveTrajectoryEuRoC then dereferences an empty keyframe list
+# -> segfault after the 'ORB3_STATS' line. That is a RESULT (no trajectory), exit 4. A crash BEFORE 'ORB3_STATS' (during tracking) gets one
+# more attempt (ORB-SLAM3 is not deterministic), then it is also a result. 137 (SIGKILL: OOM or our timeout), 143 and 130 are NOT crashes.
+is_crash() { [ "$1" -gt 128 ] && [ "$1" != 137 ] && [ "$1" != 143 ] && [ "$1" != 130 ]; }
+crash=""; attempt=0
+while :; do
+  attempt=$((attempt + 1))
+  rm -f "$raw"
+  att_log=$(mktemp)
+  set +e
+  "${drv[@]}" 2>&1 | tee -a "$log" "$att_log"
+  rc=${PIPESTATUS[0]}
+  set -e
+  reached_end=0; grep -q '^ORB3_STATS' "$att_log" && reached_end=1
+  rm -f "$att_log"
+  is_crash "$rc" || break
+  if [ "$reached_end" = 1 ]; then
+    crash="signal $((rc - 128)) while saving the trajectory after tracking had finished (the final atlas map was empty: tracking lost / map reset at the end)"
+    break
+  fi
+  if [ "$attempt" -ge 2 ]; then crash="signal $((rc - 128)) during tracking, twice in a row"; break; fi
+  echo "ORB-SLAM3 driver crashed (signal $((rc - 128))) during tracking; second attempt" | tee -a "$log"
+done
 wall=$((SECONDS - t_start))
 stats=$(grep -h 'ORB3_STATS' "$log" | tail -n 1 || true)
 trim=$(grep -h '^IMU_TRIM' "$log" | tail -n 1 || true)
@@ -94,6 +116,11 @@ note="ORB-SLAM3 ${ORB3_COMMIT:0:7} (-std=$ORB3_CXX_STD), Pangolin $ORB3_PANGOLIN
 pp=("$py" scripts/orbslam3/postprocess.py --raw "$raw" --rgb "$rgb_used" --mode "$mode" --results-root "$RESULTS_ROOT"
     --seq "$seq" --run "$run" --config "$config" --note "$note" "${postargs[@]}")
 [ "$max_frames" -gt 0 ] && pp+=(--max-frames "$max_frames")
+if [ -n "$crash" ]; then
+  echo "ORB-SLAM3 driver crashed: $crash. Recorded as a result without a trajectory (exit 4)." | tee -a "$log"
+  "${pp[@]}" --driver-failed "ORB-SLAM3 driver crashed: $crash" || true      # meta.yaml: tracking_lost true, no traj file
+  exit 4
+fi
 if [ "$rc" != 0 ]; then
   echo "ORB-SLAM3 driver exited with code $rc" | tee -a "$log"
   # rc 3 = bad input data / rc 255 = bad settings: not a tracking result, do not write meta saying 'tracking lost'

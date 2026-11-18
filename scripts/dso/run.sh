@@ -71,6 +71,13 @@ note="DSO ${DSO_COMMIT:0:7} mono, NO photometric calibration (mode=1: affine bri
 pp=("$py" scripts/dso/dso_tools.py post --poses "$work/poses_refined.txt" --rgb "$data_dir/rgb.txt" --results-root "$RESULTS_ROOT"
     --dataset "$dataset" --seq "$seq" --run "$run" --config "$config" --note "$note")
 [ "$max_frames" -gt 0 ] && pp+=(--max-frames "$max_frames")
+if [ "$rc" -gt 128 ] && [ "$rc" != 137 ] && [ "$rc" != 143 ] && [ "$rc" != 130 ]; then
+  # killed by a signal (SIGSEGV 139, SIGABRT 134, ...): a crash inside the method = a result without a trajectory (exit 4), not a broken PC
+  # (137 = SIGKILL: OOM or our timeout, 143/130 = interrupt are NOT crashes)
+  echo "DSO driver crashed (signal $((rc - 128))). Recorded as a result without a trajectory (exit 4)." | tee -a "$log"
+  "${pp[@]}" --driver-failed "DSO driver crashed (signal $((rc - 128)))" || true
+  exit 4
+fi
 if [ "$rc" != 0 ] && [ "$rc" != 4 ]; then
   echo "DSO driver exited with code $rc" | tee -a "$log"       # 2 usage, 3 bad calibration / unreadable image: not a tracking result
   exit "$rc"

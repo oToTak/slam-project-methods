@@ -37,6 +37,9 @@ set -e
 seq=$2; r=$4
 echo "$seq run$r NO_EVAL=$NO_EVAL $QUEUE_METHOD:$QUEUE_MODE" >> "$FAKE_CALLS/run.calls"
 [ "${FAKE_RUN_FAIL:-}" = "$seq" ] && { echo "boom"; exit 1; }
+[ "${FAKE_RUN_FAIL_METHOD:-}" = "$QUEUE_METHOD" ] && { echo "boom (method)"; exit 1; }
+[ "${FAKE_RUN_NORESULT:-}" = "$seq" ] && { echo "method gave no trajectory"; exit 4; }
+if [ "${FAKE_RUN_FLAKY:-}" = "$seq" ] && [ ! -e "$FAKE_CALLS/flaky_$seq" ]; then touch "$FAKE_CALLS/flaky_$seq"; echo "flaky"; exit 1; fi
 d="$RESULTS_ROOT/$QUEUE_METHOD/$QUEUE_MODE/ucu/$seq"; mkdir -p "$d"
 [ -e "$d/traj_run$r.txt" ] && { echo "refusing to overwrite"; exit 1; }
 n=$(grep -vc '^#' "$DATA_ROOT/ucu_tum/$seq/rgb.txt")
@@ -94,7 +97,8 @@ class QueueTest(unittest.TestCase):
                         QUEUE_FETCH_CMD=f"bash {self.root / 'fetch.sh'}", QUEUE_PEERS_DIR=str(self.peers),
                         QUEUE_PUSH_CMD=f"bash {self.root / 'push.sh'}", REPORT_REPO=str(self.root / "no-remote.git"),
                         QUEUE_WIN_FREE_GB="10000")             # no powershell.exe in tests
-        for k in ("FAKE_FETCH_FAIL", "FAKE_RUN_FAIL", "FAKE_SHORT", "PEER_ON_PUSH", "DATA_BUDGET_GB"):
+        for k in ("FAKE_FETCH_FAIL", "FAKE_RUN_FAIL", "FAKE_RUN_FAIL_METHOD", "FAKE_RUN_NORESULT", "FAKE_RUN_FLAKY", "FAKE_SHORT",
+                  "PEER_ON_PUSH", "DATA_BUDGET_GB"):
             self.env.pop(k, None)
 
     def tearDown(self):
@@ -275,6 +279,48 @@ class QueueTest(unittest.TestCase):
         self.assertIn("ПЕРЕВІР", st)
         r2 = self.queue("--from", "1", "--stop-before", "4")                   # nothing to redo
         self.assertEqual(self.lines("fetch.calls"), ["1", "2", "3"])
+
+    def test_exit_code_4_is_a_result_not_a_failure(self):
+        """A run script that says 'no usable trajectory' (exit 4: IMU method never initialised, diverged, crashed inside the method) is
+        a RESULT: the worker records it (row in the summary, marker .bad_run), cleans the data and goes on. Not retried, no exit code 2."""
+        r = self.queue("--from", "1", "--stop-before", "4", FAKE_RUN_NORESULT="seq01")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertTrue((self.res / "fake/mono/ucu/seq01/.bad_run1").exists())
+        self.assertFalse((self.res / "fake/mono/ucu/seq01/traj_run1.txt").exists())
+        self.assertIn("seq01", {x["seq"] for x in self.rows()})                # the evaluation wrote its row (tracking_lost in real eval.py)
+        self.assertEqual(self.run_calls().count("seq01 run1 NO_EVAL=1 fake:mono"), 1)   # not started a second time
+        self.assertFalse((self.data / "ucu_tum" / "seq01").exists())           # cleaned up like any finished sequence
+        self.assertEqual(self.lines("fetch.calls"), ["1", "2", "3"])
+        self.assertNotIn("ПОМИЛКА", r.stdout)
+
+    def test_failed_run_is_retried_once(self):
+        r = self.queue("--only", "2", FAKE_RUN_FLAKY="seq02")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertEqual(self.run_calls().count("seq02 run1 NO_EVAL=1 fake:mono"), 2)
+        self.assertTrue((self.res / "fake/mono/ucu/seq02/.done_run1").exists())
+        self.assertFalse((self.data / "ucu_tum" / "seq02").exists())
+
+    def test_hard_failure_is_tried_twice_and_not_repeated_for_the_other_runs(self):
+        r = self.queue("--only", "2", "--runs", "3", FAKE_RUN_FAIL="seq02")
+        self.assertEqual(r.returncode, 2, r.stdout + r.stderr)
+        self.assertEqual(self.run_calls().count("seq02 run1 NO_EVAL=1 fake:mono"), 2)   # retry, then give up on this method here
+        self.assertEqual(len(self.run_calls()), 2)                                      # runs 2 and 3 would fail the same way: skipped
+        self.assertTrue((self.data / "ucu" / "sequence-2").exists())
+
+    def test_method_failing_on_two_sequences_is_switched_off_and_the_others_go_on(self):
+        """One broken method must not stop the night: after it failed on two different sequences it is off for the session, the data
+        it held open is released, the other methods finish. The exit code still says 'something failed'."""
+        run = self.root / "run.sh"
+        (self.root / "methods.conf").write_text(f"good | mono | {run} | cpu" + chr(10) + f"bad | mono | {run} | cpu" + chr(10))
+        r = self.queue("--from", "1", "--stop-before", "5", methods="all", FAKE_RUN_FAIL_METHOD="bad")
+        self.assertEqual(r.returncode, 2, r.stdout + r.stderr)
+        self.assertIn("ВИМКНЕНО", r.stdout)
+        for n in (1, 2, 3, 4):
+            self.assertTrue((self.res / f"good/mono/ucu/seq{n:02d}/.done_run1").exists(), n)   # the good method did all four sequences
+            self.assertFalse((self.data / "ucu_tum" / f"seq{n:02d}").exists(), n)              # incl. seq01: released when 'bad' was switched off
+        bad_calls = [c for c in self.run_calls() if c.endswith("bad:mono")]
+        self.assertEqual(len(bad_calls), 4)                                                      # 2 sequences x 2 attempts, then never again
+        self.assertEqual(self.lines("fetch.calls"), ["1", "2", "3", "4"])
 
     def test_fetch_failure_stops_the_queue(self):
         r = self.queue("--from", "1", "--stop-before", "4", FAKE_FETCH_FAIL="seq02")

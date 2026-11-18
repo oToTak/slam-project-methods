@@ -63,6 +63,13 @@ DISK_RESERVE_GB = 5.0
 POSE_TOL = 0.98            # a run is "ok" when poses >= POSE_TOL * frames (stride 1 => equal)
 DATASET = "ucu"
 MAX_CONSECUTIVE_FAILED_SEQS = 2
+# Exit code 4 of a run script = "the method ran but gave NO usable trajectory" (never initialised, lost everything, diverged, crashed
+# inside the method). That is a RESULT (row in the summary: no ATE, coverage 0, tracking_lost true), not an infrastructure failure.
+EXIT_NO_RESULT = 4
+RUN_ATTEMPTS = 2           # a run script that fails (other than EXIT_NO_RESULT) is started once more before it counts as failed
+# A method that fails (after the retry) on this many DIFFERENT sequences is switched off for the rest of the session, so one broken
+# method cannot stop the other methods. The next START tries it again.
+QUARANTINE_AFTER_SEQS = 2
 DEFAULT_REPORT_REPO = "https://github.com/oToTak/slam-project-methods.git"   # same default as push_status.sh
 PEER_GIT_TIMEOUT_S = 120
 
@@ -242,13 +249,16 @@ class Ctx:
         self.peers = []               # loaded from the cache by refresh_peers()
         self.peers_loaded_at = 0.0
         self.reporter = None
+        self.fail_seqs = collections.defaultdict(set)    # method key -> sequences where it failed (after the retry) in this session
+        self.quarantined = []                            # method keys switched off for the rest of the session
+        self.open_seqs = []                              # sequences left on disk by a failure in this session
 
     def runs_for(self, key):
         return self.registry[key].runs or self.args.runs
 
     @property
     def max_runs(self):
-        return max(self.runs_for(k) for k in self.methods)
+        return max((self.runs_for(k) for k in self.methods), default=0)
 
     def label(self, key):
         """'dpvo' when the method has one mode in the registry, else 'orbslam3:mono_inertial'."""
@@ -827,23 +837,32 @@ def do_run(ctx, log, seq_fh, n, r, key):
             log(f"   траєкторія {traj.name} уже є, але рядка в summary нема: роблю лише оцінку")
         else:
             cmd = ["bash", str(REPO_ROOT / m.script), DATASET, seq, "--run", str(r)]
-            try:
-                rc, reason, tail = run_streamed(cmd, env=child_env(ctx, m), cwd=REPO_ROOT, logs=logs,
-                                                timeout_s=ctx.args.timeout_h * 3600)
-            except OSError as e:
-                log(f"   НЕ ВДАЛОСЬ запустити {cmd[1]}: {e}")
-                return "failed"
-            if reason == "interrupt":                 # we killed it: drop the unfinished run, keep the finished ones
-                if traj.exists():                     # half-written file of the killed run
-                    traj.unlink()
-                raise Interrupted()
-            if reason == "timeout":
-                log(f"   ТАЙМАУТ ({ctx.args.timeout_h} год), прогін перервано; незавершене лишається без маркера")
-                return "failed"
-            if rc != 0:
+            for attempt in range(1, RUN_ATTEMPTS + 1):
+                try:
+                    rc, reason, tail = run_streamed(cmd, env=child_env(ctx, m), cwd=REPO_ROOT, logs=logs,
+                                                    timeout_s=ctx.args.timeout_h * 3600)
+                except OSError as e:
+                    log(f"   НЕ ВДАЛОСЬ запустити {cmd[1]}: {e}")
+                    return "failed"
+                if reason == "interrupt":                 # we killed it: drop the unfinished run, keep the finished ones
+                    if traj.exists():                     # half-written file of the killed run
+                        traj.unlink()
+                    raise Interrupted()
+                if reason == "timeout":
+                    log(f"   ТАЙМАУТ ({ctx.args.timeout_h} год), прогін перервано; незавершене лишається без маркера")
+                    return "failed"
+                if rc == 0:
+                    break
+                if rc == EXIT_NO_RESULT:                  # a result of the method, not a failure: the evaluation below records it
+                    log(f"   {m.script}: метод не дав придатної траєкторії (код {EXIT_NO_RESULT}: не ініціалізувався / втратив трекінг / "
+                        "розійшовся / впав усередині методу). Це результат прогону: рядок піде в summary з tracking_lost=true")
+                    break
                 log(f"   ПОМИЛКА: {m.script} завершився з кодом {rc}. Кінець логу:")
                 for ln in tail:
                     log(f"   | {ln}")
+                if attempt < RUN_ATTEMPTS and not traj.exists():
+                    log(f"   пробую ще раз ({attempt + 1}/{RUN_ATTEMPTS})")
+                    continue
                 return "failed"
         rc, reason, tail = run_streamed(eval_command(ctx, key, n, r, run_log), env=child_env(ctx, m), cwd=REPO_ROOT,
                                         logs=logs, timeout_s=1800)
@@ -920,6 +939,27 @@ def claim_seq(ctx, log, n):
     return True
 
 
+def note_method_failure(ctx, log, key, n):
+    """A run of `key` failed on sequence n (after the retry). The second sequence on which the same method fails switches it off
+    for the rest of the session: the other methods go on, and the data of sequences held open only by this method is released."""
+    ctx.fail_seqs[key].add(n)
+    if len(ctx.fail_seqs[key]) < QUARANTINE_AFTER_SEQS or key not in ctx.methods:
+        return
+    ctx.methods.remove(key)
+    ctx.quarantined.append(key)
+    log(f"!! МЕТОД {key} ВИМКНЕНО до кінця цієї сесії: прогін завершився помилкою на сиквенсах "
+        f"{', '.join(seq_name(s) for s in sorted(ctx.fail_seqs[key]))} (навіть після повтору). Інші методи йдуть далі. "
+        f"Його недораховані прогони лишаються в черзі: наступний START спробує їх знову (дані тих сиквенсів тоді качаються наново).")
+    for s in list(ctx.open_seqs):
+        if ctx.methods and seq_complete(ctx, s):
+            log(f"{seq_name(s)}: без {key} усе готове")
+            if ctx.args.keep_data:
+                log("  --keep-data: .mcap й експорт лишаю")
+            else:
+                cleanup_seq(ctx, log, s)
+            ctx.open_seqs.remove(s)
+
+
 def process_seq(ctx, log, n):
     """Returns 'skipped' | 'busy' | 'done' | 'failed' | 'stopped'."""
     seq = seq_name(n)
@@ -959,13 +999,20 @@ def process_seq(ctx, log, n):
                                             "Нічого не видаляю: звільни місце (або збільш DATA_BUDGET_GB) й запусти ту саму команду.")
                     log(f"   місце: треба ≈ {fmt_gb(need)}, {why}")
                 fetch_seq(ctx, log, fh, n)
+            failed_here = set()               # methods that failed on this sequence: their remaining runs would fail the same way
             for r, method in todo:
                 if INTERRUPT.is_set():
                     raise Interrupted()
                 if not allowed(ctx, n):
                     log(f"{seq}: межа змінена (stop-before {read_stop(ctx)}), зупиняюсь; дані лишаю до наступного запуску")
                     return "stopped"
-                do_run(ctx, log, fh, n, r, method)
+                if method not in ctx.methods or method in failed_here:
+                    continue
+                if do_run(ctx, log, fh, n, r, method) == "failed":
+                    failed_here.add(method)
+                    note_method_failure(ctx, log, method, n)
+            if not ctx.methods:
+                return "failed"
             if seq_complete(ctx, n):
                 flagged = sum(1 for k in ctx.methods for r in range(1, ctx.runs_for(k) + 1) if run_state(ctx, k, n, r) == "bad")
                 log(f"{seq}: усі прогони готові" + (f" (з них {flagged} позначено ПЕРЕВІР: мало поз, рядки в summary є; дивись маркери .bad_run*)"
@@ -976,6 +1023,8 @@ def process_seq(ctx, log, n):
                     cleanup_seq(ctx, log, n)
                 return "done"
             log(f"{seq}: НЕ всі прогони готові — .mcap й експорт лишаю для розбору (повторний запуск доробить)")
+            if n not in ctx.open_seqs:
+                ctx.open_seqs.append(n)
             return "failed"
         finally:
             log.attach(None)
@@ -1160,6 +1209,10 @@ def cmd_run(ctx):
             refresh_peers(ctx, log, max_age_s=60)
             res = process_seq(ctx, log, n)
             counts[res] += 1
+            if not ctx.methods:
+                log("усі методи вимкнено через помилки — рахувати нічим, зупиняюсь (скажи Теодору, надішли текст вище)")
+                code = 2
+                break
             if res == "stopped":
                 break
             if res == "failed":
@@ -1187,6 +1240,9 @@ def cmd_run(ctx):
     if finished:
         print()
         print_table(ctx, summary_owners(ctx))
+    if ctx.quarantined:
+        code = code or 2
+        log("УВАГА: у цій сесії вимикались методи через помилки: " + ", ".join(ctx.quarantined) + " — їхні недораховані прогони лишились у черзі")
     log("підсумок: " + ", ".join(f"{k}={v}" for k, v in sorted(counts.items())) + f" | код виходу {code}")
     return code
 
@@ -1362,7 +1418,8 @@ def build_parser():
                     help="runs per method per sequence (default 1); a 'runs' column in methods.conf overrides it per method")
     ap.add_argument("--status", action="store_true", help="print the table of all 13 positions and 'you are here', then exit")
     ap.add_argument("--dry-run", action="store_true", help="print the plan and the disk need; download and run nothing")
-    ap.add_argument("--timeout-h", type=float, default=12.0, help="timeout of one method run, hours (default 12)")
+    ap.add_argument("--timeout-h", type=float, default=4.0,
+                    help="timeout of one method run, hours (default 4: the slowest run measured is ~1 h; a hung method must not eat a night)")
     ap.add_argument("--fetch-timeout-h", type=float, default=8.0, help="timeout of download+export of one sequence, hours (default 8)")
     ap.add_argument("--keep-data", action="store_true", help="never delete the .mcap and the export")
     ap.add_argument("--report-every", type=float, default=10.0, metavar="MIN",

@@ -86,6 +86,18 @@ note="OpenVINS ${OV_COMMIT:0:7} ROS-free build (ENABLE_ROS=OFF, ENABLE_ARUCO_TAG
 pp=("$py" scripts/openvins/openvins_tools.py post --poses "$raw" --rgb "$work/rgb.txt" --results-root "$RESULTS_ROOT"
     --dataset "$dataset" --seq "$seq" --run "$run" --config "$config" --note "$note" "${postargs[@]}")
 [ "$max_frames" -gt 0 ] && pp+=(--max-frames "$max_frames")
+ulimit -c 0 2>/dev/null || true
+# OpenVINS aborts the whole process itself (std::exit(1) in StateHelper::EKFUpdate & co: 'diagonal at N is -0.00', non-positive covariance)
+# when the filter has diverged. That is the METHOD's result on this sequence, not a broken PC: keep the poses written before the abort
+# (the driver's output buffer may lose the last ~2 s of them) and record the run; no pose at all -> exit 4 (a result without a trajectory).
+if [ "$rc" = 1 ] && grep -q 'StateHelper::' "$log"; then
+  echo "OpenVINS filter diverged and aborted itself (StateHelper error above): poses written before the abort are kept." | tee -a "$log"
+  note="$note FILTER DIVERGED: OpenVINS aborted itself (StateHelper::EKFUpdate non-positive covariance, exit 1), so the frames after the abort have no pose; poses written before it are kept (the last buffered ones may be lost)."
+  pp=("$py" scripts/openvins/openvins_tools.py post --poses "$raw" --rgb "$work/rgb.txt" --results-root "$RESULTS_ROOT"
+      --dataset "$dataset" --seq "$seq" --run "$run" --config "$config" --note "$note" "${postargs[@]}")
+  [ "$max_frames" -gt 0 ] && pp+=(--max-frames "$max_frames")
+  rc=0
+fi
 if [ "$rc" != 0 ] && [ "$rc" != 4 ]; then
   echo "OpenVINS driver exited with code $rc" | tee -a "$log"     # 2 usage, 3 bad config / data: not a tracking result
   exit "$rc"
