@@ -1,6 +1,6 @@
 # Статус обчислень
 
-Зроблено **64 з 130** прогонів (49 %). Датасет `ucu`, 13 сиквенсів, методи з `scripts/queue/methods.conf`.
+Зроблено **68 з 130** прогонів (52 %). Датасет `ucu`, 13 сиквенсів, методи з `scripts/queue/methods.conf`.
 
 Зібрано автоматично з гілок `runner-<host>` (`scripts/report/build_status.py`, Action `status.yml`). Не редагувати вручну.
 
@@ -8,7 +8,7 @@
 
 | ПК | стан | останній звіт | прогонів зробив |
 |---|---|---|---:|
-| StarDestroyer | ⚠ звітів нема понад поріг (ПК вимкнений або воркер завис) | 2026-11-17 18:16 +0200 | 59 |
+| StarDestroyer | ⚠ звітів нема понад поріг (ПК вимкнений або воркер завис) | 2026-11-18 00:19 +0200 | 63 |
 | Teodor | ⚠ звітів нема понад поріг (ПК вимкнений або воркер завис) | 2026-11-13 18:49 +0200 | 5 |
 
 ## Сиквенси × методи
@@ -25,10 +25,10 @@
 | 8 | seq08 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | 0/3 | 0/3 |
 | 9 | seq09 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | 0/3 | 0/3 |
 | 10 | seq10 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | 0/3 | 0/3 |
-| 11 | seq11 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | 0/3 | 0/3 |
+| 11 | seq11 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | 2/3 StarDestroyer | 2/3 StarDestroyer |
 | 12 | seq12 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | ✅ 3/3 StarDestroyer | ✅ 3/3 StarDestroyer |
 | 13 | seq13 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | ✅ 3/3 StarDestroyer | ✅ 3/3 StarDestroyer |
-|  | **разом** | **39/39** | **13/13** | **6/39** | **6/39** |
+|  | **разом** | **39/39** | **13/13** | **8/39** | **8/39** |
 
 Клітинка: готово/треба і хто рахував (кілька ПК: скільки прогонів кожен). ✅ усе готово, ⏳ зараз рахується, ✗N — N прогонів позначені невдалими (`.bad_run`).
 «Звітів нема»: гілка ПК не оновлювалась понад 3 год.
@@ -39,4 +39,4 @@
 - `openvins:mono_inertial ucu (нема в methods.conf)`
 - `orbslam3:mono_inertial ucu (нема в methods.conf)`
 
-_Зміст востаннє змінився: 2026-11-17 19:43 UTC_
+_Зміст востаннє змінився: 2026-11-18 01:52 UTC_
