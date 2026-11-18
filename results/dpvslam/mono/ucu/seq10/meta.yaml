@@ -2,9 +2,9 @@ method: dpvslam
 mode: mono
 dataset: ucu
 seq: seq10
-run: 2
+run: 3
 commit: bbcdf3d5cbb40a61e0676b85c0eac4fff37b2969
 config: configs/dpvo/calib_ucu.txt
 coverage: 1.00
 tracking_lost: false
-notes: "DPV-SLAM = DPVO 0ac95b6 + proximity loop closure (cfg LOOP_CLOSURE=True), classic image-retrieval loop closure NOT used, config/default.yaml, stride=1, 19524 frames. host=StarDestroyer. NVIDIA GeForce RTX 3060; wall 1908s (10.2 fps); VRAM peak 4396 MiB total used (base 1052), torch alloc 1645 / reserved 3268 MiB; RAM peak 1809 MiB. Loop closure: BACKEND_THRESH=64.0 MAX_EDGE_AGE=1000 GLOBAL_OPT_FREQ=15; 11 loop-edge batches (2372 edges), 67 global BA calls (40s of 1908s); 804 keyframes kept; BA failures swallowed by DPVO: 0."
+notes: "DPV-SLAM = DPVO 0ac95b6 + proximity loop closure (cfg LOOP_CLOSURE=True), classic image-retrieval loop closure NOT used, config/default.yaml, stride=1, 19524 frames. host=StarDestroyer. NVIDIA GeForce RTX 3060; wall 1903s (10.3 fps); VRAM peak 3698 MiB total used (base 1052), torch alloc 1655 / reserved 2570 MiB; RAM peak 1842 MiB. Loop closure: BACKEND_THRESH=64.0 MAX_EDGE_AGE=1000 GLOBAL_OPT_FREQ=15; 11 loop-edge batches (2336 edges), 68 global BA calls (42s of 1903s); 801 keyframes kept; BA failures swallowed by DPVO: 0."
