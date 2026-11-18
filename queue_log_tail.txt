@@ -1,60 +1,60 @@
- 99%|█████████▉| 150715/151523 [21:12<00:07, 112.52it/s]
- 99%|█████████▉| 150731/151523 [21:12<00:06, 114.94it/s]
- 99%|█████████▉| 150745/151523 [21:12<00:06, 112.31it/s]
- 99%|█████████▉| 150760/151523 [21:12<00:06, 112.97it/s]
-100%|█████████▉| 150776/151523 [21:12<00:06, 115.18it/s]
-100%|█████████▉| 150790/151523 [21:12<00:06, 112.89it/s]
-100%|█████████▉| 150805/151523 [21:12<00:06, 114.31it/s]
-100%|█████████▉| 150819/151523 [21:12<00:06, 113.29it/s]
-100%|█████████▉| 150833/151523 [21:13<00:06, 111.60it/s]
-100%|█████████▉| 150848/151523 [21:13<00:05, 113.99it/s]
-100%|█████████▉| 150864/151523 [21:13<00:05, 116.88it/s]
-100%|█████████▉| 150878/151523 [21:13<00:05, 116.73it/s]
-100%|█████████▉| 150893/151523 [21:13<00:05, 119.15it/s]
-100%|█████████▉| 150909/151523 [21:13<00:04, 123.43it/s]
-100%|█████████▉| 150923/151523 [21:13<00:04, 122.28it/s]
-100%|█████████▉| 150941/151523 [21:13<00:04, 132.12it/s]
-100%|█████████▉| 150955/151523 [21:14<00:04, 128.59it/s]
-100%|█████████▉| 150969/151523 [21:14<00:04, 127.41it/s]
-100%|█████████▉| 150984/151523 [21:14<00:04, 127.92it/s]
-100%|█████████▉| 151000/151523 [21:14<00:03, 132.41it/s]
-100%|█████████▉| 151014/151523 [21:14<00:03, 131.75it/s]
-100%|█████████▉| 151029/151523 [21:14<00:03, 133.59it/s]
-100%|█████████▉| 151045/151523 [21:14<00:03, 136.83it/s]
-100%|█████████▉| 151059/151523 [21:14<00:03, 133.04it/s]
-100%|█████████▉| 151074/151523 [21:14<00:03, 133.68it/s]
-100%|█████████▉| 151090/151523 [21:15<00:03, 136.79it/s]
-100%|█████████▉| 151104/151523 [21:15<00:03, 132.95it/s]
-100%|█████████▉| 151118/151523 [21:15<00:03, 127.66it/s]
-100%|█████████▉| 151133/151523 [21:15<00:03, 123.25it/s]
-100%|█████████▉| 151147/151523 [21:15<00:03, 116.03it/s]
-100%|█████████▉| 151165/151523 [21:15<00:02, 121.23it/s]
-100%|█████████▉| 151181/151523 [21:15<00:02, 119.94it/s]
-100%|█████████▉| 151196/151523 [21:15<00:02, 115.27it/s]
-100%|█████████▉| 151210/151523 [21:16<00:02, 111.07it/s]
-100%|█████████▉| 151226/151523 [21:16<00:02, 112.95it/s]
-100%|█████████▉| 151241/151523 [21:16<00:02, 111.71it/s]
-100%|█████████▉| 151255/151523 [21:16<00:02, 109.04it/s]
-100%|█████████▉| 151269/151523 [21:16<00:02, 107.71it/s]
-100%|█████████▉| 151284/151523 [21:16<00:02, 107.76it/s]
-100%|█████████▉| 151298/151523 [21:16<00:02, 106.48it/s]
-100%|█████████▉| 151314/151523 [21:17<00:01, 110.01it/s]
-100%|█████████▉| 151329/151523 [21:17<00:01, 109.53it/s]
-100%|█████████▉| 151343/151523 [21:17<00:01, 106.37it/s]
-100%|█████████▉| 151359/151523 [21:17<00:01, 109.58it/s]
-100%|█████████▉| 151374/151523 [21:17<00:01, 110.06it/s]
-100%|█████████▉| 151391/151523 [21:17<00:01, 114.07it/s]
-100%|█████████▉| 151405/151523 [21:17<00:01, 110.72it/s]
-100%|█████████▉| 151420/151523 [21:18<00:00, 110.00it/s]
-100%|█████████▉| 151434/151523 [21:18<00:00, 108.42it/s]
-100%|█████████▉| 151450/151523 [21:18<00:00, 110.62it/s]
-100%|█████████▉| 151465/151523 [21:18<00:00, 109.85it/s]
-100%|█████████▉| 151479/151523 [21:18<00:00, 107.87it/s]
-100%|█████████▉| 151495/151523 [21:18<00:00, 110.72it/s]
-100%|█████████▉| 151510/151523 [21:18<00:00, 110.79it/s]
-100%|██████████| 151523/151523 [21:18<00:00, 118.48it/s]
-Found 1211 common timestamps for color 19524 color and 1212 depth images.
-Found 1211 common timestamps for color 19524 color and 1212 depth images.
-wrote /home/calc/slam-data/ucu_tum/seq10.partial/odom.txt (12062 poses)
-seq10,download_s=1257,export_s=1286,mcap_bytes=19536892711,export_bytes=8367594599
-05:45:59 -- seq10 dpvslam:mono run1/3: старт
+plot: /home/calc/slam-data/results/orbslam3/mono/ucu/seq10/traj_xy.pdf
+appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
+06:24:03    ПЕРЕВІР: поз 11808 із 19524 кадрів (поріг 98%); рядок у summary_StarDestroyer.csv є, маркер .bad_run1 поставлено (це результат методу, черга йде далі)
+06:24:03 -- seq10 orbslam3:mono_inertial run1/3: старт
+IMU_TRIM leading=0 trailing=0 of 19524 frames outside the IMU span, 19524 kept (rgb.txt trimmed copy used)
+IMU_STATS {"covers_frames": true, "dropped": {"non_finite": 0, "non_increasing_time": 0}, "ends_after_last_frame_s": 0.029596805572509766, "gap_limit_s": 0.05, "max_gap_s": 0.011999845504760742, "median_dt_s": 0.007999897003173828, "n": 81543, "n_gaps_over_limit": 0, "rate_hz": 125.00160934612863, "span_s": 652.3432817459106, "starts_before_first_frame_s": 0.006765604019165039, "t_first": 1785928867.2552457, "t_last": 1785929519.5985274, "trim": {"frames_in": 19524, "frames_kept": 19524, "leading": 0, "trailing": 0}}
+ORB3_INFO frames=19524 imu_rows=81543 mode=mono_inertial pace=0
+
+ORB-SLAM3 Copyright (C) 2017-2020 Carlos Campos, Richard Elvira, Juan J. Gómez, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
+ORB-SLAM2 Copyright (C) 2014-2016 Raúl Mur-Artal, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
+This program comes with ABSOLUTELY NO WARRANTY;
+This is free software, and you are welcome to redistribute it
+under certain conditions. See LICENSE.txt.
+
+Input sensor was set to: Monocular-Inertial
+Loading settings from /home/calc/slam-runner/configs/orbslam3/UCU_mono_inertial.yaml
+Camera1.k3 optional parameter does not exist...
+	-Loaded camera 1
+Camera.newHeight optional parameter does not exist...
+Camera.newWidth optional parameter does not exist...
+	-Loaded image info
+IMU.InsertKFsWhenLost optional parameter does not exist...
+	-Loaded IMU calibration
+	-Loaded ORB settings
+Viewer.imageViewScale optional parameter does not exist...
+	-Loaded viewer settings
+System.LoadAtlasFromFile optional parameter does not exist...
+System.SaveAtlasToFile optional parameter does not exist...
+	-Loaded Atlas settings
+System.thFarPoints optional parameter does not exist...
+	-Loaded misc parameters
+----------------------------------
+SLAM settings: 
+	-Camera 1 parameters (Pinhole): [ 601.17333984375 600.266357421875 314.01644897460938 250.03944396972656 ]
+	-Camera 1 distortion parameters: [  0.1392686665058136 -0.30741280317306519 0.00072727992665022612 0.00066557613899931312 ]
+	-Original image size: [ 640 , 480 ]
+	-Current image size: [ 640 , 480 ]
+	-Sequence FPS: 30
+	-Gyro noise: 0.00044917772174812853
+	-Accelerometer noise: 0.0020463115070015192
+	-Gyro walk: 1.4932100384612568e-05
+	-Accelerometer walk: 3.2793723221402615e-05
+	-IMU frequency: 125
+	-Features per image: 1000
+	-ORB scale factor: 1.2000000476837158
+	-ORB number of scales: 8
+	-Initial FAST threshold: 20
+	-Min FAST threshold: 7
+
+
+Loading ORB Vocabulary. This could take a while...
+Vocabulary loaded!
+
+Initialization of Atlas from scratch 
+Creation of new map with id: 0
+Creation of new map with last KF id: 0
+Seq. Name: 
+There are 1 cameras in the atlas
+Camera 0 is pinhole
+ORB3_PROGRESS 500/19524 state=1
