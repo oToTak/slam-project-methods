@@ -1,60 +1,60 @@
-LM: Active map reset, Done!!!
-mnFirstFrameId = 7765
-mnInitialFrameId = 7386
-498 Frames set to lost
-First KF:133; Map init KF:131
-New Map created with 194 points
-Fail to track local map!
-IMU is not or recently initialized. Reseting active map...
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 7778
-mnInitialFrameId = 7766
-500 Frames set to lost
-First KF:135; Map init KF:133
-New Map created with 201 points
-Fail to track local map!
-IMU is not or recently initialized. Reseting active map...
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 7800
-mnInitialFrameId = 7779
-507 Frames set to lost
-First KF:137; Map init KF:135
-New Map created with 124 points
-Fail to track local map!
-IMU is not or recently initialized. Reseting active map...
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 7828
-mnInitialFrameId = 7806
-509 Frames set to lost
-First KF:139; Map init KF:137
-New Map created with 110 points
-Fail to track local map!
-IMU is not or recently initialized. Reseting active map...
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 7863
-mnInitialFrameId = 7829
-516 Frames set to lost
+q_GtoI = -0.120,0.985,0.013,0.121 | p_IinG = 26160.816,-151622.486,-42386.456 | dist = 154774.69 (meters)
+bg = 0.0011,-0.0017,0.0074 | ba = 0.3444,-0.9092,-0.1202
+camera-imu timeoffset = -0.03764
+cam0 intrinsics = 609.433,607.725,320.666,258.160 | 0.160,-0.319,0.028,-0.003
+cam0 extrinsics = 0.011,0.693,0.721,0.003 | 0.091,0.193,0.225
+q_GtoI = -0.116,0.986,0.013,0.121 | p_IinG = 26153.882,-151658.114,-42397.156 | dist = 154812.53 (meters)
+bg = 0.0011,-0.0017,0.0074 | ba = 0.3444,-0.9092,-0.1202
+camera-imu timeoffset = -0.03764
+cam0 intrinsics = 609.433,607.725,320.666,258.160 | 0.160,-0.319,0.028,-0.003
+cam0 extrinsics = 0.011,0.693,0.721,0.003 | 0.091,0.193,0.225
+q_GtoI = -0.112,0.986,0.012,0.121 | p_IinG = 26146.945,-151693.743,-42407.857 | dist = 154850.37 (meters)
+bg = 0.0011,-0.0017,0.0074 | ba = 0.3444,-0.9092,-0.1202
+camera-imu timeoffset = -0.03764
+cam0 intrinsics = 609.433,607.725,320.666,258.160 | 0.160,-0.319,0.028,-0.003
+cam0 extrinsics = 0.011,0.693,0.721,0.003 | 0.091,0.193,0.225
+q_GtoI = -0.108,0.987,0.012,0.120 | p_IinG = 26140.005,-151729.374,-42418.557 | dist = 154888.22 (meters)
+bg = 0.0011,-0.0017,0.0074 | ba = 0.3444,-0.9092,-0.1202
+camera-imu timeoffset = -0.03764
+cam0 intrinsics = 609.433,607.725,320.666,258.160 | 0.160,-0.319,0.028,-0.003
+cam0 extrinsics = 0.011,0.693,0.721,0.003 | 0.091,0.193,0.225
+q_GtoI = -0.106,0.987,0.013,0.120 | p_IinG = 26133.064,-151765.005,-42429.257 | dist = 154926.06 (meters)
+bg = 0.0011,-0.0017,0.0074 | ba = 0.3444,-0.9092,-0.1202
+camera-imu timeoffset = -0.03764
+cam0 intrinsics = 609.433,607.725,320.666,258.160 | 0.160,-0.319,0.028,-0.003
+cam0 extrinsics = 0.011,0.693,0.721,0.003 | 0.091,0.193,0.225
+q_GtoI = -0.103,0.987,0.013,0.120 | p_IinG = 26126.119,-151800.638,-42439.958 | dist = 154963.91 (meters)
+bg = 0.0011,-0.0017,0.0074 | ba = 0.3444,-0.9092,-0.1202
+camera-imu timeoffset = -0.03764
+cam0 intrinsics = 609.433,607.725,320.666,258.160 | 0.160,-0.319,0.028,-0.003
+cam0 extrinsics = 0.011,0.693,0.721,0.003 | 0.091,0.193,0.225
+q_GtoI = -0.101,0.988,0.014,0.120 | p_IinG = 26119.172,-151836.270,-42450.659 | dist = 155001.76 (meters)
+bg = 0.0011,-0.0017,0.0074 | ba = 0.3444,-0.9092,-0.1202
+camera-imu timeoffset = -0.03764
+cam0 intrinsics = 609.433,607.725,320.666,258.160 | 0.160,-0.319,0.028,-0.003
+cam0 extrinsics = 0.011,0.693,0.721,0.003 | 0.091,0.193,0.225
+q_GtoI = -0.099,0.988,0.015,0.120 | p_IinG = 26112.224,-151871.900,-42461.360 | dist = 155039.60 (meters)
+bg = 0.0011,-0.0017,0.0074 | ba = 0.3444,-0.9092,-0.1202
+camera-imu timeoffset = -0.03764
+cam0 intrinsics = 609.433,607.725,320.666,258.160 | 0.160,-0.319,0.028,-0.003
+cam0 extrinsics = 0.011,0.693,0.721,0.003 | 0.091,0.193,0.225
+q_GtoI = -0.097,0.988,0.015,0.119 | p_IinG = 26105.272,-151907.531,-42472.063 | dist = 155077.45 (meters)
+bg = 0.0011,-0.0017,0.0074 | ba = 0.3444,-0.9092,-0.1202
+camera-imu timeoffset = -0.03764
+cam0 intrinsics = 609.433,607.725,320.666,258.160 | 0.160,-0.319,0.028,-0.003
+cam0 extrinsics = 0.011,0.693,0.721,0.003 | 0.091,0.193,0.225
+q_GtoI = -0.096,0.988,0.014,0.119 | p_IinG = 26098.316,-151943.165,-42482.765 | dist = 155115.30 (meters)
+bg = 0.0011,-0.0017,0.0074 | ba = 0.3444,-0.9092,-0.1202
+camera-imu timeoffset = -0.03764
+cam0 intrinsics = 609.433,607.725,320.666,258.160 | 0.160,-0.319,0.028,-0.003
+cam0 extrinsics = 0.011,0.693,0.721,0.003 | 0.091,0.193,0.225
+OV_STATS frames=11818 imu=49342 processed=11818 posed=11752 nonfinite=0 unreadable=0 initialized=1 first_pose_t_rel=2.202 wall_s=115.9
+Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq09/traj_run1.txt (11752 poses of 11818 frames, coverage 0.99) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq09/meta.yaml
+== openvins mono_inertial ucu/seq09 run1 ==
+ATE RMSE   : 48286.512 m   (matched 391/395)
+coverage   : 0.87   tracking_lost: false   poses: 11752   max gap: 0.133 s
+drift 50 m : 29842.164 m (341 seg)   100 m: 54963.111 m (292 seg)
+plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq09/traj_xy.pdf
+appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
+00:09:24    готово за 2.0 хв: поз 11752/11819; рядок додано в summary_StarDestroyer.csv
+00:09:24 -- seq09 dpvslam:mono run2/3: старт

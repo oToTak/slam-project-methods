@@ -1,0 +1,10 @@
+method: orbslam3
+mode: mono_inertial
+dataset: ucu
+seq: seq09
+run: 1
+commit: 3d5db2ae8f26713d2e38ff262d8640bbbad1ed89
+config: configs/orbslam3/UCU_mono_inertial.yaml
+coverage: 0.00
+tracking_lost: true
+notes: "ORB-SLAM3 4452a3c (-std=c++17), Pangolin v0.9.1, viewer off, pace=0, stride 1, wall 401s incl. vocabulary load. ORB3_STATS frames=11818 ever_ok=1 state_hist=1:11157,2:612,3:48,4:1 track_s=315.12248560600005 wall_s=398.52678282300002 IMU_TRIM leading=1 trailing=0 of 11819 frames outside the IMU span, 11818 kept (rgb.txt trimmed copy used) host=StarDestroyer. Driver failed: ORB-SLAM3 driver crashed: signal 11 while saving the trajectory after tracking had finished (the final atlas map was empty: tracking lost / map reset at the end). eval: log matches /tracking (is )?lost|lost tracking|tracking failed/; full failure: FileNotFoundError: [Errno 2] No such file or directory: '/home/calc/slam-data/results/orbslam3/mono_inertial/ucu/seq09/traj_run1.txt'."
