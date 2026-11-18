@@ -1,60 +1,60 @@
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-q_GtoI = 0.532,0.846,-0.046,0.000 | p_IinG = -32016.404,53551.403,23798.564 | dist = 67258.94 (meters)
-bg = -0.0065,-0.0009,-0.0610 | ba = 1.4577,-0.9111,0.4963
-camera-imu timeoffset = -0.01353
-cam0 intrinsics = 601.118,600.266,314.033,250.048 | 0.139,-0.308,-0.000,-0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-q_GtoI = -0.531,-0.846,0.046,0.001 | p_IinG = -32022.110,53562.603,23803.549 | dist = 67272.46 (meters)
-bg = -0.0065,-0.0009,-0.0610 | ba = 1.4577,-0.9111,0.4963
-camera-imu timeoffset = -0.01353
-cam0 intrinsics = 601.118,600.266,314.033,250.048 | 0.139,-0.308,-0.000,-0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-q_GtoI = -0.530,-0.847,0.048,0.002 | p_IinG = -32027.815,53573.803,23808.536 | dist = 67285.98 (meters)
-bg = -0.0065,-0.0009,-0.0610 | ba = 1.4577,-0.9111,0.4963
-camera-imu timeoffset = -0.01353
-cam0 intrinsics = 601.118,600.266,314.033,250.048 | 0.139,-0.308,-0.000,-0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-q_GtoI = -0.529,-0.847,0.049,0.004 | p_IinG = -32033.519,53585.003,23813.524 | dist = 67299.51 (meters)
-bg = -0.0065,-0.0009,-0.0610 | ba = 1.4577,-0.9111,0.4963
-camera-imu timeoffset = -0.01353
-cam0 intrinsics = 601.118,600.266,314.033,250.048 | 0.139,-0.308,-0.000,-0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-q_GtoI = -0.528,-0.848,0.049,0.005 | p_IinG = -32039.221,53596.205,23818.511 | dist = 67313.03 (meters)
-bg = -0.0065,-0.0009,-0.0610 | ba = 1.4577,-0.9111,0.4963
-camera-imu timeoffset = -0.01353
-cam0 intrinsics = 601.118,600.266,314.033,250.048 | 0.139,-0.308,-0.000,-0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-q_GtoI = -0.526,-0.849,0.050,0.006 | p_IinG = -32044.923,53607.407,23823.498 | dist = 67326.55 (meters)
-bg = -0.0065,-0.0009,-0.0610 | ba = 1.4577,-0.9111,0.4963
-camera-imu timeoffset = -0.01353
-cam0 intrinsics = 601.118,600.266,314.033,250.048 | 0.139,-0.308,-0.000,-0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-q_GtoI = -0.524,-0.850,0.052,0.009 | p_IinG = -32050.623,53618.609,23828.486 | dist = 67340.08 (meters)
-bg = -0.0065,-0.0009,-0.0610 | ba = 1.4577,-0.9111,0.4963
-camera-imu timeoffset = -0.01353
-cam0 intrinsics = 601.118,600.266,314.033,250.048 | 0.139,-0.308,-0.000,-0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-q_GtoI = -0.522,-0.851,0.054,0.011 | p_IinG = -32056.322,53629.812,23833.475 | dist = 67353.60 (meters)
-bg = -0.0065,-0.0009,-0.0610 | ba = 1.4577,-0.9111,0.4963
-camera-imu timeoffset = -0.01353
-cam0 intrinsics = 601.118,600.266,314.033,250.048 | 0.139,-0.308,-0.000,-0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-[31mStateHelper::EKFUpdate() - diagonal at 103 is -0.59
-[0mOpenVINS driver exited with code 1
-06:37:51    ПОМИЛКА: scripts/openvins/run.sh завершився з кодом 1. Кінець логу:
-06:37:51    | camera-imu timeoffset = -0.01353
-06:37:51    | cam0 intrinsics = 601.118,600.266,314.033,250.048 | 0.139,-0.308,-0.000,-0.001
-06:37:51    | cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-06:37:51    | q_GtoI = -0.524,-0.850,0.052,0.009 | p_IinG = -32050.623,53618.609,23828.486 | dist = 67340.08 (meters)
-06:37:51    | bg = -0.0065,-0.0009,-0.0610 | ba = 1.4577,-0.9111,0.4963
-06:37:51    | camera-imu timeoffset = -0.01353
-06:37:51    | cam0 intrinsics = 601.118,600.266,314.033,250.048 | 0.139,-0.308,-0.000,-0.001
-06:37:51    | cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-06:37:51    | q_GtoI = -0.522,-0.851,0.054,0.011 | p_IinG = -32056.322,53629.812,23833.475 | dist = 67353.60 (meters)
-06:37:51    | bg = -0.0065,-0.0009,-0.0610 | ba = 1.4577,-0.9111,0.4963
-06:37:51    | camera-imu timeoffset = -0.01353
-06:37:51    | cam0 intrinsics = 601.118,600.266,314.033,250.048 | 0.139,-0.308,-0.000,-0.001
-06:37:51    | cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.050,-0.004
-06:37:51    | [31mStateHelper::EKFUpdate() - diagonal at 103 is -0.59
-06:37:51    | [0mOpenVINS driver exited with code 1
-06:37:51 -- seq10 dpvslam:mono run2/3: старт
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+ORB3_PROGRESS 13500/19524 state=3
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Creation of new map with id: 1
+Stored map with ID: 0
+Creation of new map with last KF id: 1255
+First KF:1255; Map init KF:1255
+New Map created with 135 points
+ORB3_PROGRESS 14000/19524 state=2
+ORB3_PROGRESS 14500/19524 state=2
+ORB3_PROGRESS 15000/19524 state=2
+ORB3_PROGRESS 15500/19524 state=2
+ORB3_PROGRESS 16000/19524 state=2
+ORB3_PROGRESS 16500/19524 state=2

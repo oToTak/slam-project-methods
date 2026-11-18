@@ -91,3 +91,4 @@ dpvslam,mono,ucu,seq10,1,651,653,10.441,17.649,595,544,0.334,19524,
 orbslam3,mono,ucu,seq10,1,394,653,2.516,3.022,340,289,0.100,11808,ATE matched 394/653 timestamps
 orbslam3,mono_inertial,ucu,seq10,1,567,653,7.428,11.628,511,460,0.100,16968,ATE matched 567/653 timestamps
 dso,mono,ucu,seq10,1,651,653,9.856,14.577,595,544,0.334,19518,
+dpvslam,mono,ucu,seq10,2,651,653,8.906,14.810,595,544,0.334,19524,
