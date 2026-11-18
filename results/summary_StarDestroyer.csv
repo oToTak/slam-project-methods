@@ -89,3 +89,4 @@ orbslam3,mono,ucu,seq11,3,4.903,,0.98,false,bbcdf3d
 dso,mono,ucu,seq11,3,5.389,,1.00,false,bbcdf3d
 dpvslam,mono,ucu,seq10,1,20.227,,1.00,false,bbcdf3d
 orbslam3,mono,ucu,seq10,1,1.974,,0.60,false,bbcdf3d
+orbslam3,mono_inertial,ucu,seq10,1,8.608,,0.87,false,bbcdf3d
