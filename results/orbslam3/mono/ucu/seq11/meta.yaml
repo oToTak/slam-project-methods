@@ -2,9 +2,9 @@ method: orbslam3
 mode: mono
 dataset: ucu
 seq: seq11
-run: 2
-commit: f773fa7c925c249e973f029f0d93a5bf94293c13
+run: 3
+commit: bbcdf3d5cbb40a61e0676b85c0eac4fff37b2969
 config: configs/orbslam3/UCU_mono.yaml
 coverage: 0.98
 tracking_lost: false
-notes: "ORB-SLAM3 4452a3c (-std=c++17), Pangolin v0.9.1, viewer off, pace=0, stride 1, wall 186s incl. vocabulary load. ORB3_STATS frames=10308 ever_ok=1 state_hist=1:257,2:10051 track_s=111.74776516600039 wall_s=183.46384441500001 host=StarDestroyer. 10051 of 10308 frames have a pose (raw 10051, unmatched 0, duplicate-frame 0, malformed 0); missing frames are NOT interpolated."
+notes: "ORB-SLAM3 4452a3c (-std=c++17), Pangolin v0.9.1, viewer off, pace=0, stride 1, wall 184s incl. vocabulary load. ORB3_STATS frames=10308 ever_ok=1 state_hist=1:257,2:10051 track_s=109.30624651800048 wall_s=180.91740420100001 host=StarDestroyer. 10051 of 10308 frames have a pose (raw 10051, unmatched 0, duplicate-frame 0, malformed 0); missing frames are NOT interpolated."

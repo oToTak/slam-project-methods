@@ -1,60 +1,60 @@
-This is free software, and you are welcome to redistribute it
-under certain conditions. See LICENSE.txt.
-
-Input sensor was set to: Monocular
-Loading settings from /home/calc/slam-runner/configs/orbslam3/UCU_mono.yaml
-Camera1.k3 optional parameter does not exist...
-	-Loaded camera 1
-Camera.newHeight optional parameter does not exist...
-Camera.newWidth optional parameter does not exist...
-	-Loaded image info
-	-Loaded ORB settings
-Viewer.imageViewScale optional parameter does not exist...
-	-Loaded viewer settings
-System.LoadAtlasFromFile optional parameter does not exist...
-System.SaveAtlasToFile optional parameter does not exist...
-	-Loaded Atlas settings
-System.thFarPoints optional parameter does not exist...
-	-Loaded misc parameters
-----------------------------------
-SLAM settings: 
-	-Camera 1 parameters (Pinhole): [ 601.17333984375 600.266357421875 314.01644897460938 250.03944396972656 ]
-	-Camera 1 distortion parameters: [  0.1392686665058136 -0.30741280317306519 0.00072727992665022612 0.00066557613899931312 ]
-	-Original image size: [ 640 , 480 ]
-	-Current image size: [ 640 , 480 ]
-	-Sequence FPS: 30
-	-Features per image: 1000
-	-ORB scale factor: 1.2000000476837158
-	-ORB number of scales: 8
-	-Initial FAST threshold: 20
-	-Min FAST threshold: 7
-
-
-Loading ORB Vocabulary. This could take a while...
-Vocabulary loaded!
-
-Initialization of Atlas from scratch 
-Creation of new map with id: 0
-Creation of new map with last KF id: 0
-Seq. Name: 
-There are 1 cameras in the atlas
-Camera 0 is pinhole
-First KF:0; Map init KF:0
-New Map created with 82 points
-ORB3_PROGRESS 500/10308 state=2
-ORB3_PROGRESS 1000/10308 state=2
-ORB3_PROGRESS 1500/10308 state=2
-ORB3_PROGRESS 2000/10308 state=2
-ORB3_PROGRESS 2500/10308 state=2
-ORB3_PROGRESS 3000/10308 state=2
-ORB3_PROGRESS 3500/10308 state=2
-ORB3_PROGRESS 4000/10308 state=2
-ORB3_PROGRESS 4500/10308 state=2
-ORB3_PROGRESS 5000/10308 state=2
-ORB3_PROGRESS 5500/10308 state=2
-ORB3_PROGRESS 6000/10308 state=2
-ORB3_PROGRESS 6500/10308 state=2
-ORB3_PROGRESS 7000/10308 state=2
-ORB3_PROGRESS 7500/10308 state=2
-ORB3_PROGRESS 8000/10308 state=2
-ORB3_PROGRESS 8500/10308 state=2
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.495,0.184,-0.835,0.156 | p_IinG = -34734.232,11644.566,-15236.392 | dist = 42281.27 (meters)
+bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5039,1.0653
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.493,0.184,-0.836,0.154 | p_IinG = -34762.657,11652.251,-15255.818 | dist = 42316.55 (meters)
+bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5039,1.0653
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.494,0.178,-0.837,0.156 | p_IinG = -34791.098,11659.935,-15275.259 | dist = 42351.85 (meters)
+bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5039,1.0653
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.496,0.173,-0.836,0.158 | p_IinG = -34819.551,11667.621,-15294.717 | dist = 42387.16 (meters)
+bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5039,1.0653
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.497,0.171,-0.836,0.158 | p_IinG = -34848.012,11675.309,-15314.190 | dist = 42422.50 (meters)
+bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5039,1.0653
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.496,0.168,-0.837,0.158 | p_IinG = -34876.487,11683.001,-15333.681 | dist = 42457.85 (meters)
+bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5039,1.0653
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.491,0.166,-0.836,0.179 | p_IinG = -35170.923,11153.211,-15554.282 | dist = 42493.47 (meters)
+bg = -0.0149,-0.0056,0.0147 | ba = -0.4234,-0.5035,1.0740
+camera-imu timeoffset = -0.01799
+cam0 intrinsics = 601.199,600.181,313.944,250.138 | 0.139,-0.305,0.001,-0.000
+cam0 extrinsics = -0.017,-0.708,-0.706,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.492,0.167,-0.836,0.176 | p_IinG = -35199.556,11160.359,-15574.045 | dist = 42529.01 (meters)
+bg = -0.0149,-0.0056,0.0147 | ba = -0.4234,-0.5035,1.0740
+camera-imu timeoffset = -0.01799
+cam0 intrinsics = 601.199,600.181,313.944,250.138 | 0.139,-0.305,0.001,-0.000
+cam0 extrinsics = -0.017,-0.708,-0.706,0.001 | 0.051,0.049,-0.005
+[31mStateHelper::EKFUpdate() - diagonal at 90 is -0.00
+[0mOpenVINS driver exited with code 1
+05:03:29    ПОМИЛКА: scripts/openvins/run.sh завершився з кодом 1. Кінець логу:
+05:03:29    | camera-imu timeoffset = -0.01791
+05:03:29    | cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+05:03:29    | cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+05:03:29    | q_GtoI = -0.491,0.166,-0.836,0.179 | p_IinG = -35170.923,11153.211,-15554.282 | dist = 42493.47 (meters)
+05:03:29    | bg = -0.0149,-0.0056,0.0147 | ba = -0.4234,-0.5035,1.0740
+05:03:29    | camera-imu timeoffset = -0.01799
+05:03:29    | cam0 intrinsics = 601.199,600.181,313.944,250.138 | 0.139,-0.305,0.001,-0.000
+05:03:29    | cam0 extrinsics = -0.017,-0.708,-0.706,0.001 | 0.051,0.049,-0.005
+05:03:29    | q_GtoI = -0.492,0.167,-0.836,0.176 | p_IinG = -35199.556,11160.359,-15574.045 | dist = 42529.01 (meters)
+05:03:29    | bg = -0.0149,-0.0056,0.0147 | ba = -0.4234,-0.5035,1.0740
+05:03:29    | camera-imu timeoffset = -0.01799
+05:03:29    | cam0 intrinsics = 601.199,600.181,313.944,250.138 | 0.139,-0.305,0.001,-0.000
+05:03:29    | cam0 extrinsics = -0.017,-0.708,-0.706,0.001 | 0.051,0.049,-0.005
+05:03:29    | [31mStateHelper::EKFUpdate() - diagonal at 90 is -0.00
+05:03:29    | [0mOpenVINS driver exited with code 1
+05:03:29 seq11: НЕ всі прогони готові — .mcap й експорт лишаю для розбору (повторний запуск доробить)
