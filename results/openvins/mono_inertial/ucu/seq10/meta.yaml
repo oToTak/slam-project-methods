@@ -2,9 +2,9 @@ method: openvins
 mode: mono_inertial
 dataset: ucu
 seq: seq10
-run: 3
-commit: bbcdf3d5cbb40a61e0676b85c0eac4fff37b2969
+run: 2
+commit: 3d5db2ae8f26713d2e38ff262d8640bbbad1ed89
 config: configs/openvins/ucu/estimator_config.yaml
-coverage: 1.00
+coverage: 0.92
 tracking_lost: false
-notes: "OpenVINS d0075dd ROS-free build (ENABLE_ROS=OFF, ENABLE_ARUCO_TAGS=OFF), own driver, one camera + IMU, config configs/openvins/ucu/estimator_config.yaml (upstream EuRoC values, not tuned; Kalibr T_ic and IMU noise from the dataset calibration, time shift already applied by the exporter), single thread, every frame fed (no track_frequency dropping), no sleeping, wall 184s. OV_STATS frames=19524 imu=81543 processed=19524 posed=19445 nonfinite=0 unreadable=0 initialized=1 first_pose_t_rel=2.935 wall_s=183.8 IMU_TRIM leading=0 trailing=0 of 19524 frames outside the IMU span, 19524 kept (rgb.txt trimmed copy used) host=StarDestroyer. 19445 of 19524 frames have a pose (99.6% of frames; outside-sequence 0, duplicate 0, malformed 0); frames without a pose (before initialisation, after OpenVINS got lost, before a reset) are NOT interpolated."
+notes: "OpenVINS d0075dd ROS-free build (ENABLE_ROS=OFF, ENABLE_ARUCO_TAGS=OFF), own driver, one camera + IMU, config configs/openvins/ucu/estimator_config.yaml (upstream EuRoC values, not tuned; Kalibr T_ic and IMU noise from the dataset calibration, time shift already applied by the exporter), single thread, every frame fed (no track_frequency dropping), no sleeping, wall 178s.  IMU_TRIM leading=0 trailing=0 of 19524 frames outside the IMU span, 19524 kept (rgb.txt trimmed copy used) FILTER DIVERGED: OpenVINS aborted itself (StateHelper::EKFUpdate non-positive covariance, exit 1), so the frames after the abort have no pose; poses written before it are kept (the last buffered ones may be lost). host=StarDestroyer. 17934 of 19524 frames have a pose (91.9% of frames; outside-sequence 0, duplicate 0, malformed 1); frames without a pose (before initialisation, after OpenVINS got lost, before a reset) are NOT interpolated."

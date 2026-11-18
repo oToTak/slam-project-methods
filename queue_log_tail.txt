@@ -1,60 +1,60 @@
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.493,0.184,-0.836,0.154 | p_IinG = -34763.245,11651.927,-15256.590 | dist = 42317.32 (meters)
-bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5036,1.0653
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.493,0.178,-0.837,0.156 | p_IinG = -34791.686,11659.611,-15276.033 | dist = 42352.61 (meters)
-bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5036,1.0653
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.496,0.173,-0.836,0.158 | p_IinG = -34820.140,11667.296,-15295.491 | dist = 42387.93 (meters)
-bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5036,1.0653
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.497,0.171,-0.836,0.158 | p_IinG = -34848.600,11674.983,-15314.966 | dist = 42423.26 (meters)
-bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5036,1.0653
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.496,0.168,-0.837,0.158 | p_IinG = -34877.076,11682.675,-15334.458 | dist = 42458.62 (meters)
-bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5036,1.0653
-camera-imu timeoffset = -0.01791
-cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
-cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
-q_GtoI = -0.491,0.166,-0.836,0.179 | p_IinG = -35172.401,11151.885,-15556.021 | dist = 42494.17 (meters)
-bg = -0.0150,-0.0056,0.0147 | ba = -0.4231,-0.5028,1.0741
-camera-imu timeoffset = -0.01793
-cam0 intrinsics = 601.194,600.187,313.945,250.139 | 0.139,-0.305,0.001,-0.000
-cam0 extrinsics = -0.017,-0.708,-0.706,0.001 | 0.051,0.049,-0.005
-[31mStateHelper::EKFUpdate() - diagonal at 5 is -1360457.84
-[0m[31mStateHelper::EKFUpdate() - diagonal at 8 is -968.38
-[0m[31mStateHelper::EKFUpdate() - diagonal at 35 is -1270230.85
-[0m[31mStateHelper::EKFUpdate() - diagonal at 41 is -1257391.05
-[0m[31mStateHelper::EKFUpdate() - diagonal at 47 is -1257950.12
-[0m[31mStateHelper::EKFUpdate() - diagonal at 53 is -1267969.19
-[0m[31mStateHelper::EKFUpdate() - diagonal at 59 is -1269492.51
-[0m[31mStateHelper::EKFUpdate() - diagonal at 65 is -1263153.53
-[0m[31mStateHelper::EKFUpdate() - diagonal at 71 is -1267213.08
-[0m[31mStateHelper::EKFUpdate() - diagonal at 77 is -1276849.40
-[0m[31mStateHelper::EKFUpdate() - diagonal at 83 is -1287173.91
-[0m[31mStateHelper::EKFUpdate() - diagonal at 89 is -1276656.34
-[0m[31mStateHelper::EKFUpdate() - diagonal at 95 is -1267782.18
-[0m[31mStateHelper::EKFUpdate() - diagonal at 104 is -1360455.43
+cam0 intrinsics = 601.079,600.293,314.030,250.051 | 0.139,-0.307,0.000,-0.001
+cam0 extrinsics = -0.019,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = -0.952,0.306,-0.008,0.003 | p_IinG = -81833.859,184741.052,87008.906 | dist = 220333.40 (meters)
+bg = -0.0059,-0.0012,-0.0610 | ba = 1.4262,-0.8963,0.5024
+camera-imu timeoffset = -0.01377
+cam0 intrinsics = 601.079,600.293,314.030,250.051 | 0.139,-0.307,0.000,-0.001
+cam0 extrinsics = -0.019,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = -0.952,0.307,-0.008,0.003 | p_IinG = -81841.174,184759.132,87018.753 | dist = 220355.25 (meters)
+bg = -0.0059,-0.0012,-0.0610 | ba = 1.4262,-0.8963,0.5024
+camera-imu timeoffset = -0.01377
+cam0 intrinsics = 601.079,600.293,314.030,250.051 | 0.139,-0.307,0.000,-0.001
+cam0 extrinsics = -0.019,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = -0.952,0.307,-0.008,0.002 | p_IinG = -81848.494,184777.210,87028.599 | dist = 220377.10 (meters)
+bg = -0.0059,-0.0012,-0.0610 | ba = 1.4262,-0.8963,0.5024
+camera-imu timeoffset = -0.01377
+cam0 intrinsics = 601.079,600.293,314.030,250.051 | 0.139,-0.307,0.000,-0.001
+cam0 extrinsics = -0.019,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = -0.952,0.307,-0.009,0.003 | p_IinG = -81855.815,184795.290,87038.446 | dist = 220398.95 (meters)
+bg = -0.0059,-0.0012,-0.0610 | ba = 1.4262,-0.8963,0.5024
+camera-imu timeoffset = -0.01377
+cam0 intrinsics = 601.079,600.293,314.030,250.051 | 0.139,-0.307,0.000,-0.001
+cam0 extrinsics = -0.019,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = -0.951,0.308,-0.010,0.003 | p_IinG = -81863.140,184813.370,87048.294 | dist = 220420.80 (meters)
+bg = -0.0059,-0.0012,-0.0610 | ba = 1.4262,-0.8963,0.5024
+camera-imu timeoffset = -0.01377
+cam0 intrinsics = 601.079,600.293,314.030,250.051 | 0.139,-0.307,0.000,-0.001
+cam0 extrinsics = -0.019,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = -0.951,0.310,-0.009,0.004 | p_IinG = -81870.466,184831.450,87058.143 | dist = 220442.66 (meters)
+bg = -0.0059,-0.0012,-0.0610 | ba = 1.4262,-0.8963,0.5024
+camera-imu timeoffset = -0.01377
+cam0 intrinsics = 601.079,600.293,314.030,250.051 | 0.139,-0.307,0.000,-0.001
+cam0 extrinsics = -0.019,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = -0.950,0.311,-0.010,0.005 | p_IinG = -81877.795,184849.533,87067.993 | dist = 220464.51 (meters)
+bg = -0.0059,-0.0012,-0.0610 | ba = 1.4262,-0.8963,0.5024
+camera-imu timeoffset = -0.01377
+cam0 intrinsics = 601.079,600.293,314.030,250.051 | 0.139,-0.307,0.000,-0.001
+cam0 extrinsics = -0.019,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = -0.950,0.311,-0.010,0.003 | p_IinG = -81885.124,184867.615,87077.843 | dist = 220486.37 (meters)
+bg = -0.0059,-0.0012,-0.0610 | ba = 1.4262,-0.8963,0.5024
+camera-imu timeoffset = -0.01377
+cam0 intrinsics = 601.079,600.293,314.030,250.051 | 0.139,-0.307,0.000,-0.001
+cam0 extrinsics = -0.019,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+q_GtoI = 0.931,-0.364,-0.002,0.021 | p_IinG = -69959.884,205750.952,86854.901 | dist = 220511.71 (meters)
+bg = -0.0069,0.0004,-0.0609 | ba = 1.4371,-1.0109,0.4907
+camera-imu timeoffset = -0.01318
+cam0 intrinsics = 601.069,600.294,314.067,250.109 | 0.139,-0.307,0.002,-0.000
+cam0 extrinsics = -0.019,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
+[31mStateHelper::EKFUpdate() - diagonal at 98 is -0.00
 [0mOpenVINS filter diverged and aborted itself (StateHelper error above): poses written before the abort are kept.
-Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq11/traj_run3.txt (3541 poses of 10308 frames, coverage 0.34) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq11/meta.yaml
-== openvins mono_inertial ucu/seq11 run3 ==
-ATE RMSE   : 11722.924 m   (matched 118/344)
-coverage   : 0.34   tracking_lost: false   poses: 3541   max gap: 0.067 s
-drift 50 m : 17627.863 m (67 seg)   100 m: 30108.848 m (20 seg)
-note: ATE matched 118/344 timestamps
-plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq11/traj_xy.pdf
+Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq10/traj_run2.txt (17934 poses of 19524 frames, coverage 0.92) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq10/meta.yaml
+== openvins mono_inertial ucu/seq10 run2 ==
+ATE RMSE   : 66200.136 m   (matched 599/653)
+coverage   : 0.92   tracking_lost: false   poses: 17934   max gap: 0.100 s
+drift 50 m : 20987.673 m (547 seg)   100 m: 41426.979 m (497 seg)
+plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq10/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-22:59:35    ПЕРЕВІР: поз 3541 із 10308 кадрів (поріг 50%); рядок у summary_StarDestroyer.csv є, маркер .bad_run3 поставлено (це результат методу, черга йде далі)
-22:59:35 seq11: усі прогони готові (з них 7 позначено ПЕРЕВІР: мало поз, рядки в summary є; дивись маркери .bad_run*)
-22:59:35   видалено /home/calc/slam-data/ucu/sequence-11
-22:59:35   видалено /home/calc/slam-data/ucu_tum/seq11
+23:06:09    готово за 3.0 хв: поз 17934/19524; рядок додано в summary_StarDestroyer.csv
+23:06:09 seq10: усі прогони готові (з них 3 позначено ПЕРЕВІР: мало поз, рядки в summary є; дивись маркери .bad_run*)
+23:06:10   видалено /home/calc/slam-data/ucu/sequence-10
+23:06:10   видалено /home/calc/slam-data/ucu_tum/seq10

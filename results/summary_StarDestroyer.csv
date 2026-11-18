@@ -104,3 +104,5 @@ openvins,mono_inertial,ucu,seq11,1,11723.091,,0.34,false,3d5db2a
 openvins,mono_inertial,ucu,seq11,2,11721.948,,0.34,false,3d5db2a
 orbslam3,mono_inertial,ucu,seq11,3,46.494,,0.36,false,3d5db2a
 openvins,mono_inertial,ucu,seq11,3,11722.924,,0.34,false,3d5db2a
+openvins,mono_inertial,ucu,seq10,1,76386.492,,1.00,false,3d5db2a
+openvins,mono_inertial,ucu,seq10,2,66200.136,,0.92,false,3d5db2a
