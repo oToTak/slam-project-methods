@@ -1,60 +1,60 @@
-q_GtoI = 0.999,0.037,0.023,0.028 | p_IinG = -99315.174,195369.561,102024.088 | dist = 240199.62 (meters)
-bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
-camera-imu timeoffset = -0.01469
-cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
-cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
-q_GtoI = 0.999,0.036,0.023,0.028 | p_IinG = -99323.384,195386.375,102034.819 | dist = 240221.19 (meters)
-bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
-camera-imu timeoffset = -0.01469
-cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
-cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
-q_GtoI = 0.999,0.035,0.023,0.028 | p_IinG = -99331.596,195403.189,102045.550 | dist = 240242.76 (meters)
-bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
-camera-imu timeoffset = -0.01469
-cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
-cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
-q_GtoI = 0.999,0.033,0.023,0.028 | p_IinG = -99339.810,195420.002,102056.283 | dist = 240264.33 (meters)
-bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
-camera-imu timeoffset = -0.01469
-cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
-cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
-q_GtoI = 0.999,0.032,0.023,0.028 | p_IinG = -99348.026,195436.815,102067.015 | dist = 240285.90 (meters)
-bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
-camera-imu timeoffset = -0.01469
-cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
-cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
-q_GtoI = 0.999,0.031,0.023,0.028 | p_IinG = -99356.244,195453.627,102077.749 | dist = 240307.47 (meters)
-bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
-camera-imu timeoffset = -0.01469
-cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
-cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
-q_GtoI = 0.999,0.030,0.023,0.028 | p_IinG = -99364.464,195470.439,102088.483 | dist = 240329.05 (meters)
-bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
-camera-imu timeoffset = -0.01469
-cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
-cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
-q_GtoI = 0.999,0.028,0.023,0.028 | p_IinG = -99372.686,195487.250,102099.217 | dist = 240350.62 (meters)
-bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
-camera-imu timeoffset = -0.01469
-cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
-cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
-q_GtoI = 0.999,0.027,0.023,0.028 | p_IinG = -99380.910,195504.060,102109.953 | dist = 240372.20 (meters)
-bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
-camera-imu timeoffset = -0.01469
-cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
-cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
-q_GtoI = 0.999,0.026,0.023,0.028 | p_IinG = -99389.136,195520.871,102120.689 | dist = 240393.77 (meters)
-bg = -0.0064,-0.0021,-0.0611 | ba = 1.3195,-0.8181,0.5049
-camera-imu timeoffset = -0.01469
-cam0 intrinsics = 601.128,600.261,314.162,250.255 | 0.139,-0.307,0.006,0.002
-cam0 extrinsics = -0.018,-0.707,-0.707,0.001 | 0.051,0.050,-0.004
-OV_STATS frames=19524 imu=81543 processed=19524 posed=19445 nonfinite=0 unreadable=0 initialized=1 first_pose_t_rel=2.935 wall_s=183.8
-Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq10/traj_run3.txt (19445 poses of 19524 frames, coverage 1.00) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq10/meta.yaml
-== openvins mono_inertial ucu/seq10 run3 ==
-ATE RMSE   : 73256.484 m   (matched 649/653)
-coverage   : 1.00   tracking_lost: false   poses: 19445   max gap: 0.100 s
-drift 50 m : 21260.555 m (593 seg)   100 m: 41632.844 m (542 seg)
-plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq10/traj_xy.pdf
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.493,0.184,-0.836,0.154 | p_IinG = -34763.245,11651.927,-15256.590 | dist = 42317.32 (meters)
+bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5036,1.0653
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.493,0.178,-0.837,0.156 | p_IinG = -34791.686,11659.611,-15276.033 | dist = 42352.61 (meters)
+bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5036,1.0653
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.496,0.173,-0.836,0.158 | p_IinG = -34820.140,11667.296,-15295.491 | dist = 42387.93 (meters)
+bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5036,1.0653
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.497,0.171,-0.836,0.158 | p_IinG = -34848.600,11674.983,-15314.966 | dist = 42423.26 (meters)
+bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5036,1.0653
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.496,0.168,-0.837,0.158 | p_IinG = -34877.076,11682.675,-15334.458 | dist = 42458.62 (meters)
+bg = -0.0144,-0.0060,0.0147 | ba = -0.4761,-0.5036,1.0653
+camera-imu timeoffset = -0.01791
+cam0 intrinsics = 601.102,600.325,313.952,250.141 | 0.139,-0.307,0.001,-0.000
+cam0 extrinsics = -0.017,-0.707,-0.707,0.001 | 0.051,0.049,-0.005
+q_GtoI = -0.491,0.166,-0.836,0.179 | p_IinG = -35172.401,11151.885,-15556.021 | dist = 42494.17 (meters)
+bg = -0.0150,-0.0056,0.0147 | ba = -0.4231,-0.5028,1.0741
+camera-imu timeoffset = -0.01793
+cam0 intrinsics = 601.194,600.187,313.945,250.139 | 0.139,-0.305,0.001,-0.000
+cam0 extrinsics = -0.017,-0.708,-0.706,0.001 | 0.051,0.049,-0.005
+[31mStateHelper::EKFUpdate() - diagonal at 5 is -1360457.84
+[0m[31mStateHelper::EKFUpdate() - diagonal at 8 is -968.38
+[0m[31mStateHelper::EKFUpdate() - diagonal at 35 is -1270230.85
+[0m[31mStateHelper::EKFUpdate() - diagonal at 41 is -1257391.05
+[0m[31mStateHelper::EKFUpdate() - diagonal at 47 is -1257950.12
+[0m[31mStateHelper::EKFUpdate() - diagonal at 53 is -1267969.19
+[0m[31mStateHelper::EKFUpdate() - diagonal at 59 is -1269492.51
+[0m[31mStateHelper::EKFUpdate() - diagonal at 65 is -1263153.53
+[0m[31mStateHelper::EKFUpdate() - diagonal at 71 is -1267213.08
+[0m[31mStateHelper::EKFUpdate() - diagonal at 77 is -1276849.40
+[0m[31mStateHelper::EKFUpdate() - diagonal at 83 is -1287173.91
+[0m[31mStateHelper::EKFUpdate() - diagonal at 89 is -1276656.34
+[0m[31mStateHelper::EKFUpdate() - diagonal at 95 is -1267782.18
+[0m[31mStateHelper::EKFUpdate() - diagonal at 104 is -1360455.43
+[0mOpenVINS filter diverged and aborted itself (StateHelper error above): poses written before the abort are kept.
+Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq11/traj_run3.txt (3541 poses of 10308 frames, coverage 0.34) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq11/meta.yaml
+== openvins mono_inertial ucu/seq11 run3 ==
+ATE RMSE   : 11722.924 m   (matched 118/344)
+coverage   : 0.34   tracking_lost: false   poses: 3541   max gap: 0.067 s
+drift 50 m : 17627.863 m (67 seg)   100 m: 30108.848 m (20 seg)
+note: ATE matched 118/344 timestamps
+plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq11/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-08:22:33    готово за 3.1 хв: поз 19445/19524; рядок додано в summary_StarDestroyer.csv
-08:22:33 seq10: НЕ всі прогони готові — .mcap й експорт лишаю для розбору (повторний запуск доробить)
+22:59:35    ПЕРЕВІР: поз 3541 із 10308 кадрів (поріг 50%); рядок у summary_StarDestroyer.csv є, маркер .bad_run3 поставлено (це результат методу, черга йде далі)
+22:59:35 seq11: усі прогони готові (з них 7 позначено ПЕРЕВІР: мало поз, рядки в summary є; дивись маркери .bad_run*)
+22:59:35   видалено /home/calc/slam-data/ucu/sequence-11
+22:59:35   видалено /home/calc/slam-data/ucu_tum/seq11
