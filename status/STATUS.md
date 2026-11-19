@@ -1,6 +1,6 @@
 # Статус обчислень
 
-Зроблено **76 з 130** прогонів (58 %). Датасет `ucu`, 13 сиквенсів, методи з `scripts/queue/methods.conf`.
+Зроблено **78 з 130** прогонів (60 %). Датасет `ucu`, 13 сиквенсів, методи з `scripts/queue/methods.conf`.
 
 Зібрано автоматично з гілок `runner-<host>` (`scripts/report/build_status.py`, Action `status.yml`). Не редагувати вручну.
 
@@ -8,7 +8,7 @@
 
 | ПК | стан | останній звіт | прогонів зробив |
 |---|---|---|---:|
-| StarDestroyer | ⚠ звітів нема понад поріг (ПК вимкнений або воркер завис) | 2026-11-18 08:22 +0200 | 71 |
+| StarDestroyer | рахує seq09 (з 2026-11-19T02:35:39) | 2026-11-19 02:35 +0200 | 73 |
 | Teodor | ⚠ звітів нема понад поріг (ПК вимкнений або воркер завис) | 2026-11-13 18:49 +0200 | 5 |
 
 ## Сиквенси × методи
@@ -23,12 +23,12 @@
 | 6 | seq06 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | 0/3 | 0/3 |
 | 7 | seq07 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | 0/3 | 0/3 |
 | 8 | seq08 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | 0/3 | 0/3 |
-| 9 | seq09 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | 0/3 | 0/3 |
+| 9 | seq09 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | 1/3 StarDestroyer | 1/3 StarDestroyer |
 | 10 | seq10 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | ✅ 3/3 StarDestroyer | ✅ 3/3 StarDestroyer |
 | 11 | seq11 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | ✅ 3/3 StarDestroyer | ✅ 3/3 StarDestroyer |
 | 12 | seq12 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | ✅ 3/3 StarDestroyer | ✅ 3/3 StarDestroyer |
 | 13 | seq13 | ✅ 3/3 StarDestroyer | ✅ 1/1 StarDestroyer | ✅ 3/3 StarDestroyer | ✅ 3/3 StarDestroyer |
-|  | **разом** | **39/39** | **13/13** | **12/39** | **12/39** |
+|  | **разом** | **39/39** | **13/13** | **13/39** | **13/39** |
 
 Клітинка: готово/треба і хто рахував (кілька ПК: скільки прогонів кожен). ✅ усе готово, ⏳ зараз рахується, ✗N — N прогонів позначені невдалими (`.bad_run`).
 «Звітів нема»: гілка ПК не оновлювалась понад 3 год.
@@ -39,4 +39,4 @@
 - `openvins:mono_inertial ucu (нема в methods.conf)`
 - `orbslam3:mono_inertial ucu (нема в methods.conf)`
 
-_Зміст востаннє змінився: 2026-11-18 09:58 UTC_
+_Зміст востаннє змінився: 2026-11-19 00:45 UTC_
