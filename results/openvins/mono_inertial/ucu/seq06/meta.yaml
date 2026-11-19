@@ -1,0 +1,10 @@
+method: openvins
+mode: mono_inertial
+dataset: ucu
+seq: seq06
+run: 1
+commit: f71395f74c6178d6ada463db2eb5b8fd7c9927fa
+config: configs/openvins/ucu/estimator_config.yaml
+coverage: 0.29
+tracking_lost: false
+notes: "OpenVINS d0075dd ROS-free build (ENABLE_ROS=OFF, ENABLE_ARUCO_TAGS=OFF), own driver, one camera + IMU, config configs/openvins/ucu/estimator_config.yaml (upstream EuRoC values, not tuned; Kalibr T_ic and IMU noise from the dataset calibration, time shift already applied by the exporter), single thread, every frame fed (no track_frequency dropping), no sleeping, wall 69s.  IMU_TRIM leading=2 trailing=0 of 18745 frames outside the IMU span, 18743 kept (rgb.txt trimmed copy used) FILTER DIVERGED: OpenVINS aborted itself (StateHelper::EKFUpdate non-positive covariance, exit 1), so the frames after the abort have no pose; poses written before it are kept (the last buffered ones may be lost). host=StarDestroyer. 7153 of 18743 frames have a pose (38.2% of frames; outside-sequence 0, duplicate 0, malformed 1); frames without a pose (before initialisation, after OpenVINS got lost, before a reset) are NOT interpolated. eval: ATE matched 239/627 timestamps."
