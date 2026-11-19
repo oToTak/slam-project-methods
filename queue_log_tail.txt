@@ -1,60 +1,60 @@
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 9313
-mnInitialFrameId = 9236
-1606 Frames set to lost
-First KF:345; Map init KF:343
-New Map created with 156 points
-Fail to track local map!
-IMU is not or recently initialized. Reseting active map...
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 9327
-mnInitialFrameId = 9314
-1608 Frames set to lost
-First KF:347; Map init KF:345
-New Map created with 155 points
-Not enough motion for initializing. Reseting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-Not enough motion for initializing. Reseting...
-TRACK: Reset map because local mapper set the bad imu flag 
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 9342
-mnInitialFrameId = 9328
-1678 Frames set to lost
-First KF:359; Map init KF:347
-New Map created with 174 points
-Fail to track local map!
-IMU is not or recently initialized. Reseting active map...
-SYSTEM-> Reseting active map in monocular case
-LM: Active map reset recieved
-LM: Active map reset, waiting...
-LM: Reseting current map in Local Mapping...
-LM: End reseting Local Mapping...
-LM: Reset free the mutex
-LM: Active map reset, Done!!!
-mnFirstFrameId = 9447
-mnInitialFrameId = 9412
-1682 Frames set to lost
-ORB3_PROGRESS 9500/12672 state=1
-First KF:361; Map init KF:359
-New Map created with 146 points
-scale too small
+camera-imu timeoffset = -0.00072
+cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
+q_GtoI = 0.257,0.957,0.130,0.008 | p_IinG = 78854.723,-426795.717,-401052.571 | dist = 603930.49 (meters)
+bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2446,-0.7301
+camera-imu timeoffset = -0.00072
+cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
+q_GtoI = 0.258,0.957,0.130,0.007 | p_IinG = 78881.407,-426848.182,-401104.666 | dist = 604009.09 (meters)
+bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2446,-0.7301
+camera-imu timeoffset = -0.00072
+cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
+q_GtoI = 0.258,0.957,0.130,0.006 | p_IinG = 78908.089,-426900.648,-401156.761 | dist = 604087.69 (meters)
+bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2446,-0.7301
+camera-imu timeoffset = -0.00072
+cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
+q_GtoI = 0.258,0.957,0.130,0.007 | p_IinG = 78934.770,-426953.115,-401208.858 | dist = 604166.30 (meters)
+bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2446,-0.7301
+camera-imu timeoffset = -0.00072
+cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
+q_GtoI = 0.258,0.957,0.130,0.008 | p_IinG = 78961.452,-427005.584,-401260.955 | dist = 604244.90 (meters)
+bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2446,-0.7301
+camera-imu timeoffset = -0.00072
+cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
+q_GtoI = 0.258,0.957,0.131,0.007 | p_IinG = 78988.133,-427058.054,-401313.054 | dist = 604323.51 (meters)
+bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2446,-0.7301
+camera-imu timeoffset = -0.00072
+cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
+q_GtoI = 0.259,0.957,0.130,0.007 | p_IinG = 79014.813,-427110.525,-401365.153 | dist = 604402.12 (meters)
+bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2446,-0.7301
+camera-imu timeoffset = -0.00072
+cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
+q_GtoI = 0.259,0.957,0.130,0.007 | p_IinG = 79041.492,-427162.998,-401417.253 | dist = 604480.73 (meters)
+bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2446,-0.7301
+camera-imu timeoffset = -0.00072
+cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
+q_GtoI = 0.259,0.957,0.129,0.007 | p_IinG = 79068.169,-427215.474,-401469.353 | dist = 604559.34 (meters)
+bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2446,-0.7301
+camera-imu timeoffset = -0.00072
+cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
+OV_STATS frames=12672 imu=52967 processed=12672 posed=12596 nonfinite=0 unreadable=0 initialized=1 first_pose_t_rel=2.869 wall_s=184.1
+Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq05/traj_run3.txt (12596 poses of 12672 frames, coverage 0.99) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq05/meta.yaml
+== openvins mono_inertial ucu/seq05 run3 ==
+ATE RMSE   : 188333.191 m   (matched 421/424)
+coverage   : 0.99   tracking_lost: false   poses: 12596   max gap: 0.067 s
+drift 50 m : 83796.353 m (369 seg)   100 m: 166410.328 m (319 seg)
+plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq05/traj_xy.pdf
+appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
+15:29:15    готово за 3.1 хв: поз 12596/12672; рядок додано в summary_StarDestroyer.csv
+15:29:15 seq05: усі прогони готові (з них 9 позначено ПЕРЕВІР: мало поз, рядки в summary є; дивись маркери .bad_run*)
+15:29:15   видалено /home/calc/slam-data/ucu/sequence-5
+15:29:15   видалено /home/calc/slam-data/ucu_tum/seq05
