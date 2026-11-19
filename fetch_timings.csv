@@ -29,3 +29,4 @@ seq07,download_s=1226,export_s=1218,mcap_bytes=18510523139,export_bytes=81883332
 seq06,download_s=1291,export_s=1233,mcap_bytes=18768883600,export_bytes=8028406210
 seq05,download_s=753,export_s=926,mcap_bytes=12672212092,export_bytes=4777497701
 seq04,download_s=722,export_s=760,mcap_bytes=12758091089,export_bytes=4503579660
+seq03,download_s=583,export_s=617,mcap_bytes=10075248482,export_bytes=3588864699
