@@ -1,60 +1,60 @@
-cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
-q_GtoI = -0.413,0.607,0.315,0.601 | p_IinG = -2874.293,-90577.816,-35354.444 | dist = 98914.50 (meters)
-bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
-camera-imu timeoffset = 0.00113
-cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
-q_GtoI = -0.414,0.608,0.315,0.600 | p_IinG = -2880.951,-90618.022,-35376.593 | dist = 98960.89 (meters)
-bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
-camera-imu timeoffset = 0.00113
-cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
-q_GtoI = -0.413,0.609,0.314,0.600 | p_IinG = -2887.613,-90658.239,-35398.755 | dist = 99007.29 (meters)
-bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
-camera-imu timeoffset = 0.00113
-cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
-q_GtoI = -0.413,0.609,0.315,0.600 | p_IinG = -2894.279,-90698.466,-35420.927 | dist = 99053.70 (meters)
-bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
-camera-imu timeoffset = 0.00113
-cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
-q_GtoI = -0.412,0.609,0.315,0.600 | p_IinG = -2900.948,-90738.704,-35443.110 | dist = 99100.13 (meters)
-bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
-camera-imu timeoffset = 0.00113
-cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
-q_GtoI = -0.412,0.609,0.315,0.600 | p_IinG = -2907.619,-90778.951,-35465.303 | dist = 99146.57 (meters)
-bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
-camera-imu timeoffset = 0.00113
-cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
-q_GtoI = -0.411,0.610,0.314,0.600 | p_IinG = -2914.295,-90819.209,-35487.506 | dist = 99193.03 (meters)
-bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
-camera-imu timeoffset = 0.00113
-cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
-q_GtoI = -0.411,0.610,0.315,0.600 | p_IinG = -2920.973,-90859.478,-35509.722 | dist = 99239.50 (meters)
-bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
-camera-imu timeoffset = 0.00113
-cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
-q_GtoI = -0.410,0.610,0.315,0.601 | p_IinG = -2927.655,-90899.757,-35531.948 | dist = 99285.99 (meters)
-bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
-camera-imu timeoffset = 0.00113
-cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
-[31mStateHelper::EKFUpdate() - diagonal at 102 is -0.00
-[0m[31mStateHelper::EKFUpdate() - diagonal at 103 is -0.00
-[0mOpenVINS filter diverged and aborted itself (StateHelper error above): poses written before the abort are kept.
-Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq07/traj_run2.txt (6015 poses of 18523 frames, coverage 0.32) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq07/meta.yaml
-== openvins mono_inertial ucu/seq07 run2 ==
-ATE RMSE   : 27816.402 m   (matched 200/619)
-coverage   : 0.29   tracking_lost: false   poses: 6015   max gap: 0.167 s
-drift 50 m : 27083.408 m (151 seg)   100 m: 48146.089 m (100 seg)
-note: ATE matched 200/619 timestamps
-plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq07/traj_xy.pdf
+NVIDIA GeForce RTX 3060; wall 1737s (10.7 fps); VRAM peak 2858 MiB total used (base 1052), torch alloc 1150 / reserved 1730 MiB; RAM peak 1816 MiB.
+Loop closure: BACKEND_THRESH=64.0 MAX_EDGE_AGE=1000 GLOBAL_OPT_FREQ=15; 11 loop-edge batches (672 edges), 64 global BA calls (32s of 1737s); 534 keyframes kept; BA failures swallowed by DPVO: 0.
+Wrote /home/calc/slam-data/results/dpvslam/mono/ucu/seq07/traj_run3.txt (18524 poses) and /home/calc/slam-data/results/dpvslam/mono/ucu/seq07/meta.yaml
+== dpvslam mono ucu/seq07 run3 ==
+ATE RMSE   : 8.012 m   (matched 616/619)
+coverage   : 1.00   tracking_lost: false   poses: 18524   max gap: 76.355 s
+drift 50 m : 5.092 m (563 seg)   100 m: 8.205 m (510 seg)
+plot: /home/calc/slam-data/results/dpvslam/mono/ucu/seq07/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-09:01:17    ПЕРЕВІР: поз 6015 із 18524 кадрів (поріг 50%); рядок у summary_StarDestroyer.csv є, маркер .bad_run2 поставлено (це результат методу, черга йде далі)
-09:01:17 -- seq07 dpvslam:mono run3/3: старт
+09:51:39    готово за 29.0 хв: поз 18524/18524; рядок додано в summary_StarDestroyer.csv
+09:51:39 -- seq07 orbslam3:mono run3/3: старт
+ORB3_INFO frames=18524 imu_rows=0 mode=mono pace=0
+
+ORB-SLAM3 Copyright (C) 2017-2020 Carlos Campos, Richard Elvira, Juan J. Gómez, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
+ORB-SLAM2 Copyright (C) 2014-2016 Raúl Mur-Artal, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
+This program comes with ABSOLUTELY NO WARRANTY;
+This is free software, and you are welcome to redistribute it
+under certain conditions. See LICENSE.txt.
+
+Input sensor was set to: Monocular
+Loading settings from /home/calc/slam-runner/configs/orbslam3/UCU_mono.yaml
+Camera1.k3 optional parameter does not exist...
+	-Loaded camera 1
+Camera.newHeight optional parameter does not exist...
+Camera.newWidth optional parameter does not exist...
+	-Loaded image info
+	-Loaded ORB settings
+Viewer.imageViewScale optional parameter does not exist...
+	-Loaded viewer settings
+System.LoadAtlasFromFile optional parameter does not exist...
+System.SaveAtlasToFile optional parameter does not exist...
+	-Loaded Atlas settings
+System.thFarPoints optional parameter does not exist...
+	-Loaded misc parameters
+----------------------------------
+SLAM settings: 
+	-Camera 1 parameters (Pinhole): [ 601.17333984375 600.266357421875 314.01644897460938 250.03944396972656 ]
+	-Camera 1 distortion parameters: [  0.1392686665058136 -0.30741280317306519 0.00072727992665022612 0.00066557613899931312 ]
+	-Original image size: [ 640 , 480 ]
+	-Current image size: [ 640 , 480 ]
+	-Sequence FPS: 30
+	-Features per image: 1000
+	-ORB scale factor: 1.2000000476837158
+	-ORB number of scales: 8
+	-Initial FAST threshold: 20
+	-Min FAST threshold: 7
+
+
+Loading ORB Vocabulary. This could take a while...
+Vocabulary loaded!
+
+Initialization of Atlas from scratch 
+Creation of new map with id: 0
+Creation of new map with last KF id: 0
+Seq. Name: 
+There are 1 cameras in the atlas
+Camera 0 is pinhole
+ORB3_PROGRESS 500/18524 state=1
+ORB3_PROGRESS 1000/18524 state=1
+ORB3_PROGRESS 1500/18524 state=1
