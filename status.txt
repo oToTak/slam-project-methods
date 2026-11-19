@@ -1,4 +1,4 @@
-host: StarDestroyer   updated: 2026-11-19T02:35:39+02:00   code: 3d5db2a
+host: StarDestroyer   updated: 2026-11-19T02:35:43+02:00   code: 3d5db2a
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
 Місце для даних: доступно 34.2 GB = мінімум із: df 973.9 GB; диск Windows C:\ під vhdx 136.3 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 25.8 GB = 34.2 GB
