@@ -1,60 +1,60 @@
-q_GtoI = 0.257,0.958,0.130,0.007 | p_IinG = 78834.680,-426734.671,-400992.857 | dist = 603841.89 (meters)
-bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2447,-0.7301
-camera-imu timeoffset = -0.00072
-cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
-q_GtoI = 0.257,0.958,0.130,0.008 | p_IinG = 78861.366,-426787.132,-401044.950 | dist = 603920.49 (meters)
-bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2447,-0.7301
-camera-imu timeoffset = -0.00072
-cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
-q_GtoI = 0.258,0.957,0.130,0.007 | p_IinG = 78888.050,-426839.595,-401097.043 | dist = 603999.09 (meters)
-bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2447,-0.7301
-camera-imu timeoffset = -0.00072
-cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
-q_GtoI = 0.258,0.957,0.130,0.006 | p_IinG = 78914.731,-426892.060,-401149.137 | dist = 604077.69 (meters)
-bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2447,-0.7301
-camera-imu timeoffset = -0.00072
-cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
-q_GtoI = 0.258,0.957,0.130,0.007 | p_IinG = 78941.412,-426944.525,-401201.232 | dist = 604156.30 (meters)
-bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2447,-0.7301
-camera-imu timeoffset = -0.00072
-cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
-q_GtoI = 0.258,0.957,0.130,0.008 | p_IinG = 78968.093,-426996.993,-401253.328 | dist = 604234.90 (meters)
-bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2447,-0.7301
-camera-imu timeoffset = -0.00072
-cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
-q_GtoI = 0.258,0.957,0.131,0.007 | p_IinG = 78994.774,-427049.462,-401305.425 | dist = 604313.51 (meters)
-bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2447,-0.7301
-camera-imu timeoffset = -0.00072
-cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
-q_GtoI = 0.259,0.957,0.130,0.007 | p_IinG = 79021.453,-427101.931,-401357.522 | dist = 604392.11 (meters)
-bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2447,-0.7301
-camera-imu timeoffset = -0.00072
-cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
-q_GtoI = 0.259,0.957,0.130,0.007 | p_IinG = 79048.132,-427154.403,-401409.621 | dist = 604470.72 (meters)
-bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2447,-0.7301
-camera-imu timeoffset = -0.00072
-cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
-q_GtoI = 0.259,0.957,0.129,0.007 | p_IinG = 79074.808,-427206.878,-401461.720 | dist = 604549.33 (meters)
-bg = -0.0039,0.0152,-0.0079 | ba = -0.4017,-1.2447,-0.7301
-camera-imu timeoffset = -0.00072
-cam0 intrinsics = 601.187,600.257,313.996,250.063 | 0.139,-0.307,0.001,0.001
-cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.051,0.049,-0.005
-OV_STATS frames=12672 imu=52967 processed=12672 posed=12596 nonfinite=0 unreadable=0 initialized=1 first_pose_t_rel=2.869 wall_s=183.7
-Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq05/traj_run2.txt (12596 poses of 12672 frames, coverage 0.99) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq05/meta.yaml
-== openvins mono_inertial ucu/seq05 run2 ==
-ATE RMSE   : 188330.061 m   (matched 421/424)
-coverage   : 0.99   tracking_lost: false   poses: 12596   max gap: 0.067 s
-drift 50 m : 83794.666 m (369 seg)   100 m: 166407.293 m (319 seg)
-plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq05/traj_xy.pdf
-appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-14:59:01    готово за 3.1 хв: поз 12596/12672; рядок додано в summary_StarDestroyer.csv
-14:59:01 -- seq05 dpvslam:mono run3/3: старт
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 9313
+mnInitialFrameId = 9236
+1606 Frames set to lost
+First KF:345; Map init KF:343
+New Map created with 156 points
+Fail to track local map!
+IMU is not or recently initialized. Reseting active map...
+SYSTEM-> Reseting active map in monocular case
+LM: Active map reset recieved
+LM: Active map reset, waiting...
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 9327
+mnInitialFrameId = 9314
+1608 Frames set to lost
+First KF:347; Map init KF:345
+New Map created with 155 points
+Not enough motion for initializing. Reseting...
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+Not enough motion for initializing. Reseting...
+TRACK: Reset map because local mapper set the bad imu flag 
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+SYSTEM-> Reseting active map in monocular case
+LM: Active map reset recieved
+LM: Active map reset, waiting...
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 9342
+mnInitialFrameId = 9328
+1678 Frames set to lost
+First KF:359; Map init KF:347
+New Map created with 174 points
+Fail to track local map!
+IMU is not or recently initialized. Reseting active map...
+SYSTEM-> Reseting active map in monocular case
+LM: Active map reset recieved
+LM: Active map reset, waiting...
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 9447
+mnInitialFrameId = 9412
+1682 Frames set to lost
+ORB3_PROGRESS 9500/12672 state=1
+First KF:361; Map init KF:359
+New Map created with 146 points
+scale too small
