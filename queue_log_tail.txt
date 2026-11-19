@@ -1,60 +1,60 @@
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Creation of new map with id: 1
-Stored map with ID: 0
-Creation of new map with last KF id: 632
-ORB3_PROGRESS 4000/10064 state=1
-First KF:632; Map init KF:632
-New Map created with 97 points
-ORB3_PROGRESS 4500/10064 state=2
-ORB3_PROGRESS 5000/10064 state=2
-ORB3_PROGRESS 5500/10064 state=2
-ORB3_PROGRESS 6000/10064 state=2
-ORB3_PROGRESS 6500/10064 state=2
-ORB3_PROGRESS 7000/10064 state=2
+camera-imu timeoffset = -0.01080
+cam0 intrinsics = 601.308,600.109,313.912,249.956 | 0.142,-0.304,0.009,-0.006
+cam0 extrinsics = 0.015,0.704,0.710,0.002 | 0.051,0.050,-0.003
+q_GtoI = 0.839,-0.401,-0.367,0.014 | p_IinG = 223756.619,254252.947,-239385.292 | dist = 435155.17 (meters)
+bg = 0.0157,-0.0259,-0.0173 | ba = -0.6847,0.2155,0.3988
+camera-imu timeoffset = -0.01080
+cam0 intrinsics = 601.308,600.109,313.912,249.956 | 0.142,-0.304,0.009,-0.006
+cam0 extrinsics = 0.015,0.704,0.710,0.002 | 0.051,0.050,-0.003
+q_GtoI = 0.839,-0.401,-0.367,0.015 | p_IinG = 223820.575,254283.805,-239446.987 | dist = 435249.24 (meters)
+bg = 0.0157,-0.0259,-0.0173 | ba = -0.6847,0.2155,0.3988
+camera-imu timeoffset = -0.01080
+cam0 intrinsics = 601.308,600.109,313.912,249.956 | 0.142,-0.304,0.009,-0.006
+cam0 extrinsics = 0.015,0.704,0.710,0.002 | 0.051,0.050,-0.003
+q_GtoI = 0.839,-0.402,-0.367,0.015 | p_IinG = 223884.540,254314.660,-239508.686 | dist = 435343.31 (meters)
+bg = 0.0157,-0.0259,-0.0173 | ba = -0.6847,0.2155,0.3988
+camera-imu timeoffset = -0.01080
+cam0 intrinsics = 601.308,600.109,313.912,249.956 | 0.142,-0.304,0.009,-0.006
+cam0 extrinsics = 0.015,0.704,0.710,0.002 | 0.051,0.050,-0.003
+q_GtoI = 0.839,-0.402,-0.367,0.016 | p_IinG = 223948.512,254345.512,-239570.388 | dist = 435437.39 (meters)
+bg = 0.0157,-0.0259,-0.0173 | ba = -0.6847,0.2155,0.3988
+camera-imu timeoffset = -0.01080
+cam0 intrinsics = 601.308,600.109,313.912,249.956 | 0.142,-0.304,0.009,-0.006
+cam0 extrinsics = 0.015,0.704,0.710,0.002 | 0.051,0.050,-0.003
+q_GtoI = 0.839,-0.402,-0.366,0.016 | p_IinG = 224012.492,254376.359,-239632.093 | dist = 435531.48 (meters)
+bg = 0.0157,-0.0259,-0.0173 | ba = -0.6847,0.2155,0.3988
+camera-imu timeoffset = -0.01080
+cam0 intrinsics = 601.308,600.109,313.912,249.956 | 0.142,-0.304,0.009,-0.006
+cam0 extrinsics = 0.015,0.704,0.710,0.002 | 0.051,0.050,-0.003
+q_GtoI = 0.839,-0.402,-0.366,0.017 | p_IinG = 224076.480,254407.204,-239693.801 | dist = 435625.58 (meters)
+bg = 0.0157,-0.0259,-0.0173 | ba = -0.6847,0.2155,0.3988
+camera-imu timeoffset = -0.01080
+cam0 intrinsics = 601.308,600.109,313.912,249.956 | 0.142,-0.304,0.009,-0.006
+cam0 extrinsics = 0.015,0.704,0.710,0.002 | 0.051,0.050,-0.003
+q_GtoI = 0.839,-0.403,-0.366,0.018 | p_IinG = 224140.475,254438.045,-239755.512 | dist = 435719.68 (meters)
+bg = 0.0157,-0.0259,-0.0173 | ba = -0.6847,0.2155,0.3988
+camera-imu timeoffset = -0.01080
+cam0 intrinsics = 601.308,600.109,313.912,249.956 | 0.142,-0.304,0.009,-0.006
+cam0 extrinsics = 0.015,0.704,0.710,0.002 | 0.051,0.050,-0.003
+q_GtoI = 0.839,-0.403,-0.366,0.018 | p_IinG = 224204.478,254468.882,-239817.227 | dist = 435813.78 (meters)
+bg = 0.0157,-0.0259,-0.0173 | ba = -0.6847,0.2155,0.3988
+camera-imu timeoffset = -0.01080
+cam0 intrinsics = 601.308,600.109,313.912,249.956 | 0.142,-0.304,0.009,-0.006
+cam0 extrinsics = 0.015,0.704,0.710,0.002 | 0.051,0.050,-0.003
+q_GtoI = 0.839,-0.403,-0.365,0.019 | p_IinG = 224268.489,254499.716,-239878.944 | dist = 435907.90 (meters)
+bg = 0.0157,-0.0259,-0.0173 | ba = -0.6847,0.2155,0.3988
+camera-imu timeoffset = -0.01080
+cam0 intrinsics = 601.308,600.109,313.912,249.956 | 0.142,-0.304,0.009,-0.006
+cam0 extrinsics = 0.015,0.704,0.710,0.002 | 0.051,0.050,-0.003
+OV_STATS frames=10064 imu=41995 processed=10064 posed=9995 nonfinite=0 unreadable=0 initialized=1 first_pose_t_rel=2.302 wall_s=86.5
+Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq03/traj_run3.txt (9995 poses of 10064 frames, coverage 0.99) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq03/meta.yaml
+== openvins mono_inertial ucu/seq03 run3 ==
+ATE RMSE   : 123557.730 m   (matched 333/338)
+coverage   : 0.99   tracking_lost: false   poses: 9995   max gap: 0.133 s
+drift 50 m : 74259.463 m (281 seg)   100 m: 141003.065 m (231 seg)
+plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq03/traj_xy.pdf
+appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
+20:15:25    готово за 1.5 хв: поз 9995/10064; рядок додано в summary_StarDestroyer.csv
+20:15:25 seq03: усі прогони готові (з них 3 позначено ПЕРЕВІР: мало поз, рядки в summary є; дивись маркери .bad_run*)
+20:15:25   видалено /home/calc/slam-data/ucu/sequence-3
+20:15:25   видалено /home/calc/slam-data/ucu_tum/seq03
