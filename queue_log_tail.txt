@@ -1,60 +1,60 @@
-NVIDIA GeForce RTX 3060; wall 1737s (10.7 fps); VRAM peak 2858 MiB total used (base 1052), torch alloc 1150 / reserved 1730 MiB; RAM peak 1816 MiB.
-Loop closure: BACKEND_THRESH=64.0 MAX_EDGE_AGE=1000 GLOBAL_OPT_FREQ=15; 11 loop-edge batches (672 edges), 64 global BA calls (32s of 1737s); 534 keyframes kept; BA failures swallowed by DPVO: 0.
-Wrote /home/calc/slam-data/results/dpvslam/mono/ucu/seq07/traj_run3.txt (18524 poses) and /home/calc/slam-data/results/dpvslam/mono/ucu/seq07/meta.yaml
-== dpvslam mono ucu/seq07 run3 ==
-ATE RMSE   : 8.012 m   (matched 616/619)
-coverage   : 1.00   tracking_lost: false   poses: 18524   max gap: 76.355 s
-drift 50 m : 5.092 m (563 seg)   100 m: 8.205 m (510 seg)
-plot: /home/calc/slam-data/results/dpvslam/mono/ucu/seq07/traj_xy.pdf
-appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-09:51:39    готово за 29.0 хв: поз 18524/18524; рядок додано в summary_StarDestroyer.csv
-09:51:39 -- seq07 orbslam3:mono run3/3: старт
-ORB3_INFO frames=18524 imu_rows=0 mode=mono pace=0
-
-ORB-SLAM3 Copyright (C) 2017-2020 Carlos Campos, Richard Elvira, Juan J. Gómez, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
-ORB-SLAM2 Copyright (C) 2014-2016 Raúl Mur-Artal, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
-This program comes with ABSOLUTELY NO WARRANTY;
-This is free software, and you are welcome to redistribute it
-under certain conditions. See LICENSE.txt.
-
-Input sensor was set to: Monocular
-Loading settings from /home/calc/slam-runner/configs/orbslam3/UCU_mono.yaml
-Camera1.k3 optional parameter does not exist...
-	-Loaded camera 1
-Camera.newHeight optional parameter does not exist...
-Camera.newWidth optional parameter does not exist...
-	-Loaded image info
-	-Loaded ORB settings
-Viewer.imageViewScale optional parameter does not exist...
-	-Loaded viewer settings
-System.LoadAtlasFromFile optional parameter does not exist...
-System.SaveAtlasToFile optional parameter does not exist...
-	-Loaded Atlas settings
-System.thFarPoints optional parameter does not exist...
-	-Loaded misc parameters
-----------------------------------
-SLAM settings: 
-	-Camera 1 parameters (Pinhole): [ 601.17333984375 600.266357421875 314.01644897460938 250.03944396972656 ]
-	-Camera 1 distortion parameters: [  0.1392686665058136 -0.30741280317306519 0.00072727992665022612 0.00066557613899931312 ]
-	-Original image size: [ 640 , 480 ]
-	-Current image size: [ 640 , 480 ]
-	-Sequence FPS: 30
-	-Features per image: 1000
-	-ORB scale factor: 1.2000000476837158
-	-ORB number of scales: 8
-	-Initial FAST threshold: 20
-	-Min FAST threshold: 7
-
-
-Loading ORB Vocabulary. This could take a while...
-Vocabulary loaded!
-
-Initialization of Atlas from scratch 
-Creation of new map with id: 0
-Creation of new map with last KF id: 0
-Seq. Name: 
-There are 1 cameras in the atlas
-Camera 0 is pinhole
-ORB3_PROGRESS 500/18524 state=1
-ORB3_PROGRESS 1000/18524 state=1
-ORB3_PROGRESS 1500/18524 state=1
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+ORB3_PROGRESS 14500/18523 state=2
+Fail to track local map!
+ORB3_PROGRESS 15000/18523 state=2
+Fail to track local map!
+ORB3_PROGRESS 15500/18523 state=2
+ORB3_PROGRESS 16000/18523 state=2
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+ORB3_PROGRESS 16500/18523 state=2
+ORB3_PROGRESS 17000/18523 state=2
+Fail to track local map!
+Fail to track local map!
+ORB3_PROGRESS 17500/18523 state=2
