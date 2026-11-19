@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-19T17:15:01.795089+00:00",
- "content_hash": "3066fac64c9b27bb05eb19d800c7173dff1c4dadf07be987572241f283d5ee2f",
+ "generated_at": "2026-11-19T23:38:45.699521+00:00",
+ "content_hash": "7bff5416247875563abb684efb375ca7283fc30d83afd88208470899a2e1eb7d",
  "dataset": "ucu",
- "total_done": 112,
+ "total_done": 130,
  "total_needed": 130,
  "methods": [
   {
@@ -33,22 +33,22 @@
  "method_done": {
   "dpvo:mono": 39,
   "wheel_odom:odom": 13,
-  "dpvslam:mono": 30,
-  "orbslam3:mono": 30
+  "dpvslam:mono": 39,
+  "orbslam3:mono": 39
  },
  "hosts": {
   "StarDestroyer": {
    "ref": "refs/remotes/origin/runner-StarDestroyer",
-   "last_report": "2026-11-19T19:07:20+02:00",
+   "last_report": "2026-11-20T00:35:39+02:00",
    "stale": false,
-   "worker": "running",
-   "busy": true,
-   "seq": "seq03",
-   "method": "dpvslam:mono",
-   "run": 1,
-   "since": "2026-11-19T19:00:36",
-   "dir": "down",
-   "runs_done": 107
+   "worker": "idle",
+   "busy": false,
+   "seq": null,
+   "method": null,
+   "run": null,
+   "since": null,
+   "dir": null,
+   "runs_done": 125
   },
   "Teodor": {
    "ref": "refs/remotes/origin/runner-Teodor",
@@ -98,16 +98,36 @@
      "in_progress": []
     },
     "dpvslam:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     },
     "orbslam3:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -146,16 +166,36 @@
      "in_progress": []
     },
     "dpvslam:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     },
     "orbslam3:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
@@ -194,18 +234,36 @@
      "in_progress": []
     },
     "dpvslam:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
-     "in_progress": [
-      "StarDestroyer"
-     ]
+     "in_progress": []
     },
     "orbslam3:mono": {
-     "done": 0,
+     "done": 3,
      "needed": 3,
-     "runs": {},
+     "runs": {
+      "1": [
+       "StarDestroyer"
+      ],
+      "2": [
+       "StarDestroyer"
+      ],
+      "3": [
+       "StarDestroyer"
+      ]
+     },
      "bad": [],
      "in_progress": []
     }
