@@ -1,0 +1,10 @@
+method: orbslam3
+mode: mono
+dataset: ucu
+seq: seq03
+run: 1
+commit: aa29b13c96f58e269ea60c59ea17809d7b5736f0
+config: configs/orbslam3/UCU_mono.yaml
+coverage: 0.24
+tracking_lost: false
+notes: "ORB-SLAM3 4452a3c (-std=c++17), Pangolin v0.9.1, viewer off, pace=0, stride 1, wall 155s incl. vocabulary load. ORB3_STATS frames=10064 ever_ok=1 state_hist=0:4,1:197,2:9503,3:360 track_s=88.637922772000081 wall_s=151.48871287200001 host=StarDestroyer. 2459 of 10064 frames have a pose (raw 2548, unmatched 0, duplicate-frame 89, malformed 0); missing frames are NOT interpolated. eval: ATE matched 82/338 timestamps."
