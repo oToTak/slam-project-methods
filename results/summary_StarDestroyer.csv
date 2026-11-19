@@ -216,3 +216,5 @@ orbslam3,mono,ucu,seq02,1,5.270,,0.73,false,aa29b13
 orbslam3,mono_inertial,ucu,seq02,1,5.232,,0.70,false,aa29b13
 dso,mono,ucu,seq02,1,5.498,,1.00,false,aa29b13
 openvins,mono_inertial,ucu,seq02,1,29.857,,0.77,false,aa29b13
+dpvslam,mono,ucu,seq02,2,5.753,,1.00,false,e4f6df9
+orbslam3,mono,ucu,seq02,2,5.668,,0.73,false,e4f6df9
