@@ -1,60 +1,60 @@
-ATE RMSE   : 5.753 m   (matched 393/395)
-coverage   : 1.00   tracking_lost: false   poses: 11819   max gap: 57.175 s
-drift 50 m : 6.534 m (343 seg)   100 m: 8.521 m (294 seg)
-plot: /home/calc/slam-data/results/dpvslam/mono/ucu/seq09/traj_xy.pdf
-appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-02:54:27    готово за 18.7 хв: поз 11819/11819; рядок додано в summary_StarDestroyer.csv
-02:54:27 -- seq09 orbslam3:mono run2/3: старт
-ORB3_INFO frames=11819 imu_rows=0 mode=mono pace=0
-
-ORB-SLAM3 Copyright (C) 2017-2020 Carlos Campos, Richard Elvira, Juan J. Gómez, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
-ORB-SLAM2 Copyright (C) 2014-2016 Raúl Mur-Artal, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
-This program comes with ABSOLUTELY NO WARRANTY;
-This is free software, and you are welcome to redistribute it
-under certain conditions. See LICENSE.txt.
-
-Input sensor was set to: Monocular
-Loading settings from /home/calc/slam-runner/configs/orbslam3/UCU_mono.yaml
-Camera1.k3 optional parameter does not exist...
-	-Loaded camera 1
-Camera.newHeight optional parameter does not exist...
-Camera.newWidth optional parameter does not exist...
-	-Loaded image info
-	-Loaded ORB settings
-Viewer.imageViewScale optional parameter does not exist...
-	-Loaded viewer settings
-System.LoadAtlasFromFile optional parameter does not exist...
-System.SaveAtlasToFile optional parameter does not exist...
-	-Loaded Atlas settings
-System.thFarPoints optional parameter does not exist...
-	-Loaded misc parameters
-----------------------------------
-SLAM settings: 
-	-Camera 1 parameters (Pinhole): [ 601.17333984375 600.266357421875 314.01644897460938 250.03944396972656 ]
-	-Camera 1 distortion parameters: [  0.1392686665058136 -0.30741280317306519 0.00072727992665022612 0.00066557613899931312 ]
-	-Original image size: [ 640 , 480 ]
-	-Current image size: [ 640 , 480 ]
-	-Sequence FPS: 30
-	-Features per image: 1000
-	-ORB scale factor: 1.2000000476837158
-	-ORB number of scales: 8
-	-Initial FAST threshold: 20
-	-Min FAST threshold: 7
-
-
-Loading ORB Vocabulary. This could take a while...
-Vocabulary loaded!
-
-Initialization of Atlas from scratch 
-Creation of new map with id: 0
-Creation of new map with last KF id: 0
-Seq. Name: 
-There are 1 cameras in the atlas
-Camera 0 is pinhole
-ORB3_PROGRESS 500/11819 state=1
-ORB3_PROGRESS 1000/11819 state=1
-First KF:0; Map init KF:0
-New Map created with 105 points
-ORB3_PROGRESS 1500/11819 state=2
-ORB3_PROGRESS 2000/11819 state=2
-ORB3_PROGRESS 2500/11819 state=2
+RE-TRACK ATTEMPT 14 with initOption 14 and start-lvl 3 (ab 1.939825 -903.253236): 9.758852 8.587328 8.039818 8.315187 nan -> 9.778027 8.593023 8.039722 8.330938 nan 
+RE-TRACK ATTEMPT 15 with initOption 15 and start-lvl 3 (ab 1.939881 -903.304874): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778272 8.593513 8.039827 8.318572 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 16 with initOption 16 and start-lvl 3 (ab 1.939872 -903.295617): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778277 8.593512 8.039824 8.319045 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 17 with initOption 17 and start-lvl 3 (ab 1.939872 -903.295951): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778276 8.593515 8.039830 8.319004 nan 
+RE-TRACK ATTEMPT 18 with initOption 18 and start-lvl 3 (ab 1.939881 -903.304757): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778284 8.593513 8.039830 8.322567 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 19 with initOption 19 and start-lvl 3 (ab 1.939881 -903.304681): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778283 8.593511 8.039826 8.319229 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 20 with initOption 20 and start-lvl 3 (ab 1.939881 -903.304572): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778266 8.593499 8.039824 8.319231 nan 
+RE-TRACK ATTEMPT 21 with initOption 21 and start-lvl 3 (ab 1.939881 -903.304267): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778295 8.593513 8.039825 8.317341 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 22 with initOption 22 and start-lvl 3 (ab 1.939881 -903.304642): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778277 8.593499 8.039824 8.319233 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 23 with initOption 23 and start-lvl 3 (ab 1.939881 -903.304562): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778267 8.593502 8.039825 8.319228 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 24 with initOption 24 and start-lvl 3 (ab 1.939873 -903.296259): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778288 8.593517 8.039826 8.318444 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 25 with initOption 25 and start-lvl 3 (ab 1.939881 -903.304588): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778273 8.593512 8.039824 8.319231 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 26 with initOption 26 and start-lvl 3 (ab 1.939881 -903.304606): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778269 8.593512 8.039826 8.319224 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 27 with initOption 27 and start-lvl 3 (ab 1.939873 -903.296277): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778288 8.593515 8.039824 8.318443 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 28 with initOption 28 and start-lvl 3 (ab 1.939881 -903.304602): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778283 8.593512 8.039826 8.319229 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 29 with initOption 29 and start-lvl 3 (ab 1.939881 -903.304595): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778274 8.593512 8.039824 8.319235 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 30 with initOption 30 and start-lvl 3 (ab 1.939825 -903.252977): 9.758852 8.587328 8.039722 8.315187 nan -> 9.778025 8.593027 8.039721 8.330972 nan 
+RE-TRACK ATTEMPT 1 with initOption 1 and start-lvl 3 (ab 1.878095 -874.268057): 8.177265 7.292830 7.152975 7.695234 nan -> 8.177208 7.292718 7.152914 7.691537 nan 
+RE-TRACK ATTEMPT 2 with initOption 2 and start-lvl 3 (ab 1.877834 -874.012499): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177301 7.293139 7.153401 7.693110 nan 
+RE-TRACK ATTEMPT 3 with initOption 3 and start-lvl 3 (ab 1.877854 -874.032498): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177307 7.293128 7.153381 7.694179 nan 
+RE-TRACK ATTEMPT 4 with initOption 4 and start-lvl 3 (ab 1.877897 -874.074555): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177392 7.293045 7.153346 7.698056 nan 
+RE-TRACK ATTEMPT 5 with initOption 5 and start-lvl 3 (ab 1.877822 -874.002334): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177481 7.293159 7.153404 7.695883 nan 
+RE-TRACK ATTEMPT 6 with initOption 6 and start-lvl 3 (ab 1.878076 -874.249114): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177217 7.292755 7.152938 7.694900 nan 
+RE-TRACK ATTEMPT 7 with initOption 7 and start-lvl 3 (ab 1.877735 -873.916771): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177543 7.293318 7.153486 7.692215 nan 
+RE-TRACK ATTEMPT 8 with initOption 8 and start-lvl 3 (ab 1.887062 -882.516461): 8.177208 7.292718 7.152914 7.691537 nan -> nan nan nan 18.025776 nan 
+RE-TRACK ATTEMPT 9 with initOption 9 and start-lvl 3 (ab 1.877841 -874.019187): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177291 7.293124 7.153390 7.694915 nan 
+RE-TRACK ATTEMPT 10 with initOption 10 and start-lvl 3 (ab 1.877837 -874.015414): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177294 7.293147 7.153399 7.693977 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 11 with initOption 11 and start-lvl 3 (ab 1.877436 -873.630874): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177963 7.294007 7.153771 7.702014 nan 
+RE-TRACK ATTEMPT 12 with initOption 12 and start-lvl 3 (ab 1.877904 -874.080485): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177264 7.293029 7.153340 7.697534 nan 
+RE-TRACK ATTEMPT 13 with initOption 13 and start-lvl 3 (ab 1.877861 -874.039079): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177308 7.293118 7.153377 7.695179 nan 
+RE-TRACK ATTEMPT 14 with initOption 14 and start-lvl 3 (ab 1.887062 -882.516461): 8.177208 7.292718 7.152914 7.691537 nan -> nan nan nan 18.200321 nan 
+RE-TRACK ATTEMPT 15 with initOption 15 and start-lvl 3 (ab 1.877813 -873.994287): 8.177208 7.292718 7.152914 7.691537 nan -> 8.177456 7.293283 7.153410 7.690697 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 16 with initOption 16 and start-lvl 3 (ab 1.877473 -873.667028): 8.177208 7.292718 7.152914 7.690697 nan -> 8.177910 7.293924 7.153737 7.699190 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 17 with initOption 17 and start-lvl 3 (ab 1.877562 -873.750959): 8.177208 7.292718 7.152914 7.690697 nan -> 8.177636 7.293721 7.153651 7.700783 nan 
+RE-TRACK ATTEMPT 18 with initOption 18 and start-lvl 3 (ab 1.877866 -874.043963): 8.177208 7.292718 7.152914 7.690697 nan -> 8.177308 7.293111 7.153375 7.694737 nan 
+RE-TRACK ATTEMPT 19 with initOption 19 and start-lvl 3 (ab 1.877876 -874.053948): 8.177208 7.292718 7.152914 7.690697 nan -> 8.177325 7.293090 7.153355 7.697307 nan 
+RE-TRACK ATTEMPT 20 with initOption 20 and start-lvl 3 (ab 1.887062 -882.516461): 8.177208 7.292718 7.152914 7.690697 nan -> nan nan nan 17.926531 nan 
+RE-TRACK ATTEMPT 21 with initOption 21 and start-lvl 3 (ab 1.877840 -874.018705): 8.177208 7.292718 7.152914 7.690697 nan -> 8.177329 7.293141 7.153397 7.694918 nan 
+REPEAT LEVEL!
+RE-TRACK ATTEMPT 22 with initOption 22 and start-lvl 3 (ab 1.879883 -876.000585): 8.177208 7.292718 7.152914 7.690697 nan -> 8.173602 7.289831 7.153891 7.701483 nan 
+RE-TRACK ATTEMPT 23 with initOption 23 and start-lvl 3 (ab 1.887062 -882.516461): 8.173602 7.289831 7.152914 7.690697 nan -> nan nan nan 18.127699 nan 
+RE-TRACK ATTEMPT 24 with initOption 24 and start-lvl 3 (ab 1.887062 -882.516461): 8.173602 7.289831 7.152914 7.690697 nan -> nan nan nan 17.320530 nan 
+RE-TRACK ATTEMPT 25 with initOption 25 and start-lvl 3 (ab 1.887062 -882.516461): 8.173602 7.289831 7.152914 7.690697 nan -> nan nan nan 17.804564 nan 
+RE-TRACK ATTEMPT 26 with initOption 26 and start-lvl 3 (ab 1.887062 -882.516461): 8.173602 7.289831 7.152914 7.690697 nan -> nan nan nan 12.973219 nan 
