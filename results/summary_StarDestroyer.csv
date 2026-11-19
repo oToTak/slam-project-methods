@@ -140,3 +140,4 @@ dpvslam,mono,ucu,seq07,1,11.056,,1.00,false,3d5db2a
 orbslam3,mono,ucu,seq07,1,2.815,,0.81,false,3d5db2a
 orbslam3,mono_inertial,ucu,seq07,1,13.025,,0.80,false,3d5db2a
 dso,mono,ucu,seq07,1,12.265,,0.88,false,3d5db2a
+openvins,mono_inertial,ucu,seq07,1,27816.402,,0.29,false,3d5db2a
