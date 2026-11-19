@@ -138,3 +138,5 @@ dso,mono,ucu,seq08,3,54,623,15.504,,4,0,0.334,1577,log matches /tracking (is )?l
 openvins,mono_inertial,ucu,seq08,3,621,623,166867.903,325470.587,570,520,0.167,18609,
 dpvslam,mono,ucu,seq07,1,616,619,7.781,12.215,563,510,76.355,18524,
 orbslam3,mono,ucu,seq07,1,561,619,2.937,4.206,508,455,0.100,16877,
+orbslam3,mono_inertial,ucu,seq07,1,551,619,12.741,22.211,498,445,0.100,16581,ATE matched 551/619 timestamps
+dso,mono,ucu,seq07,1,609,619,8.622,13.217,556,503,0.234,18288,

@@ -1,60 +1,60 @@
-Camera1.k3 optional parameter does not exist...
-	-Loaded camera 1
-Camera.newHeight optional parameter does not exist...
-Camera.newWidth optional parameter does not exist...
-	-Loaded image info
-IMU.InsertKFsWhenLost optional parameter does not exist...
-	-Loaded IMU calibration
-	-Loaded ORB settings
-Viewer.imageViewScale optional parameter does not exist...
-	-Loaded viewer settings
-System.LoadAtlasFromFile optional parameter does not exist...
-System.SaveAtlasToFile optional parameter does not exist...
-	-Loaded Atlas settings
-System.thFarPoints optional parameter does not exist...
-	-Loaded misc parameters
-----------------------------------
-SLAM settings: 
-	-Camera 1 parameters (Pinhole): [ 601.17333984375 600.266357421875 314.01644897460938 250.03944396972656 ]
-	-Camera 1 distortion parameters: [  0.1392686665058136 -0.30741280317306519 0.00072727992665022612 0.00066557613899931312 ]
-	-Original image size: [ 640 , 480 ]
-	-Current image size: [ 640 , 480 ]
-	-Sequence FPS: 30
-	-Gyro noise: 0.00044917772174812853
-	-Accelerometer noise: 0.0020463115070015192
-	-Gyro walk: 1.4932100384612568e-05
-	-Accelerometer walk: 3.2793723221402615e-05
-	-IMU frequency: 125
-	-Features per image: 1000
-	-ORB scale factor: 1.2000000476837158
-	-ORB number of scales: 8
-	-Initial FAST threshold: 20
-	-Min FAST threshold: 7
-
-
-Loading ORB Vocabulary. This could take a while...
-Vocabulary loaded!
-
-Initialization of Atlas from scratch 
-Creation of new map with id: 0
-Creation of new map with last KF id: 0
-Seq. Name: 
-There are 1 cameras in the atlas
-Camera 0 is pinhole
-ORB3_PROGRESS 500/18523 state=1
-ORB3_PROGRESS 1000/18523 state=1
-ORB3_PROGRESS 1500/18523 state=1
-First KF:0; Map init KF:0
-New Map created with 156 points
-ORB3_PROGRESS 2000/18523 state=2
-start VIBA 1
-end VIBA 1
-start VIBA 2
-end VIBA 2
-Fail to track local map!
-ORB3_PROGRESS 2500/18523 state=2
-ORB3_PROGRESS 3000/18523 state=2
-ORB3_PROGRESS 3500/18523 state=2
-ORB3_PROGRESS 4000/18523 state=2
-ORB3_PROGRESS 4500/18523 state=2
-ORB3_PROGRESS 5000/18523 state=2
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.704,0.566,0.120,0.411 | p_IinG = 4057.282,-22124.958,-5106.170 | dist = 23550.04 (meters)
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.704,0.565,0.120,0.412 | p_IinG = 4057.412,-22141.686,-5111.176 | dist = 23567.50 (meters)
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.704,0.565,0.119,0.412 | p_IinG = 4057.540,-22158.422,-5116.186 | dist = 23584.98 (meters)
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.704,0.566,0.119,0.412 | p_IinG = 4057.668,-22175.167,-5121.200 | dist = 23602.46 (meters)
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.704,0.566,0.119,0.412 | p_IinG = 4057.794,-22191.920,-5126.218 | dist = 23619.94 (meters)
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.704,0.566,0.119,0.413 | p_IinG = 4057.919,-22208.682,-5131.239 | dist = 23637.44 (meters)
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.704,0.566,0.119,0.413 | p_IinG = 4058.043,-22225.452,-5136.264 | dist = 23654.95 (meters)
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.704,0.566,0.119,0.412 | p_IinG = 4058.165,-22242.230,-5141.294 | dist = 23672.47 (meters)
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.703,0.566,0.119,0.413 | p_IinG = 4058.286,-22259.016,-5146.327 | dist = 23689.99 (meters)
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.703,0.566,0.118,0.413 | p_IinG = 4058.405,-22275.810,-5151.366 | dist = 23707.52 (meters)
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.702,0.567,0.118,0.414 | p_IinG = 4058.522,-22292.612,-5156.408 | dist = 23725.07 (meters)
+bg = -0.0104,0.0078,0.0162 | ba = -0.8324,1.6176,-0.2512
+camera-imu timeoffset = 0.00113
+cam0 intrinsics = 601.167,600.249,314.005,250.026 | 0.139,-0.307,0.000,0.000
+cam0 extrinsics = -0.018,-0.707,-0.707,0.002 | 0.050,0.049,-0.002
+q_GtoI = -0.702,0.567,0.117,0.415 | p_IinG = 4058.638,-22309.423,-5161.453 | dist = 23742.62 (meters)
