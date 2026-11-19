@@ -1,10 +1,10 @@
-host: StarDestroyer   updated: 2026-11-19T08:48:04+02:00   code: 3d5db2a
+host: StarDestroyer   updated: 2026-11-19T08:58:09+02:00   code: 3d5db2a
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
-Місце для даних: доступно 24.9 GB = мінімум із: df 964.5 GB; диск Windows C:\ під vhdx 121.2 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 35.1 GB = 24.9 GB
+Місце для даних: доступно 24.9 GB = мінімум із: df 964.5 GB; диск Windows C:\ під vhdx 119.0 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 35.1 GB = 24.9 GB
 Методи (прогонів): dpvo:mono×3, wheel_odom:odom×1, dpvslam:mono×3, orbslam3:mono×3, orbslam3:mono_inertial×3, dso:mono×3, openvins:mono_inertial×3   межа stop-before: нема
-Воркер ПРАЦЮЄ (pid 371): seq07 orbslam3:mono_inertial run2 з 2026-11-19T08:43:27; напрямок down від 13
-Інший ПК Teodor: останній звіт 2026-11-13 18:49 (134.0 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
+Воркер ПРАЦЮЄ (pid 371): seq07 dso:mono run2 з 2026-11-19T08:54:23; напрямок down від 13
+Інший ПК Teodor: останній звіт 2026-11-13 18:49 (134.1 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
 
  #  seq       .mcap  прогони (готово/треба, хто)                                                                                                                                                                     стан         дані на диску
  1  seq01    6.5 GB  dpvo 3/3 Teodor, wheel_odom 1/1 StarDestroyer, dpvslam 0/3, orbslam3:mono 0/3, orbslam3:mono_inertial 0/3, dso 0/3, openvins 0/3                                                                частково     -
@@ -25,4 +25,4 @@ host: StarDestroyer   updated: 2026-11-19T08:48:04+02:00   code: 3d5db2a
 Готово підряд від твого кінця (13, down): seq13 … seq08
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 0 %, 939 MiB, 12288 MiB, 38
+NVIDIA GeForce RTX 3060, 0 %, 939 MiB, 12288 MiB, 36

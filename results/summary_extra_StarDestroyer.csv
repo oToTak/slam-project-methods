@@ -143,3 +143,4 @@ dso,mono,ucu,seq07,1,609,619,8.622,13.217,556,503,0.234,18288,
 openvins,mono_inertial,ucu,seq07,1,200,619,27083.408,48146.089,151,100,0.167,6016,ATE matched 200/619 timestamps
 dpvslam,mono,ucu,seq07,2,616,619,6.826,11.125,563,510,76.355,18524,
 orbslam3,mono,ucu,seq07,2,561,619,3.104,4.797,508,455,0.100,16877,
+orbslam3,mono_inertial,ucu,seq07,2,,,,,0,0,,0,full failure: FileNotFoundError: [Errno 2] No such file or directory: '/home/calc/slam-data/results/orbslam3/mono_inertial/ucu/seq07/traj_run2.txt'
