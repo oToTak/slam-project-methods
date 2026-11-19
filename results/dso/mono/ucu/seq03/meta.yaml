@@ -2,9 +2,9 @@ method: dso
 mode: mono
 dataset: ucu
 seq: seq03
-run: 1
+run: 2
 commit: aa29b13c96f58e269ea60c59ea17809d7b5736f0
 config: configs/dso/camera_ucu.txt
 coverage: 0.99
 tracking_lost: false
-notes: "DSO 7b0c99f mono, NO photometric calibration (mode=1: affine brightness a,b optimised, exposure 1.0), preset 0 (2000 points, 5-7 keyframes), RadTan distortion passed as in the camera file ('crop' rectification), global-shutter assumption violated by the rolling-shutter sensor, nogui, no sleeping (linearizeOperation), multithreading=on, non-keyframe poses re-expressed against final keyframe poses, wall 159s. DSO_STATS frames=10064 fed=10064 valid=10006 keyframes=995 dropped=0 resets=1 lost=0 lost_at=-1 initialized=1 wall_s=158.8 host=StarDestroyer. 10006 of 10064 frames have a pose (99.4% of frames; outside-sequence 0, duplicate 0, malformed 0); frames without a pose (before initialisation, after DSO got lost, before a reset) are NOT interpolated."
+notes: "DSO 7b0c99f mono, NO photometric calibration (mode=1: affine brightness a,b optimised, exposure 1.0), preset 0 (2000 points, 5-7 keyframes), RadTan distortion passed as in the camera file ('crop' rectification), global-shutter assumption violated by the rolling-shutter sensor, nogui, no sleeping (linearizeOperation), multithreading=on, non-keyframe poses re-expressed against final keyframe poses, wall 169s. DSO_STATS frames=10064 fed=10064 valid=10006 keyframes=1133 dropped=0 resets=1 lost=0 lost_at=-1 initialized=1 wall_s=169.2 host=StarDestroyer. 10006 of 10064 frames have a pose (99.4% of frames; outside-sequence 0, duplicate 0, malformed 0); frames without a pose (before initialisation, after DSO got lost, before a reset) are NOT interpolated."
