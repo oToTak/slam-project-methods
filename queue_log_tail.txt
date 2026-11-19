@@ -1,60 +1,60 @@
- 99%|█████████▉| 144681/145496 [20:20<00:07, 115.96it/s]
- 99%|█████████▉| 144696/145496 [20:20<00:06, 119.83it/s]
- 99%|█████████▉| 144710/145496 [20:20<00:06, 120.58it/s]
- 99%|█████████▉| 144726/145496 [20:20<00:06, 123.53it/s]
- 99%|█████████▉| 144741/145496 [20:20<00:06, 124.23it/s]
- 99%|█████████▉| 144755/145496 [20:20<00:06, 122.52it/s]
-100%|█████████▉| 144769/145496 [20:20<00:05, 123.35it/s]
-100%|█████████▉| 144784/145496 [20:21<00:05, 125.91it/s]
-100%|█████████▉| 144798/145496 [20:21<00:05, 124.99it/s]
-100%|█████████▉| 144814/145496 [20:21<00:05, 130.96it/s]
-100%|█████████▉| 144829/145496 [20:21<00:05, 133.21it/s]
-100%|█████████▉| 144845/145496 [20:21<00:04, 138.38it/s]
-100%|█████████▉| 144859/145496 [20:21<00:04, 136.34it/s]
-100%|█████████▉| 144874/145496 [20:21<00:04, 138.72it/s]
-100%|█████████▉| 144893/145496 [20:21<00:03, 151.82it/s]
-100%|█████████▉| 144909/145496 [20:21<00:03, 153.31it/s]
-100%|█████████▉| 144925/145496 [20:22<00:03, 153.96it/s]
-100%|█████████▉| 144941/145496 [20:22<00:03, 153.28it/s]
-100%|█████████▉| 144957/145496 [20:22<00:04, 132.05it/s]
-100%|█████████▉| 144973/145496 [20:22<00:03, 137.87it/s]
-100%|█████████▉| 144988/145496 [20:22<00:03, 138.78it/s]
-100%|█████████▉| 145003/145496 [20:22<00:03, 139.80it/s]
-100%|█████████▉| 145018/145496 [20:22<00:03, 140.14it/s]
-100%|█████████▉| 145033/145496 [20:22<00:03, 140.71it/s]
-100%|█████████▉| 145048/145496 [20:22<00:03, 140.57it/s]
-100%|█████████▉| 145063/145496 [20:23<00:03, 141.13it/s]
-100%|█████████▉| 145078/145496 [20:23<00:02, 142.41it/s]
-100%|█████████▉| 145093/145496 [20:23<00:02, 142.68it/s]
-100%|█████████▉| 145109/145496 [20:23<00:02, 146.28it/s]
-100%|█████████▉| 145124/145496 [20:23<00:02, 145.01it/s]
-100%|█████████▉| 145140/145496 [20:23<00:02, 145.52it/s]
-100%|█████████▉| 145155/145496 [20:23<00:02, 145.30it/s]
-100%|█████████▉| 145170/145496 [20:23<00:02, 145.28it/s]
-100%|█████████▉| 145185/145496 [20:23<00:02, 145.74it/s]
-100%|█████████▉| 145200/145496 [20:23<00:02, 144.32it/s]
-100%|█████████▉| 145215/145496 [20:24<00:01, 142.16it/s]
-100%|█████████▉| 145230/145496 [20:24<00:01, 139.24it/s]
-100%|█████████▉| 145244/145496 [20:24<00:01, 135.65it/s]
-100%|█████████▉| 145258/145496 [20:24<00:01, 132.64it/s]
-100%|█████████▉| 145272/145496 [20:24<00:01, 130.87it/s]
-100%|█████████▉| 145287/145496 [20:24<00:01, 131.43it/s]
-100%|█████████▉| 145302/145496 [20:24<00:01, 131.34it/s]
-100%|█████████▉| 145318/145496 [20:24<00:01, 133.46it/s]
-100%|█████████▉| 145335/145496 [20:24<00:01, 136.67it/s]
-100%|█████████▉| 145350/145496 [20:25<00:01, 135.23it/s]
-100%|█████████▉| 145364/145496 [20:25<00:00, 132.53it/s]
-100%|█████████▉| 145378/145496 [20:25<00:00, 129.56it/s]
-100%|█████████▉| 145393/145496 [20:25<00:00, 129.84it/s]
-100%|█████████▉| 145409/145496 [20:25<00:00, 133.75it/s]
-100%|█████████▉| 145423/145496 [20:25<00:00, 131.29it/s]
-100%|█████████▉| 145438/145496 [20:25<00:00, 132.67it/s]
-100%|█████████▉| 145452/145496 [20:25<00:00, 130.67it/s]
-100%|█████████▉| 145468/145496 [20:26<00:00, 135.19it/s]
-100%|█████████▉| 145483/145496 [20:26<00:00, 135.39it/s]
-100%|██████████| 145496/145496 [20:26<00:00, 118.66it/s]
-Found 1170 common timestamps for color 18745 color and 1171 depth images.
-Found 1170 common timestamps for color 18745 color and 1173 depth images.
-wrote /home/calc/slam-data/ucu_tum/seq06.partial/odom.txt (11580 poses)
-seq06,download_s=1291,export_s=1233,mcap_bytes=18768883600,export_bytes=8028406210
-10:58:59 -- seq06 dpvslam:mono run1/3: старт
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Creation of new map with id: 1
+Stored map with ID: 0
+Creation of new map with last KF id: 859
+First KF:859; Map init KF:859
+New Map created with 117 points
+ORB3_PROGRESS 6000/18745 state=2
+ORB3_PROGRESS 6500/18745 state=2
+ORB3_PROGRESS 7000/18745 state=2
+ORB3_PROGRESS 7500/18745 state=2
+ORB3_PROGRESS 8000/18745 state=2
+ORB3_PROGRESS 8500/18745 state=2
+ORB3_PROGRESS 9000/18745 state=2
+ORB3_PROGRESS 9500/18745 state=2
+ORB3_PROGRESS 10000/18745 state=2
