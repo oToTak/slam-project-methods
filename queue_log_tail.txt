@@ -1,60 +1,60 @@
- 99%|█████████▉| 142945/143751 [20:04<00:06, 117.18it/s]
- 99%|█████████▉| 142959/143751 [20:04<00:06, 113.35it/s]
- 99%|█████████▉| 142974/143751 [20:04<00:06, 113.05it/s]
- 99%|█████████▉| 142988/143751 [20:04<00:06, 110.77it/s]
- 99%|█████████▉| 143002/143751 [20:05<00:06, 109.07it/s]
- 99%|█████████▉| 143019/143751 [20:05<00:06, 115.95it/s]
-100%|█████████▉| 143033/143751 [20:05<00:06, 112.27it/s]
-100%|█████████▉| 143047/143751 [20:05<00:06, 111.22it/s]
-100%|█████████▉| 143062/143751 [20:05<00:06, 112.75it/s]
-100%|█████████▉| 143078/143751 [20:05<00:05, 116.25it/s]
-100%|█████████▉| 143092/143751 [20:05<00:05, 111.04it/s]
-100%|█████████▉| 143107/143751 [20:06<00:05, 112.38it/s]
-100%|█████████▉| 143121/143751 [20:06<00:05, 110.78it/s]
-100%|█████████▉| 143139/143751 [20:06<00:05, 117.76it/s]
-100%|█████████▉| 143155/143751 [20:06<00:05, 118.32it/s]
-100%|█████████▉| 143169/143751 [20:06<00:05, 114.03it/s]
-100%|█████████▉| 143184/143751 [20:06<00:04, 114.11it/s]
-100%|█████████▉| 143200/143751 [20:06<00:04, 114.94it/s]
-100%|█████████▉| 143214/143751 [20:06<00:04, 112.15it/s]
-100%|█████████▉| 143229/143751 [20:07<00:04, 110.84it/s]
-100%|█████████▉| 143245/143751 [20:07<00:04, 113.94it/s]
-100%|█████████▉| 143257/143751 [20:07<00:04, 106.03it/s]
-100%|█████████▉| 143272/143751 [20:07<00:04, 107.22it/s]
-100%|█████████▉| 143288/143751 [20:07<00:04, 110.95it/s]
-100%|█████████▉| 143302/143751 [20:07<00:04, 108.43it/s]
-100%|█████████▉| 143317/143751 [20:07<00:03, 109.92it/s]
-100%|█████████▉| 143333/143751 [20:08<00:03, 112.88it/s]
-100%|█████████▉| 143347/143751 [20:08<00:03, 110.06it/s]
-100%|█████████▉| 143365/143751 [20:08<00:03, 117.39it/s]
-100%|█████████▉| 143381/143751 [20:08<00:03, 115.53it/s]
-100%|█████████▉| 143395/143751 [20:08<00:03, 110.58it/s]
-100%|█████████▉| 143410/143751 [20:08<00:03, 111.17it/s]
-100%|█████████▉| 143424/143751 [20:08<00:02, 109.33it/s]
-100%|█████████▉| 143438/143751 [20:08<00:02, 107.45it/s]
-100%|█████████▉| 143453/143751 [20:09<00:02, 109.51it/s]
-100%|█████████▉| 143469/143751 [20:09<00:02, 112.72it/s]
-100%|█████████▉| 143483/143751 [20:09<00:02, 111.14it/s]
-100%|█████████▉| 143498/143751 [20:09<00:02, 112.18it/s]
-100%|█████████▉| 143514/143751 [20:09<00:02, 113.86it/s]
-100%|█████████▉| 143528/143751 [20:09<00:02, 110.37it/s]
-100%|█████████▉| 143543/143751 [20:09<00:01, 111.52it/s]
-100%|█████████▉| 143557/143751 [20:10<00:01, 110.02it/s]
-100%|█████████▉| 143574/143751 [20:10<00:01, 114.75it/s]
-100%|█████████▉| 143589/143751 [20:10<00:01, 114.77it/s]
-100%|█████████▉| 143605/143751 [20:10<00:01, 117.02it/s]
-100%|█████████▉| 143619/143751 [20:10<00:01, 113.69it/s]
-100%|█████████▉| 143634/143751 [20:10<00:01, 113.67it/s]
-100%|█████████▉| 143650/143751 [20:10<00:00, 115.52it/s]
-100%|█████████▉| 143664/143751 [20:10<00:00, 113.22it/s]
-100%|█████████▉| 143679/143751 [20:11<00:00, 112.50it/s]
-100%|█████████▉| 143693/143751 [20:11<00:00, 110.43it/s]
-100%|█████████▉| 143707/143751 [20:11<00:00, 109.64it/s]
-100%|█████████▉| 143722/143751 [20:11<00:00, 111.43it/s]
-100%|█████████▉| 143738/143751 [20:11<00:00, 114.86it/s]
-100%|██████████| 143751/143751 [20:11<00:00, 118.64it/s]
-Found 1127 common timestamps for color 18524 color and 1128 depth images.
-Found 1127 common timestamps for color 18524 color and 1129 depth images.
-wrote /home/calc/slam-data/ucu_tum/seq07.partial/odom.txt (11438 poses)
-seq07,download_s=1226,export_s=1218,mcap_bytes=18510523139,export_bytes=8188333270
-07:19:39 -- seq07 dpvslam:mono run1/3: старт
+Camera1.k3 optional parameter does not exist...
+	-Loaded camera 1
+Camera.newHeight optional parameter does not exist...
+Camera.newWidth optional parameter does not exist...
+	-Loaded image info
+IMU.InsertKFsWhenLost optional parameter does not exist...
+	-Loaded IMU calibration
+	-Loaded ORB settings
+Viewer.imageViewScale optional parameter does not exist...
+	-Loaded viewer settings
+System.LoadAtlasFromFile optional parameter does not exist...
+System.SaveAtlasToFile optional parameter does not exist...
+	-Loaded Atlas settings
+System.thFarPoints optional parameter does not exist...
+	-Loaded misc parameters
+----------------------------------
+SLAM settings: 
+	-Camera 1 parameters (Pinhole): [ 601.17333984375 600.266357421875 314.01644897460938 250.03944396972656 ]
+	-Camera 1 distortion parameters: [  0.1392686665058136 -0.30741280317306519 0.00072727992665022612 0.00066557613899931312 ]
+	-Original image size: [ 640 , 480 ]
+	-Current image size: [ 640 , 480 ]
+	-Sequence FPS: 30
+	-Gyro noise: 0.00044917772174812853
+	-Accelerometer noise: 0.0020463115070015192
+	-Gyro walk: 1.4932100384612568e-05
+	-Accelerometer walk: 3.2793723221402615e-05
+	-IMU frequency: 125
+	-Features per image: 1000
+	-ORB scale factor: 1.2000000476837158
+	-ORB number of scales: 8
+	-Initial FAST threshold: 20
+	-Min FAST threshold: 7
+
+
+Loading ORB Vocabulary. This could take a while...
+Vocabulary loaded!
+
+Initialization of Atlas from scratch 
+Creation of new map with id: 0
+Creation of new map with last KF id: 0
+Seq. Name: 
+There are 1 cameras in the atlas
+Camera 0 is pinhole
+ORB3_PROGRESS 500/18523 state=1
+ORB3_PROGRESS 1000/18523 state=1
+ORB3_PROGRESS 1500/18523 state=1
+First KF:0; Map init KF:0
+New Map created with 156 points
+ORB3_PROGRESS 2000/18523 state=2
+start VIBA 1
+end VIBA 1
+start VIBA 2
+end VIBA 2
+Fail to track local map!
+ORB3_PROGRESS 2500/18523 state=2
+ORB3_PROGRESS 3000/18523 state=2
+ORB3_PROGRESS 3500/18523 state=2
+ORB3_PROGRESS 4000/18523 state=2
+ORB3_PROGRESS 4500/18523 state=2
+ORB3_PROGRESS 5000/18523 state=2
