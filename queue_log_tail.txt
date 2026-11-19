@@ -1,60 +1,60 @@
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-ORB3_PROGRESS 1500/12741 state=3
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Fail to track local map!
-Creation of new map with id: 2
-Stored map with ID: 1
-Creation of new map with last KF id: 153
-First KF:153; Map init KF:153
-New Map created with 129 points
-ORB3_PROGRESS 2000/12741 state=2
-ORB3_PROGRESS 2500/12741 state=2
-ORB3_PROGRESS 3000/12741 state=2
+cam0 intrinsics = 613.181,609.357,313.313,252.361 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.009 | -0.002,0.195,0.438
+q_GtoI = -0.821,-0.570,0.008,0.040 | p_IinG = 8.145,-43.905,-11.224 | dist = 181.06 (meters)
+bg = -0.0009,-0.0008,0.0141 | ba = 0.0595,0.2974,-0.0931
+camera-imu timeoffset = -0.02107
+cam0 intrinsics = 613.194,609.364,313.330,252.354 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.009 | -0.002,0.195,0.438
+q_GtoI = -0.821,-0.569,0.008,0.040 | p_IinG = 8.516,-44.098,-11.189 | dist = 181.47 (meters)
+bg = -0.0009,-0.0008,0.0140 | ba = 0.0595,0.2972,-0.0931
+camera-imu timeoffset = -0.02107
+cam0 intrinsics = 613.192,609.357,313.323,252.350 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.009 | -0.002,0.195,0.438
+q_GtoI = -0.822,-0.568,0.009,0.041 | p_IinG = 8.952,-44.457,-11.275 | dist = 181.88 (meters)
+bg = -0.0010,-0.0008,0.0140 | ba = 0.0588,0.2971,-0.0932
+camera-imu timeoffset = -0.02107
+cam0 intrinsics = 613.189,609.369,313.326,252.353 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.009 | -0.002,0.195,0.438
+q_GtoI = -0.822,-0.567,0.009,0.042 | p_IinG = 9.230,-44.474,-11.282 | dist = 182.29 (meters)
+bg = -0.0010,-0.0009,0.0140 | ba = 0.0592,0.2970,-0.0931
+camera-imu timeoffset = -0.02106
+cam0 intrinsics = 613.194,609.364,313.331,252.345 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.010 | -0.002,0.195,0.438
+q_GtoI = -0.822,-0.567,0.010,0.043 | p_IinG = 9.539,-44.594,-11.293 | dist = 182.70 (meters)
+bg = -0.0010,-0.0009,0.0140 | ba = 0.0595,0.2971,-0.0931
+camera-imu timeoffset = -0.02106
+cam0 intrinsics = 613.193,609.366,313.335,252.350 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.010 | -0.002,0.195,0.438
+q_GtoI = -0.823,-0.567,0.008,0.041 | p_IinG = 9.866,-44.685,-11.246 | dist = 183.11 (meters)
+bg = -0.0009,-0.0009,0.0140 | ba = 0.0602,0.2969,-0.0929
+camera-imu timeoffset = -0.02106
+cam0 intrinsics = 613.194,609.362,313.329,252.346 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.010 | -0.002,0.195,0.438
+q_GtoI = -0.823,-0.567,0.008,0.041 | p_IinG = 10.241,-44.849,-11.279 | dist = 183.52 (meters)
+bg = -0.0009,-0.0009,0.0140 | ba = 0.0602,0.2969,-0.0929
+camera-imu timeoffset = -0.02106
+cam0 intrinsics = 613.194,609.362,313.329,252.346 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.010 | -0.002,0.195,0.438
+q_GtoI = -0.822,-0.567,0.008,0.043 | p_IinG = 10.723,-45.129,-11.300 | dist = 183.93 (meters)
+bg = -0.0009,-0.0009,0.0140 | ba = 0.0602,0.2971,-0.0930
+camera-imu timeoffset = -0.02106
+cam0 intrinsics = 613.184,609.361,313.328,252.357 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.010 | -0.002,0.195,0.438
+q_GtoI = -0.822,-0.567,0.008,0.044 | p_IinG = 11.099,-45.294,-11.333 | dist = 184.34 (meters)
+bg = -0.0009,-0.0009,0.0140 | ba = 0.0602,0.2971,-0.0930
+camera-imu timeoffset = -0.02106
+cam0 intrinsics = 613.184,609.361,313.328,252.357 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.010 | -0.002,0.195,0.438
+q_GtoI = -0.824,-0.565,0.008,0.045 | p_IinG = 11.455,-45.412,-11.404 | dist = 184.75 (meters)
+bg = -0.0010,-0.0009,0.0140 | ba = 0.0599,0.2967,-0.0930
+camera-imu timeoffset = -0.02106
+cam0 intrinsics = 613.191,609.358,313.327,252.358 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.010 | -0.002,0.195,0.438
+q_GtoI = -0.824,-0.565,0.008,0.045 | p_IinG = 11.831,-45.578,-11.438 | dist = 185.17 (meters)
+bg = -0.0010,-0.0009,0.0140 | ba = 0.0599,0.2967,-0.0930
+camera-imu timeoffset = -0.02106
+cam0 intrinsics = 613.191,609.358,313.327,252.358 | 0.161,-0.299,0.025,-0.004
+cam0 extrinsics = -0.022,-0.710,-0.704,0.010 | -0.002,0.195,0.438
+q_GtoI = -0.824,-0.565,0.009,0.047 | p_IinG = 12.118,-45.637,-11.451 | dist = 185.58 (meters)
+bg = -0.0010,-0.0009,0.0140 | ba = 0.0602,0.2968,-0.0929
+camera-imu timeoffset = -0.02107

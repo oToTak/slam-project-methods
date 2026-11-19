@@ -182,3 +182,6 @@ orbslam3,mono_inertial,ucu,seq05,3,,,,,0,0,,0,log matches /tracking (is )?lost|l
 dso,mono,ucu,seq05,3,49,424,,,0,0,1.167,1448,log matches /tracking (is )?lost|lost tracking|tracking failed/; ATE matched 49/424 timestamps
 openvins,mono_inertial,ucu,seq05,3,421,424,83796.353,166410.328,369,319,0.067,12596,
 dpvslam,mono,ucu,seq04,1,425,425,8.254,10.697,371,319,0.100,12741,
+orbslam3,mono,ucu,seq04,1,159,425,3.552,3.537,109,54,0.067,4760,ATE matched 159/425 timestamps
+orbslam3,mono_inertial,ucu,seq04,1,369,425,8.681,13.770,315,263,0.067,11058,ATE matched 369/425 timestamps
+dso,mono,ucu,seq04,1,425,425,4.761,5.507,371,319,0.567,12725,
