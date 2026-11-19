@@ -122,3 +122,6 @@ orbslam3,mono_inertial,ucu,seq09,3,263,395,16.616,27.063,213,164,0.067,7880,ATE 
 dso,mono,ucu,seq09,3,386,395,14.825,24.762,336,287,0.234,11576,
 openvins,mono_inertial,ucu,seq09,3,391,395,14042.945,27710.824,341,292,0.133,11752,
 dpvslam,mono,ucu,seq08,1,623,623,40.083,69.647,572,522,0.167,18667,
+orbslam3,mono,ucu,seq08,1,169,623,5.518,6.850,118,67,0.067,5079,ATE matched 169/623 timestamps
+orbslam3,mono_inertial,ucu,seq08,1,,,,,0,0,,0,log matches /tracking (is )?lost|lost tracking|tracking failed/; full failure: FileNotFoundError: [Errno 2] No such file or directory: '/home/calc/slam-data/results/orbslam3/mono_inertial/ucu/seq08/traj_run1.txt'
+dso,mono,ucu,seq08,1,47,623,,,0,0,0.367,1391,log matches /tracking (is )?lost|lost tracking|tracking failed/; ATE matched 47/623 timestamps
