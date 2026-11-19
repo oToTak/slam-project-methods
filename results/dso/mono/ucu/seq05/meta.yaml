@@ -1,0 +1,10 @@
+method: dso
+mode: mono
+dataset: ucu
+seq: seq05
+run: 1
+commit: f71395f74c6178d6ada463db2eb5b8fd7c9927fa
+config: configs/dso/camera_ucu.txt
+coverage: 0.12
+tracking_lost: false
+notes: "DSO 7b0c99f mono, NO photometric calibration (mode=1: affine brightness a,b optimised, exposure 1.0), preset 0 (2000 points, 5-7 keyframes), RadTan distortion passed as in the camera file ('crop' rectification), global-shutter assumption violated by the rolling-shutter sensor, nogui, no sleeping (linearizeOperation), multithreading=on, non-keyframe poses re-expressed against final keyframe poses, wall 18s. DSO_STATS frames=12672 fed=1473 valid=1448 keyframes=83 dropped=1 resets=0 lost=1 lost_at=1472 initialized=1 wall_s=17.8 host=StarDestroyer. 1448 of 12672 frames have a pose (11.4% of frames; outside-sequence 0, duplicate 0, malformed 0); frames without a pose (before initialisation, after DSO got lost, before a reset) are NOT interpolated. eval: log matches /tracking (is )?lost|lost tracking|tracking failed/; ATE matched 49/424 timestamps."
