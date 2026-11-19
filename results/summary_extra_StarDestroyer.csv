@@ -189,3 +189,5 @@ openvins,mono_inertial,ucu,seq04,1,423,425,16813.713,27645.616,369,317,0.100,126
 dpvslam,mono,ucu,seq04,2,425,425,7.961,10.019,371,319,0.100,12741,
 orbslam3,mono,ucu,seq04,2,159,425,4.005,4.041,109,54,0.067,4748,ATE matched 159/425 timestamps
 orbslam3,mono_inertial,ucu,seq04,2,284,425,8.224,8.765,230,178,0.067,8510,ATE matched 284/425 timestamps
+dso,mono,ucu,seq04,2,425,425,6.303,8.208,371,319,0.567,12725,
+openvins,mono_inertial,ucu,seq04,2,423,425,6515.807,10566.157,369,317,0.100,12677,
