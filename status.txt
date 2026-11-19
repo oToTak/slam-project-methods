@@ -1,13 +1,13 @@
-host: StarDestroyer   updated: 2026-11-20T00:03:20+02:00   code: e4f6df9
+host: StarDestroyer   updated: 2026-11-20T00:13:28+02:00   code: e4f6df9
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
 Місце для даних: доступно 42.2 GB = мінімум із: df 981.5 GB; диск Windows C:\ під vhdx 117.5 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 17.8 GB = 42.2 GB
 Методи (прогонів): dpvo:mono×3, wheel_odom:odom×1, dpvslam:mono×3, orbslam3:mono×3, orbslam3:mono_inertial×3, dso:mono×3, openvins:mono_inertial×3   межа stop-before: нема
-Воркер ПРАЦЮЄ (pid 372): seq01 dpvslam:mono run2 з 2026-11-20T00:02:53; напрямок down від 13
-Інший ПК Teodor: останній звіт 2026-11-13 18:49 (149.2 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
+Воркер ПРАЦЮЄ (pid 372): seq01 orbslam3:mono run2 з 2026-11-20T00:12:54; напрямок down від 13
+Інший ПК Teodor: останній звіт 2026-11-13 18:49 (149.4 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
 
  #  seq       .mcap  прогони (готово/треба, хто)                                                                                                                                                                            стан         дані на диску
- 1  seq01    6.5 GB  dpvo 3/3 Teodor, wheel_odom 1/1 StarDestroyer, dpvslam 1/3 StarDestroyer, orbslam3:mono 1/3 StarDestroyer, orbslam3:mono_inertial 1/3 StarDestroyer, dso 1/3 StarDestroyer, openvins 1/3 StarDestroyer в роботі     є .mcap
+ 1  seq01    6.5 GB  dpvo 3/3 Teodor, wheel_odom 1/1 StarDestroyer, dpvslam 2/3 StarDestroyer, orbslam3:mono 1/3 StarDestroyer, orbslam3:mono_inertial 1/3 StarDestroyer, dso 1/3 StarDestroyer, openvins 1/3 StarDestroyer в роботі     є .mcap
  2  seq02   10.2 GB  dpvo 3/3 StarDestroyer+Teodor, wheel_odom 1/1 StarDestroyer, dpvslam 3/3 StarDestroyer, orbslam3:mono 0/3, orbslam3:mono_inertial 3/3 StarDestroyer, dso 3/3 StarDestroyer, openvins 3/3 StarDestroyer ПЕРЕВІР      -
  3  seq03   10.1 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 3/3 StarDestroyer, orbslam3:mono 0/3, orbslam3:mono_inertial 3/3 StarDestroyer, dso 3/3 StarDestroyer, openvins 3/3 StarDestroyer        ПЕРЕВІР      -
  4  seq04   12.8 GB  dpvo 3/3 StarDestroyer, wheel_odom 1/1 StarDestroyer, dpvslam 3/3 StarDestroyer, orbslam3:mono 0/3, orbslam3:mono_inertial 3/3 StarDestroyer, dso 3/3 StarDestroyer, openvins 3/3 StarDestroyer        ПЕРЕВІР      -
@@ -25,4 +25,4 @@ host: StarDestroyer   updated: 2026-11-20T00:03:20+02:00   code: e4f6df9
 Готово підряд від твого кінця (13, down): seq13 … seq02
 
 name, utilization.gpu [%], memory.used [MiB], memory.total [MiB], temperature.gpu
-NVIDIA GeForce RTX 3060, 70 %, 1969 MiB, 12288 MiB, 55
+NVIDIA GeForce RTX 3060, 0 %, 599 MiB, 12288 MiB, 41
