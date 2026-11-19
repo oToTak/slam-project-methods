@@ -2,9 +2,9 @@ method: orbslam3
 mode: mono_inertial
 dataset: ucu
 seq: seq07
-run: 2
-commit: 3d5db2ae8f26713d2e38ff262d8640bbbad1ed89
+run: 3
+commit: f71395f74c6178d6ada463db2eb5b8fd7c9927fa
 config: configs/orbslam3/UCU_mono_inertial.yaml
-coverage: 0.00
-tracking_lost: true
-notes: "ORB-SLAM3 4452a3c (-std=c++17), Pangolin v0.9.1, viewer off, pace=0, stride 1, wall 655s incl. vocabulary load.  IMU_TRIM leading=1 trailing=0 of 18524 frames outside the IMU span, 18523 kept (rgb.txt trimmed copy used) host=StarDestroyer. Driver failed: ORB-SLAM3 driver crashed: signal 11 during tracking, twice in a row. eval: full failure: FileNotFoundError: [Errno 2] No such file or directory: '/home/calc/slam-data/results/orbslam3/mono_inertial/ucu/seq07/traj_run2.txt'."
+coverage: 0.80
+tracking_lost: false
+notes: "ORB-SLAM3 4452a3c (-std=c++17), Pangolin v0.9.1, viewer off, pace=0, stride 1, wall 678s incl. vocabulary load. ORB3_STATS frames=18523 ever_ok=1 state_hist=1:1942,2:16454,3:127 track_s=208.39236360799956 wall_s=335.47486006299999 IMU_TRIM leading=1 trailing=0 of 18524 frames outside the IMU span, 18523 kept (rgb.txt trimmed copy used) host=StarDestroyer. 16581 of 18523 frames have a pose (raw 16581, unmatched 0, duplicate-frame 0, malformed 0); missing frames are NOT interpolated. Pose = camera pose from body pose via T_b_c = Kalibr T_ic. eval: ATE matched 551/619 timestamps."
