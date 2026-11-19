@@ -132,3 +132,6 @@ orbslam3,mono_inertial,ucu,seq08,2,,,,,0,0,,0,full failure: FileNotFoundError: [
 dso,mono,ucu,seq08,2,54,623,2.340,,4,0,0.334,1591,log matches /tracking (is )?lost|lost tracking|tracking failed/; ATE matched 54/623 timestamps
 openvins,mono_inertial,ucu,seq08,2,621,623,166522.347,324955.396,570,520,0.167,18609,
 dpvslam,mono,ucu,seq08,3,623,623,21.946,39.200,572,522,0.167,18667,
+orbslam3,mono,ucu,seq08,3,165,623,2.792,3.677,114,63,0.067,4944,ATE matched 165/623 timestamps
+orbslam3,mono_inertial,ucu,seq08,3,92,623,8.200,,40,0,0.067,2759,ATE matched 92/623 timestamps
+dso,mono,ucu,seq08,3,54,623,15.504,,4,0,0.334,1577,log matches /tracking (is )?lost|lost tracking|tracking failed/; ATE matched 54/623 timestamps
