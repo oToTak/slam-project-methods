@@ -1,60 +1,60 @@
- 99%|█████████▉| 77248/78058 [10:07<00:06, 130.41it/s]
- 99%|█████████▉| 77264/78058 [10:07<00:05, 132.90it/s]
- 99%|█████████▉| 77279/78058 [10:07<00:05, 133.07it/s]
- 99%|█████████▉| 77293/78058 [10:07<00:05, 129.71it/s]
- 99%|█████████▉| 77309/78058 [10:07<00:05, 132.90it/s]
- 99%|█████████▉| 77324/78058 [10:08<00:05, 132.87it/s]
- 99%|█████████▉| 77338/78058 [10:08<00:05, 129.73it/s]
- 99%|█████████▉| 77352/78058 [10:08<00:05, 128.36it/s]
- 99%|█████████▉| 77367/78058 [10:08<00:05, 124.77it/s]
- 99%|█████████▉| 77381/78058 [10:08<00:05, 123.31it/s]
- 99%|█████████▉| 77395/78058 [10:08<00:05, 123.30it/s]
- 99%|█████████▉| 77412/78058 [10:08<00:04, 131.36it/s]
- 99%|█████████▉| 77429/78058 [10:08<00:04, 136.55it/s]
- 99%|█████████▉| 77445/78058 [10:09<00:04, 137.14it/s]
- 99%|█████████▉| 77460/78058 [10:09<00:04, 135.51it/s]
- 99%|█████████▉| 77474/78058 [10:09<00:04, 131.72it/s]
- 99%|█████████▉| 77490/78058 [10:09<00:04, 134.35it/s]
- 99%|█████████▉| 77505/78058 [10:09<00:04, 131.91it/s]
- 99%|█████████▉| 77519/78058 [10:09<00:04, 127.20it/s]
- 99%|█████████▉| 77533/78058 [10:09<00:04, 125.34it/s]
- 99%|█████████▉| 77548/78058 [10:09<00:04, 126.56it/s]
- 99%|█████████▉| 77562/78058 [10:09<00:03, 124.18it/s]
- 99%|█████████▉| 77576/78058 [10:10<00:03, 123.11it/s]
- 99%|█████████▉| 77593/78058 [10:10<00:03, 128.88it/s]
- 99%|█████████▉| 77607/78058 [10:10<00:03, 126.42it/s]
- 99%|█████████▉| 77622/78058 [10:10<00:03, 127.39it/s]
- 99%|█████████▉| 77638/78058 [10:10<00:03, 129.43it/s]
- 99%|█████████▉| 77655/78058 [10:10<00:03, 133.94it/s]
-100%|█████████▉| 77670/78058 [10:10<00:02, 132.29it/s]
-100%|█████████▉| 77684/78058 [10:10<00:02, 128.74it/s]
-100%|█████████▉| 77698/78058 [10:10<00:02, 124.32it/s]
-100%|█████████▉| 77715/78058 [10:11<00:02, 130.49it/s]
-100%|█████████▉| 77729/78058 [10:11<00:02, 126.15it/s]
-100%|█████████▉| 77743/78058 [10:11<00:02, 123.66it/s]
-100%|█████████▉| 77760/78058 [10:11<00:02, 129.68it/s]
-100%|█████████▉| 77774/78058 [10:11<00:02, 123.57it/s]
-100%|█████████▉| 77788/78058 [10:11<00:02, 121.60it/s]
-100%|█████████▉| 77803/78058 [10:11<00:02, 123.65it/s]
-100%|█████████▉| 77817/78058 [10:11<00:01, 121.41it/s]
-100%|█████████▉| 77831/78058 [10:12<00:01, 118.46it/s]
-100%|█████████▉| 77846/78058 [10:12<00:01, 121.35it/s]
-100%|█████████▉| 77862/78058 [10:12<00:01, 125.99it/s]
-100%|█████████▉| 77879/78058 [10:12<00:01, 131.69it/s]
-100%|█████████▉| 77896/78058 [10:12<00:01, 135.56it/s]
-100%|█████████▉| 77910/78058 [10:12<00:01, 130.11it/s]
-100%|█████████▉| 77924/78058 [10:12<00:01, 126.90it/s]
-100%|█████████▉| 77941/78058 [10:12<00:00, 132.02it/s]
-100%|█████████▉| 77955/78058 [10:13<00:00, 128.34it/s]
-100%|█████████▉| 77968/78058 [10:13<00:00, 123.37it/s]
-100%|█████████▉| 77984/78058 [10:13<00:00, 125.57it/s]
-100%|█████████▉| 77998/78058 [10:13<00:00, 123.78it/s]
-100%|█████████▉| 78012/78058 [10:13<00:00, 121.86it/s]
-100%|█████████▉| 78029/78058 [10:13<00:00, 128.93it/s]
-100%|█████████▉| 78043/78058 [10:13<00:00, 126.34it/s]
-100%|██████████| 78058/78058 [10:13<00:00, 127.18it/s]
-Found 627 common timestamps for color 10064 color and 629 depth images.
-Found 626 common timestamps for color 10064 color and 628 depth images.
-wrote /home/calc/slam-data/ucu_tum/seq03.partial/odom.txt (6203 poses)
-seq03,download_s=583,export_s=617,mcap_bytes=10075248482,export_bytes=3588864699
-19:00:36 -- seq03 dpvslam:mono run1/3: старт
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Creation of new map with id: 3
+Stored map with ID: 2
+Creation of new map with last KF id: 609
+First KF:609; Map init KF:609
+New Map created with 101 points
+ORB3_PROGRESS 4000/10064 state=2
