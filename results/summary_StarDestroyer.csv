@@ -128,3 +128,6 @@ dso,mono,ucu,seq08,1,5.202,,0.08,false,3d5db2a
 openvins,mono_inertial,ucu,seq08,1,490628.574,,1.00,false,3d5db2a
 dpvslam,mono,ucu,seq08,2,27.374,,1.00,false,3d5db2a
 orbslam3,mono,ucu,seq08,2,4.206,,0.25,false,3d5db2a
+orbslam3,mono_inertial,ucu,seq08,2,,,0.00,true,3d5db2a
+dso,mono,ucu,seq08,2,0.925,,0.09,false,3d5db2a
+openvins,mono_inertial,ucu,seq08,2,493898.658,,1.00,false,3d5db2a
