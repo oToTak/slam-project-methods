@@ -1,1 +1,0 @@
-{"pid": 369, "host": "StarDestroyer", "seq": "seq02", "method": "dso:mono", "run": 1, "since": "2026-11-19T20:56:45", "frm": 13, "dir": "down", "runs": 3, "methods": ["dpvo:mono", "wheel_odom:odom", "dpvslam:mono", "orbslam3:mono", "orbslam3:mono_inertial", "dso:mono", "openvins:mono_inertial"]}
