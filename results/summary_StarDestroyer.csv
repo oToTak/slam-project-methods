@@ -232,3 +232,7 @@ orbslam3,mono_inertial,ucu,seq01,1,4.576,,0.75,false,e4f6df9
 dso,mono,ucu,seq01,1,1.541,,1.00,false,e4f6df9
 openvins,mono_inertial,ucu,seq01,1,16.026,,0.99,false,e4f6df9
 dpvslam,mono,ucu,seq01,2,1.641,,1.00,false,e4f6df9
+orbslam3,mono,ucu,seq01,2,4.284,,0.99,false,e4f6df9
+orbslam3,mono_inertial,ucu,seq01,2,3.591,,0.73,false,e4f6df9
+dso,mono,ucu,seq01,2,1.142,,1.00,false,e4f6df9
+openvins,mono_inertial,ucu,seq01,2,15.138,,0.99,false,e4f6df9

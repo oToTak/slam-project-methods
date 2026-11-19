@@ -1,60 +1,60 @@
-== dpvslam mono ucu/seq01 run2 ==
-ATE RMSE   : 1.641 m   (matched 217/218)
-coverage   : 1.00   tracking_lost: false   poses: 6532   max gap: 0.067 s
-drift 50 m : 2.647 m (165 seg)   100 m: 1.971 m (113 seg)
-plot: /home/calc/slam-data/results/dpvslam/mono/ucu/seq01/traj_xy.pdf
+q_GtoI = -0.869,-0.494,-0.004,0.039 | p_IinG = 21.208,-4.315,-3.057 | dist = 156.54 (meters)
+bg = -0.0023,0.0006,0.0155 | ba = -0.3138,0.5299,-0.1131
+camera-imu timeoffset = 0.02830
+cam0 intrinsics = 619.182,613.003,315.682,256.039 | 0.153,-0.296,0.017,0.017
+cam0 extrinsics = -0.004,-0.715,-0.699,0.001 | 0.003,0.097,0.421
+q_GtoI = -0.869,-0.494,-0.003,0.040 | p_IinG = 21.215,-4.320,-3.047 | dist = 156.54 (meters)
+bg = -0.0023,0.0006,0.0155 | ba = -0.3119,0.5291,-0.1132
+camera-imu timeoffset = 0.02830
+cam0 intrinsics = 619.186,612.999,315.690,256.021 | 0.153,-0.296,0.017,0.017
+cam0 extrinsics = -0.004,-0.715,-0.699,0.001 | 0.003,0.097,0.421
+q_GtoI = -0.868,-0.494,-0.002,0.040 | p_IinG = 21.217,-4.320,-3.037 | dist = 156.54 (meters)
+bg = -0.0023,0.0006,0.0155 | ba = -0.3089,0.5285,-0.1130
+camera-imu timeoffset = 0.02830
+cam0 intrinsics = 619.179,612.990,315.703,256.013 | 0.153,-0.296,0.017,0.017
+cam0 extrinsics = -0.004,-0.715,-0.699,0.001 | 0.003,0.097,0.421
+q_GtoI = -0.868,-0.494,-0.002,0.040 | p_IinG = 21.220,-4.323,-3.021 | dist = 156.54 (meters)
+bg = -0.0023,0.0006,0.0155 | ba = -0.3066,0.5274,-0.1129
+camera-imu timeoffset = 0.02830
+cam0 intrinsics = 619.170,612.985,315.706,256.006 | 0.153,-0.296,0.017,0.017
+cam0 extrinsics = -0.004,-0.715,-0.699,0.001 | 0.003,0.097,0.421
+q_GtoI = -0.868,-0.494,-0.002,0.040 | p_IinG = 21.222,-4.324,-3.003 | dist = 156.54 (meters)
+bg = -0.0023,0.0006,0.0155 | ba = -0.3042,0.5264,-0.1128
+camera-imu timeoffset = 0.02830
+cam0 intrinsics = 619.161,612.977,315.708,255.992 | 0.153,-0.297,0.017,0.017
+cam0 extrinsics = -0.004,-0.715,-0.699,0.001 | 0.003,0.097,0.421
+q_GtoI = -0.868,-0.494,-0.002,0.040 | p_IinG = 21.223,-4.323,-2.991 | dist = 156.55 (meters)
+bg = -0.0023,0.0007,0.0155 | ba = -0.3017,0.5257,-0.1126
+camera-imu timeoffset = 0.02830
+cam0 intrinsics = 619.155,612.969,315.708,255.977 | 0.153,-0.297,0.017,0.017
+cam0 extrinsics = -0.004,-0.715,-0.699,0.001 | 0.003,0.097,0.421
+q_GtoI = -0.869,-0.494,-0.002,0.039 | p_IinG = 21.225,-4.324,-2.984 | dist = 156.55 (meters)
+bg = -0.0023,0.0007,0.0155 | ba = -0.2994,0.5252,-0.1126
+camera-imu timeoffset = 0.02830
+cam0 intrinsics = 619.152,612.961,315.707,255.964 | 0.154,-0.297,0.017,0.017
+cam0 extrinsics = -0.004,-0.715,-0.699,0.001 | 0.003,0.097,0.421
+q_GtoI = -0.869,-0.493,-0.002,0.039 | p_IinG = 21.225,-4.325,-2.972 | dist = 156.55 (meters)
+bg = -0.0023,0.0007,0.0155 | ba = -0.2979,0.5243,-0.1125
+camera-imu timeoffset = 0.02830
+cam0 intrinsics = 619.146,612.959,315.710,255.965 | 0.154,-0.297,0.017,0.017
+cam0 extrinsics = -0.004,-0.715,-0.699,0.001 | 0.003,0.097,0.421
+q_GtoI = -0.869,-0.493,-0.001,0.039 | p_IinG = 21.225,-4.327,-2.953 | dist = 156.55 (meters)
+bg = -0.0023,0.0007,0.0155 | ba = -0.2971,0.5231,-0.1125
+camera-imu timeoffset = 0.02830
+cam0 intrinsics = 619.140,612.957,315.714,255.971 | 0.154,-0.297,0.017,0.017
+cam0 extrinsics = -0.004,-0.715,-0.699,0.001 | 0.003,0.097,0.421
+q_GtoI = -0.869,-0.493,-0.001,0.039 | p_IinG = 21.226,-4.328,-2.938 | dist = 156.55 (meters)
+bg = -0.0023,0.0007,0.0155 | ba = -0.2964,0.5221,-0.1124
+camera-imu timeoffset = 0.02830
+cam0 intrinsics = 619.139,612.954,315.713,255.971 | 0.154,-0.297,0.017,0.017
+cam0 extrinsics = -0.004,-0.715,-0.699,0.001 | 0.003,0.097,0.421
+OV_STATS frames=6532 imu=27265 processed=6532 posed=6468 nonfinite=0 unreadable=0 initialized=1 first_pose_t_rel=2.135 wall_s=59.4
+Wrote /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq01/traj_run2.txt (6468 poses of 6532 frames, coverage 0.99) and /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq01/meta.yaml
+== openvins mono_inertial ucu/seq01 run2 ==
+ATE RMSE   : 15.138 m   (matched 215/218)
+coverage   : 0.99   tracking_lost: false   poses: 6468   max gap: 0.067 s
+drift 50 m : 23.668 m (163 seg)   100 m: 26.886 m (111 seg)
+plot: /home/calc/slam-data/results/openvins/mono_inertial/ucu/seq01/traj_xy.pdf
 appended to /home/calc/slam-data/results/summary_StarDestroyer.csv and /home/calc/slam-data/results/summary_extra_StarDestroyer.csv
-00:12:54    готово за 10.0 хв: поз 6532/6532; рядок додано в summary_StarDestroyer.csv
-00:12:54 -- seq01 orbslam3:mono run2/3: старт
-ORB3_INFO frames=6532 imu_rows=0 mode=mono pace=0
-
-ORB-SLAM3 Copyright (C) 2017-2020 Carlos Campos, Richard Elvira, Juan J. Gómez, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
-ORB-SLAM2 Copyright (C) 2014-2016 Raúl Mur-Artal, José M.M. Montiel and Juan D. Tardós, University of Zaragoza.
-This program comes with ABSOLUTELY NO WARRANTY;
-This is free software, and you are welcome to redistribute it
-under certain conditions. See LICENSE.txt.
-
-Input sensor was set to: Monocular
-Loading settings from /home/calc/slam-runner/configs/orbslam3/UCU_mono.yaml
-Camera1.k3 optional parameter does not exist...
-	-Loaded camera 1
-Camera.newHeight optional parameter does not exist...
-Camera.newWidth optional parameter does not exist...
-	-Loaded image info
-	-Loaded ORB settings
-Viewer.imageViewScale optional parameter does not exist...
-	-Loaded viewer settings
-System.LoadAtlasFromFile optional parameter does not exist...
-System.SaveAtlasToFile optional parameter does not exist...
-	-Loaded Atlas settings
-System.thFarPoints optional parameter does not exist...
-	-Loaded misc parameters
-----------------------------------
-SLAM settings: 
-	-Camera 1 parameters (Pinhole): [ 601.17333984375 600.266357421875 314.01644897460938 250.03944396972656 ]
-	-Camera 1 distortion parameters: [  0.1392686665058136 -0.30741280317306519 0.00072727992665022612 0.00066557613899931312 ]
-	-Original image size: [ 640 , 480 ]
-	-Current image size: [ 640 , 480 ]
-	-Sequence FPS: 30
-	-Features per image: 1000
-	-ORB scale factor: 1.2000000476837158
-	-ORB number of scales: 8
-	-Initial FAST threshold: 20
-	-Min FAST threshold: 7
-
-
-Loading ORB Vocabulary. This could take a while...
-Vocabulary loaded!
-
-Initialization of Atlas from scratch 
-Creation of new map with id: 0
-Creation of new map with last KF id: 0
-Seq. Name: 
-There are 1 cameras in the atlas
-Camera 0 is pinhole
-First KF:0; Map init KF:0
-New Map created with 381 points
-ORB3_PROGRESS 500/6532 state=2
-ORB3_PROGRESS 1000/6532 state=2
-ORB3_PROGRESS 1500/6532 state=2
-ORB3_PROGRESS 2000/6532 state=2
+00:19:12    готово за 1.0 хв: поз 6468/6532; рядок додано в summary_StarDestroyer.csv
+00:19:12 -- seq01 dpvslam:mono run3/3: старт
