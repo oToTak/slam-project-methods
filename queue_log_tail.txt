@@ -1,60 +1,60 @@
-100%|█████████▉| 144500/145191 [23:33<00:05, 118.42it/s]
-100%|█████████▉| 144516/145191 [23:34<00:05, 120.79it/s]
-100%|█████████▉| 144530/145191 [23:34<00:05, 117.78it/s]
-100%|█████████▉| 144545/145191 [23:34<00:05, 117.26it/s]
-100%|█████████▉| 144559/145191 [23:34<00:05, 112.56it/s]
-100%|█████████▉| 144573/145191 [23:34<00:05, 112.13it/s]
-100%|█████████▉| 144588/145191 [23:34<00:05, 112.14it/s]
-100%|█████████▉| 144604/145191 [23:34<00:05, 115.24it/s]
-100%|█████████▉| 144618/145191 [23:35<00:05, 114.16it/s]
-100%|█████████▉| 144633/145191 [23:35<00:04, 114.67it/s]
-100%|█████████▉| 144652/145191 [23:35<00:04, 124.38it/s]
-100%|█████████▉| 144666/145191 [23:35<00:04, 118.32it/s]
-100%|█████████▉| 144681/145191 [23:35<00:04, 117.07it/s]
-100%|█████████▉| 144695/145191 [23:35<00:04, 114.03it/s]
-100%|█████████▉| 144709/145191 [23:35<00:04, 111.47it/s]
-100%|█████████▉| 144724/145191 [23:35<00:04, 111.15it/s]
-100%|█████████▉| 144740/145191 [23:36<00:03, 113.48it/s]
-100%|█████████▉| 144754/145191 [23:36<00:03, 111.25it/s]
-100%|█████████▉| 144769/145191 [23:36<00:03, 113.78it/s]
-100%|█████████▉| 144785/145191 [23:36<00:03, 118.60it/s]
-100%|█████████▉| 144799/145191 [23:36<00:03, 117.15it/s]
-100%|█████████▉| 144814/145191 [23:36<00:03, 115.78it/s]
-100%|█████████▉| 144826/145191 [23:36<00:03, 110.40it/s]
-100%|█████████▉| 144838/145191 [23:36<00:03, 107.75it/s]
-100%|█████████▉| 144849/145191 [23:37<00:03, 103.62it/s]
-100%|█████████▉| 144860/145191 [23:37<00:03, 99.80it/s] 
-100%|█████████▉| 144870/145191 [23:37<00:03, 95.26it/s]
-100%|█████████▉| 144881/145191 [23:37<00:03, 94.92it/s]
-100%|█████████▉| 144893/145191 [23:37<00:03, 97.20it/s]
-100%|█████████▉| 144908/145191 [23:37<00:02, 104.92it/s]
-100%|█████████▉| 144919/145191 [23:37<00:02, 99.05it/s] 
-100%|█████████▉| 144930/145191 [23:37<00:02, 97.88it/s]
-100%|█████████▉| 144942/145191 [23:38<00:02, 98.42it/s]
-100%|█████████▉| 144953/145191 [23:38<00:02, 95.77it/s]
-100%|█████████▉| 144965/145191 [23:38<00:02, 96.32it/s]
-100%|█████████▉| 144977/145191 [23:38<00:02, 98.48it/s]
-100%|█████████▉| 144987/145191 [23:38<00:02, 92.92it/s]
-100%|█████████▉| 144999/145191 [23:38<00:01, 96.94it/s]
-100%|█████████▉| 145011/145191 [23:38<00:01, 97.83it/s]
-100%|█████████▉| 145022/145191 [23:38<00:01, 96.38it/s]
-100%|█████████▉| 145034/145191 [23:38<00:01, 96.84it/s]
-100%|█████████▉| 145046/145191 [23:39<00:01, 96.46it/s]
-100%|█████████▉| 145056/145191 [23:39<00:01, 93.21it/s]
-100%|█████████▉| 145068/145191 [23:39<00:01, 93.98it/s]
-100%|█████████▉| 145078/145191 [23:39<00:01, 90.05it/s]
-100%|█████████▉| 145089/145191 [23:39<00:01, 91.60it/s]
-100%|█████████▉| 145101/145191 [23:39<00:00, 94.00it/s]
-100%|█████████▉| 145113/145191 [23:39<00:00, 96.61it/s]
-100%|█████████▉| 145123/145191 [23:39<00:00, 94.62it/s]
-100%|█████████▉| 145135/145191 [23:40<00:00, 96.05it/s]
-100%|█████████▉| 145147/145191 [23:40<00:00, 95.45it/s]
-100%|█████████▉| 145158/145191 [23:40<00:00, 95.22it/s]
-100%|█████████▉| 145170/145191 [23:40<00:00, 97.47it/s]
-100%|█████████▉| 145182/145191 [23:40<00:00, 98.16it/s]
-100%|██████████| 145191/145191 [23:40<00:00, 102.21it/s]
-Found 1183 common timestamps for color 18667 color and 1183 depth images.
-Found 1183 common timestamps for color 18667 color and 1185 depth images.
-wrote /home/calc/slam-data/ucu_tum/seq08.partial/odom.txt (11510 poses)
-seq08,download_s=1057,export_s=1427,mcap_bytes=18711629258,export_bytes=7130421462
-04:23:47 -- seq08 dpvslam:mono run1/3: старт
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+Fail to track local map!
+SYSTEM-> Reseting active map in monocular case
+LM: Active map reset recieved
+LM: Active map reset, waiting...
+LM: Reseting current map in Local Mapping...
+LM: End reseting Local Mapping...
+LM: Reset free the mutex
+LM: Active map reset, Done!!!
+mnFirstFrameId = 3
+mnInitialFrameId = 4880
+0 Frames set to lost
+First KF:785; Map init KF:732
+New Map created with 94 points
+ORB3_PROGRESS 5500/18667 state=2
+ORB3_PROGRESS 6000/18667 state=2
+ORB3_PROGRESS 6500/18667 state=2
+ORB3_PROGRESS 7000/18667 state=2
