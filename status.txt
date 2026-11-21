@@ -1,7 +1,7 @@
-host: StarDestroyer   updated: 2026-11-21T12:22:45+02:00   code: 4454aef
+host: StarDestroyer   updated: 2026-11-21T12:22:49+02:00   code: 4454aef
 
 Хост: StarDestroyer   дані: /home/calc/slam-data   summary: summary_StarDestroyer.csv
-Місце для даних: доступно 50.7 GB = мінімум із: df 990.1 GB; диск Windows C:\ під vhdx 116.7 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 9.3 GB = 50.7 GB
+Місце для даних: доступно 50.7 GB = мінімум із: df 990.1 GB; диск Windows C:\ під vhdx 116.4 GB; бюджет DATA_BUDGET_GB 60 GB − зайнято 9.3 GB = 50.7 GB
 Методи (прогонів): dpvo:mono×3, wheel_odom:odom×1, dpvslam:mono×3, orbslam3:mono×3, orbslam3:mono_inertial×3, dso:mono×3, openvins:mono_inertial×3   межа stop-before: нема
 Воркер не працює
 Інший ПК Teodor: останній звіт 2026-11-13 18:49 (185.6 год тому); рахує seq02 dpvo:mono run3 з 2026-11-13T18:46:11 — звіт старший за 3 год, вважаю зупиненим (не блокує)
